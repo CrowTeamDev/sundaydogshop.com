@@ -31,6 +31,7 @@ $(document).ready(function(){
         
         itemInYourCart(0);
         currentDirectory("HOME");
+        changeBackground(0);
     }
     
     function setup_eventHandle(){
@@ -39,5 +40,35 @@ $(document).ready(function(){
             $("#top_menu").show();
             $("#navigation_bar").show();
         });
+        $("header ul li").click(function(){
+            var menu_no = $("header ul li").index(this);
+            
+            changeBackground(menu_no);
+            $("#main").show();
+        });
+    }
+    
+    function changeBackground(menu_no){
+        var value;
+        var div1_show = $("#background_1").css("display");
+        
+        switch (menu_no){
+            case 1:
+            case 2:
+                value = 'url(content/image/background/image_1.jpg)';
+                break;
+            default:
+                value = 'url(content/image/background/image_2.jpg)';
+                break;
+        }
+        
+        if (div1_show === "none"){
+            $("#background_1").css({'background-image': value, 'z-index':-2}).show();
+            $("#background_2").css('z-index',-1).fadeOut(1000);
+        }
+        else{
+            $("#background_2").css({'background-image': value, 'z-index':-2}).show();
+            $("#background_1").css('z-index',-1).fadeOut(1000);
+        }
     }
 });

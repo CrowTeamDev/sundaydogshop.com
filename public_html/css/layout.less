@@ -7,11 +7,11 @@
     Created on : Nov 19, 2013, 8:24:53 PM
     Author     : Pentor
 */
-
 header{
     margin: 0 auto;
-    border: 2px solid black;
     text-align: center;
+    
+    border: 2px dotted black;
 }
 #top_menu{
     text-align: right;
@@ -30,13 +30,30 @@ header{
         padding-left: 50px;
     }
 }
+#background_1, #background_2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
 #main{
     width: 800px;
     margin: 0 auto;
-    border: 2px solid red;
+    
+    border: 2px dotted black;
 }
 footer{
-    clear: both;
-    position: relative;
-    z-index: 10;
+    position: fixed;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    label{
+        padding-right: 50px;
+    }
+    img{
+        float: right;
+    }
+    border: 2px dotted black;
 }
