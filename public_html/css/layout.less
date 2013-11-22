@@ -7,9 +7,33 @@
     Created on : Nov 19, 2013, 8:24:53 PM
     Author     : Pentor
 */
+
+@font-face{
+    font-family: AvenirNext;
+    src: url('../content/font/AvenirNext/Avenir Next.ttc')
+}
+@font-face{
+    font-family: PrestigeElite_Bold;
+    src: url('../content/font/PrestigeElite/PrestigeElite-Bold.otf')
+}
+@font-face{
+    font-family: PrestigeElite_BoldSlanted;
+    src: url('../content/font/PrestigeElite/PrestigeElite-BoldSlanted.otf')
+}
+@font-face{
+    font-family: PrestigeElite_Slanted;
+    src: url('../content/font/PrestigeElite/PrestigeElite-Slanted.otf')
+}
+@font-face{
+    font-family: PrestigeElite;
+    src: url('../content/font/PrestigeElite/PrestigeElite.otf')
+}
+
 header{
     margin: 0 auto;
     text-align: center;
+    font-family: PrestigeElite_Bold;
+    font-size: 1em;
     
     border: 2px dotted black;
 }
@@ -19,7 +43,7 @@ header{
 }
 #navigation_bar{
     text-align: left;
-    margin-bottom: 100px;
+    margin-bottom: 6em;
     img{ 
         float: left;
         width: 70px;
@@ -39,15 +63,15 @@ header{
     z-index: -1;
 }
 #main{
-    width: 800px;
+    width: 55em;
     margin: 0 auto;
     
     border: 2px dotted black;
 }
 footer{
     position: fixed;
-    bottom: 0px;
-    height: 30px;
+    bottom: 0em;
+    height: 1.5em;
     width: 100%;
     label{
         padding-right: 50px;
