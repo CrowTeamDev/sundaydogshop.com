@@ -5,8 +5,15 @@
 */
 /* 
     Created on : Nov 19, 2013, 8:24:53 PM
-    Author     : Pentor
+    Author     : Peace S.
 */
+
+@color_c1: #DED9CC;
+@color_c2: #AEAA95;
+@color_g1: #EBEDF0;
+@color_g2: #ACAEB0;
+@color_g3: #696C6E;
+@color_g4: #3E4042;
 
 @font-face{
     font-family: AvenirNext;
@@ -34,25 +41,26 @@ header{
     text-align: center;
     font-family: PrestigeElite_Bold;
     font-size: 1em;
-    
-    border: 2px dotted black;
+    label{ cursor:pointer; }
+}
+ul{ margin: 0px; }
+li{
+    cursor:pointer;
+    display: inline;
 }
 #top_menu{
     text-align: right;
+    height: 5px;
+    font-size: 0.8em;
     #current_directory{ margin-right: 30px; }
 }
 #navigation_bar{
     text-align: left;
     margin-bottom: 6em;
-    img{ 
-        float: left;
-        width: 70px;
-        height: 70px;
-    }
-    li{
-        display: inline;
-        padding-left: 50px;
-    }
+    padding-left: 3em;
+    img{ float: left; }
+    ul{ padding-top: 55px; }
+    li{ padding-left: 50px; }
 }
 #background_1, #background_2{
     position: absolute;
@@ -69,15 +77,28 @@ header{
     border: 2px dotted black;
 }
 footer{
+    font-family: PrestigeElite_Bold;
+    font-size: 0.8em;
     position: fixed;
-    bottom: 0em;
-    height: 1.5em;
+    bottom: 0;
+    left: 0;
+    height: 2em;
+    padding-top: 1em;
     width: 100%;
-    label{
-        padding-right: 50px;
+    background-color: @color_g1;
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+    label{ 
+        cursor: pointer;
+        padding: 0 2em;
     }
     img{
+        cursor: pointer;
         float: right;
     }
-    border: 2px dotted black;
+}
+
+#payment_navigation li{
+    width: 10em;
+    padding-right: 5em;
 }

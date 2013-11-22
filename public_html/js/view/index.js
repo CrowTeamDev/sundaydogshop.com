@@ -1,7 +1,7 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * index.js
+ * 
+ * Control every front-end process on index.html
  */
 
 $(document).ready(function(){
@@ -28,10 +28,11 @@ $(document).ready(function(){
         $("#top_menu").hide();
         $("#navigation_bar").hide();
         $("#main").hide();
+        $("footer").hide();
         
         itemInYourCart(0);
         currentDirectory("HOME");
-        changeBackground(0);
+        changeBackground("init");
     }
     
     function setup_eventHandle(){
@@ -39,35 +40,62 @@ $(document).ready(function(){
             $(this).hide();
             $("#top_menu").show();
             $("#navigation_bar").show();
+            $("footer").show();
         });
         $("header ul li").click(function(){
-            var menu_no = $("header ul li").index(this);
+            var menu_no = $("li", $(this).parent()).index(this);
+            var menu_id = $(this).attr("id") !== undefined ? 
+                            $(this).attr("id") : 
+                            "menu_" + menu_no ;
             
-            changeBackground(menu_no);
-            $("#main").show();
+            changeBackground(menu_id);
+            menu_handle(menu_id);
         });
     }
     
-    function changeBackground(menu_no){
+    function menu_handle(id){
+        switch(id){
+            case "your_cart":
+                $("#main").load("view/_payment.html");
+                break;
+            case "menu_0":
+                break;
+            case "menu_1":
+                break;
+            case "menu_2":
+                break;
+            case "menu_3":
+                break;
+            case "menu_4":
+                break;
+            case "menu_5":
+                break;
+        }
+        $("#main").show();
+    }
+    
+    function changeBackground(menu_id){
         var value;
         var div1_show = $("#background_1").css("display");
         
-        switch (menu_no){
-            case 1:
-            case 2:
+        switch (menu_id){
+            case "init":
+                value = 'url(content/image/background/image_2.jpg)';
+                break;
+            case "menu_4":
                 value = 'url(content/image/background/image_1.jpg)';
                 break;
             default:
-                value = 'url(content/image/background/image_2.jpg)';
+                value = '#DED9CC';
                 break;
         }
         
         if (div1_show === "none"){
-            $("#background_1").css({'background-image': value, 'z-index':-2}).show();
+            $("#background_1").css({'background': value, 'z-index':-2}).show();
             $("#background_2").css('z-index',-1).fadeOut(1000);
         }
         else{
-            $("#background_2").css({'background-image': value, 'z-index':-2}).show();
+            $("#background_2").css({'background': value, 'z-index':-2}).show();
             $("#background_1").css('z-index',-1).fadeOut(1000);
         }
     }
