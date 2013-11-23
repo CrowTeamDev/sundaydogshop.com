@@ -10,6 +10,7 @@
 
 @color_c1: #DED9CC;
 @color_c2: #AEAA95;
+@color_c3: #BfB7B2;
 @color_g1: #EBEDF0;
 @color_g2: #ACAEB0;
 @color_g3: #696C6E;
@@ -36,14 +37,19 @@
     src: url('../content/font/PrestigeElite/PrestigeElite.otf')
 }
 
+body{
+    font-family: PrestigeElite_Bold;
+}
 header{
     margin: 0 auto;
     text-align: center;
-    font-family: PrestigeElite_Bold;
     font-size: 1em;
     label{ cursor:pointer; }
 }
-ul{ margin: 0px; }
+ul{ 
+    cursor: default;
+    margin: 0px;
+}
 li{
     cursor:pointer;
     display: inline;
@@ -59,7 +65,7 @@ li{
     margin-bottom: 6em;
     padding-left: 3em;
     img{ float: left; }
-    ul{ padding-top: 55px; background: red; }
+    ul{ padding-top: 55px; }
     li{ padding-left: 50px; }
 }
 #background_1, #background_2{
@@ -77,7 +83,6 @@ li{
     border: 2px dotted black;
 }
 footer{
-    font-family: PrestigeElite_Bold;
     font-size: 0.8em;
     position: fixed;
     bottom: 0;
@@ -98,7 +103,13 @@ footer{
     }
 }
 
-#payment_navigation li{
-    width: 10em;
-    padding-right: 5em;
+#payment_navigation{
+    background-color: @color_c3;
+    height: 2.5em;
+    ul{
+        padding: 0.75em 0 0;
+    }
+    li{
+        padding: 0 6%;
+    }
 }
