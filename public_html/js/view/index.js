@@ -54,9 +54,10 @@ $(document).ready(function(){
     }
     
     function menu_handle(id){
+        var url_redirect;
         switch(id){
             case "your_cart":
-                $("#main").load("view/_payment.html");
+                url_redirect = "view/_payment.html";
                 break;
             case "menu_0":
                 break;
@@ -71,7 +72,11 @@ $(document).ready(function(){
             case "menu_5":
                 break;
         }
-        $("#main").show();
+        $("#main").fadeOut(300, function(){
+            $(this).load(url_redirect, function(){
+                $(this).fadeIn(500);
+            });
+        });
     }
     
     function changeBackground(menu_id){
