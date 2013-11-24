@@ -8,20 +8,32 @@ $(document).ready(function(){
     
     var itemInYourCart;
     var currentDirectory;
+    var ribbonOn;
     
     setup_variable();
     setup_default();
     setup_eventHandle();
     
     function setup_variable(){
-        itemInYourCart = 
-            function(amountOfItem){ 
-                $("span", "#your_cart").text(amountOfItem);
-            };
-        currentDirectory = 
-            function(directory){ 
-                $("#current_directory").text(directory);
-            };
+        itemInYourCart = {
+            set : function(value){ $("span", "#your_cart").text(value); }
+        };
+        currentDirectory = {
+            default: "HOME",
+            get: function(){ return $("#current_directory").text(); },
+            add: function(value){
+                var path = this.get() + "/" + value;
+                $("#current_directory").text(path);
+            },
+            reset: function(value){
+                var path;
+                if(value === this.default || value === null)
+                    path = this.default;
+                else
+                    path = this.default + "/" + value;
+                $("#current_directory").text(path);
+            }
+        };
     }
     
     function setup_default(){
@@ -30,8 +42,8 @@ $(document).ready(function(){
         $("#main").hide();
         $("footer").hide();
         
-        itemInYourCart(0);
-        currentDirectory("HOME");
+        itemInYourCart.set(0);
+        currentDirectory.reset(null);
         changeBackground("init");
     }
     
@@ -42,15 +54,37 @@ $(document).ready(function(){
             $("#navigation_bar").show();
             $("footer").show();
         });
-        $("header ul li").click(function(){
-            var menu_no = $("li", $(this).parent()).index(this);
-            var menu_id = $(this).attr("id") !== undefined ? 
-                            $(this).attr("id") : 
-                            "menu_" + menu_no ;
+        $("#navigation_bar")
+            .mouseout(function(){
+                setRibbon(ribbonOn, true);
+            })
+            .find("li").mouseover(function(){
+                setRibbon(ribbonOn, false);
+            });
+        $("header ul li")
+            .click(function(){
+                var menu_name = $(this).text();
+                var menu_no = $("li", $(this).parent()).index(this);
+                var menu_id = $(this).attr("id") !== undefined ? 
+                                $(this).attr("id") : 
+                                "menu_" + menu_no ;
+
+                currentDirectory.reset(menu_name);
+                ribbonOn = $(this).attr("id") === undefined ?
+                            menu_no : null ;
+
+                changeBackground(menu_id);
+                menu_handle(menu_id);
+            });
+        
+        function setRibbon(menu_no, status){
+            var menuSelected = "#navigation_bar ul li:eq("+menu_no+")";
             
-            changeBackground(menu_id);
-            menu_handle(menu_id);
-        });
+            if(status)
+                $(menuSelected).addClass("selected");
+            else
+                $(menuSelected).removeClass("selected");
+        }
     }
     
     function menu_handle(id){

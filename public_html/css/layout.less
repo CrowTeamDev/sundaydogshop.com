@@ -15,6 +15,7 @@
 @color_g2: #ACAEB0;
 @color_g3: #696C6E;
 @color_g4: #3E4042;
+@color_w1: #FFFFFF;
 
 @font-face{
     font-family: AvenirNext;
@@ -35,6 +36,15 @@
 @font-face{
     font-family: PrestigeElite;
     src: url('../content/font/PrestigeElite/PrestigeElite.otf')
+}
+
+@keyframes animatedBackground {
+    from { padding-bottom: 0em; }
+    to { padding-bottom: 2em; }
+}
+@-webkit-keyframes animatedBackground {
+    from { padding-bottom: 0em; }
+    to { padding-bottom: 2em; }
 }
 
 body{
@@ -83,13 +93,26 @@ li{
     }
     li{ 
         padding: 1.6em 1em 2em 0.8em;
-        margin: 0 0.8em 0 1em; 
+        margin: 0 0.8em 0 1em;
         
-        /*PUT THIS in js, on hover!*/
+        &:hover{
+            color: @color_w1;
+            background-image: url('../content/image/navigation_select_1.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%; 
+            animation: animatedBackground 1.5s;
+            -webkit-animation: animatedBackground 1.5s;
+        }
+    }
+    .selected{
+        color: @color_w1;
         background-image: url('../content/image/navigation_select_1.png');
         background-repeat: no-repeat;
         background-size: 100% 100%; 
-        color: white;
+        &:hover{
+            color: @color_g3;
+            background: "";
+        }
     }
 }
 #background_1, #background_2{
@@ -136,11 +159,9 @@ footer{
     li{
         padding: 0 6%;
     }
-}
+}   
 #payment_main{
     background-color: #FFFFFF;
     padding: 1.75em 2% 2%;
-    #payment_checkOut table{
-        width: 100%;
-    }
+    #payment_checkOut table{ width: 100%; }
 }
