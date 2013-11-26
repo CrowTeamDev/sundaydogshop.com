@@ -80,7 +80,8 @@ $(document).ready(function(){
                 menu_handle(menu_id);
             });
         $("#main").scroll(function(){
-            $("button").width($("div").scrollTop());
+            var position_scrolling = $(this).scrollTop();
+            $("#logo_rope").width(position_scrolling);
         });
         
         function setRibbon(menu_no, status){
