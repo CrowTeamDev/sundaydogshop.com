@@ -48,11 +48,9 @@ $(document).ready(function(){
     }
     
     function setup_eventHandle(){
-        $("header:eq(0)").click(function(){
-            $(this).hide();
-            $("#top_menu").show();
-            $("#navigation_bar").show();
-            $("footer").show();
+        $("#start_menu").click(function(){
+            $("header, footer").fadeIn(500);
+            $(this).fadeOut(300);
         });
         $("#navigation_bar")
             .mouseout(function(){
@@ -96,9 +94,11 @@ $(document).ready(function(){
     
     function menu_handle(id){
         var url_redirect;
+        var main_width = $("#main").width();
         switch(id){
             case "your_cart":
                 url_redirect = "view/_payment.html";
+                main_width += 100;
                 break;
             case "menu_0":
                 break;
@@ -114,6 +114,7 @@ $(document).ready(function(){
                 break;
         }
         $("#main").fadeOut(300, function(){
+            $(this).width(main_width);
             $(this).load(url_redirect, function(){
                 $(this).fadeIn(500);
             });
