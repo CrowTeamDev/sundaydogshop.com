@@ -11,7 +11,8 @@ function Cart(){
     this.totalCost = 0;
 }
 
-function Item(name, price, weight){
+function Item(id, name, price, weight){
+    this.id = id;
     this.name = name;
     this.price = price;
     this.weight = weight;

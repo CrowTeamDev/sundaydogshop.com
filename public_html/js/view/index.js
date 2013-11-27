@@ -16,104 +16,103 @@ $(document).ready(function(){
     
     function setup_variable(){
         itemInYourCart = {
-            set : function(value){ $("span", "#your_cart").text(value); }
+            set : function(value){ $('span', '#your_cart').text(value); }
         };
         currentDirectory = {
-            default: "HOME",
-            get: function(){ return $("#current_directory").text(); },
+            default: 'HOME',
+            get: function(){ return $('#current_directory').text(); },
             add: function(value){
-                var path = this.get() + "/" + value;
-                $("#current_directory").text(path);
+                var path = this.get() + '/' + value;
+                $('#current_directory').text(path);
             },
             reset: function(value){
                 var path;
                 if(value === this.default || value === null)
                     path = this.default;
                 else
-                    path = this.default + "/" + value;
-                $("#current_directory").text(path);
+                    path = this.default + '/' + value;
+                $('#current_directory').text(path);
             }
         };
     }
     
     function setup_default(){
-        $("#top_menu").hide();
-        $("#navigation_bar").hide();
-        $("#main").hide();
-        $("footer").hide();
+        $('#start_menu').slideDown(650, function(){
+            $(this).find('label').fadeIn(450);
+        });
         
         itemInYourCart.set(0);
-        currentDirectory.reset(null);
-        changeBackground("init");
+        changeBackground('init');
     }
     
     function setup_eventHandle(){
-        $("#start_menu").click(function(){
-            $("header, footer").fadeIn(500);
-            $(this).fadeOut(300);
+        $('#start_menu').click(function(){
+            $(this).fadeOut(300, function(){
+                $('#navigation_bar, #top_menu, footer').fadeIn(500);
+            });
         });
-        $("#navigation_bar")
+        $('#navigation_bar')
             .mouseout(function(){
                 setRibbon(ribbonOn, true);
             })
-            .find("li").mouseover(function(){
+            .find('li').mouseover(function(){
                 setRibbon(ribbonOn, false);
             });
-        $("header ul li")
+        $('header ul li')
             .click(function(){
-                var menu_no = $("li", $(this).parent()).index(this);
-                var menu_id = $(this).attr("id") !== undefined ? 
-                                $(this).attr("id") : 
-                                "menu_" + menu_no ;
-                var menu_name = $(this).attr("id") !== undefined ?
-                                $(this).attr("id") :
+                var menu_no = $('li', $(this).parent()).index(this);
+                var menu_id = $(this).attr('id') !== undefined ? 
+                                $(this).attr('id') : 
+                                'menu_' + menu_no ;
+                var menu_name = $(this).attr('id') !== undefined ?
+                                $(this).attr('id') :
                                 $(this).text() ;
 
                 currentDirectory.reset(menu_name);
                 setRibbon(ribbonOn, false);
-                ribbonOn = $(this).attr("id") === undefined ?
+                ribbonOn = $(this).attr('id') === undefined ?
                             menu_no : null ;
 
                 changeBackground(menu_id);
                 menu_handle(menu_id);
             });
-        $("#main").scroll(function(){
+        $('#main').scroll(function(){
             var position_scrolling = $(this).scrollTop();
-            $("#logo_rope").width(position_scrolling);
+            $('#logo_rope').width(position_scrolling);
         });
         
         function setRibbon(menu_no, status){
-            var menuSelected = "#navigation_bar ul li:eq("+menu_no+")";
+            var menuSelected = '#navigation_bar ul li:eq('+menu_no+')';
             
             if(status)
-                $(menuSelected).addClass("selected");
+                $(menuSelected).addClass('selected');
             else
-                $(menuSelected).removeClass("selected");
+                $(menuSelected).removeClass('selected');
         }
     }
     
     function menu_handle(id){
         var url_redirect;
-        var main_width = $("#main").width();
+        var main_width = $('#main').width();
         switch(id){
-            case "your_cart":
-                url_redirect = "view/_payment.html";
+            case 'your_cart':
+                url_redirect = 'view/_payment.html';
                 main_width += 100;
                 break;
-            case "menu_0":
+            case 'menu_0':
                 break;
-            case "menu_1":
+            case 'menu_1':
                 break;
-            case "menu_2":
+            case 'menu_2':
                 break;
-            case "menu_3":
+            case 'menu_3':
                 break;
-            case "menu_4":
+            case 'menu_4':
                 break;
-            case "menu_5":
+            case 'menu_5':
                 break;
         }
-        $("#main").fadeOut(300, function(){
+        $('#main').fadeOut(300, function(){
             $(this).width(main_width);
             $(this).load(url_redirect, function(){
                 $(this).fadeIn(500);
@@ -123,13 +122,13 @@ $(document).ready(function(){
     
     function changeBackground(menu_id){
         var value;
-        var div1_show = $("#background_1").css("display");
+        var div1_show = $('#background_1').css('display');
         
         switch (menu_id){
-            case "init":
+            case 'init':
                 value = 'url(content/image/background/image_2.jpg)';
                 break;
-            case "menu_4":
+            case 'menu_4':
                 value = 'url(content/image/background/image_1.jpg)';
                 break;
             default:
@@ -137,13 +136,13 @@ $(document).ready(function(){
                 break;
         }
         
-        if (div1_show === "none"){
-            $("#background_1").css({'background': value, 'z-index':-2}).show();
-            $("#background_2").css('z-index',-1).fadeOut(1000);
+        if (div1_show === 'none'){
+            $('#background_1').css({'background': value, 'z-index':-2}).show();
+            $('#background_2').css('z-index',-1).fadeOut(1000);
         }
         else{
-            $("#background_2").css({'background': value, 'z-index':-2}).show();
-            $("#background_1").css('z-index',-1).fadeOut(1000);
+            $('#background_2').css({'background': value, 'z-index':-2}).show();
+            $('#background_1').css('z-index',-1).fadeOut(1000);
         }
     }
 });

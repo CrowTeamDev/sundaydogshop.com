@@ -20,7 +20,7 @@
 
 @font-face{
     font-family: AvenirNext;
-    src: url('../content/font/AvenirNext/Avenir Next.ttc')
+    src: url('../content/font/AvenirNext/AvenirNext.ttc')
 }
 @font-face{
     font-family: PrestigeElite_Bold;
@@ -53,6 +53,7 @@ body{
     margin: 0;
 }
 header{
+    display: none;
     margin: 0 auto;
     text-align: center;
     font-size: 13pt;
@@ -68,6 +69,7 @@ li{
 #start_menu{
     padding-top: 0.5%;
     label{
+        display: none;
         cursor: pointer;
         background-image: url('../content/image/button_menu.png');
         background-position: center top;
@@ -141,16 +143,17 @@ li{
     z-index: -1;
 }
 #main{
+    display: none;
     width: 75%;
     margin: 0 auto;
 }
 footer{
-    font-size: 0.8em;
+    display: none;
     position: fixed;
     bottom: 0;
     left: 0;
-    height: 5%;
-    padding-top: 1em;
+    height: 4%;
+    padding-top: 1%;
     width: 100%;
     background-color: @color_g1;
     opacity:0.6;
@@ -162,6 +165,8 @@ footer{
     img{
         cursor: pointer;
         float: right;
+        width: 1.5%;
+        margin-right: 0.75%;
     }
 }
 
@@ -183,10 +188,42 @@ footer{
     }
 }   
 #payment_main{
+    font-size: 13pt;
     background-color: #FFFFFF;
     margin: -24.6px 80px 0;
     padding: 3%;
-    #payment_checkOut table{
+    #payment_checkOut{
         width: 100%;
+        tr{ height: 55px; }
+        td{ padding: 1%; }
+        #image{ width: 5%; }
+        #name{
+            font-family: AvenirNext;
+            font-size: 12pt;
+        }
+        #qty{ width: 5%; }
+        #update{ width: 15%; }
+        #price{ width: 15%; }
+        #total{ width: 15%; }
+        #remove{ width: 15%; }
+        input{
+            width: 35px;
+            height: 25px;
+        }
+        span{ margin-right: 15px; }
+        label{
+            cursor: pointer;
+            color: @color_w1;
+            padding: 7.5% 17%;
+            background-image: url('../content/image/button_1.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        tr:last-child{
+            td:first-child{
+                font-family: AvenirNext;
+                font-size: 12pt;
+            }
+        }
     }
 }

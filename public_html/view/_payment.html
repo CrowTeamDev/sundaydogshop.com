@@ -15,23 +15,25 @@
     </ul>
 </div>
 <div id="payment_main">
-    <div id="payment_checkOut">
-        <table>
-            <tr>
-                <td colspan="2">PRODUCT</td>
-                <td colspan="2">QUANTITY</td>
-                <td>PRICE</td>
-                <td colspan="2">TOTAL</td>
-            </tr>
-            <tr class="checkOut_item">
-                <td id="image"></td>
-                <td id="name"></td>
-                <td id="qty"><input type="number" /></td>
-                <td id="update"><input type="button" value="UPDATE" /></td>
-                <td id="price"></td>
-                <td id="total"></td>
-                <td id="remove"><input type="button" value="REMOVE" /></td>
-            </tr>
-        </table>
-    </div>
+    <table id="payment_checkOut">
+        <tr>
+            <td colspan="2">PRODUCT</td>
+            <td colspan="2">QUANTITY</td>
+            <td>PRICE</td>
+            <td colspan="2">TOTAL</td>
+        </tr>
+        <tr class="checkOut_item">
+            <td id="image"></td>
+            <td id="name"></td>
+            <td id="qty"><input type="number" min="1" max="99" /></td>
+            <td id="update"><label>UPDATE</label></td>
+            <td id="price"><span></span>THB</td>
+            <td id="total"><span></span>THB</td>
+            <td id="remove"><label>REMOVE</label></td>
+        </tr>
+        <tr>
+            <td colspan="5">Total cost before shipping</td>
+            <td colspan="2"><span></span>THB</td>
+        </tr>
+    </table>
 </div>
