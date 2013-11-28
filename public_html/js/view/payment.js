@@ -44,7 +44,16 @@ $(document).ready(function(){
     
     function setup_eventHandle(){
         $('.checkOut_item #remove').find('label').click(function(){
-            $(this).parent().parent().fadeOut(500);
+            //ToFix: Animation on remove, maybe add class, let css handle
+            /*
+            $(this).closest('tr')
+                .children('td')
+                .wrapInner('<div />')
+                .children()
+                .slideUp(function() { $(this).closest('tr').remove(); });
+             */
+            
+            $(this).closest('tr').fadeOut(500);
         });
     }
     
