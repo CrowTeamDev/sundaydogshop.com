@@ -9,6 +9,16 @@ function Cart(){
     this.item = new Array();
     this.shippingCost = 0;
     this.totalCost = 0;
+    
+    this.update = update_item;
+    this.remove = remove_item;
+    
+    function update_item(i, j){
+        this.item[i].qty = j;
+    }
+    function remove_item(i){
+        this.item.splice(i, 1);
+    }
 }
 
 function Item(id, name, price, weight){
@@ -16,4 +26,5 @@ function Item(id, name, price, weight){
     this.name = name;
     this.price = price;
     this.weight = weight;
+    this.qty;
 }

@@ -170,7 +170,7 @@ footer{
     }
 }
 
-#payment_navigation{
+#payment-navigation{
     background: 
         url('../content/image/header_payment_1.png') no-repeat top left,
         url('../content/image/header_payment_2.png') no-repeat top right;
@@ -186,14 +186,29 @@ footer{
     li{
         padding: 0 6%;
     }
-}   
-#payment_main{
+}
+div[id*='payment_']{
+    display:none;
     font-size: 13pt;
-    background-color: #FFFFFF;
+    background-color: @color_w1;
     margin: -24.6px 80px 0;
     padding: 3%;
-    #payment_checkOut{
+    #next{ float: right; }
+}
+#payment_checkOut{
+    label{
+        cursor: pointer;
+        font-family: PrestigeElite;
+        font-size: 10pt;
+        color: @color_w1;
+        background-image: url('../content/image/button_1.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        padding: 6px 2%;
+    }
+    table{
         width: 100%;
+        margin-bottom: 30px;
         tr{ height: 55px; }
         td{ padding: 1%; }
         #image{ width: 5%; }
@@ -212,12 +227,7 @@ footer{
         }
         span{ margin-right: 15px; }
         label{
-            cursor: pointer;
-            color: @color_w1;
-            padding: 7.5% 17%;
-            background-image: url('../content/image/button_1.png');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
+            padding: 5% 10%;
         }
         tr:last-child{
             td:first-child{
