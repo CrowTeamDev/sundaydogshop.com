@@ -9,13 +9,14 @@ $(document).ready(function(){
     var payment_step;
     var payment_checkOut;
     var grandTotal;
+    var buttonsText;
    
     setup_variable();
     setup_default();
     setup_eventHandle();
     
     function setup_variable(){
-        payment_step = 0;
+        payment_step = 1;
         payment_checkOut = $('#payment_checkOut table');
         grandTotal = {
             self : payment_checkOut.find('tr:last td:last span'),
@@ -28,6 +29,16 @@ $(document).ready(function(){
                     total_price += parseInt($(this).find('span').text());
                 });
                 this.self.text(total_price);
+            }
+        };
+        buttonsText = {
+            set : function(back, next){
+                $('#payment_back', '#payment_page').text(back).show();
+                $('#payment_next', '#payment_page').text(next).show();
+            },
+            clear : function(){
+                $('#payment_back', '#payment_page').hide();
+                $('#payment_next', '#payment_page').hide();
             }
         };
     }
@@ -54,6 +65,8 @@ $(document).ready(function(){
                 $('.checkOut_item:last', payment_checkOut).find('#name').text(item.name);
                 $('.checkOut_item:last', payment_checkOut).find('#price span').text(item.price);
                 $('.checkOut_item:last', payment_checkOut).find('#total span').text(item.price);
+                if (item.qty !== undefined)
+                    $('.checkOut_item:last', payment_checkOut).find('#qty input').val(item.qty);
             }
             $('.checkOut_item:first', payment_checkOut).remove();
         }
@@ -84,27 +97,62 @@ $(document).ready(function(){
             var index = $('.checkOut_item', payment_checkOut).index($(this).closest('tr'));
             your_cart.remove(index);
         });
-        $('#back_shopping', '#payment_checkOut').click(function(){
-            $('#navigation_bar ul li:eq(1)').click().addClass('selected');
+        $('#payment_back', '#main').click(function(){
+            switch(payment_step){
+                case 0:
+                    $('#navigation_bar ul li:eq(1)').click().addClass('selected');
+                    break;
+            }
         });
-        $('#next', '#payment_checkOut').click(function(){
-            your_cart.totalCost = grandTotal.value();
-            $(this).closest('div').hide();
-            current_step(++payment_step);
+        $('#payment_next', '#main').click(function(){
+            switch(payment_step){
+                case 0:
+                    your_cart.totalCost = grandTotal.value();
+                    break;
+            }
+            current_step(payment_step++);
+        });
+        $("#payment-navigation li").click(function(){
+            if ($("li", $(this).parent()).index(this) < payment_step){
+                current_step(payment_step--);
+            }
         });
     }
     
-    function current_step(step){
+    function current_step(previous_step){
         $("#payment-navigation li").css("cursor", "default");
         $("#payment-navigation").find("li").each(function(){
-            if ($("li", $(this).parent()).index(this) < step)
+            if ($("li", $(this).parent()).index(this) < (payment_step-1)){
+                $(this).css("color", "");
                 $(this).css("cursor", "pointer");
-            else{
+            }
+            else if ($("li", $(this).parent()).index(this) === (payment_step-1))
                 $(this).css("color", "#FFFFFF");
-                return false;
+            else{
+                $(this).css("color", "");
+                $(this).css("cursor", "default");
             }
         });
-        step++;
-        $('div:eq('+step+')', '#main').fadeIn(500);
+        $('div:eq('+previous_step+')', '#main').fadeOut(300, function(){
+            show_page(payment_step);
+        });
+        
+        function show_page(step){
+            $('div:eq('+step+')', '#main').fadeIn(500);
+            switch(step){
+                case 1:
+                    buttonsText.set('CONTINUE SHOPPING', 'CHECK OUT');
+                    break;
+                case 2:
+                    buttonsText.set('BACK', 'NEXT');
+                    break;
+                case 3:
+                    buttonsText.set('BACK', 'CONFIRM');
+                    break;
+                case 4:
+                    buttonsText.clear();
+                    break;
+            }
+        }
     }
 });

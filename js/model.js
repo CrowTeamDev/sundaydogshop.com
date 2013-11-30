@@ -28,3 +28,16 @@ function Item(id, name, price, weight){
     this.weight = weight;
     this.qty;
 }
+
+function Buyyer(){
+    this.first = "";
+    this.last = "";
+    this.address = "";
+    this.zip = "";
+    this.city = "";
+    this.state = "";
+    this.country = "";
+    this.phone = "";
+    this.mobile = "";
+    this.mail = "";
+}
