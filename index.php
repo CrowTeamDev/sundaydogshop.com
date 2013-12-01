@@ -18,7 +18,9 @@
 
  /*** load up the template ***/
  $registry->template = new template($registry);
-
+ 
+ $registry->product = new product($registry);
+ 
  /*** load the controller ***/
  $registry->router->loader();
 ?>

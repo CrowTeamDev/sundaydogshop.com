@@ -8,7 +8,6 @@ Class Registry {
  */
  private $vars = array();
 
-
  /**
  *
  * @set undefined vars
