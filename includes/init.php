@@ -13,10 +13,9 @@
  include __SITE_PATH . '/application/' . 'template.class.php';
 
  /*** auto load model classes ***/
-    function __autoload($class_name) {
+ function __autoload($class_name) {
     $filename = strtolower($class_name) . '.class.php';
     $file = __SITE_PATH . '/model/' . $filename;
-
     if (file_exists($file) == false)
     {
         return false;
@@ -28,5 +27,5 @@
  $registry = new registry;
 
  /*** create the database registry object ***/
- // $registry->db = db::getInstance();
+ $registry->db = db::getInstance();
 ?>

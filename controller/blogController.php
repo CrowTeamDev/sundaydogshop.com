@@ -15,6 +15,7 @@ public function view(){
 
 	$this->registry->template->blog_heading = 'This is the blog heading';
 	$this->registry->template->blog_content = 'This is the blog content';
+	$this->registry->template->product = $this->registry->db->query('SELECT name FROM User');
 	$this->registry->template->show('blog_view');
 }
 
