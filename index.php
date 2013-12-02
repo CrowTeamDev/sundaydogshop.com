@@ -19,7 +19,8 @@
  /*** load up the template ***/
  $registry->template = new template($registry);
  
- $registry->product = new product($registry);
+ /*** load up the template ***/
+ $registry->shop = new shop($registry);
  
  /*** load the controller ***/
  $registry->router->loader();
