@@ -22,6 +22,8 @@
  /*** load up the template ***/
  $registry->shop = new shop($registry);
  
+ $registry->product = new product($registry);
+ 
  /*** load the controller ***/
  $registry->router->loader();
 ?>
