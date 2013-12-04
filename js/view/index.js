@@ -10,6 +10,13 @@ $(document).ready(function(){
     var currentDirectory;
     var ribbonOn;
     
+    //Mock cart
+        cart_obj = new Cart();
+        cart_obj.item[0] = new Item('P001', 'Product 01', 500, 5);
+        cart_obj.item[1] = new Item('P002', 'Product 02', 350, 3.5);
+        cart_obj.item[2] = new Item('P003', 'Product 03', 150, 1.5);
+    //
+    
     setup_variable();
     setup_default();
     setup_eventHandle();
