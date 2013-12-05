@@ -10,6 +10,7 @@ $(document).ready(function(){
     var payment_checkOut;
     var payment_shipping;
     var payment_summary;
+    var payment_pay;
     var grandTotal;
     var shippingCost;
     var buttonsText;
@@ -25,6 +26,7 @@ $(document).ready(function(){
         payment_checkOut = $('#payment_checkOut table');
         payment_shipping = $('#payment_shipping table');
         payment_summary = $('#payment_summary table');
+        payment_pay = $('#payment_pay table');
         grandTotal = {
             self : payment_checkOut.find('tr:last td:last span'),
             value : function(){
@@ -32,7 +34,7 @@ $(document).ready(function(){
             },
             sum : function(){
                 var total_price = 0;
-                payment_checkOut.find('.checkOut_item #total').each(function(){
+                payment_checkOut.find('.created #total').each(function(){
                     total_price += parseInt($(this).find('span').text());
                 });
                 this.self.text(total_price);
@@ -49,9 +51,13 @@ $(document).ready(function(){
                 $('#payment_back', '#payment_page').text(back).show();
                 $('#payment_next', '#payment_page').text(next).show();
             },
-            clear : function(){
+            hide : function(){
                 $('#payment_back', '#payment_page').hide();
                 $('#payment_next', '#payment_page').hide();
+            },
+            show : function(){
+                $('#payment_back', '#payment_page').show();
+                $('#payment_next', '#payment_page').show();
             }
         };
     }
@@ -65,7 +71,7 @@ $(document).ready(function(){
     function setup_eventHandle(){
         $('.checkOut_item #update', payment_checkOut).find('label').click(function(){
             var row = $(this).closest('tr');
-            var i = $('.checkOut_item', payment_checkOut).index(row);
+            var i = $('.created', payment_checkOut).index(row);
             var price = row.find('#price span').text();
             var qty = row.find('#qty input').val();
             
@@ -84,7 +90,7 @@ $(document).ready(function(){
                     $(this).closest('tr').remove();
                     grandTotal.sum();
             });
-            var index = $('.checkOut_item', payment_checkOut).index($(this).closest('tr'));
+            var index = $('.created', payment_checkOut).index($(this).closest('tr'));
             cart_obj.remove(index);
         });
         $('#payment_back', '#main').click(function(){
@@ -92,27 +98,35 @@ $(document).ready(function(){
                 case 1:
                     $('#navigation_bar ul li:eq(1)').click().addClass('selected');
                     break;
+                case 4:
+                    break;
                 default:
                     current_step(payment_step--);
                     break;
             }
         });
         $('#payment_next', '#main').click(function(){
+            current_step(payment_step++);
             switch(payment_step){
-                case 1:
+                case 2:
                     cart_obj.totalCost = grandTotal.value();
                     break;
-                case 2:
-                    display_item(payment_summary, cart_obj);
-                    
+                case 3:
                     buyyer_obj = create_buyyer();
+                    display_item(payment_summary, cart_obj);
+                    display_address(buyyer_obj);
+                    break;
+                case 4:
                     break;
             }
-            current_step(payment_step++);
         });
         $("#payment-navigation li").click(function(){
-            if ($("li", $(this).parent()).index(this) < payment_step){
-                current_step(payment_step--);
+            var target_step = $("li", $(this).parent()).index(this) + 1;
+            var present_step = payment_step;
+            
+            if (target_step < payment_step){
+                payment_step = target_step;
+                current_step(present_step);
             }
         });
         
@@ -150,12 +164,12 @@ $(document).ready(function(){
                 $(this).css("cursor", "default");
             }
         });
-        $('div:eq('+previous_step+')', '#main').fadeOut(300, function(){
+        $('div[id*=payment_]', '#main').eq(previous_step-1).fadeOut(300, function(){
             show_page(payment_step);
         });
         
         function show_page(step){
-            $('div:eq('+step+')', '#main').fadeIn(500);
+            $('div[id*=payment_]', '#main').eq(step-1).fadeIn(500);
             switch(step){
                 case 1:
                     buttonsText.set('CONTINUE SHOPPING', 'CHECK OUT');
@@ -167,26 +181,24 @@ $(document).ready(function(){
                     buttonsText.set('BACK', 'CONFIRM');
                     break;
                 case 4:
-                    buttonsText.clear();
+                    buttonsText.set('OTHER PAYMENT METHOD', 'I CONFIRM MY ORDER');
+                    buttonsText.hide();
                     break;
             }
         }
     }
     
     function display_item(div_step, cart){
-        var item_row = '<tr class="checkOut_item created">' + $('.checkOut_item', div_step).html() + '</tr>';
+        var item_row = '<tr class="checkOut_item created">' + $('.checkOut_item:first', div_step).html() + '</tr>';
         var isCheckOutPage = $('tr:last', div_step).find('#total_cost').length === 0;
-        var isCreateViewAlready = div_step.find('.created').length !== 0;
+        var total_price = 0;
         var total_weight = 0;
 
+        div_step.find('.created').remove();
+
         for(i in cart.item){
-            var target_row;
-            if (isCreateViewAlready)
-                target_row = $('.checkOut_item:eq('+i+')', div_step);
-            else{
-                $('.checkOut_item:last', div_step).after(item_row);
-                target_row = $('.checkOut_item:last', div_step);
-            }
+            $('.checkOut_item:last', div_step).after(item_row);
+            var target_row = $('.created:last', div_step);
 
             var item = cart.item[i];
             target_row.find('#name').text(item.name);
@@ -198,17 +210,22 @@ $(document).ready(function(){
             else{
                 target_row.find('#qty').text(item.qty);
                 total_weight += (item.weight * item.qty);
+                total_price += (item.price * item.qty);
             }
         }
-        if (!isCreateViewAlready)
-            $('.checkOut_item:first', div_step).remove();
-        
+        $('.checkOut_item:first', div_step).hide();
         
         if(!isCheckOutPage){
+            cart.totalCost = total_price;
             cart.addShippingCost(total_weight);
             
             $('#shipping_cost', div_step).find('span').text(cart.shippingCost);
             $('#total_cost', div_step).find('span').text(cart.totalCost);
         }
+    }
+    
+    function display_address(buyyer){
+        var address = buyyer.getAddress();
+        $('div', payment_summary.parent()).find('span').text(address);
     }
 });
