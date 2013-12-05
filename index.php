@@ -24,8 +24,6 @@
  
  $registry->product = new product($registry);
  
- /*** load the controller ***/
- $registry->router->loader();
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +69,11 @@
         </header>
         <div id="background_1"></div>
         <div id="background_2"></div>
-        <div id="main">main</div>
+        <div id="main">
+            <?php
+                $registry->router->loader();
+            ?>
+        </div>
         <footer>
             <label>POLICY</label>
             <label>COPYRIGHTS©</label>
