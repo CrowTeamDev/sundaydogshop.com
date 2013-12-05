@@ -8,8 +8,13 @@ $(document).ready(function(){
    
     var payment_step;
     var payment_checkOut;
+    var payment_shipping;
+    var payment_summary;
     var grandTotal;
+    var shippingCost;
     var buttonsText;
+    
+    buyyer_obj = new Buyyer();
    
     setup_variable();
     setup_default();
@@ -18,6 +23,8 @@ $(document).ready(function(){
     function setup_variable(){
         payment_step = 1;
         payment_checkOut = $('#payment_checkOut table');
+        payment_shipping = $('#payment_shipping table');
+        payment_summary = $('#payment_summary table');
         grandTotal = {
             self : payment_checkOut.find('tr:last td:last span'),
             value : function(){
@@ -29,6 +36,12 @@ $(document).ready(function(){
                     total_price += parseInt($(this).find('span').text());
                 });
                 this.self.text(total_price);
+            }
+        };
+        shippingCost = {
+            self : payment_summary.find('#shipping_cost span'),
+            value : function(){
+                return parseInt(this.self.text());
             }
         };
         buttonsText = {
@@ -44,32 +57,9 @@ $(document).ready(function(){
     }
     
     function setup_default(){
-        //Mock cart
-            your_cart = new Cart();
-            your_cart.item[0] = new Item('P001', 'Product 01', 500, 5.5);
-            your_cart.item[1] = new Item('P002', 'Product 02', 350, 6.5);
-            your_cart.item[2] = new Item('P003', 'Product 03', 150, 6.5);
-        //
-        
         current_step(payment_step);
-        display_item(your_cart);
+        display_item(payment_checkOut, cart_obj);
         grandTotal.sum();
-        
-        function display_item(cart){
-            var item_row = '<tr class="checkOut_item">' + $('.checkOut_item').html() + '</tr>';
-            
-            for(i in cart.item){
-                $('.checkOut_item:last', payment_checkOut).after(item_row);
-                
-                var item = cart.item[i];
-                $('.checkOut_item:last', payment_checkOut).find('#name').text(item.name);
-                $('.checkOut_item:last', payment_checkOut).find('#price span').text(item.price);
-                $('.checkOut_item:last', payment_checkOut).find('#total span').text(item.price);
-                if (item.qty !== undefined)
-                    $('.checkOut_item:last', payment_checkOut).find('#qty input').val(item.qty);
-            }
-            $('.checkOut_item:first', payment_checkOut).remove();
-        }
     }
     
     function setup_eventHandle(){
@@ -83,7 +73,7 @@ $(document).ready(function(){
             
             row.find('#total span').text(price * qty);
             grandTotal.sum();
-            your_cart.update(i, parseInt(qty));
+            cart_obj.update(i, parseInt(qty));
         });
         $('.checkOut_item #remove', payment_checkOut).find('label').click(function(){
             $(this).closest('tr')
@@ -95,19 +85,27 @@ $(document).ready(function(){
                     grandTotal.sum();
             });
             var index = $('.checkOut_item', payment_checkOut).index($(this).closest('tr'));
-            your_cart.remove(index);
+            cart_obj.remove(index);
         });
         $('#payment_back', '#main').click(function(){
             switch(payment_step){
-                case 0:
+                case 1:
                     $('#navigation_bar ul li:eq(1)').click().addClass('selected');
+                    break;
+                default:
+                    current_step(payment_step--);
                     break;
             }
         });
         $('#payment_next', '#main').click(function(){
             switch(payment_step){
-                case 0:
-                    your_cart.totalCost = grandTotal.value();
+                case 1:
+                    cart_obj.totalCost = grandTotal.value();
+                    break;
+                case 2:
+                    display_item(payment_summary, cart_obj);
+                    
+                    buyyer_obj = create_buyyer();
                     break;
             }
             current_step(payment_step++);
@@ -117,6 +115,25 @@ $(document).ready(function(){
                 current_step(payment_step--);
             }
         });
+        
+        function create_buyyer(){
+            obj = new Buyyer();
+            
+            var row = function(i){ return $('tr:eq('+i+') td:eq(1)', payment_shipping).find('input,textarea'); };
+            
+            obj.first = row(0).val();
+            obj.last = row(1).val();
+            obj.address = row(2).val();
+            obj.zip = row(3).val();
+            obj.city = row(4).val();
+            obj.state = row(5).val();
+            obj.country = row(6).val();
+            obj.phone = row(7).val();
+            obj.mobile = row(8).val();
+            obj.mail = row(9).val();
+            
+            return obj;
+        }
     }
     
     function current_step(previous_step){
@@ -153,6 +170,45 @@ $(document).ready(function(){
                     buttonsText.clear();
                     break;
             }
+        }
+    }
+    
+    function display_item(div_step, cart){
+        var item_row = '<tr class="checkOut_item created">' + $('.checkOut_item', div_step).html() + '</tr>';
+        var isCheckOutPage = $('tr:last', div_step).find('#total_cost').length === 0;
+        var isCreateViewAlready = div_step.find('.created').length !== 0;
+        var total_weight = 0;
+
+        for(i in cart.item){
+            var target_row;
+            if (isCreateViewAlready)
+                target_row = $('.checkOut_item:eq('+i+')', div_step);
+            else{
+                $('.checkOut_item:last', div_step).after(item_row);
+                target_row = $('.checkOut_item:last', div_step);
+            }
+
+            var item = cart.item[i];
+            target_row.find('#name').text(item.name);
+            target_row.find('#price span').text(item.price);
+            target_row.find('#total span').text(item.price * item.qty);
+            
+            if (isCheckOutPage)
+                target_row.find('#qty input').val(item.qty);
+            else{
+                target_row.find('#qty').text(item.qty);
+                total_weight += (item.weight * item.qty);
+            }
+        }
+        if (!isCreateViewAlready)
+            $('.checkOut_item:first', div_step).remove();
+        
+        
+        if(!isCheckOutPage){
+            cart.addShippingCost(total_weight);
+            
+            $('#shipping_cost', div_step).find('span').text(cart.shippingCost);
+            $('#total_cost', div_step).find('span').text(cart.totalCost);
         }
     }
 });

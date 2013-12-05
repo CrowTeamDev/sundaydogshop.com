@@ -268,3 +268,33 @@ label[id*='payment_']{
         input,textarea{ width: 100%; }
     }
 }
+#payment_summary{
+    table{
+        width: 100%;
+        tr{ height: 55px; }
+        td{ padding: 1%; }
+        #image{ width: 5%; }
+        #name{
+            font-family: AvenirNext;
+            font-size: 12pt;
+        }
+        #qty{ width: 15%; }
+        #price{ width: 25%; }
+        #total{ width: 25%; }
+        input{
+            width: 35px;
+            height: 25px;
+        }
+        span{ margin-right: 15px; }
+        label{
+            .button;
+            padding: 5% 10%;
+        }
+        tr:last-child, tr:nth-last-child(2){
+            td:first-child{
+                font-family: AvenirNext;
+                font-size: 12pt;
+            }
+        }
+    }
+}
