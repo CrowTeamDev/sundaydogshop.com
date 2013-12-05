@@ -27,3 +27,56 @@
  /*** load the controller ***/
  $registry->router->loader();
 ?>
+
+<!DOCTYPE html>
+<!--
+    index
+
+    main view for everything
+    all the process will be load into #main
+-->
+<html>
+    <head>
+        <title>SundayDog Shop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        
+        <link rel="stylesheet/less" type="text/css" href="css/layout.less" />
+        <script src="js/shared/jquery-2.0.3.min.js" type="text/javascript"></script>
+        <script src="js/shared/less-1.5.0.min.js" type="text/javascript"></script>
+        <script src="js/view/index.js" type="text/javascript"></script>
+        <script src="js/model.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <header id="start_menu">
+            <label>MENU ∨</label>
+        </header>
+        <header id="top_menu">
+            <ul>
+                <li id="current_directory"></li>
+                <li id="your_cart">YOUR CART (<span></span>)</li>
+            </ul>
+        </header>
+        <header id="navigation_bar">
+            <img src="content/image/logo_2.png" id="logo_2" title="SundayDog Logo" alt="SundayDog Shop" />
+            <img src="content/image/logo_1.png" id="logo_1" title="SundayDog Logo" alt="SundayDog Shop" />
+            <ul>
+                <li>HOME</li>
+                <li>SHOP</li>
+                <li>BRANDS</li>
+                <li>ABOUT US</li>
+                <li>CONTACT US</li>
+                <li>GALLERY</li>
+            </ul>
+        </header>
+        <div id="background_1"></div>
+        <div id="background_2"></div>
+        <div id="main">main</div>
+        <footer>
+            <label>POLICY</label>
+            <label>COPYRIGHTS©</label>
+            <img src="content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
+            <img src="content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
+        </footer>
+    </body>
+</html>
