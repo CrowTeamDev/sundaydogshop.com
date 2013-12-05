@@ -103,16 +103,20 @@ $(document).ready(function(){
                     cart_obj.totalCost = grandTotal.value();
                     break;
                 case 2:
-                    display_item(payment_summary, cart_obj);
-                    
                     buyyer_obj = create_buyyer();
+                    display_item(payment_summary, cart_obj);
+                    display_address(buyyer_obj);
                     break;
             }
             current_step(payment_step++);
         });
         $("#payment-navigation li").click(function(){
-            if ($("li", $(this).parent()).index(this) < payment_step){
-                current_step(payment_step--);
+            var target_step = $("li", $(this).parent()).index(this) + 1;
+            var present_step = payment_step;
+            
+            if (target_step < payment_step){
+                payment_step = target_step;
+                current_step(present_step);
             }
         });
         
@@ -177,6 +181,7 @@ $(document).ready(function(){
         var item_row = '<tr class="checkOut_item created">' + $('.checkOut_item', div_step).html() + '</tr>';
         var isCheckOutPage = $('tr:last', div_step).find('#total_cost').length === 0;
         var isCreateViewAlready = div_step.find('.created').length !== 0;
+        var total_price = 0;
         var total_weight = 0;
 
         for(i in cart.item){
@@ -198,6 +203,7 @@ $(document).ready(function(){
             else{
                 target_row.find('#qty').text(item.qty);
                 total_weight += (item.weight * item.qty);
+                total_price += (item.price * item.qty);
             }
         }
         if (!isCreateViewAlready)
@@ -205,10 +211,16 @@ $(document).ready(function(){
         
         
         if(!isCheckOutPage){
+            cart.totalCost = total_price;
             cart.addShippingCost(total_weight);
             
             $('#shipping_cost', div_step).find('span').text(cart.shippingCost);
             $('#total_cost', div_step).find('span').text(cart.totalCost);
         }
+    }
+    
+    function display_address(buyyer){
+        var address = buyyer.getAddress();
+        $('div', payment_summary.parent()).find('span').text(address);
     }
 });

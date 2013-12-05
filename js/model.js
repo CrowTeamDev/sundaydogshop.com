@@ -47,4 +47,16 @@ function Buyyer(){
     this.phone = "";
     this.mobile = "";
     this.mail = "";
+    
+    this.getAddress = get_address;
+    
+    function get_address(){
+        var result = 
+                    this.address + ', ' +
+                    this.city + ', ' +
+                    this.state + ' ' +
+                    this.country + ' ' +
+                    this.zip;
+        return result;
+    }
 }

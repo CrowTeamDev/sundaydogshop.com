@@ -57,6 +57,10 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+.fontAvenirNext{
+    font-family: AvenirNext;
+    font-size: 12pt;
+}
 body{
     font-family: PrestigeElite_Bold;
     margin: 0;
@@ -234,8 +238,7 @@ label[id*='payment_']{
         td{ padding: 1%; }
         #image{ width: 5%; }
         #name{
-            font-family: AvenirNext;
-            font-size: 12pt;
+            .fontAvenirNext;
         }
         #qty{ width: 5%; }
         #update{ width: 15%; }
@@ -252,9 +255,9 @@ label[id*='payment_']{
             padding: 5% 10%;
         }
         tr:last-child{
+            vertical-align: bottom;
             td:first-child{
-                font-family: AvenirNext;
-                font-size: 12pt;
+                .fontAvenirNext;
             }
         }
     }
@@ -275,8 +278,7 @@ label[id*='payment_']{
         td{ padding: 1%; }
         #image{ width: 5%; }
         #name{
-            font-family: AvenirNext;
-            font-size: 12pt;
+            .fontAvenirNext;
         }
         #qty{ width: 15%; }
         #price{ width: 25%; }
@@ -290,11 +292,36 @@ label[id*='payment_']{
             .button;
             padding: 5% 10%;
         }
-        tr:last-child, tr:nth-last-child(2){
+        tr:nth-last-child(2){
+            vertical-align: bottom;
             td:first-child{
-                font-family: AvenirNext;
-                font-size: 12pt;
+                .fontAvenirNext;
             }
         }
+        tr:last-child{
+            height: 30px;
+            td:first-child{
+                .fontAvenirNext;
+            }
+        }
+    }
+    div{
+        margin-top: 40px;
+        width: 50%;
+        label{
+            display: block;
+            padding: 5px 0;
+            padding-left: 10%;
+            width: 90.5%;
+            color: @color_w1;
+            background-color: @color_g5;
+        }
+        span{
+            display: block;
+            margin: 10px;
+            word-wrap: break-word;
+        }
+        
+        border: 2px solid @color_g5;
     }
 }
