@@ -96,12 +96,12 @@ $(document).ready(function(){
         $('tr td', payment_pay).click(function(){
             var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
             
-            $('tr', payment_pay).eq(otherPayment).hide();
-            $('tr', payment_pay).last().load(url_redirect, function(){
-                $(this).fadeIn(500);
-            });
-            $('tr', payment_pay).last().show();
             $(this).addClass('selected');
+            $('tr', payment_pay).eq(otherPayment).hide();
+            $.post('view/_payment_bank-wire.php', function(data){
+                $('tr', payment_pay).last().fadeIn(500);
+                $('tr', payment_pay).last().find('td').text(data);
+            });
         });
         $('#payment_back', '#main').click(function(){
             switch(payment_step){
