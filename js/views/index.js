@@ -102,7 +102,7 @@ $(document).ready(function(){
         var main_width = $('#main').width();
         switch(id){
             case 'your_cart':
-                url_redirect = 'view/_payment.html';
+                url_redirect = 'http://localhost/origin/view/_payment.html';
                 main_width += 100;
                 break;
             case 'menu_0':
@@ -132,10 +132,10 @@ $(document).ready(function(){
         
         switch (menu_id){
             case 'init':
-                value = 'url(content/image/background/image_2.jpg)';
+                value = 'url(http://localhost/origin/content/image/background/image_2.jpg)';
                 break;
             case 'menu_4':
-                value = 'url(content/image/background/image_1.jpg)';
+                value = 'url(http://localhost/origin/content/image/background/image_1.jpg)';
                 break;
             default:
                 value = '#DED9CC';

@@ -24,6 +24,9 @@
  
  $registry->product = new product($registry);
  
+ $sql = db::getInstance()->query("SELECT configValue FROM Config WHERE configName = 'contentUrl'");
+ $config = $sql->fetchAll();
+ $contentUrl = $config[0]['configValue'];
 ?>
 
 <!DOCTYPE html>
@@ -39,11 +42,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         
-        <link rel="stylesheet/less" type="text/css" href="css/layout.less" />
-        <script src="js/shared/jquery-2.0.3.min.js" type="text/javascript"></script>
-        <script src="js/shared/less-1.5.0.min.js" type="text/javascript"></script>
-        <script src="js/view/index.js" type="text/javascript"></script>
-        <script src="js/model.js" type="text/javascript"></script>
+        <link rel="stylesheet/less" type="text/css" href="<?php echo $contentUrl;?>/css/layout.less" />
+        <script src="<?php echo $contentUrl;?>/js/shared/jquery-2.0.3.min.js" type="text/javascript"></script>
+        <script src="<?php echo $contentUrl;?>/js/shared/less-1.5.0.min.js" type="text/javascript"></script>
+        <script src="<?php echo $contentUrl;?>/js/views/index.js" type="text/javascript"></script>
+        <script src="<?php echo $contentUrl;?>/js/model.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="start_menu">
@@ -56,8 +59,8 @@
             </ul>
         </header>
         <header id="navigation_bar">
-            <img src="content/image/logo_2.png" id="logo_2" title="SundayDog Logo" alt="SundayDog Shop" />
-            <img src="content/image/logo_1.png" id="logo_1" title="SundayDog Logo" alt="SundayDog Shop" />
+            <img src="<?php echo $contentUrl;?>/content/image/logo_2.png" id="logo_2" title="SundayDog Logo" alt="SundayDog Shop" />
+            <img src="<?php echo $contentUrl;?>/content/image/logo_1.png" id="logo_1" title="SundayDog Logo" alt="SundayDog Shop" />
             <ul>
                 <li>HOME</li>
                 <li>SHOP</li>
@@ -70,15 +73,15 @@
         <div id="background_1"></div>
         <div id="background_2"></div>
         <div id="main">
-            <?php
-                $registry->router->loader();
+            <?php   
+                echo $registry->router->loader();
             ?>
         </div>
         <footer>
             <label>POLICY</label>
             <label>COPYRIGHTS©</label>
-            <img src="content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
-            <img src="content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
+            <img src="<?php echo $contentUrl;?>/content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
+            <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
         </footer>
     </body>
 </html>
