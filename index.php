@@ -19,15 +19,15 @@
  /*** load up the template ***/
  $registry->template = new template($registry);
  
- /*** load up the template ***/
+ /*** load up DB ***/
  $registry->shop = new shop($registry);
  
  $registry->product = new product($registry);
  
- $sql = db::getInstance()->query("SELECT configValue FROM Config WHERE configName = 'contentUrl'");
- $config = $sql->fetchAll();
- $contentUrl = $config[0]['configValue'];
- //$contentUrl = "http://localhost/sundaydogshop";
+ $registry->config = new config($registry);
+ 
+ /*** load up var ***/
+ $contentUrl = $registry->config->getURLPath('contentUrl');
 ?>
 
 <!DOCTYPE html>
