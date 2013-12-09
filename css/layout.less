@@ -17,6 +17,7 @@
 @color_g4: #3E4042;
 @color_g5: #B9BBBD;
 @color_w1: #FFFFFF;
+@color_b1: #000000;
 
 @font-face{
     font-family: AvenirNext;
@@ -327,26 +328,30 @@ label[id*='payment_']{
 #payment_pay{
     table{
         width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
         tr{
             height: 55px;
             margin: 0;
         }
         td{
-            cursor: pointer;
             margin: 0;
             padding: 1%;
             border-top: 4px solid @color_g5;
             border-bottom: 4px solid @color_g5;
-            &:hover{
-                background-color: @color_g5;
+            &.menu:hover,&.selected{
+                cursor: pointer;
                 color: @color_w1;
+                background-color: @color_g5;
+                border-left: 2px solid @color_g5;
+                border-right: 2px solid @color_g5;
             }
-            
         }
         tr:last-child{
             .fontAvenirNext;
             display: none;
             height: auto;
+            td{ border: 2px solid @color_g5; }
         }
     }
 }

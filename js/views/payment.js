@@ -93,6 +93,16 @@ $(document).ready(function(){
             var index = $('.created', payment_checkOut).index($(this).closest('tr'));
             cart_obj.remove(index);
         });
+        $('tr td', payment_pay).click(function(){
+            var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
+            
+            $(this).addClass('selected');
+            $('tr', payment_pay).eq(otherPayment).hide();
+            $.post('view/_payment_bank-wire.php', function(data){
+                $('tr', payment_pay).last().fadeIn(500);
+                $('tr', payment_pay).last().find('td').text(data);
+            });
+        });
         $('#payment_back', '#main').click(function(){
             switch(payment_step){
                 case 1:
