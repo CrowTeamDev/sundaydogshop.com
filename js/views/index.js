@@ -9,6 +9,7 @@ $(document).ready(function(){
     var itemInYourCart;
     var currentDirectory;
     var ribbonOn;
+    var url_path;
     
     //Mock cart
         cart_obj = new Cart();
@@ -41,6 +42,7 @@ $(document).ready(function(){
                 $('#current_directory').text(path);
             }
         };
+        url_path = $('#local_path').val();
     }
     
     function setup_default(){
@@ -102,7 +104,7 @@ $(document).ready(function(){
         var main_width = $('#main').width();
         switch(id){
             case 'your_cart':
-                url_redirect = 'http://localhost/origin/view/_payment.html';
+                url_redirect = url_path + '/view/_payment.php';
                 main_width += 100;
                 break;
             case 'menu_0':
@@ -127,15 +129,15 @@ $(document).ready(function(){
     }
     
     function changeBackground(menu_id){
-        var value = $('#local_path').val();
+        var value;
         var div1_show = $('#background_1').css('display');
         
         switch (menu_id){
             case 'init':
-                value = 'url('+ value + '/content/image/background/image_2.jpg)';
+                value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
                 break;
             case 'menu_4':
-                value = 'url('+ value + '/content/image/background/image_1.jpg)';
+                value = 'url('+ url_path + '/content/image/background/image_1.jpg)';
                 break;
             default:
                 value = '#DED9CC';
