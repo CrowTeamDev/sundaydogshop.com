@@ -127,15 +127,15 @@ $(document).ready(function(){
     }
     
     function changeBackground(menu_id){
-        var value;
+        var value = $('#local_path').val();
         var div1_show = $('#background_1').css('display');
         
         switch (menu_id){
             case 'init':
-                value = 'url(http://localhost/origin/content/image/background/image_2.jpg)';
+                value = 'url('+ value + '/content/image/background/image_2.jpg)';
                 break;
             case 'menu_4':
-                value = 'url(http://localhost/origin/content/image/background/image_1.jpg)';
+                value = 'url('+ value + '/content/image/background/image_1.jpg)';
                 break;
             default:
                 value = '#DED9CC';

@@ -27,6 +27,7 @@
  $sql = db::getInstance()->query("SELECT configValue FROM Config WHERE configName = 'contentUrl'");
  $config = $sql->fetchAll();
  $contentUrl = $config[0]['configValue'];
+ //$contentUrl = "http://localhost/sundaydogshop";
 ?>
 
 <!DOCTYPE html>
@@ -83,5 +84,6 @@
             <img src="<?php echo $contentUrl;?>/content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
             <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
         </footer>
+        <input type="hidden" id="local_path" value="<?php echo $contentUrl;?>" />
     </body>
 </html>
