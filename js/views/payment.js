@@ -100,7 +100,7 @@ $(document).ready(function(){
             $('tr', payment_pay).eq(otherPayment).hide();
             $.post('view/_payment_bank-wire.php', function(data){
                 $('tr', payment_pay).last().fadeIn(500);
-                $('tr', payment_pay).last().find('td').text(data);
+                $('tr', payment_pay).last().find('td').html(data);
             });
         });
         $('#payment_back', '#main').click(function(){
