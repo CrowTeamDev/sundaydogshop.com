@@ -1,7 +1,7 @@
 <?php
     class config{
         
-	function getURLPath($configName) {
+	function getConfigValue($configName) {
                 $query = "SELECT configValue FROM Config WHERE configName = '". $configName ."'";
 		$sql = db::getInstance()->query($query);
 		$data = $sql->fetchAll();

@@ -27,7 +27,7 @@
  $registry->config = new config($registry);
  
  /*** load up var ***/
- $contentUrl = $registry->config->getURLPath('contentUrl');
+ $contentUrl = $registry->config->getConfigValue('contentUrl');
 ?>
 
 <!DOCTYPE html>
