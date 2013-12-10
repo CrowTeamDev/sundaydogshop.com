@@ -101,6 +101,7 @@ $(document).ready(function(){
             $.post('view/_payment_bank-wire.php', function(data){
                 $('tr', payment_pay).last().fadeIn(500);
                 $('tr', payment_pay).last().find('td').html(data);
+                format_payment_detail(cart_obj);
             });
         });
         $('#payment_back', '#main').click(function(){
@@ -157,6 +158,18 @@ $(document).ready(function(){
             obj.mail = row(9).val();
             
             return obj;
+        }
+        
+        function format_payment_detail(cart){
+            var total_pay = $('#payment_bankwire_detail', payment_pay).find('#total_pay');
+            var accountNo = $('#payment_bankwire_detail', payment_pay).find('#accountNo');
+            
+            total_pay.text(cart.totalCost);
+            accountNo.text(format_bankAccount(accountNo.text()));
+            
+            function format_bankAccount(account){
+                return account.substring(0,4) + '-' + account.substring(4,10) + '-' + account.substring(10);
+            }
         }
     }
     
