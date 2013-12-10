@@ -14,7 +14,5 @@
             $data = $sql->fetchAll();
             return $data;
         }
-}
-        
-    
+    }
 ?>

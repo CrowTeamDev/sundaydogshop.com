@@ -95,13 +95,15 @@ $(document).ready(function(){
         });
         $('tr td', payment_pay).click(function(){
             var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
+            var total_pay = cart_obj.totalCost;
+            var buyyer = buyyer_obj.mail;
             
             $(this).addClass('selected');
             $('tr', payment_pay).eq(otherPayment).hide();
-            $.post('view/_payment_bank-wire.php', function(data){
+            $.post('view/_payment_bank-wire.php?cost='+total_pay+'&mail='+buyyer, function(data){
                 $('tr', payment_pay).last().fadeIn(500);
                 $('tr', payment_pay).last().find('td').html(data);
-                format_payment_detail(cart_obj);
+                format_payment_detail();
             });
         });
         $('#payment_back', '#main').click(function(){
@@ -160,15 +162,12 @@ $(document).ready(function(){
             return obj;
         }
         
-        function format_payment_detail(cart){
-            var total_pay = $('#payment_bankwire_detail', payment_pay).find('#total_pay');
+        function format_payment_detail(){
             var accountNo = $('#payment_bankwire_detail', payment_pay).find('#accountNo');
-            
-            total_pay.text(cart.totalCost);
             accountNo.text(format_bankAccount(accountNo.text()));
             
             function format_bankAccount(account){
-                return account.substring(0,4) + '-' + account.substring(4,10) + '-' + account.substring(10);
+                return account.substring(0,3) + '-' + account.substring(3,9) + '-' + account.substring(9);
             }
         }
     }

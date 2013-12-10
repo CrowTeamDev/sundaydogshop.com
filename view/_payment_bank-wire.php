@@ -4,6 +4,7 @@
 
     include $site_path . 'includes/init.php';
     $registry->config = new config($registry);
+    $registry->transaction = new transaction($registry);
 
     /*** load up var ***/
     $payment_detail = $registry->config->getPaymentDetail();
@@ -14,7 +15,13 @@
     $branch = $payment_detail[3][0];
     $email = $payment_detail[4][0];
     
-    $refNo = generateRandomString();
+    do{
+        $refNo = generateRandomString();
+    }while ($registry->transaction->checkRef($refNo));
+    $cost = $_GET['cost'];
+    $buyyer = $_GET['mail'];
+    
+    $registry->transaction->save($refNo, $cost, $buyyer);
     
     function generateRandomString($length = 8) {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -29,7 +36,7 @@
 <article id="payment_bankwire_detail"><pre>
 You have chosen to pay by bank wire.
 Please send us a bank wire with :  
-• An amount of <span id="total_pay"></span> THB 
+• An amount of <span id="total_pay"><?php echo $cost;?></span> THB 
 • To the account owner of <span><?php echo $accountName;?></span> 
 • With these details account number <span id="accountNo"><?php echo $accountNo;?></span> saving account.
 • To <span><?php echo $bank;?></span>, branch <span><?php echo $branch;?></span> 
