@@ -28,7 +28,7 @@ public static function getInstance() {
 
 if (!self::$instance)
     {
-    self::$instance = new PDO("mysql:host=localhost;dbname=sundaydogs_dev", 'sundaydogs_dev', '12345');
+    self::$instance = new PDO("mysql:host=localhost;dbname=sundaydogs_dev", 'root', '1234');
     self::$instance-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 return self::$instance;
