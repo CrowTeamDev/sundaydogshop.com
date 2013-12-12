@@ -21,7 +21,30 @@
     $cost = $_GET['cost'];
     $buyyer = $_GET['mail'];
     
+    $detail = 
+            "You have chosen to pay by bank wire."
+            . "<br>Please send us a bank wire with : "
+            . "<br>• An amount of <span id='total_pay'>" . $cost . "</span> THB"
+            . "<br>• To the account owner of <span>" . $accountName . "</span>"
+            . "<br>• With these details account number <span id='accountNo'>" . $accountNo . "</span> saving account."
+            . "<br>• To <span>" . $bank . "</span>, branch <span>" . $branch . "</span>"
+            . "<br>• Do not forget to insert your order reference <span>" . $refNo . "</span> in the subject of your bank wire."
+            . "<br>An e-mail has been sent to you with this information."
+            . "<br>"
+            . "<br>• Your order will be sent as soon as we receive your settlement"
+            . "<br>"
+            . "<br>Please send a copy of your prove of payment to <span>" . $email . "</span>"
+            . "<br>and refer to your reference <span id='ref_number'>" . $refNo . "</span>.";
+    
     $registry->transaction->save($refNo, $cost, $buyyer);
+    
+    //Send mail
+    $mail_to        = $buyyer;
+    $mail_subject   = 'Order on SundayDog Shop: ' . $refNo;
+    $mail_message   = $detail;
+    $mail_header    = 'From: ' . $email . '\r\n' .
+                      'Bcc: ' . $email;
+    mail($mail_to, $mail_subject, $mail_message, $mail_header);
     
     function generateRandomString($length = 8) {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -33,18 +56,4 @@
     }
 ?>
 
-<article id="payment_bankwire_detail"><pre>
-You have chosen to pay by bank wire.
-Please send us a bank wire with :  
-• An amount of <span id="total_pay"><?php echo $cost;?></span> THB 
-• To the account owner of <span><?php echo $accountName;?></span> 
-• With these details account number <span id="accountNo"><?php echo $accountNo;?></span> saving account.
-• To <span><?php echo $bank;?></span>, branch <span><?php echo $branch;?></span> 
-• Do not forget to insert your order reference <span><?php echo $refNo;?></span> in the subject of your bank wire.
-    An e-mail has been sent to you with this information.
-    
-• Your order will be sent as soon as we receive your settlement  
-
-Please send a copy of your prove of payment to <span><?php echo $email;?></span> 
-    and refer to your reference <span id="ref_number"><?php echo $refNo;?></span>.
-</pre></article>
+<article id="payment_bankwire_detail"><?php echo $detail; ?></article>
