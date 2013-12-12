@@ -42,8 +42,12 @@
     $mail_to        = $buyyer;
     $mail_subject   = 'Order on SundayDog Shop: ' . $refNo;
     $mail_message   = $detail;
-    $mail_header    = 'From: ' . $email . '\r\n' .
-                      'Bcc: ' . $email;
+    
+    $mail_header    = 'MIME-Version: 1.0' . "\r\n";
+    $mail_header   .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $mail_header   .= 'From: SundayDog Shop <' . $email . '>' . "\r\n";
+    $mail_header   .= 'Bcc: ' . $email;
+    
     mail($mail_to, $mail_subject, $mail_message, $mail_header);
     
     function generateRandomString($length = 8) {
