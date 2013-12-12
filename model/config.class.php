@@ -14,5 +14,12 @@
             $data = $sql->fetchAll();
             return $data;
         }
+        
+        function getContactDetail() {
+            $query = "SELECT configValue FROM Config WHERE configName like 'contact_%' order by configName";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+        }
     }
 ?>
