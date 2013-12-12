@@ -75,7 +75,10 @@ $(document).ready(function(){
             var menu_name = $(this).attr('id') !== undefined ?
                             $(this).attr('id') :
                             $(this).text() ;
-
+            var linkUrl = $(this).attr('url') !== undefined ?
+                          $(this).attr('url') :
+                          '#';
+            
             currentDirectory.reset(menu_name);
             setRibbon(ribbonOn, false);
             ribbonOn = $(this).attr('id') === undefined ?
@@ -83,6 +86,7 @@ $(document).ready(function(){
 
             changeBackground(menu_id);
             menu_handle(menu_id);
+            window.location.href = linkUrl;
         });
         $('#main').scroll(function(){
             var position_scrolling = $(this).scrollTop();
