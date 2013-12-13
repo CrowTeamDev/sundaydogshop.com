@@ -75,9 +75,6 @@ $(document).ready(function(){
             var menu_name = $(this).attr('id') !== undefined ?
                             $(this).attr('id') :
                             $(this).text() ;
-            var linkUrl = $(this).attr('url') !== undefined ?
-                          $(this).attr('url') :
-                          '#';
             
             currentDirectory.reset(menu_name);
             setRibbon(ribbonOn, false);
@@ -86,7 +83,6 @@ $(document).ready(function(){
 
             changeBackground(menu_id);
             menu_handle(menu_id);
-            window.location.href = linkUrl;
         });
         $('#main').scroll(function(){
             var position_scrolling = $(this).scrollTop();
@@ -121,7 +117,8 @@ $(document).ready(function(){
                 break;
             case 'menu_4':
                 break;
-            case 'menu_5':
+            default:
+                window.location.href = id;
                 break;
         }
         $('#main').fadeOut(300, function(){

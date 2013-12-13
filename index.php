@@ -64,7 +64,7 @@
             <img src="<?php echo $contentUrl;?>/content/image/logo_1.png" id="logo_1" title="SundayDog Logo" alt="SundayDog Shop" />
             <ul>
                 <li>HOME</li>
-                <li url="shop">SHOP</li>
+                <li id="shop">SHOP</li>
                 <li>BRANDS</li>
                 <li>ABOUT US</li>
                 <li>CONTACT US</li>
