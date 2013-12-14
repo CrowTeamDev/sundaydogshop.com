@@ -7,6 +7,7 @@
     $contact_phone .= substr($contactDetail[1][0], 5, 3) . ' ';
     $contact_phone .= substr($contactDetail[1][0], 8, 4);
 ?>
+<script src="js/views/contact.js" type="text/javascript"></script>
 <div id="contact_FAQ">
     <label>FAQ</label>
 </div>

@@ -5,5 +5,5 @@
  */
 
 $(function(){
-    set_menuOn('shop');
+    set_menuOn('contact');
 });

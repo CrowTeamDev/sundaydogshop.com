@@ -109,7 +109,7 @@ $(document).ready(function(){
         $('#payment_back', '#main').click(function(){
             switch(payment_step){
                 case 1:
-                    $('#navigation_bar ul li:eq(1)').click().addClass('selected');
+                    $('#navigation_bar ul li:eq('+id+')').click();
                     break;
                 case 4:
                     break;
