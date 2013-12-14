@@ -49,6 +49,7 @@ function changeBackground(menu_id){
     var value;
     var url_path = $('#local_path').val();
 
+    $('#background_1').show();
     switch (menu_id){
         case 'init':
             value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
@@ -60,6 +61,7 @@ function changeBackground(menu_id){
             value = 'url('+ url_path + '/content/image/background/image_3.jpg)';
             break;
         default:
+            $('#background_1').hide();
             value = 'url('+ url_path + '/content/image/background/image_0.jpg)';
             break;
     }
