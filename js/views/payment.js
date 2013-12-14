@@ -63,6 +63,7 @@ $(document).ready(function(){
     }
     
     function setup_default(){
+        changeBackground('payment');
         current_step(payment_step);
         display_item(payment_checkOut, cart_obj);
         grandTotal.sum();

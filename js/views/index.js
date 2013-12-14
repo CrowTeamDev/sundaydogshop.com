@@ -40,13 +40,34 @@ cartItem = {
 function set_menuOn(menu_id){
     $('#start_menu').hide();
     $('#navigation_bar, #top_menu, footer').show();
-    
+ 
+    changeBackground(menu_id);
     directory.reset(menu_id);
     $('header ul li#'+menu_id).addClass('select');
 }
+function changeBackground(menu_id){
+    var value;
+    var url_path = $('#local_path').val();
+
+    switch (menu_id){
+        case 'init':
+            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+            break;
+        case 'shop':
+            value = 'url('+ url_path + '/content/image/background/image_1.jpg)';
+            break;
+        case 'contact':
+            value = 'url('+ url_path + '/content/image/background/image_3.jpg)';
+            break;
+        default:
+            value = 'url('+ url_path + '/content/image/background/image_0.jpg)';
+            break;
+    }
+    $('#background_2').css('background-image', value);
+}
 
 //private
- 
+
 $(document).ready(function(){
     
     var url_path;
@@ -67,11 +88,12 @@ $(document).ready(function(){
     }
     
     function setup_default(){
+        changeBackground('init');
         $('#start_menu').slideDown(650, function(){
             $(this).find('label').fadeIn(450);
         });
         
-        changeBackground('init');
+        //changeBackground('init');
     }
     
     function setup_eventHandle(){
@@ -99,7 +121,7 @@ $(document).ready(function(){
             
             $(this).addClass('select');
 
-            changeBackground(menu_id);
+            //changeBackground(menu_id);
             menu_handle(menu_id);
         });
         $('#main').scroll(function(){
@@ -127,31 +149,4 @@ $(document).ready(function(){
             });
         });
     }
-    
-    function changeBackground(menu_id){
-        var value;
-        var div1_show = $('#background_1').css('display');
-        
-        switch (menu_id){
-            case 'init':
-                value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
-                break;
-            case 'shop':
-                value = 'url('+ url_path + '/content/image/background/image_1.jpg)';
-                break;
-            default:
-                value = '#DED9CC';
-                break;
-        }
-        
-        if (div1_show === 'none'){
-            $('#background_1').css({'background': value, 'z-index':-2}).show();
-            $('#background_2').css('z-index',-1).fadeOut(1000);
-        }
-        else{
-            $('#background_2').css({'background': value, 'z-index':-2}).show();
-            $('#background_1').css('z-index',-1).fadeOut(1000);
-        }
-    }
-    
 });

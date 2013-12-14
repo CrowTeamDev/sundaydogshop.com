@@ -172,11 +172,23 @@ li{
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: -1;
+}
+#background_1{
+    background-color: @color_g2;
+    background-size: cover;
+    z-index:-1;
+    opacity:0.5;
+    filter:alpha(opacity=50); /* For IE8 and earlier */
+}
+#background_2{
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index:-2;
 }
 #main{
     width: 75%;
-    margin: 150px auto 80px;
+    margin: 200px auto 80px;
 }
 footer{
     display: none;
