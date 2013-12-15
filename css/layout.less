@@ -61,6 +61,7 @@
 .fontAvenirNext{
     font-family: AvenirNext;
     font-size: 12pt;
+    font-style: italic;
 }
 .contactDiv{
     color: @color_w1;
@@ -68,6 +69,10 @@
     opacity:0.9;
     filter:alpha(opacity=90); /* For IE8 and earlier */
     width: 45%;
+}
+.hoverContact{
+    color: @color_g4;
+    background-color: @color_w1;
 }
 body{
     font-family: PrestigeElite_Bold;
@@ -394,6 +399,8 @@ label[id*='payment_']{
         display: block;
         margin-left: 20px;
     }
+    div{ display: none; }
+    &:hover{ .hoverContact; }
 }
 #contact_FAQ{ float: right; }
 #contact_mail{ margin-top: 20px; }

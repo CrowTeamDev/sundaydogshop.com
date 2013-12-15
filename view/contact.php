@@ -1,5 +1,4 @@
 <?php
-    
     $contact_phone  = '+';
     $contact_phone  = '+' . substr($contactDetail[1][0], 0, 2) . ' ';
     $contact_phone .= '(' . substr($contactDetail[1][0], 2, 1) . ')';
@@ -21,4 +20,29 @@ OR GENERAL ENQUIRIES</pre>
 </div>
 <div id="contact_mail">
     <label>SEND US MESSAGE</label>
+    <div>
+        <form>
+            <table>
+                <tr>
+                    <td>NAME</td>
+                    <td><input type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>EMAIL</td>
+                    <td><input type="text" name="email" /></td>
+                </tr>
+                <tr>
+                    <td>SUBJECT</td>
+                    <td><input type="text" name="subject" /></td>
+                </tr>
+                <tr>
+                    <td>MESSAGE</td>
+                    <td rowspan="2"><input type="text" name="message" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </div>
