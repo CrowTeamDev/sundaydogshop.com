@@ -19,9 +19,9 @@ OR GENERAL ENQUIRIES</pre>
 <?php echo $contact_phone; ?></pre>
 </div>
 <div id="contact_mail">
-    <label>SEND US MESSAGE</label>
+    <label>SEND US MESSAGE <?php echo $header ?></label>
     <div>
-        <form>
+        <form action="" method="post">
             <table>
                 <tr>
                     <td>NAME</td>
