@@ -90,18 +90,42 @@ $(document).ready(function(){
     }
     
     function setup_default(){
+        setTimeout(preloadImgs, 100);
         changeBackground('init');
         $('#start_menu').slideDown(650, function(){
             $(this).find('label').fadeIn(450);
         });
         
-        //changeBackground('init');
+        function preloadImgs(){
+            var array = [
+                url_path + '/content/image/background/image_0.jpg',
+                url_path + '/content/image/background/image_1.jpg',
+                url_path + '/content/image/background/image_2.jpg',
+                url_path + '/content/image/background/image_3.jpg',
+                url_path + '/content/image/background/image_4.jpg',
+                url_path + '/content/image/background/image_5.jpg',
+                url_path + '/content/image/background/image_6.jpg',
+                url_path + '/content/image/background/image_7.jpg',
+                url_path + '/content/image/background/image_8.jpg',
+                url_path + '/content/image/background/image_9.jpg',
+                url_path + '/content/image/background/image_10.jpg',
+                url_path + '/content/image/background/image_11.jpg'
+            ];
+            if (!preloadImgs.list) {
+                preloadImgs.list = [];
+            }
+            for (var i = 0; i < array.length; i++) {
+                var img = new Image();
+                img.src = array[i];
+                preloadImgs.list.push(img);
+            }
+        }
     }
     
     function setup_eventHandle(){
         $('#start_menu').click(function(){
             $(this).fadeOut(300, function(){
-                $('#navigation_bar, #top_menu, footer').fadeIn(500);
+                $('#navigation_bar, #top_menu, footer').slideDown(500);
             });
         });
         $('#navigation_bar').find('li').mouseover(function(){
