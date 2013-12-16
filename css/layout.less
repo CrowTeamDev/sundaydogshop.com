@@ -49,6 +49,31 @@
     to { padding-bottom: 2em; }
 }
 
+@keyframes top_menuAnimation {
+    from { top: -5px; }
+    to { top: 15px; }
+}
+@-webkit-keyframes top_menuAnimation {
+    from { top: -5px; }
+    to { top: 15px; }
+}
+@keyframes navigationAnimation {
+    from { top: -120px; }
+    to { top: 25px; }
+}
+@-webkit-keyframes navigationAnimation {
+    from { top: -120px; }
+    to { top: 25px; }
+}
+@keyframes footerAnimation {
+    from { height: 0; }
+    to { height: 4%; }
+}
+@-webkit-keyframes footerAnimation {
+    from { height: 0; }
+    to { height: 4%; }
+}
+
 .button{
     cursor: pointer;
     font-family: PrestigeElite;
@@ -78,6 +103,22 @@ body{
     font-family: PrestigeElite_Bold;
     margin: 0;
     //overflow: hidden;
+    &:before{
+        content: 
+            url('../content/image/background/image_0.jpg')
+            url('../content/image/background/image_1.jpg')
+            url('../content/image/background/image_2.jpg')
+            url('../content/image/background/image_3.jpg')
+            url('../content/image/background/image_4.jpg')
+            url('../content/image/background/image_5.jpg')
+            url('../content/image/background/image_6.jpg')
+            url('../content/image/background/image_7.jpg')
+            url('../content/image/background/image_8.jpg')
+            url('../content/image/background/image_9.jpg')
+            url('../content/image/background/image_10.jpg')
+            url('../content/image/background/image_11.jpg');
+        display: none;
+    }
 }
 header{
     display: none;
@@ -128,6 +169,10 @@ li{
         padding-left: 30px;
     }
 }
+#top_menu.page_load{
+    animation: top_menuAnimation 0.75s;
+    -webkit-animation: top_menuAnimation 0.75s;
+}
 #navigation_bar{
     background: url('../content/image/navigation_bar_1.png') center repeat-x;
     height: 120px;
@@ -170,6 +215,10 @@ li{
         background-repeat: no-repeat;
         background-size: 100% 100%; 
     }
+}
+#navigation_bar.page_load{
+    animation: navigationAnimation 1.75s;
+    -webkit-animation: navigationAnimation 1.75s;
 }
 #background_1, #background_2{
     position: fixed;
@@ -214,8 +263,13 @@ footer{
         cursor: pointer;
         float: right;
         width: 1.5%;
+        margin-top: -0.25%;
         margin-right: 0.75%;
     }
+}
+footer.page_load{
+    animation: footerAnimation 0.75s;
+    -webkit-animation: footerAnimation 0.75s;
 }
 
 #payment-navigation{
