@@ -18,12 +18,16 @@
         <?php
             $html = "";
             for( $i=0; $i<count($FAQquestion); $i++){
+                $html .= "<div class='question unselect'>";
                 $html .= "<label>QUESTION ". ($i+1) ."</label>";
                 $html .= "<div>";
                 $html .= "<span>".$FAQquestion[$i][0]."</span>";
+                $html .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
                 $html .= $FAQanswer[$i][0];
                 $html .= "</div>";
+                $html .= "</div>";
             }
+            echo $html;
         ?>
     </div>
 </div>
@@ -37,7 +41,7 @@ OR GENERAL ENQUIRIES</pre>
 </div>
 <div id="contact_mail" class="unselect">
     <label>SEND US MESSAGE</label>
-    <div>
+    <div id="Test">
         <form action="" method="post">
             <table>
                 <tr>

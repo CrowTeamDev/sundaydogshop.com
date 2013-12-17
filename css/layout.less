@@ -21,19 +21,11 @@
 
 @font-face{
     font-family: AvenirNext;
-    src: url('../content/font/AvenirNext/AvenirNext.otf')
+    src: url('../content/font/AvenirNext/AvenirNext-UltraLight.otf')
 }
 @font-face{
     font-family: PrestigeElite_Bold;
     src: url('../content/font/PrestigeElite/PrestigeElite-Bold.otf')
-}
-@font-face{
-    font-family: PrestigeElite_BoldSlanted;
-    src: url('../content/font/PrestigeElite/PrestigeElite-BoldSlanted.otf')
-}
-@font-face{
-    font-family: PrestigeElite_Slanted;
-    src: url('../content/font/PrestigeElite/PrestigeElite-Slanted.otf')
 }
 @font-face{
     font-family: PrestigeElite;
@@ -93,7 +85,6 @@
 .fontAvenirNext{
     font-family: AvenirNext;
     font-size: 12pt;
-    font-style: italic;
 }
 .contactDiv{
     color: @color_w1;
@@ -105,6 +96,7 @@
 .hoverContact{
     color: @color_g4;
     background-color: @color_w1;
+    label{ cursor: pointer; }
 }
 body{
     font-family: PrestigeElite_Bold;
@@ -455,7 +447,6 @@ label[id*='payment_']{
     font-size: 12pt;
     padding: 10px 0;
     label{
-        cursor: pointer;
         display: block;
         margin-left: 20px;
     }
@@ -465,14 +456,36 @@ label[id*='payment_']{
         -webkit-animation: contactDivAnimation 0.75s;
         height: auto;
         display: block;
-        margin-left: 20px;
     }
     &.unselect:hover{ .hoverContact; }
 }
-#contact_FAQ{ float: right; }
+#contact_FAQ{
+    float: right;
+    height: 16px;
+    div.question{
+        .contactDiv;
+        width: auto;
+        margin-top: 2px;
+        padding: 8px 0;
+        display: block;
+        div{
+            .fontAvenirNext;
+            margin: 0 20px 10px;
+            span{
+                display: block;
+                margin: 15px 0;
+            }
+        }
+        &:first-child{ margin-top: 10px; }
+        &.unselect:hover{ .hoverContact; }
+        &.selected{ .hoverContact; }
+    }
+    &.selected{ .hoverContact; }
+}
 #contact_mail{
     margin-top: 20px;
     margin-bottom: 80px;
+    div.show{ margin-left: 20px; }
     table{
         width: 80%;
         margin-top: 25px;
