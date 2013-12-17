@@ -25,7 +25,7 @@
  $registry->product = new product($registry);
  
  $registry->config = new config($registry);
- 
+
  /*** load up var ***/
  $contentUrl = $registry->config->getConfigValue('contentUrl');
 ?>
