@@ -1,10 +1,11 @@
 <?php
-
 Class contactController Extends baseController {
 
     public function index() 
     {
         $contact = $this->registry->config->getContactDetail();
+        $question = $this->registry->config->getFAQQuestion();
+        $answer = $this->registry->config->getFAQAnswer();
         
         //Send mail
         if($_SERVER['REQUEST_METHOD']== "POST"){
@@ -25,15 +26,10 @@ Class contactController Extends baseController {
         
         $this->registry->template->header = 'SundayDog Shop: Contact Us';
         $this->registry->template->contactDetail = $contact;
+        $this->registry->template->FAQquestion = $question;
+        $this->registry->template->FAQanswer = $answer;
         
         $this->registry->template->show('contact');
     }
-    
-    
-    
-
-
-
 }
-
 ?>

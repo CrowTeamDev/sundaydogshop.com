@@ -21,5 +21,19 @@
             $data = $sql->fetchAll();
             return $data;
         }
+        
+        function getFAQQuestion() {
+            $query = "SELECT configValue FROM Config WHERE configName like 'FAQ_question-%' order by configName";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+        }
+        
+        function getFAQAnswer() {
+            $query = "SELECT configValue FROM Config WHERE configName like 'FAQ_answer-%' order by configName";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+        }
     }
 ?>

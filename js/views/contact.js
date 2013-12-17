@@ -15,8 +15,13 @@ $(document).ready(function(){
     }
     
     function setup_eventHandle(){
-        $('div[id*=contact_]').find('label').click(function(){
-            $(this).parent().find('div').show();
+        $('div[id*=contact_], #contact_FAQ div').children('label').click(function(){
+            $(this).parent('div').removeClass('unselect');
+            $(this).parent('div').find('div.show').removeClass('show');
+            $(this).next('div').addClass('show');
+        });
+        $('div#contact_mail').find('span').click(function(){
+            $(this).closest('form').submit();
         });
     }
 });

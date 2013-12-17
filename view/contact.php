@@ -12,8 +12,20 @@
         //Show send mail success;
 ?>
 <script src="js/views/contact.js" type="text/javascript"></script>
-<div id="contact_FAQ">
+<div id="contact_FAQ" class="unselect">
     <label>FAQ</label>
+    <div>
+        <?php
+            $html = "";
+            for( $i=0; $i<count($FAQquestion); $i++){
+                $html .= "<label>QUESTION ". ($i+1) ."</label>";
+                $html .= "<div>";
+                $html .= "<span>".$FAQquestion[$i][0]."</span>";
+                $html .= $FAQanswer[$i][0];
+                $html .= "</div>";
+            }
+        ?>
+    </div>
 </div>
 <div id="contact_main">
     <pre>QUESTION ABOUT ORDERS
@@ -23,29 +35,29 @@ OR GENERAL ENQUIRIES</pre>
     <pre>TELEPHONE
 <?php echo $contact_phone; ?></pre>
 </div>
-<div id="contact_mail">
-    <label>SEND US MESSAGE <?php echo $header ?></label>
+<div id="contact_mail" class="unselect">
+    <label>SEND US MESSAGE</label>
     <div>
         <form action="" method="post">
             <table>
                 <tr>
-                    <td>NAME</td>
+                    <td class="label">NAME</td>
                     <td><input type="text" name="name" /></td>
                 </tr>
                 <tr>
-                    <td>EMAIL</td>
+                    <td class="label">EMAIL</td>
                     <td><input type="text" name="email" /></td>
                 </tr>
                 <tr>
-                    <td>SUBJECT</td>
+                    <td class="label">SUBJECT</td>
                     <td><input type="text" name="subject" /></td>
                 </tr>
                 <tr>
-                    <td>MESSAGE</td>
-                    <td rowspan="2"><input type="text" name="message" /></td>
+                    <td class="label">MESSAGE</td>
+                    <td rowspan="2"><textarea name="message"></textarea></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" /></td>
+                    <td class="label"><span>SEND</span></td>
                 </tr>
             </table>
         </form>
