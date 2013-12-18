@@ -18,11 +18,12 @@ $(document).ready(function(){
         $('div[id*=contact_]').children('label').click(function(){
             $('div[id*=contact_]').find('.show')
                     .removeClass('show')
+                    .hide()
                     .parent('div')
                         .addClass('unselect')
                         .removeClass('selected');
             $(this).parent('div').removeClass('unselect');
-            $(this).next('div').addClass('show');
+            $(this).next('div').addClass('show').fadeIn(1750);
         });
         $('div#contact_FAQ').children('label').click(function(){
             $(this).parent('div').addClass('selected');
@@ -30,13 +31,14 @@ $(document).ready(function(){
         $('#contact_FAQ div').children('label').click(function(){
             $('#contact_FAQ div').find('.show')
                     .removeClass('show')
+                    .hide()
                     .parent('div')
                         .addClass('unselect')
                         .removeClass('selected');
             $(this).parent('div')
                     .removeClass('unselect')
                     .addClass('selected');
-            $(this).next('div').addClass('show');
+            $(this).next('div').addClass('show').fadeIn(750);
         });
         $('div#contact_mail').find('span').click(function(){
             $(this).closest('form').submit();

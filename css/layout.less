@@ -65,12 +65,12 @@
     to { height: 4%; }
 }
 @keyframes contactDivAnimation {
-    from { height: 0; }
-    to { height: auto; }
+    from { max-height: 0; }
+    to { max-height: 500px; }
 }
 @-webkit-keyframes contactDivAnimation {
-    from { height: 0; }
-    to { height: auto; }
+    from { max-height: 0; }
+    to { max-height: 500px; }
 }
 
 .button{
@@ -452,10 +452,9 @@ label[id*='payment_']{
     }
     div{ display: none; }
     div.show{
-        animation: contactDivAnimation 0.75s;
-        -webkit-animation: contactDivAnimation 0.75s;
+        animation: contactDivAnimation 2.5s;
+        -webkit-animation: contactDivAnimation 2.5s;
         height: auto;
-        display: block;
     }
     &.unselect:hover{ .hoverContact; }
 }
