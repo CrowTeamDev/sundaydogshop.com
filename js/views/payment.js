@@ -101,7 +101,10 @@ $(document).ready(function(){
                 shippingCost : cart_obj.shippingCost,
                 items : cart_obj.item,
                 buyyer : buyyer_obj.first+' '+buyyer_obj.last,
-                mail : buyyer_obj.mail
+                mail : buyyer_obj.mail,
+                phone : buyyer_obj.phone,
+                mobile : buyyer_obj.mobile,
+                address : buyyer_obj.getAddress
             };
             
             $(this).addClass('selected');

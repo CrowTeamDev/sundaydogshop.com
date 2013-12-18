@@ -20,10 +20,13 @@
     }while ($registry->transaction->checkRef($refNo));
     
     $totalCost = number_format(intval($_REQUEST['totalCost']));
-    $shippingCost = $_REQUEST['shippingCost'];
+    $shippingCost = number_format(intval($_REQUEST['shippingCost']));
     $items = $_REQUEST['items'];
     $buyyer = $_REQUEST['buyyer'];
     $mail = $_REQUEST['mail'];
+    $phone = $_REQUEST['phone'];
+    $mobile = $_REQUEST['mobile'];
+    $address = $_REQUEST['address'];
     
     
     $message_detail = 
@@ -53,12 +56,13 @@
             . "</table>";
     
     $message_detail .= "<br>"
-            . "<br>Please send us a bank wire total amount of <b>" . $totalCost . "</b> THB"
-            . "<br>To account number <b>" . $accountNo . "; "
+            . "Please send us a bank wire, total amount of <b>" . $totalCost . "</b> THB"
+            . "<br>To account number <b>" . formatAccount($accountNo) . " "
             . $accountName . "</b> saving account of " . $bank . " (" . $branch . ")"
             . "<br>Do not forget to insert your order reference " . $refNo . " in the subject of your bank wire."
             . "<br>"
-            . "<br>Your order will be sent as soon as we receive your settlement"
+            . "<br>Your order will be sent on this information:"
+            . "<br><i>" . $address . "<br>" . $buyyer . " " . formatNumber($mobile) . ", " . formatNumber($phone) . "</i>"
             . "<br>"
             . "<br>Please send a copy of your prove of payment back to this mail <<i>" . $email . "</i>>"
             . "<br>and also refer to your reference <b>" . $refNo . "</b>.";
@@ -99,6 +103,12 @@
             $randomString .= $characters[rand(0, strlen($characters) - 1)];
         }
         return $randomString;
+    }
+    function formatAccount($account){
+        return substr($account, 0, 3)."-".substr($account, 3, 6)."-".substr($account, -1, 1);
+    }
+    function formatNumber($number){
+        return substr($number, 0, 3)."-".substr($account, 3, 3)."-".substr($account, 6, count($number) - 6);
     }
 ?>
 
