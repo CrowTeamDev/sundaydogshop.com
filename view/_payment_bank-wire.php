@@ -19,7 +19,7 @@
         $refNo = generateRandomString();
     }while ($registry->transaction->checkRef($refNo));
     
-    $totalCost = $_REQUEST['totalCost'];
+    $totalCost = number_format(intval($_REQUEST['totalCost']));
     $shippingCost = $_REQUEST['shippingCost'];
     $items = $_REQUEST['items'];
     $buyyer = $_REQUEST['buyyer'];
@@ -33,19 +33,24 @@
             . "<br>As the summary of purchase on " . date('j M') . " via <b>bank-wire</b> payment method"
             . "<br>";
    
+    $message_detail .= "<table border=\"0\" style='width:400px;'>";
     foreach($items as $item){
         $qty = $item['qty'] != null ? intval($item['qty']) : 1;
-        $total = intval($item['price']) * $qty;
-        $message_detail .= "<br>"
-                . "• " . $item['name']
-                . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                . $item['price'] . " THB"
+        $price = intval($item['price']);
+        $total = $price * $qty;
+        $message_detail .= "<tr>"
+                . "<td style='width:50%;'>• " . $item['name'] . "</td>"
+                . "<td style='width:30%;'>" . number_format($price) . " THB"
                 . "&nbsp;&nbsp;&nbsp;"
-                . "x" . $qty
-                . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                . "<b>". $total ."</b> THB";
+                . "x" . $qty . "</td>"
+                . "<td style='width:20%;'><b>". number_format($total) ."</b> THB</td>"
+                . "</tr>";
     }
-    $message_detail .= "<br>• Shipping Cost <b>" . $shippingCost . "</b> THB";
+    $message_detail .= "<tr>"
+            . "<td colspan=\"2\">• Shipping Cost </td>"
+            . "<td><b>" . $shippingCost . "</b> THB</td>"
+            . "</tr>"
+            . "</table>";
     
     $message_detail .= "<br>"
             . "<br>Please send us a bank wire total amount of <b>" . $totalCost . "</b> THB"
@@ -97,4 +102,4 @@
     }
 ?>
 
-<article id="payment_bankwire_detail"><?php echo $message_detail; ?></article>
+<article id="payment_bankwire_detail"><?php echo $summary; ?></article>
