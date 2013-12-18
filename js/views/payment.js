@@ -104,7 +104,7 @@ $(document).ready(function(){
                 mail : buyyer_obj.mail,
                 phone : buyyer_obj.phone,
                 mobile : buyyer_obj.mobile,
-                address : buyyer_obj.getAddress
+                address : buyyer_obj.getAddress()
             };
             
             $(this).addClass('selected');

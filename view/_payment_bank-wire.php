@@ -19,7 +19,7 @@
         $refNo = generateRandomString();
     }while ($registry->transaction->checkRef($refNo));
     
-    $totalCost = number_format(intval($_REQUEST['totalCost']));
+    $totalCost = intval($_REQUEST['totalCost']);
     $shippingCost = number_format(intval($_REQUEST['shippingCost']));
     $items = $_REQUEST['items'];
     $buyyer = $_REQUEST['buyyer'];
@@ -56,13 +56,13 @@
             . "</table>";
     
     $message_detail .= "<br>"
-            . "Please send us a bank wire, total amount of <b>" . $totalCost . "</b> THB"
+            . "Please send us a bank wire, total amount of <b>" . number_format($totalCost) . "</b> THB"
             . "<br>To account number <b>" . formatAccount($accountNo) . " "
             . $accountName . "</b> saving account of " . $bank . " (" . $branch . ")"
             . "<br>Do not forget to insert your order reference " . $refNo . " in the subject of your bank wire."
             . "<br>"
             . "<br>Your order will be sent on this information:"
-            . "<br><i>" . $address . "<br>" . $buyyer . " " . formatNumber($mobile) . ", " . formatNumber($phone) . "</i>"
+            . "<br><i>" . $buyyer . " " . formatNumber($mobile) . ", " . formatNumber($phone) . "<br>" . $address . "</i>"
             . "<br>"
             . "<br>Please send a copy of your prove of payment back to this mail <<i>" . $email . "</i>>"
             . "<br>and also refer to your reference <b>" . $refNo . "</b>.";
@@ -84,7 +84,7 @@
     $summary = 
             "You have chosen to pay by bank wire."
             . "<br>Please send us a bank wire with : "
-            . "<br>• An amount of <span id='total_pay'>" . $totalCost . "</span> THB"
+            . "<br>• An amount of <span id='total_pay'>" . number_format($totalCost) . "</span> THB"
             . "<br>• To the account owner of <span>" . $accountName . "</span>"
             . "<br>• With these details account number <span id='accountNo'>" . $accountNo . "</span> saving account."
             . "<br>• To <span>" . $bank . "</span>, branch <span>" . $branch . "</span>"
@@ -108,7 +108,7 @@
         return substr($account, 0, 3)."-".substr($account, 3, 6)."-".substr($account, -1, 1);
     }
     function formatNumber($number){
-        return substr($number, 0, 3)."-".substr($account, 3, 3)."-".substr($account, 6, count($number) - 6);
+        return substr($number, 0, 3)."-".substr($number, 3, 3)."-".substr($number, 6, strlen($number) - 6);
     }
 ?>
 
