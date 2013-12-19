@@ -101,25 +101,55 @@ $(document).ready(function(){
         });
         $('tr td.menu', payment_pay).click(function(){
             var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
-            var data = {
-                totalCost : cart_obj.totalCost,
-                shippingCost : cart_obj.shippingCost,
-                items : cart_obj.item,
-                buyyer : buyyer_obj.first+' '+buyyer_obj.last,
-                mail : buyyer_obj.mail,
-                phone : buyyer_obj.phone,
-                mobile : buyyer_obj.mobile,
-                address : buyyer_obj.getAddress()
-            };
             
             $(this).addClass('selected').removeClass('menu');
             $('tr', payment_pay).eq(otherPayment).hide();
-            $.post('view/_payment_bank-wire.php', data, function(data){
-                $('tr', payment_pay).last().fadeIn(500);
-                $('tr', payment_pay).last().find('td').html(data);
-                format_payment_detail();
-                buttonsText.done();
-            });
+            if (otherPayment === 1){
+                var data = {
+                    totalCost : cart_obj.totalCost,
+                    shippingCost : cart_obj.shippingCost,
+                    items : cart_obj.item,
+                    buyyer : buyyer_obj.first+' '+buyyer_obj.last,
+                    mail : buyyer_obj.mail,
+                    phone : buyyer_obj.phone,
+                    mobile : buyyer_obj.mobile,
+                    address : buyyer_obj.getAddress()
+                };
+                $.post('view/_payment_bank-wire.php', data, function(data){
+                    $('tr', payment_pay).last().fadeIn(500);
+                    $('tr', payment_pay).last().find('td').html(data);
+                    format_payment_detail();
+                    buttonsText.done();
+                });
+            }
+            else{
+                //Include html form_paypal, and trigger submit!
+                var data = {
+                    cmd : "_xclick",
+                    business : "PXG755ZX9FAU6",
+                    lc : "TH",
+                    item_name : "SundayDog Purchased",
+                    item_number : "",
+                    amount : cart_obj.totalCost,
+                    currency_code : "THB",
+                    button_subtype : "services",
+                    first_name : buyyer_obj.first,
+                    last_name : buyyer_obj.last,
+                    address1 : buyyer_obj.getAddress(),
+                    city : buyyer_obj.city,
+                    state : buyyer_obj.state,
+                    zip : buyyer_obj.zip,
+                    country : buyyer_obj.country,
+                    night_phone_a : "66",
+                    night_phone_b : buyyer_obj.mobile
+                };
+                $.post('https://www.paypal.com/cgi-bin/webscr', data, function(result){
+                    //$('tr', payment_pay).last().fadeIn(500);
+                    //$('tr', payment_pay).last().find('td').html(data);
+                    //format_payment_detail();
+                    buttonsText.done();
+                });
+            }
         });
         $('#payment_back', '#main').click(function(){
             switch(payment_step){
