@@ -6,4 +6,12 @@
 
 $(function(){
     set_menuOn('shop');
+    
+    $('.product').mouseover(function(){
+       $('.product_detail').hide();
+       $(this).find('.product_detail').show();
+    });
+    $('.product').mouseout(function(){
+       $('.product_detail').hide();
+    });
 });

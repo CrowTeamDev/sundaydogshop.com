@@ -33,18 +33,32 @@
     if(!empty($_GET['fb']) && !empty($_GET['cn'])){
         echo "<div id='product_view'>";
 ?>
-    <table width="100%">
+    <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <?php
                 $count = 0;
                 if(!empty($resultList)){
                     while($row = $resultList->fetch()) {
                         if($count%3==0 && $count != 0){
-                            echo "</tr><tr align='center'>"
-                                    . "<td><a href='product?fb=c&cn=".$row['catagories']."&id=".$row['item_no']."'><img src='content/image/product/".$row['item_no'].".png'/></a></td>";
+                            echo "</tr><tr>"
+                                    . "<td align='center'>"
+                                        . "<div class='product'>"
+                                            . "<img src='content/image/product/".$row['item_no'].".png'/>"
+                                            . "<div class='product_detail'>"
+                                                . "<a href='product?fb=c&cn=".$row['catagories']."&id=".$row['item_no']."'>+ SEE DETAIL</a>"
+                                            . "</div>"
+                                        . "</div>"
+                                    . "</td>";
                         }
                         else {
-                            echo "<td align='center'><a href='product?fb=c&cn=".$row['catagories']."&id=".$row['item_no']."'><img src='content/image/product/".$row['item_no'].".png'/></a></td>";
+                            echo "<td align='center'>"
+                                    . "<div class='product'>"
+                                        . "<img src='content/image/product/".$row['item_no'].".png'/>"
+                                        . "<div class='product_detail'>"
+                                            . "<a href='product?fb=c&cn=".$row['catagories']."&id=".$row['item_no']."'>+ SEE DETAIL</a>"
+                                        . "</div>"
+                                    . "</div>"
+                                . "</td>";
                         }
                         $count += 1;
                     }
