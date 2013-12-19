@@ -96,12 +96,20 @@ $(document).ready(function(){
         });
         $('tr td', payment_pay).click(function(){
             var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
-            var total_pay = cart_obj.totalCost;
-            var buyyer = buyyer_obj.mail;
+            var data = {
+                totalCost : cart_obj.totalCost,
+                shippingCost : cart_obj.shippingCost,
+                items : cart_obj.item,
+                buyyer : buyyer_obj.first+' '+buyyer_obj.last,
+                mail : buyyer_obj.mail,
+                phone : buyyer_obj.phone,
+                mobile : buyyer_obj.mobile,
+                address : buyyer_obj.getAddress()
+            };
             
             $(this).addClass('selected');
             $('tr', payment_pay).eq(otherPayment).hide();
-            $.post('view/_payment_bank-wire.php?cost='+total_pay+'&mail='+buyyer, function(data){
+            $.post('view/_payment_bank-wire.php', data, function(data){
                 $('tr', payment_pay).last().fadeIn(500);
                 $('tr', payment_pay).last().find('td').html(data);
                 format_payment_detail();
