@@ -412,12 +412,12 @@ label[id*='payment_']{
             border-top: 4px solid @color_g5;
             border-bottom: 4px solid @color_g5;
             &.menu:hover,&.selected{
-                cursor: pointer;
                 color: @color_w1;
                 background-color: @color_g5;
                 border-left: 2px solid @color_g5;
                 border-right: 2px solid @color_g5;
             }
+            &.menu:hover{ cursor: pointer; }
         }
         tr:last-child{
             .fontAvenirNext;

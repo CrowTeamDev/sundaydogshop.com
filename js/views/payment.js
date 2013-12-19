@@ -94,7 +94,7 @@ $(document).ready(function(){
             var index = $('.created', payment_checkOut).index($(this).closest('tr'));
             cart_obj.remove(index);
         });
-        $('tr td', payment_pay).click(function(){
+        $('tr td', payment_pay).not('.selected').click(function(){
             var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
             var data = {
                 totalCost : cart_obj.totalCost,
