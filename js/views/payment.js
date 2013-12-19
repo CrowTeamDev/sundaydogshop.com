@@ -50,6 +50,8 @@ $(document).ready(function(){
             set : function(back, next){
                 $('#payment_back', '#payment_page').text(back).show();
                 $('#payment_next', '#payment_page').text(next).show();
+                if(back === '')
+                    this.hide();
             },
             hide : function(){
                 $('#payment_back', '#payment_page').hide();
@@ -57,6 +59,9 @@ $(document).ready(function(){
             },
             show : function(){
                 $('#payment_back', '#payment_page').show();
+                $('#payment_next', '#payment_page').show();
+            },
+            done : function(){
                 $('#payment_next', '#payment_page').show();
             }
         };
@@ -94,26 +99,57 @@ $(document).ready(function(){
             var index = $('.created', payment_checkOut).index($(this).closest('tr'));
             cart_obj.remove(index);
         });
-        $('tr td', payment_pay).click(function(){
+        $('tr td.menu', payment_pay).click(function(){
             var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
-            var data = {
-                totalCost : cart_obj.totalCost,
-                shippingCost : cart_obj.shippingCost,
-                items : cart_obj.item,
-                buyyer : buyyer_obj.first+' '+buyyer_obj.last,
-                mail : buyyer_obj.mail,
-                phone : buyyer_obj.phone,
-                mobile : buyyer_obj.mobile,
-                address : buyyer_obj.getAddress()
-            };
             
-            $(this).addClass('selected');
+            $(this).addClass('selected').removeClass('menu');
             $('tr', payment_pay).eq(otherPayment).hide();
-            $.post('view/_payment_bank-wire.php', data, function(data){
-                $('tr', payment_pay).last().fadeIn(500);
-                $('tr', payment_pay).last().find('td').html(data);
-                format_payment_detail();
-            });
+            if (otherPayment === 1){
+                var data = {
+                    totalCost : cart_obj.totalCost,
+                    shippingCost : cart_obj.shippingCost,
+                    items : cart_obj.item,
+                    buyyer : buyyer_obj.first+' '+buyyer_obj.last,
+                    mail : buyyer_obj.mail,
+                    phone : buyyer_obj.phone,
+                    mobile : buyyer_obj.mobile,
+                    address : buyyer_obj.getAddress()
+                };
+                $.post('view/_payment_bank-wire.php', data, function(data){
+                    $('tr', payment_pay).last().fadeIn(500);
+                    $('tr', payment_pay).last().find('td').html(data);
+                    format_payment_detail();
+                    buttonsText.done();
+                });
+            }
+            else{
+                //Include html form_paypal, and trigger submit!
+                var data = {
+                    cmd : "_xclick",
+                    business : "PXG755ZX9FAU6",
+                    lc : "TH",
+                    item_name : "SundayDog Purchased",
+                    item_number : "",
+                    amount : cart_obj.totalCost,
+                    currency_code : "THB",
+                    button_subtype : "services",
+                    first_name : buyyer_obj.first,
+                    last_name : buyyer_obj.last,
+                    address1 : buyyer_obj.getAddress(),
+                    city : buyyer_obj.city,
+                    state : buyyer_obj.state,
+                    zip : buyyer_obj.zip,
+                    country : buyyer_obj.country,
+                    night_phone_a : "66",
+                    night_phone_b : buyyer_obj.mobile
+                };
+                $.post('https://www.paypal.com/cgi-bin/webscr', data, function(result){
+                    //$('tr', payment_pay).last().fadeIn(500);
+                    //$('tr', payment_pay).last().find('td').html(data);
+                    //format_payment_detail();
+                    buttonsText.done();
+                });
+            }
         });
         $('#payment_back', '#main').click(function(){
             switch(payment_step){
@@ -128,19 +164,21 @@ $(document).ready(function(){
             }
         });
         $('#payment_next', '#main').click(function(){
-            current_step(payment_step++);
             switch(payment_step){
-                case 2:
+                case 1:
                     cart_obj.totalCost = grandTotal.value();
                     break;
-                case 3:
+                case 2:
                     buyyer_obj = create_buyyer();
                     display_item(payment_summary, cart_obj);
                     display_address(buyyer_obj);
                     break;
                 case 4:
+                    window.location.replace($('#local_path').val() + '/home');
                     break;
             }
+            if(payment_step < 4)
+                current_step(payment_step++);
         });
         $("#payment-navigation li").click(function(){
             var target_step = $("li", $(this).parent()).index(this) + 1;
@@ -212,8 +250,7 @@ $(document).ready(function(){
                     buttonsText.set('BACK', 'CONFIRM');
                     break;
                 case 4:
-                    buttonsText.set('OTHER PAYMENT METHOD', 'I CONFIRM MY ORDER');
-                    buttonsText.hide();
+                    buttonsText.set('', 'FINISH');
                     break;
             }
         }
