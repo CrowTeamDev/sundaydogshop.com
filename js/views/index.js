@@ -54,9 +54,6 @@ function changeBackground(menu_id){
         case 'init':
             value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
             break;
-        case 'shop':
-            value = 'url('+ url_path + '/content/image/background/image_1.jpg)';
-            break;
         case 'contact':
             value = 'url('+ url_path + '/content/image/background/image_3.jpg)';
             break;
