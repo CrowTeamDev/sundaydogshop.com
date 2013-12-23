@@ -10,6 +10,8 @@
         $refNo = generateRandomString();
     }while ($registry->transaction->checkRef($refNo));
 
+    $registry->transaction->save($refNo, $_REQUEST['amount'], $_REQUEST['email'], 1);
+    
     function generateRandomString($length = 8) {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = '';
