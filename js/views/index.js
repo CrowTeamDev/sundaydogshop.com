@@ -64,6 +64,9 @@ function changeBackground(menu_id){
     }
     $('#background_2').css('background-image', value);
 }
+function shop_handle(){
+    
+}
 
 //private
 
@@ -117,11 +120,12 @@ $(document).ready(function(){
         });
         $('header ul li').click(function(){
             var menu_id = $(this).attr('id');
-            
             $(this).addClass('select');
 
-            //changeBackground(menu_id);
-            menu_handle(menu_id);
+            if(menu_id === undefined)
+                shop_handle();
+            else
+                menu_handle(menu_id);
         });
         $('#main').scroll(function(){
             var position_scrolling = $(this).scrollTop();
@@ -131,18 +135,16 @@ $(document).ready(function(){
     
     function menu_handle(id){
         var url_redirect;
-        var main_width = $('#main').width();
         switch(id){
             case 'your_cart':
                 url_redirect = url_path + '/view/_payment.php';
-                main_width += 100;
+                $('#main').addClass('paymentMode');
                 break;
             default:
                 window.location.href = id;
                 break;
         }
         $('#main').fadeOut(300, function(){
-            $(this).width(main_width);
             $(this).load(url_redirect, function(){
                 $(this).fadeIn(500);
             });

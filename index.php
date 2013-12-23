@@ -64,11 +64,14 @@
             <img src="<?php echo $contentUrl;?>/content/image/logo_1.png" id="logo_1" title="SundayDog Logo" alt="SundayDog Shop" />
             <ul>
                 <li id="home">HOME</li>
-                <li id="shop">SHOP</li>
+                <li>SHOP</li>
                 <li id="brand">BRANDS</li>
                 <li id="about">ABOUT US</li>
                 <li id="contact">CONTACT US</li>
                 <li id="gallery">GALLERY</li>
+            </ul>
+            <ul>
+                <li>SUB Ribbin here!!</li>
             </ul>
         </header>
         <div id="background_1"></div>

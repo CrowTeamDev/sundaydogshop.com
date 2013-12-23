@@ -32,13 +32,13 @@
     src: url('../content/font/PrestigeElite/PrestigeElite.otf')
 }
 
-@keyframes animatedBackground {
-    from { padding-bottom: 0em; }
-    to { padding-bottom: 2em; }
+@keyframes animatedRibbon {
+    from { padding-bottom: 0px; }
+    to { padding-bottom: 35px; }
 }
-@-webkit-keyframes animatedBackground {
-    from { padding-bottom: 0em; }
-    to { padding-bottom: 2em; }
+@-webkit-keyframes animatedRibbon {
+    from { padding-bottom: 0px; }
+    to { padding-bottom: 35px; }
 }
 @keyframes top_menuAnimation {
     from { top: -5px; }
@@ -155,7 +155,7 @@ li{
     top: 15px;
     text-align: right;
     height: 5px;
-    font-size: 0.8em;
+    font-size: 14px;
     z-index: 15;
     #current_directory{ margin-right: 30px; }
     #your_cart{
@@ -167,14 +167,14 @@ li{
         padding: 5px 10px;
         padding-left: 30px;
     }
-}
-#top_menu.page_load{
-    animation: top_menuAnimation 0.75s;
-    -webkit-animation: top_menuAnimation 0.75s;
+    &.page_load{
+        animation: top_menuAnimation 0.75s;
+        -webkit-animation: top_menuAnimation 0.75s;
+    }
 }
 #navigation_bar{
-    background: url('../content/image/navigation_bar_1.png') center repeat-x;
-    height: 120px;
+    background: url('../content/image/navigation_bar_1.png') 0 26px repeat-x;
+    height: 170px;
     width: 100%;
     text-align: left;
     font-size: 13pt;
@@ -192,32 +192,33 @@ li{
     }
     ul{ 
         z-index: 2;
-        padding-top: 3em; 
+        padding-top: 53px; 
         margin-left: 4%;
     }
     li{ 
-        padding: 1.6em 1em 2em 0.8em;
-        margin: 0 0.8em 0 1em;
+        padding: 28px 18px 55px 14px;
+        margin: 0 14px 0 18px;
         
         &:hover{
             color: @color_w1;
             background-image: url('../content/image/navigation_select_1.png');
             background-repeat: no-repeat;
-            background-size: 100% 100%; 
-            animation: animatedBackground 0.75s;
-            -webkit-animation: animatedBackground 0.75s;
+            background-size: 100% 80px; 
+            animation: animatedRibbon 0.75s;
+            -webkit-animation: animatedRibbon 0.75s;
         }
     }
     .select{
         color: @color_w1;
         background-image: url('../content/image/navigation_select_1.png');
         background-repeat: no-repeat;
-        background-size: 100% 100%; 
+        background-size: 100% 80px; 
     }
-}
-#navigation_bar.page_load{
-    animation: navigationAnimation 1.75s;
-    -webkit-animation: navigationAnimation 1.75s;
+    &.shopMode{ height: 170px; }
+    &.page_load{
+        animation: navigationAnimation 1.75s;
+        -webkit-animation: navigationAnimation 1.75s;
+    }
 }
 #background_1, #background_2{
     position: fixed;
@@ -242,6 +243,7 @@ li{
 #main{
     width: 75%;
     margin: 200px auto 80px;
+    &.paymentMode{ width: 85%; }
 }
 footer{
     display: none;
@@ -256,7 +258,7 @@ footer{
     filter:alpha(opacity=60); /* For IE8 and earlier */
     label{ 
         cursor: pointer;
-        padding: 0 2em;
+        padding: 0 35px;
     }
     img{
         cursor: pointer;
@@ -265,12 +267,11 @@ footer{
         margin-top: -0.25%;
         margin-right: 0.75%;
     }
+    &.page_load{
+        animation: footerAnimation 0.75s;
+        -webkit-animation: footerAnimation 0.75s;
+    }
 }
-footer.page_load{
-    animation: footerAnimation 0.75s;
-    -webkit-animation: footerAnimation 0.75s;
-}
-
 #payment-navigation{
     background: 
         url('../content/image/header_payment_1.png') no-repeat top left,
