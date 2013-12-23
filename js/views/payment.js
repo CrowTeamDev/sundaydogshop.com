@@ -110,7 +110,7 @@ $(document).ready(function(){
                     shippingCost : cart_obj.shippingCost,
                     items : cart_obj.item,
                     buyyer : buyyer_obj.first+' '+buyyer_obj.last,
-                    mail : buyyer_obj.mail,
+                    email : buyyer_obj.mail,
                     phone : buyyer_obj.phone,
                     mobile : buyyer_obj.mobile,
                     address : buyyer_obj.getAddress()
@@ -125,7 +125,9 @@ $(document).ready(function(){
             else{
                 //Include html form_paypal, and trigger submit!
                 var data = {
-                    amount : cart_obj.totalCost,
+                    totalCost : cart_obj.totalCost,
+                    shippingCost : cart_obj.shippingCost,
+                    items : cart_obj.item,
                     first_name : buyyer_obj.first,
                     last_name : buyyer_obj.last,
                     address1 : buyyer_obj.getAddress(),
@@ -134,7 +136,8 @@ $(document).ready(function(){
                     zip : buyyer_obj.zip,
                     country : buyyer_obj.country,
                     email : buyyer_obj.mail,
-                    night_phone_b : buyyer_obj.mobile
+                    night_phone_b : buyyer_obj.mobile,
+                    phone : buyyer_obj.phone
                 };
                 $.post('view/_paypal_form.php', data, function(result){
                     $('tr', payment_pay).last().find('td').html(result);

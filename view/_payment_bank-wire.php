@@ -20,7 +20,7 @@
     }while ($registry->transaction->checkRef($refNo));
     
     $totalCost = intval($_REQUEST['totalCost']);
-    $buyyer_mail = $_REQUEST['mail'];
+    $buyyer_mail = $_REQUEST['email'];
     
     $model = array(
         'refNo' => $refNo,

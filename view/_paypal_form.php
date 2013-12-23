@@ -10,7 +10,35 @@
         $refNo = generateRandomString();
     }while ($registry->transaction->checkRef($refNo));
 
-    $registry->transaction->save($refNo, $_REQUEST['amount'], $_REQUEST['email'], 1);
+    $email = $registry->config->getConfigValue('payment_email');
+    $paypal_account = $registry->config->getConfigValue('paypal_account');
+    $totalCost = intval($_REQUEST['totalCost']);
+    $buyyer_mail = $_REQUEST['email'];
+    $buyyer = $_REQUEST['first_name'] . " " . $_REQUEST['last_name'];
+    
+    $model = array(
+        'refNo' => $refNo,
+        'cart' => array(
+            'items' => $_REQUEST['items'],
+            'shippingCost' => number_format(intval($_REQUEST['shippingCost'])),
+            'totalCost' => $totalCost
+        ),
+        'buyyer' => array(
+            'name' => $buyyer,
+            'mobile' => $_REQUEST['night_phone_b'],
+            'phone' => $_REQUEST['phone'],
+            'address' => $_REQUEST['address1']
+        ),
+        'seller' => array(
+            'accountPaypal' => $paypal_account
+        )
+    );
+    
+    include $site_path . 'model/mail.class.php';
+    $mail_pros = new mail($model, 1);
+    $mail_pros->sendMail($email, $buyyer_mail);
+    
+    $registry->transaction->save($refNo, $totalCost, $buyyer_mail, 1);
     
     function generateRandomString($length = 8) {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
