@@ -70,19 +70,19 @@ class mail{
                     . "<br>Do not forget to insert your order reference " . $this->refNo . " in the subject of your bank wire."
                     . "<br>"
                     . "<br>Your order will be sent on this information:"
-                    . "<br><i>" . $name . " " . formatNumber($mobile) . ", " . formatNumber($phone) . "<br>" . $address . "</i>"
+                    . "<br><i>" . $name . " " . $this->formatNumber($mobile) . ", " . $this->formatNumber($phone) . "<br>" . $address . "</i>"
                     . "<br>"
                     . "<br>Please send a copy of your prove of payment back to this mail <<i>" . $email . "</i>>"
                     . "<br>and also refer to your reference <b>" . $this->refNo . "</b>.";
         }
         else{
-            $paypalAccount = $seller['paypal_account'];
+            $paypalAccount = $seller['accountPaypal'];
             $message_detail .= "<br>"
                     . "Please complete payment on paypal, total amount of <b>" . number_format($totalCost) . "</b> THB"
-                    . "<br>To paypal account <b>" . $paypalAccount . ", on item reference <b>" . $this->refNo . "</b>."
+                    . "<br>To paypal account <b>" . $paypalAccount . "</b>, on item reference <b>" . $this->refNo . "</b>."
                     . "<br>"
                     . "<br>Your order will be sent on this information:"
-                    . "<br><i>" . $name . " " . formatNumber($mobile) . ", " . formatNumber($phone) . "<br>" . $address . "</i>"
+                    . "<br><i>" . $name . " " . $this->formatNumber($mobile) . ", " . $this->formatNumber($phone) . "<br>" . $address . "</i>"
                     . "<br>"
                     . "<br>After the paypal confirm the payment, you will recieve another confirm mail from us";
         }
