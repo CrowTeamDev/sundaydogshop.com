@@ -20,7 +20,7 @@
     }while ($registry->transaction->checkRef($refNo));
     
     $totalCost = intval($_REQUEST['totalCost']);
-    $mail = $_REQUEST['mail'];
+    $buyyer_mail = $_REQUEST['mail'];
     
     $model = array(
         'refNo' => $refNo,
@@ -46,9 +46,9 @@
     
     include $site_path . 'model/mail.class.php';
     $mail_pros = new mail($model);
-    $mail_pros->sendMail($email, $mail);
+    $mail_pros->sendMail($email, $buyyer_mail);
     
-    $registry->transaction->save($refNo, $totalCost, $mail);
+    $registry->transaction->save($refNo, $totalCost, $buyyer_mail);
     
     $summary = 
             "You have chosen to pay by bank wire."
