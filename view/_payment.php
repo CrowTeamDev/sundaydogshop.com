@@ -5,7 +5,7 @@
     load into #main
     via click #your_cart
 -->
-<script src="http://localhost/origin/js/views/payment.js" type="text/javascript"></script>
+<script src="js/views/payment.js" type="text/javascript"></script>
 <div id="payment-navigation">
     <ul>
         <li>CHECK OUT</li>

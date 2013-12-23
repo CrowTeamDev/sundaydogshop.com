@@ -21,7 +21,7 @@
 
 @font-face{
     font-family: AvenirNext;
-    src: url('../content/font/AvenirNext/AvenirNext.ttc')
+    src: url('../content/font/AvenirNext/AvenirNext.otf')
 }
 @font-face{
     font-family: PrestigeElite_Bold;
@@ -49,6 +49,31 @@
     to { padding-bottom: 2em; }
 }
 
+@keyframes top_menuAnimation {
+    from { top: -5px; }
+    to { top: 15px; }
+}
+@-webkit-keyframes top_menuAnimation {
+    from { top: -5px; }
+    to { top: 15px; }
+}
+@keyframes navigationAnimation {
+    from { top: -120px; }
+    to { top: 25px; }
+}
+@-webkit-keyframes navigationAnimation {
+    from { top: -120px; }
+    to { top: 25px; }
+}
+@keyframes footerAnimation {
+    from { height: 0; }
+    to { height: 4%; }
+}
+@-webkit-keyframes footerAnimation {
+    from { height: 0; }
+    to { height: 4%; }
+}
+
 .button{
     cursor: pointer;
     font-family: PrestigeElite;
@@ -61,11 +86,39 @@
 .fontAvenirNext{
     font-family: AvenirNext;
     font-size: 12pt;
+    font-style: italic;
+}
+.contactDiv{
+    color: @color_w1;
+    background-color: @color_g4;
+    opacity:0.9;
+    filter:alpha(opacity=90); /* For IE8 and earlier */
+    width: 45%;
+}
+.hoverContact{
+    color: @color_g4;
+    background-color: @color_w1;
 }
 body{
     font-family: PrestigeElite_Bold;
     margin: 0;
     //overflow: hidden;
+    &:before{
+        content: 
+            url('../content/image/background/image_0.jpg')
+            url('../content/image/background/image_1.jpg')
+            url('../content/image/background/image_2.jpg')
+            url('../content/image/background/image_3.jpg')
+            url('../content/image/background/image_4.jpg')
+            url('../content/image/background/image_5.jpg')
+            url('../content/image/background/image_6.jpg')
+            url('../content/image/background/image_7.jpg')
+            url('../content/image/background/image_8.jpg')
+            url('../content/image/background/image_9.jpg')
+            url('../content/image/background/image_10.jpg')
+            url('../content/image/background/image_11.jpg');
+        display: none;
+    }
 }
 header{
     display: none;
@@ -116,6 +169,10 @@ li{
         padding-left: 30px;
     }
 }
+#top_menu.page_load{
+    animation: top_menuAnimation 0.75s;
+    -webkit-animation: top_menuAnimation 0.75s;
+}
 #navigation_bar{
     background: url('../content/image/navigation_bar_1.png') center repeat-x;
     height: 120px;
@@ -152,17 +209,16 @@ li{
             -webkit-animation: animatedBackground 0.75s;
         }
     }
-    .selected{
+    .select{
         color: @color_w1;
         background-image: url('../content/image/navigation_select_1.png');
         background-repeat: no-repeat;
         background-size: 100% 100%; 
-        
-        &:hover{
-            color: @color_g3;
-            background: "";
-        }
     }
+}
+#navigation_bar.page_load{
+    animation: navigationAnimation 1.75s;
+    -webkit-animation: navigationAnimation 1.75s;
 }
 #background_1, #background_2{
     position: fixed;
@@ -170,11 +226,23 @@ li{
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: -1;
+}
+#background_1{
+    background-color: @color_g2;
+    background-size: cover;
+    z-index:-1;
+    opacity:0.5;
+    filter:alpha(opacity=50); /* For IE8 and earlier */
+}
+#background_2{
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index:-2;
 }
 #main{
     width: 75%;
-    margin: 150px auto 80px;
+    margin: 200px auto 80px;
 }
 footer{
     display: none;
@@ -195,8 +263,13 @@ footer{
         cursor: pointer;
         float: right;
         width: 1.5%;
+        margin-top: -0.25%;
         margin-right: 0.75%;
     }
+}
+footer.page_load{
+    animation: footerAnimation 0.75s;
+    -webkit-animation: footerAnimation 0.75s;
 }
 
 #payment-navigation{
@@ -219,7 +292,7 @@ footer{
 #payment_page{
     font-size: 13pt;
     background-color: @color_w1;
-    margin: -24.6px 80px 0;
+    margin: -24.6px 90px 0;
     padding: 40px 3% 50px;
 }
 div[id*='payment_']{
@@ -354,12 +427,66 @@ label[id*='payment_']{
             td{ border: 2px solid @color_g5; }
         }
     }
+
+    article{
+        span{ font-weight: bold; }
+    }
 }
+#contact_main{
+    .contactDiv;
+    font-size: 14pt;
+    height: 200px;
+    padding: 5px 0;
+    pre{
+        display: block;
+        margin-left: 40px;
+    }
+    pre:first-child{ font-size: 15pt; }
+}
+#contact_mail, #contact_FAQ{
+    .contactDiv;
+    float: left;
+    font-size: 12pt;
+    height: 16px;
+    padding: 7px 0;
+    label{
+        cursor: pointer;
+        display: block;
+        margin-left: 20px;
+    }
+    div{ display: none; }
+    &:hover{ .hoverContact; }
+}
+#contact_FAQ{ float: right; }
+#contact_mail{ margin-top: 20px; }
+
 
 .thumbnail img {
+    margin-top:20px;
     display: inline-block;
-    max-width:50px;
-    max-height:50px;
+    max-width:10%;
+    max-height:10%;
     width: auto;
     height: auto;
 }
+
+div.img-resize img{
+	width:auto;  
+        height:auto;
+
+}
+  
+/*set a border on the images to prevent shifting*/
+ #gallery_01 img{border:2px solid white;}
+ 
+ /*Change the colour*/
+ .active img{border:2px solid #333 !important;}
+ 
+ #productDetail{
+    position:absolute;
+    right:25%;
+ }
+  #productImage{
+    position:absolute;
+    left:25%;
+ }

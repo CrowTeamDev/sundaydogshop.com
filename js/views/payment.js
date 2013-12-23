@@ -63,6 +63,7 @@ $(document).ready(function(){
     }
     
     function setup_default(){
+        changeBackground('payment');
         current_step(payment_step);
         display_item(payment_checkOut, cart_obj);
         grandTotal.sum();
@@ -95,18 +96,21 @@ $(document).ready(function(){
         });
         $('tr td', payment_pay).click(function(){
             var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
+            var total_pay = cart_obj.totalCost;
+            var buyyer = buyyer_obj.mail;
             
             $(this).addClass('selected');
             $('tr', payment_pay).eq(otherPayment).hide();
-            $.post('view/_payment_bank-wire.php', function(data){
+            $.post('view/_payment_bank-wire.php?cost='+total_pay+'&mail='+buyyer, function(data){
                 $('tr', payment_pay).last().fadeIn(500);
-                $('tr', payment_pay).last().find('td').text(data);
+                $('tr', payment_pay).last().find('td').html(data);
+                format_payment_detail();
             });
         });
         $('#payment_back', '#main').click(function(){
             switch(payment_step){
                 case 1:
-                    $('#navigation_bar ul li:eq(1)').click().addClass('selected');
+                    $('#navigation_bar ul li:eq('+id+')').click();
                     break;
                 case 4:
                     break;
@@ -157,6 +161,15 @@ $(document).ready(function(){
             obj.mail = row(9).val();
             
             return obj;
+        }
+        
+        function format_payment_detail(){
+            var accountNo = $('#payment_bankwire_detail', payment_pay).find('#accountNo');
+            accountNo.text(format_bankAccount(accountNo.text()));
+            
+            function format_bankAccount(account){
+                return account.substring(0,3) + '-' + account.substring(3,9) + '-' + account.substring(9);
+            }
         }
     }
     

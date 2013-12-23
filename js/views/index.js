@@ -4,11 +4,75 @@
  * Control every front-end process on index.html
  */
 
+//For debug
+/*
+$(document).keypress(function(event){
+    if (String.fromCharCode(event.which) === 'z'){
+        alert($('li.selected').attr('id'));
+    } 
+ });
+ */
+
+
+//public
+
+var directory = {
+    default: 'HOME',
+    get: function(){ return $('#current_directory').text(); },
+    add: function(value){
+        var path = this.get() + '/' + value;
+        $('#current_directory').text(path);
+    },
+    reset: function(value){
+        var path = this.default + '/' + value.toUpperCase();
+        $('#current_directory').text(path);
+    }
+};
+
+cartItem = {
+    set : function(value){ $('span', '#your_cart').text(value); },
+    add : function(){
+        var amount = parseInt($('span', '#your_cart').text())++;
+        this.set(amount);
+    }
+};
+
+function set_menuOn(menu_id){
+    $('#start_menu').hide();
+    $('#navigation_bar, #top_menu, footer').show();
+ 
+    changeBackground(menu_id);
+    directory.reset(menu_id);
+    $('header ul li#'+menu_id).addClass('select');
+}
+function changeBackground(menu_id){
+    var value;
+    var url_path = $('#local_path').val();
+
+    $('#background_1').show();
+    switch (menu_id){
+        case 'init':
+            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+            break;
+        case 'shop':
+            value = 'url('+ url_path + '/content/image/background/image_1.jpg)';
+            break;
+        case 'contact':
+            value = 'url('+ url_path + '/content/image/background/image_3.jpg)';
+            break;
+        default:
+            $('#background_1').hide();
+            value = 'url('+ url_path + '/content/image/background/image_0.jpg)';
+            break;
+    }
+    $('#background_2').css('background-image', value);
+}
+
+//private
+
 $(document).ready(function(){
     
-    var itemInYourCart;
-    var currentDirectory;
-    var ribbonOn;
+    var url_path;
     
     //Mock cart
         cart_obj = new Cart();
@@ -22,79 +86,49 @@ $(document).ready(function(){
     setup_eventHandle();
     
     function setup_variable(){
-        itemInYourCart = {
-            set : function(value){ $('span', '#your_cart').text(value); }
-        };
-        currentDirectory = {
-            default: 'HOME',
-            get: function(){ return $('#current_directory').text(); },
-            add: function(value){
-                var path = this.get() + '/' + value;
-                $('#current_directory').text(path);
-            },
-            reset: function(value){
-                var path;
-                if(value === this.default || value === null)
-                    path = this.default;
-                else
-                    path = this.default + '/' + value;
-                $('#current_directory').text(path);
-            }
-        };
+        url_path = $('#local_path').val();
     }
     
     function setup_default(){
+        
+        changeBackground('init');
         $('#start_menu').slideDown(650, function(){
             $(this).find('label').fadeIn(450);
         });
-        
-        itemInYourCart.set(0);
-        changeBackground('init');
     }
     
     function setup_eventHandle(){
         $('#start_menu').click(function(){
             $(this).fadeOut(300, function(){
-                $('#navigation_bar, #top_menu, footer').fadeIn(500);
+                $('#navigation_bar, #top_menu, footer').addClass('page_load').fadeIn(500);
             });
         });
-        $('#navigation_bar')
-            .mouseout(function(){
-                setRibbon(ribbonOn, true);
-            })
-            .find('li').mouseover(function(){
-                setRibbon(ribbonOn, false);
-            });
+        $('#navigation_bar').find('li').mouseover(function(){
+            var selected = $('li.select');
+
+            $(this).addClass('select');
+            selected.removeClass('select');
+            selected.addClass('selected');
+        });
+        $('#navigation_bar').find('li').mouseout(function(){
+            var selected = $('li.selected');
+
+            $(this).removeClass('select');
+            selected.removeClass('selected');
+            selected.addClass('select');
+        });
         $('header ul li').click(function(){
-            var menu_no = $('li', $(this).parent()).index(this);
-            var menu_id = $(this).attr('id') !== undefined ? 
-                            $(this).attr('id') : 
-                            'menu_' + menu_no ;
-            var menu_name = $(this).attr('id') !== undefined ?
-                            $(this).attr('id') :
-                            $(this).text() ;
+            var menu_id = $(this).attr('id');
+            
+            $(this).addClass('select');
 
-            currentDirectory.reset(menu_name);
-            setRibbon(ribbonOn, false);
-            ribbonOn = $(this).attr('id') === undefined ?
-                        menu_no : null ;
-
-            changeBackground(menu_id);
+            //changeBackground(menu_id);
             menu_handle(menu_id);
         });
         $('#main').scroll(function(){
             var position_scrolling = $(this).scrollTop();
             $('#logo_rope').width(position_scrolling);
         });
-        
-        function setRibbon(menu_no, status){
-            var menuSelected = '#navigation_bar ul li:eq('+menu_no+')';
-            
-            if(status)
-                $(menuSelected).addClass('selected');
-            else
-                $(menuSelected).removeClass('selected');
-        }
     }
     
     function menu_handle(id){
@@ -102,20 +136,11 @@ $(document).ready(function(){
         var main_width = $('#main').width();
         switch(id){
             case 'your_cart':
-                url_redirect = 'http://localhost/origin/view/_payment.html';
+                url_redirect = url_path + '/view/_payment.php';
                 main_width += 100;
                 break;
-            case 'menu_0':
-                break;
-            case 'menu_1':
-                break;
-            case 'menu_2':
-                break;
-            case 'menu_3':
-                break;
-            case 'menu_4':
-                break;
-            case 'menu_5':
+            default:
+                window.location.href = id;
                 break;
         }
         $('#main').fadeOut(300, function(){
@@ -124,31 +149,5 @@ $(document).ready(function(){
                 $(this).fadeIn(500);
             });
         });
-    }
-    
-    function changeBackground(menu_id){
-        var value = $('#local_path').val();
-        var div1_show = $('#background_1').css('display');
-        
-        switch (menu_id){
-            case 'init':
-                value = 'url('+ value + '/content/image/background/image_2.jpg)';
-                break;
-            case 'menu_4':
-                value = 'url('+ value + '/content/image/background/image_1.jpg)';
-                break;
-            default:
-                value = '#DED9CC';
-                break;
-        }
-        
-        if (div1_show === 'none'){
-            $('#background_1').css({'background': value, 'z-index':-2}).show();
-            $('#background_2').css('z-index',-1).fadeOut(1000);
-        }
-        else{
-            $('#background_2').css({'background': value, 'z-index':-2}).show();
-            $('#background_1').css('z-index',-1).fadeOut(1000);
-        }
     }
 });

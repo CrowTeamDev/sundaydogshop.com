@@ -19,15 +19,15 @@
  /*** load up the template ***/
  $registry->template = new template($registry);
  
- /*** load up the template ***/
+ /*** load up DB ***/
  $registry->shop = new shop($registry);
  
  $registry->product = new product($registry);
  
- $sql = db::getInstance()->query("SELECT configValue FROM Config WHERE configName = 'contentUrl'");
- $config = $sql->fetchAll();
- $contentUrl = $config[0]['configValue'];
- //$contentUrl = "http://localhost/sundaydogshop";
+ $registry->config = new config($registry);
+ 
+ /*** load up var ***/
+ $contentUrl = $registry->config->getConfigValue('contentUrl');
 ?>
 
 <!DOCTYPE html>
@@ -57,19 +57,19 @@
         <header id="top_menu">
             <ul>
                 <li id="current_directory"></li>
-                <li id="your_cart">YOUR CART (<span></span>)</li>
+                <li id="your_cart">YOUR CART (<span>0</span>)</li>
             </ul>
         </header>
         <header id="navigation_bar">
             <img src="<?php echo $contentUrl;?>/content/image/logo_2.png" id="logo_2" title="SundayDog Logo" alt="SundayDog Shop" />
             <img src="<?php echo $contentUrl;?>/content/image/logo_1.png" id="logo_1" title="SundayDog Logo" alt="SundayDog Shop" />
             <ul>
-                <li>HOME</li>
-                <li>SHOP</li>
-                <li>BRANDS</li>
-                <li>ABOUT US</li>
-                <li>CONTACT US</li>
-                <li>GALLERY</li>
+                <li id="home">HOME</li>
+                <li id="shop">SHOP</li>
+                <li id="brand">BRANDS</li>
+                <li id="about">ABOUT US</li>
+                <li id="contact">CONTACT US</li>
+                <li id="gallery">GALLERY</li>
             </ul>
         </header>
         <div id="background_1"></div>
