@@ -19,31 +19,34 @@
         $refNo = generateRandomString();
     }while ($registry->transaction->checkRef($refNo));
     
-    $model = [
+    $totalCost = intval($_REQUEST['totalCost']);
+    $mail = $_REQUEST['mail'];
+    
+    $model = array(
         'refNo' => $refNo,
-        'cart' => [
+        'cart' => array(
             'items' => $_REQUEST['items'],
             'shippingCost' => number_format(intval($_REQUEST['shippingCost'])),
-            'totalCost' => intval($_REQUEST['totalCost'])
-        ],
-        'buyyer' => [
+            'totalCost' => $totalCost
+        ),
+        'buyyer' => array(
             'name' => $_REQUEST['buyyer'],
             'mobile' => $_REQUEST['mobile'],
             'phone' => $_REQUEST['phone'],
             'address' => $_REQUEST['address']
-        ],
-        'seller' => [
+        ),
+        'seller' => array(
             'accountNo' => $accountNo,
             'accountName' => $accountName,
             'bank' => $bank,
             'branch' => $branch,
             'email' => $email
-        ]
-    ];
+        )
+    );
     
     include $site_path . 'model/mail.class.php';
     $mail_pros = new mail($model);
-    $mail_pros->sendMail($email, $_REQUEST['mail']);
+    $mail_pros->sendMail($email, $mail);
     
     $registry->transaction->save($refNo, $totalCost, $mail);
     

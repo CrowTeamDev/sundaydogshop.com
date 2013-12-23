@@ -28,7 +28,7 @@ class mail{
         $address = $buyyer['address'];
                 
         $accountNo = $seller['accountNo'];
-        $accountName = $seller['accountNo'];
+        $accountName = $seller['accountName'];
         $bank = $seller['bank'];
         $branch = $seller['branch'];
         $email = $seller['email'];
@@ -77,7 +77,7 @@ class mail{
     function sendMail($mail_seller, $mail_buyyer){
         $mail_to        = $mail_buyyer;
         $mail_subject   = 'Order on SundayDog Shop: ' . $this->refNo;
-        $mail_message   = createMsg($this->cart, $this->buyyer, $this->seller);
+        $mail_message   = $this->createMsg($this->cart, $this->buyyer, $this->seller);
 
         $mail_header    = 'MIME-Version: 1.0' . "\r\n";
         $mail_header   .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
