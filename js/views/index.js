@@ -65,7 +65,7 @@ function changeBackground(menu_id){
     $('#background_2').css('background-image', value);
 }
 function shop_handle(){
-    alert('shop');
+    $('#sub_menu', '#navigation_bar').show('drop', 1000);
 }
 
 //private
@@ -104,14 +104,14 @@ $(document).ready(function(){
                 $('#top_menu, footer').addClass('page_load').fadeIn(500);
             });
         });
-        $('#navigation_bar').find('li').mouseover(function(){
+        $('#navigation_bar #main_menu').find('li').mouseover(function(){
             var selected = $('li.select');
 
             $(this).addClass('select');
             selected.removeClass('select');
             selected.addClass('selected');
         });
-        $('#navigation_bar').find('li').mouseout(function(){
+        $('#navigation_bar #main_menu').find('li').mouseout(function(){
             var selected = $('li.selected');
 
             $(this).removeClass('select');
