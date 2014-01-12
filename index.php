@@ -62,16 +62,20 @@
         <header id="navigation_bar">
             <img src="<?php echo $contentUrl;?>/content/image/logo_2.png" id="logo_2" title="SundayDog Logo" alt="SundayDog Shop" />
             <img src="<?php echo $contentUrl;?>/content/image/logo_1.png" id="logo_1" title="SundayDog Logo" alt="SundayDog Shop" />
-            <ul>
+            <ul id="main_menu">
                 <li id="home">HOME</li>
-                <li>SHOP</li>
+                <li id="shop">SHOP</li>
                 <li id="brand">BRANDS</li>
                 <li id="about">ABOUT US</li>
                 <li id="contact">CONTACT US</li>
                 <li id="gallery">GALLERY</li>
             </ul>
-            <ul>
-                <li>SUB Ribbin here!!</li>
+            <ul id="sub_menu">
+                <li>CATEGORIES</li>
+                <li>SIZE</li>
+                <li>COLOR</li>
+                <li>BRANDS</li>
+                <li>ALL</li>
             </ul>
         </header>
         <div id="background_1"></div>

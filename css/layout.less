@@ -195,10 +195,10 @@ li{
         padding-top: 53px; 
         margin-left: 4%;
     }
-    li{ 
-        padding: 28px 18px 55px 14px;
+    ul#main_menu li{ 
+        padding: 28px 18px 35px 14px;
         margin: 0 14px 0 18px;
-        
+
         &:hover{
             color: @color_w1;
             background-image: url('../content/image/navigation_select_1.png');
@@ -207,14 +207,36 @@ li{
             animation: animatedRibbon 0.75s;
             -webkit-animation: animatedRibbon 0.75s;
         }
+        &.select{
+            color: @color_w1;
+            background-image: url('../content/image/navigation_select_1.png');
+            background-repeat: no-repeat;
+            background-size: 100% 80px; 
+        }
+        &.shopMode{
+            padding-bottom: 40px;
+            background-image: url('../content/image/navigation_select_3.png');
+            background-size: 100% 100%;
+        }
     }
-    .select{
-        color: @color_w1;
-        background-image: url('../content/image/navigation_select_1.png');
+    ul:last-child{
+        background-image: url('../content/image/navigation_select_2.png');
         background-repeat: no-repeat;
-        background-size: 100% 80px; 
+        background-position: left bottom;
+        background-size: contain; 
+        width: 420px;
+        margin-left: 255px;
+        padding-left: 0;
+        padding-bottom: 10px;
+        font-size: 11pt;
+        color: @color_w1;
+        z-index: 3;
+        li{
+            margin-left: 20px;
+            &:hover{ color: @color_b1; }
+            &:first-child{ margin-left: 30px; }
+        }
     }
-    &.shopMode{ height: 170px; }
     &.page_load{
         animation: navigationAnimation 1.75s;
         -webkit-animation: navigationAnimation 1.75s;

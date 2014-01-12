@@ -65,7 +65,7 @@ function changeBackground(menu_id){
     $('#background_2').css('background-image', value);
 }
 function shop_handle(){
-    
+    alert('shop');
 }
 
 //private
@@ -120,10 +120,12 @@ $(document).ready(function(){
         });
         $('header ul li').click(function(){
             var menu_id = $(this).attr('id');
-            $(this).addClass('select');
 
-            if(menu_id === undefined)
+            if(menu_id === 'shop'){
+                $('li.selected').removeClass('selected');
+                $(this).addClass('selected shopMode');
                 shop_handle();
+            }
             else
                 menu_handle(menu_id);
         });
