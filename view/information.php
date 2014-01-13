@@ -1,6 +1,6 @@
 <?php
 
-echo "Hello";
+echo $info;
 
 ?>
 <script src="js/views/information.js" type="text/javascript"></script>
