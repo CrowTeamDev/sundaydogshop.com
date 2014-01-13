@@ -72,7 +72,7 @@
                 <li id="gallery">GALLERY</li>
             </ul>
             <ul id="sub_menu">
-                <li>CATEGORIES</li>
+                <li id="c">CATEGORIES</li>
                 <li>SIZE</li>
                 <li>COLOR</li>
                 <li>BRANDS</li>

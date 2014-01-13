@@ -195,6 +195,9 @@ li{
         padding-top: 53px; 
         margin-left: 4%;
     }
+    ul#main_menu{
+        margin-bottom: 33px;
+    }
     ul#main_menu li{ 
         padding: 28px 18px 35px 14px;
         margin: 0 14px 0 18px;
@@ -226,8 +229,7 @@ li{
         background-size: contain; 
         width: 420px;
         margin-left: 255px;
-        padding-left: 0;
-        padding-bottom: 10px;
+        padding: 20px 0px 10px;
         font-size: 11pt;
         color: @color_w1;
         display: none;
@@ -235,6 +237,7 @@ li{
         li{
             margin-left: 20px;
             &:hover{ color: @color_b1; }
+            &.findOn{ color: @color_b1; }
             &:first-child{ margin-left: 30px; }
         }
     }
