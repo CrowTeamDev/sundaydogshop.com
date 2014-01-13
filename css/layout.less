@@ -427,6 +427,7 @@ label[id*='payment_']{
             td{ border: 2px solid @color_g5; }
         }
     }
+
     article{
         span{ font-weight: bold; }
     }
@@ -482,6 +483,7 @@ label[id*='payment_']{
     }
     &.selected{ .hoverContact; }
 }
+
 #contact_mail{
     margin-top: 20px;
     margin-bottom: 80px;
@@ -550,3 +552,43 @@ label[id*='payment_']{
         text-decoration: none;
     }
 }
+
+#contact_FAQ{ float: right; }
+#contact_mail{ margin-top: 20px; }
+
+
+.thumbnail img {
+    margin-top:20px;
+    display: inline-block;
+    max-width:10%;
+    max-height:10%;
+    width: auto;
+    height: auto;
+}
+
+div.img-resize img{
+	width:100%;  
+        height:80%;
+
+}
+  
+/*set a border on the images to prevent shifting*/
+ #gallery_01 img{border:2px solid white;}
+ 
+ /*Change the colour*/
+ .active img{border:2px solid #333 !important;}
+ 
+ #productDetail{
+    position:absolute;
+    right:25%;
+ }
+  #productImage{
+    position:absolute;
+    left:25%;
+ }
+ 
+ .ui-dialog,.ui-dialog,.ui-widget, .ui-widget-content, .ui-corner-all, .ui-draggable, .ui-resizable {
+     background:#666666 !important;
+     opacity: 0.9;
+     color: #FFFFFF !important;
+ }

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <coverage xmlns="http://www.netbeans.org/ns/code-coverage/1" enabled="true"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/sundaydogshop/controller/contactController.php</file>
-            <file>file:/C:/wamp/www/sundaydogshop/model/db.class.php</file>
-            <file>file:/C:/wamp/www/sundaydogshop/css/layout.less</file>
-            <file>file:/C:/wamp/www/sundaydogshop/view/contact.php</file>
-            <file>file:/C:/wamp/www/sundaydogshop/js/views/index.js</file>
-            <file>file:/C:/wamp/www/sundaydogshop/view/_payment.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop.com/index.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop.com/css/layout.less</file>
+            <file>file:/C:/wamp/www/sundaydogshop.com/model/db.class.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop.com/view/product_index.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop.com/includes/init.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop.com/controller/productController.php</file>
         </group>
     </open-files>
 </project-private>
