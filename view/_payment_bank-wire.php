@@ -18,13 +18,39 @@
     do{
         $refNo = generateRandomString();
     }while ($registry->transaction->checkRef($refNo));
-    $cost = $_GET['cost'];
-    $buyyer = $_GET['mail'];
     
-    $detail = 
+    $model = [
+        'refNo' => $refNo,
+        'cart' => [
+            'items' => $_REQUEST['items'],
+            'shippingCost' => number_format(intval($_REQUEST['shippingCost'])),
+            'totalCost' => intval($_REQUEST['totalCost'])
+        ],
+        'buyyer' => [
+            'name' => $_REQUEST['buyyer'],
+            'mobile' => $_REQUEST['mobile'],
+            'phone' => $_REQUEST['phone'],
+            'address' => $_REQUEST['address']
+        ],
+        'seller' => [
+            'accountNo' => $accountNo,
+            'accountName' => $accountName,
+            'bank' => $bank,
+            'branch' => $branch,
+            'email' => $email
+        ]
+    ];
+    
+    include $site_path . 'model/mail.class.php';
+    $mail_pros = new mail($model);
+    $mail_pros->sendMail($email, $_REQUEST['mail']);
+    
+    $registry->transaction->save($refNo, $totalCost, $mail);
+    
+    $summary = 
             "You have chosen to pay by bank wire."
             . "<br>Please send us a bank wire with : "
-            . "<br>• An amount of <span id='total_pay'>" . $cost . "</span> THB"
+            . "<br>• An amount of <span id='total_pay'>" . number_format($totalCost) . "</span> THB"
             . "<br>• To the account owner of <span>" . $accountName . "</span>"
             . "<br>• With these details account number <span id='accountNo'>" . $accountNo . "</span> saving account."
             . "<br>• To <span>" . $bank . "</span>, branch <span>" . $branch . "</span>"
@@ -36,20 +62,6 @@
             . "<br>Please send a copy of your prove of payment to <span>" . $email . "</span>"
             . "<br>and refer to your reference <span id='ref_number'>" . $refNo . "</span>.";
     
-    $registry->transaction->save($refNo, $cost, $buyyer);
-    
-    //Send mail
-    $mail_to        = $buyyer;
-    $mail_subject   = 'Order on SundayDog Shop: ' . $refNo;
-    $mail_message   = $detail;
-    
-    $mail_header    = 'MIME-Version: 1.0' . "\r\n";
-    $mail_header   .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $mail_header   .= 'From: SundayDog Shop <' . $email . '>' . "\r\n";
-    $mail_header   .= 'Bcc: ' . $email;
-    
-    mail($mail_to, $mail_subject, $mail_message, $mail_header);
-    
     function generateRandomString($length = 8) {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = '';
@@ -58,6 +70,12 @@
         }
         return $randomString;
     }
+    function formatAccount($account){
+        return substr($account, 0, 3)."-".substr($account, 3, 6)."-".substr($account, -1, 1);
+    }
+    function formatNumber($number){
+        return substr($number, 0, 3)."-".substr($number, 3, 3)."-".substr($number, 6, strlen($number) - 6);
+    }
 ?>
 
-<article id="payment_bankwire_detail"><?php echo $detail; ?></article>
+<article id="payment_bankwire_detail"><?php echo $summary; ?></article>

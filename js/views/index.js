@@ -54,9 +54,6 @@ function changeBackground(menu_id){
         case 'init':
             value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
             break;
-        case 'shop':
-            value = 'url('+ url_path + '/content/image/background/image_1.jpg)';
-            break;
         case 'contact':
             value = 'url('+ url_path + '/content/image/background/image_3.jpg)';
             break;
@@ -100,7 +97,8 @@ $(document).ready(function(){
     function setup_eventHandle(){
         $('#start_menu').click(function(){
             $(this).fadeOut(300, function(){
-                $('#navigation_bar, #top_menu, footer').addClass('page_load').fadeIn(500);
+                $('#navigation_bar').addClass('page_load').fadeIn(2500);
+                $('#top_menu, footer').addClass('page_load').fadeIn(500);
             });
         });
         $('#navigation_bar').find('li').mouseover(function(){

@@ -25,7 +25,7 @@
  $registry->product = new product($registry);
  
  $registry->config = new config($registry);
- 
+
  /*** load up var ***/
  $contentUrl = $registry->config->getConfigValue('contentUrl');
 ?>
@@ -49,6 +49,9 @@
         <script src="<?php echo $contentUrl;?>/js/views/index.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/model.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/shared/jquery.elevatezoom.js" type="text/javascript"></script>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     </head>
     <body>
         <header id="start_menu">
