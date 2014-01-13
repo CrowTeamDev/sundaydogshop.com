@@ -77,10 +77,10 @@
             </ul>
             <ul id="sub_menu">
                 <li id="c">CATEGORIES</li>
-                <li>SIZE</li>
-                <li>COLOR</li>
-                <li>BRANDS</li>
-                <li>ALL</li>
+                <li id="s">SIZE</li>
+                <li id="cl">COLOR</li>
+                <li id="b">BRANDS</li>
+                <li id="a">ALL</li>
             </ul>
         </header>
         <div id="background_1"></div>
