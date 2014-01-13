@@ -45,9 +45,14 @@
         
         <link rel="stylesheet/less" type="text/css" href="<?php echo $contentUrl;?>/css/layout.less" />
         <script src="<?php echo $contentUrl;?>/js/shared/jquery-2.0.3.min.js" type="text/javascript"></script>
+        <script src="<?php echo $contentUrl;?>/js/shared/jquery-ui-1.10.3.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/shared/less-1.5.0.min.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/views/index.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/model.js" type="text/javascript"></script>
+        <script src="<?php echo $contentUrl;?>/js/shared/jquery.elevatezoom.js" type="text/javascript"></script>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     </head>
     <body>
         <header id="start_menu">
@@ -62,16 +67,20 @@
         <header id="navigation_bar">
             <img src="<?php echo $contentUrl;?>/content/image/logo_2.png" id="logo_2" title="SundayDog Logo" alt="SundayDog Shop" />
             <img src="<?php echo $contentUrl;?>/content/image/logo_1.png" id="logo_1" title="SundayDog Logo" alt="SundayDog Shop" />
-            <ul>
+            <ul id="main_menu">
                 <li id="home">HOME</li>
-                <li>SHOP</li>
+                <li id="shop">SHOP</li>
                 <li id="brand">BRANDS</li>
                 <li id="about">ABOUT US</li>
                 <li id="contact">CONTACT US</li>
                 <li id="gallery">GALLERY</li>
             </ul>
-            <ul>
-                <li>SUB Ribbin here!!</li>
+            <ul id="sub_menu">
+                <li id="c">CATEGORIES</li>
+                <li>SIZE</li>
+                <li>COLOR</li>
+                <li>BRANDS</li>
+                <li>ALL</li>
             </ul>
         </header>
         <div id="background_1"></div>

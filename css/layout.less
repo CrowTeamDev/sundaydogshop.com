@@ -195,10 +195,13 @@ li{
         padding-top: 53px; 
         margin-left: 4%;
     }
-    li{ 
-        padding: 28px 18px 55px 14px;
+    ul#main_menu{
+        margin-bottom: 33px;
+    }
+    ul#main_menu li{ 
+        padding: 28px 18px 35px 14px;
         margin: 0 14px 0 18px;
-        
+
         &:hover{
             color: @color_w1;
             background-image: url('../content/image/navigation_select_1.png');
@@ -207,14 +210,37 @@ li{
             animation: animatedRibbon 0.75s;
             -webkit-animation: animatedRibbon 0.75s;
         }
+        &.select{
+            color: @color_w1;
+            background-image: url('../content/image/navigation_select_1.png');
+            background-repeat: no-repeat;
+            background-size: 100% 80px; 
+        }
+        &.shopMode{
+            padding-bottom: 40px;
+            background-image: url('../content/image/navigation_select_3.png');
+            background-size: 100% 100%;
+        }
     }
-    .select{
-        color: @color_w1;
-        background-image: url('../content/image/navigation_select_1.png');
+    ul:last-child{
+        background-image: url('../content/image/navigation_select_2.png');
         background-repeat: no-repeat;
-        background-size: 100% 80px; 
+        background-position: left bottom;
+        background-size: contain; 
+        width: 420px;
+        margin-left: 255px;
+        padding: 20px 0px 10px;
+        font-size: 11pt;
+        color: @color_w1;
+        display: none;
+        z-index: 3;
+        li{
+            margin-left: 20px;
+            &:hover{ color: @color_b1; }
+            &.findOn{ color: @color_b1; }
+            &:first-child{ margin-left: 30px; }
+        }
     }
-    &.shopMode{ height: 170px; }
     &.page_load{
         animation: navigationAnimation 1.75s;
         -webkit-animation: navigationAnimation 1.75s;
@@ -427,6 +453,7 @@ label[id*='payment_']{
             td{ border: 2px solid @color_g5; }
         }
     }
+
     article{
         span{ font-weight: bold; }
     }
@@ -482,6 +509,7 @@ label[id*='payment_']{
     }
     &.selected{ .hoverContact; }
 }
+
 #contact_mail{
     margin-top: 20px;
     margin-bottom: 80px;
@@ -550,3 +578,43 @@ label[id*='payment_']{
         text-decoration: none;
     }
 }
+
+#contact_FAQ{ float: right; }
+#contact_mail{ margin-top: 20px; }
+
+
+.thumbnail img {
+    margin-top:20px;
+    display: inline-block;
+    max-width:10%;
+    max-height:10%;
+    width: auto;
+    height: auto;
+}
+
+div.img-resize img{
+	width:100%;  
+        height:80%;
+
+}
+  
+/*set a border on the images to prevent shifting*/
+ #gallery_01 img{border:2px solid white;}
+ 
+ /*Change the colour*/
+ .active img{border:2px solid #333 !important;}
+ 
+ #productDetail{
+    position:absolute;
+    right:25%;
+ }
+  #productImage{
+    position:absolute;
+    left:25%;
+ }
+ 
+ .ui-dialog,.ui-dialog,.ui-widget, .ui-widget-content, .ui-corner-all, .ui-draggable, .ui-resizable {
+     background:#666666 !important;
+     opacity: 0.9;
+     color: #FFFFFF !important;
+ }
