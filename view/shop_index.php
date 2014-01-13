@@ -68,4 +68,6 @@
 <?php
     echo "</div>";
     }
+    if(!empty($_GET['fb']))
+        echo "<input type='hidden' id='fb' value='".$_GET['fb']."' />";
 ?>

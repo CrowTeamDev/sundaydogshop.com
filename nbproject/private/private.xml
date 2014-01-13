@@ -4,12 +4,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/sundaydogshop.com/index.php</file>
-            <file>file:/C:/wamp/www/sundaydogshop.com/css/layout.less</file>
-            <file>file:/C:/wamp/www/sundaydogshop.com/model/db.class.php</file>
-            <file>file:/C:/wamp/www/sundaydogshop.com/view/product_index.php</file>
-            <file>file:/C:/wamp/www/sundaydogshop.com/includes/init.php</file>
-            <file>file:/C:/wamp/www/sundaydogshop.com/controller/productController.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/index.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/css/layout.less</file>
+            <file>file:/C:/wamp/www/sundaydogshop/js/views/index.js</file>
         </group>
     </open-files>
 </project-private>
