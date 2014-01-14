@@ -164,6 +164,7 @@ $(document).ready(function(){
                     cart_obj.totalCost = grandTotal.value();
                     break;
                 case 2:
+                    if(!validateInputs()) return;
                     buyyer_obj = create_buyyer();
                     display_item(payment_summary, cart_obj);
                     display_address(buyyer_obj);
@@ -185,6 +186,23 @@ $(document).ready(function(){
             }
         });
         
+        function validateInputs(){
+            var row = function(i){ return $('tr:eq('+i+') td:eq(1)', payment_shipping).find('input,textarea'); };
+            var result = true;
+            
+            var mail = row(9).val();
+            var atpos=mail.indexOf("@");
+            var dotpos=mail.lastIndexOf(".");
+            if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+                displayError(9);
+                result = false;
+            }
+            
+            return result;
+        }
+        function displayError(index){
+            
+        }
         function create_buyyer(){
             obj = new Buyyer();
             
