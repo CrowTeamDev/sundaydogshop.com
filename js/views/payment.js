@@ -201,7 +201,7 @@ $(document).ready(function(){
             return result;
         }
         function displayError(index){
-            
+            $('tr:eq('+i+') td:eq(2)', payment_shipping)
         }
         function create_buyyer(){
             obj = new Buyyer();

@@ -363,9 +363,12 @@ label[id*='payment_']{
 }
 #payment_shipping{
     table{
-        width: 40%;
+        width: 60%;
         margin-bottom: 30px;
-        tr{ height: 23px; }
+        tr{
+            height: 23px;
+            td:last-child{ width: 35%; }
+        }
         td{ padding: 1%; }
         input,textarea{ width: 100%; }
     }
