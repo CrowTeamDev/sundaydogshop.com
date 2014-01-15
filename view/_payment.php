@@ -43,52 +43,52 @@
             <tr>
                 <td>FIRST NAME*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>LAST NAME*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>ADDRESS*</td>
                 <td><textarea></textarea></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>ZIP CODE*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>CITY*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>STATE*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>COUNTRY*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>HOME PHONE*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>MOBILE PHONE*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
             <tr>
                 <td>E-MAIL*</td>
                 <td><input type="text" /></td>
-                <td></td>
+                <td><span></span></td>
             </tr>
         </table>
         *REQUIRE FIELD

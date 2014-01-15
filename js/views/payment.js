@@ -190,18 +190,93 @@ $(document).ready(function(){
             var row = function(i){ return $('tr:eq('+i+') td:eq(1)', payment_shipping).find('input,textarea'); };
             var result = true;
             
+            $('tr', payment_shipping).each(function(){
+                $(this).find('td:eq(2) span').text('');
+            });
+            
+            if (!checkAphabet(0))
+                result = false;
+            
+            if (!checkAphabet(1))
+                result = false;
+            
+            var address = row(2).val();
+            if (address === ''){
+                displayError(2);
+                result = false;
+            }
+            
+            if (!checkNumber(3))
+                result = false;
+            
+            if (!checkAphabet(4))
+                result = false;
+            
+            if (!checkAphabet(5))
+                result = false;
+            
+            if (!checkAphabet(6))
+                result = false;
+            
+            if (!checkNumber(7))
+                result = false;
+            
+            if (!checkNumber(8))
+                result = false;
+            
             var mail = row(9).val();
             var atpos=mail.indexOf("@");
             var dotpos=mail.lastIndexOf(".");
-            if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+            if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length){
                 displayError(9);
                 result = false;
             }
             
+            function checkAphabet(i){
+                var regexLetter = /[a-zA-z]/;
+                if (!regexLetter.test(row(i).val())){
+                    displayError(i);
+                    return false;
+                }
+                return true;
+            }
+            function checkNumber(i){
+                var regexNum = /\d/;
+                if (!regexNum.test(row(i).val())){
+                    displayError(i);
+                    return false;
+                }
+                return true;
+            }
+            
             return result;
         }
-        function displayError(index){
-            $('tr:eq('+i+') td:eq(2)', payment_shipping)
+        
+        function displayError(i){
+            var warning;
+            
+            switch(i){
+                case 0:
+                case 1:
+                case 4:
+                case 5:
+                case 6:
+                    warning = "Please input only alphabet";
+                    break;
+                case 2:
+                    warning = "Please input address detail";
+                    break;
+                case 3:
+                case 7:
+                case 8:
+                    warning = "Please input only number";
+                    break;
+                case 9:
+                    warning = "Please input email address correctly";
+                    break;
+            }
+            
+            $('tr:eq('+i+') td:eq(2)', payment_shipping).find('span').text(warning);
         }
         function create_buyyer(){
             obj = new Buyyer();

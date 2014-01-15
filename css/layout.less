@@ -18,6 +18,7 @@
 @color_g5: #B9BBBD;
 @color_w1: #FFFFFF;
 @color_b1: #000000;
+@color_r1: #FF0000;
 
 @font-face{
     font-family: AvenirNext;
@@ -363,11 +364,18 @@ label[id*='payment_']{
 }
 #payment_shipping{
     table{
-        width: 60%;
+        width: 80%;
         margin-bottom: 30px;
         tr{
             height: 23px;
-            td:last-child{ width: 35%; }
+            td:last-child{
+                width: 50%;
+                .fontAvenirNext;
+                font-size: 10pt;
+                font-weight: bold;
+                font-style: italic;
+                color: @color_r1;
+            }
         }
         td{ padding: 1%; }
         input,textarea{ width: 100%; }
