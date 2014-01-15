@@ -185,6 +185,6 @@ $(document).ready(function(){
         });
     }    
     function shop_handle(id){
-        window.location.href = 'shop?fb=' + id;
+        window.location.href = 'shop?gb=' + id;
     }
 });
