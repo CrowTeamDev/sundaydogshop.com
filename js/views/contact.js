@@ -41,7 +41,40 @@ $(document).ready(function(){
             $(this).next('div').addClass('show').fadeIn(750);
         });
         $('div#contact_mail').find('span').click(function(){
+            if(!validateInputs()) return;
             $(this).closest('form').submit();
         });
+    }
+    
+    function validateInputs(){
+        var row = function(i){ return $('tr:eq('+i+') td:eq(1)', 'div#contact_mail form').find('input,textarea'); };
+        var result = -1;
+        
+        $('tr', 'div#contact_mail form').find('.error').removeClass('error');
+        
+        if (row(0).val() === ''){
+            $('tr:eq(0)', 'div#contact_mail form').find('.label').addClass('error');
+            result = false;
+        }
+        
+        var mail = row(1).val();
+        var atpos=mail.indexOf("@");
+        var dotpos=mail.lastIndexOf(".");
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length){
+            $('tr:eq(1)', 'div#contact_mail form').find('.label').addClass('error');
+            result = false;
+        }
+        
+        if (row(2).val() === ''){
+            $('tr:eq(2)', 'div#contact_mail form').find('.label').addClass('error');
+            result = false;
+        }
+        
+        if (row(3).val() === ''){
+            $('tr:eq(3)', 'div#contact_mail form').find('.label').addClass('error');
+            result = false;
+        }
+        
+        return result;
     }
 });
