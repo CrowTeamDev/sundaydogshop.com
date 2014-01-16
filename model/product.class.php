@@ -3,12 +3,8 @@
 
 	public function getProduct($id) {
                 if(!empty($id)){
-//                    $id = $_GET["id"];
                     $product->productList = db::getInstance()->query('SELECT * FROM Product where item_no='.$id."");
-                    return  $product->productList;
+                    return $product->productList;
                 }
 	}
 }
-        
-    
-?>

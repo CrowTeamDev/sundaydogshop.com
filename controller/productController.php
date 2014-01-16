@@ -9,12 +9,4 @@ Class productController Extends baseController {
             $this->registry->template->productList = $this->registry->product->getProduct($id);
 	    $this->registry->template->show('product_index');
     }
-    
-    
-    
-
-
-
 }
-
-?>
