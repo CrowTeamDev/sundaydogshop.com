@@ -1,6 +1,6 @@
 $(function(){
     set_menuOn('shop');
-    shop_handle($('input#fb').val());
+    shop_handle($('input#gb').val());
     
     $(".productImage").elevateZoom({gallery:'productImage', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'}); 
     $(".productImage").bind("click", function(e) {  

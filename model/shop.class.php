@@ -1,41 +1,35 @@
 <?php
 class shop{
-	public function getProduct() {
-                $findBy = "";
-                if(!empty($_GET['fb'])){
-                    if($_GET['fb']=='c'){
-                        $findBy = 'Catagory';
+	public function getProduct($filterBy,$findBy) {
+                if(!empty($filterBy) && empty($findBy) && $filterBy!='a'){
+                    if($filterBy=='Catagory' || $filterBy=='Brand'){
+                        $sql = db::getInstance()->query("SELECT * FROM ".$filterBy."");
+                        $data = $sql->fetchAll();
                     }
-                    else if($_GET['fb']=='b'){
-                        $findBy = 'Brand';
+                    else if($filterBy=='size'){
+                        $sql = db::getInstance()->query("SELECT * FROM Product GROUP BY ".$filterBy."");
+                        $data = $sql->fetchAll();
                     }
-                    else if($_GET['fb']=='s'){
-                        $findBy = 'size';
-                    }
-                    else if($_GET['fb']=='a'){
-                        $findBy = 'all';
-                    }
-                }
-                if(!empty($_GET['fb']) && empty($_GET['cn']) && empty($_GET['size'])){
-                    if($_GET['fb']=='c' || $_GET['fb']=='b'){
-                        $shop->findBy = db::getInstance()->query("SELECT * FROM ".$findBy."");
-                    }
-                    else if($_GET['fb']=='s'){
-                        $shop->findBy = db::getInstance()->query("SELECT * FROM Product GROUP BY ".$findBy."");
-                    }
-                    return  $shop->findBy;
+                    return  $data;
                 }
                 
-                if(!empty($_GET['fb']) && (!empty($_GET['cn']) || !empty($_GET['size']))){
-                    if(!empty($_GET['cn'])){
-                        $shop->productList = db::getInstance()->query("SELECT * FROM Product WHERE catagories = ".$_GET['cn']."");
+                if(!empty($filterBy) && !empty($findBy) && $filterBy!='a'){
+                    if($filterBy=='Catagory'){
+                        $sql = db::getInstance()->query("SELECT * FROM Product WHERE catagories = ".$findBy."");
+                        $data = $sql->fetchAll();
                         //echo $shop->productList->rowCount();
                     }
-                    else if(!empty($_GET['size'])){
-                        $shop->productList = db::getInstance()->query("SELECT * FROM Product WHERE size = '".$_GET['size']."'");
+                    else if($filterBy=='size'){
+                        $sql = db::getInstance()->query("SELECT * FROM Product WHERE size = '".$findBy."'");
+                        $data = $sql->fetchAll();
                         //echo $shop->productList->rowCount();
                     }
-                    return  $shop->productList;
+                    return  $data;
+                }
+                else if($filterBy=='a'){
+                    $sql = db::getInstance()->query("SELECT * FROM Product");
+                    $data = $sql->fetchAll();
+                    return  $data;
                 }
 	}
 }
