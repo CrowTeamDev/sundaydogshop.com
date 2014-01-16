@@ -1,10 +1,10 @@
 <?php
     class product{
 
-	public function getProduct() {
-                if(!empty($_GET["id"])){
-                    $id = $_GET["id"];
-                    $product->productList = db::getInstance()->query('SELECT * FROM Product where item_no='.$_GET["id"]."");
+	public function getProduct($id) {
+                if(!empty($id)){
+//                    $id = $_GET["id"];
+                    $product->productList = db::getInstance()->query('SELECT * FROM Product where item_no='.$id."");
                     return  $product->productList;
                 }
 	}
