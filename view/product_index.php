@@ -16,27 +16,7 @@
     $zoom_3 = "content/image/product/".$itemNo."_3Large.png";
 ?>
 <script src="js/views/product.js" type="text/javascript"></script>
-<table>
-    <div id="productDetail">
-        <input type="hidden" value="<?php echo $name; ?>" id="name" />
-        <div style="height: 25px; width: 100%;"><?php echo $name; ?></div>
-        <div style="background:#808080; height: 5px; width: 100%;"></div>
-        <div style="height: 50px;"><?php echo $price; ?></div>
-        <div>Product details</div>
-        <div><?php echo $detail; ?></div>
-        <div>SIZE<select>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-        </select></div>
-        <div>
-            QUANTITY
-            <input type="text" maxlength=3 size=1 id="quantity" onkeypress="return isNumber(event)">
-            <button type="button" id="buy" onclick="buy()">BUY</button>
-        </div>
-        <button type="button">CHECK OUT</button>
-    </div>
+<div id="product_main">
     <div id="productImage">
         <div class="img-resize">
             <img class="productImage"
@@ -65,7 +45,27 @@
             </a>
         </div>
     </div>
-</table>
+    <div id="productDetail">
+        <input type="hidden" value="<?php echo $name; ?>" id="name" />
+        <div style="height: 25px; width: 100%;"><?php echo $name; ?></div>
+        <div style="background:#808080; height: 5px; width: 100%;"></div>
+        <div style="height: 50px;"><?php echo $price; ?></div>
+        <div>Product details</div>
+        <div><?php echo $detail; ?></div>
+        <div>SIZE<select>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select></div>
+        <div>
+            QUANTITY
+            <input type="number" min="1" max="99" value="1" id="quantity" />
+            <button type="button" id="buy" onclick="buy()">BUY</button>
+        </div>
+        <button type="button">CHECK OUT</button>
+    </div>
+</div>
 <?php
     if(!empty($_GET['fb']))
         echo "<input type='hidden' id='fb' value='".$_GET['fb']."' />";
