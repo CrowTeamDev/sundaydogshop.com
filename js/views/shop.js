@@ -6,7 +6,7 @@
 
 $(function(){
     set_menuOn('shop');
-    shop_handle($('input#fb').val());
+    shop_handle($('input#gb').val());
     
     $('.product').mouseover(function(){
        $('.product_detail').hide();

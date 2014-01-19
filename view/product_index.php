@@ -67,5 +67,5 @@
     </div>
 </div>
 <?php
-    if(!empty($_GET['fb']))
-        echo "<input type='hidden' id='fb' value='".$_GET['fb']."' />";
+    if(!empty($_GET['gb']))
+        echo "<input type='hidden' id='gb' value='".$_GET['gb']."' />";
