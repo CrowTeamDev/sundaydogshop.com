@@ -9,7 +9,7 @@ $(function(){
         imageCrossfade: true,
         loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'
     }); 
-    $(".productImage").bind("click", function(e) {  
+    $(".productImage").bind("click", function(e) {
         var ez = $('.productImage').data('elevateZoom');	
         $.fancybox(ez.getGalleryList());
         return false;
