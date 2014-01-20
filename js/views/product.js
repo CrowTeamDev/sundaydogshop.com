@@ -14,9 +14,15 @@ $(function(){
         $.fancybox(ez.getGalleryList());
         return false;
     });
+    $(".thumbnail a").bind("click", function(e) {
+        setTimeout(function(){
+            $(".productImage").css({'width':'406px','height':'406px'});
+        }, 50);
+    });
 });
 
 function buy(){
+    $(".productImage").css({'width':'406px','height':'406px'});
     var newDiv = $(document.createElement('div')); 
     if($("#quantity").val()!==''){
         var quantity = $("#quantity").val();
