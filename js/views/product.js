@@ -19,17 +19,19 @@ $(function(){
             $(".productImage").css({'width':'406px','height':'406px'});
         }, 50);
     });
+    $("#product_buy", "#productDetail").bind("click", buy);
 });
 
 function buy(){
-    $(".productImage").css({'width':'406px','height':'406px'});
-    var newDiv = $(document.createElement('div')); 
-    if($("#quantity").val()!==''){
-        var quantity = $("#quantity").val();
-        newDiv.html('<p align="center">you just added<br> '+quantity +' "'+ $("#name").val()  +'"<br> to your cart </p>');
+    var name = $("#product_name").text();
+    var size = $("#product_size").val();
+    var qty = $("#quantity").val();
+    var newDiv = $(document.createElement('div'));
+    if (size !== ''){
+        newDiv.html('<p align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
         newDiv.dialog({
-            hide: ('fade',3000),
-            show: ('fade',3000),
+            hide: ('fade', 3000),
+            show: ('fade', 3000),
             modal: true,
             dialogClass: "no-close success-dialog",
             open: function(event, ui){
