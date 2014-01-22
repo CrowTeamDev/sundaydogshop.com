@@ -7,6 +7,7 @@ $(function(){
         cursor: 'pointer',
         galleryActiveClass: 'active',
         imageCrossfade: true,
+        zoomWindowPosition: 'zoomBox',
         loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'
     }); 
     $(".productImage").bind("click", function(e) {

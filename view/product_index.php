@@ -45,6 +45,7 @@
             </a>
         </div>
     </div>
+    <div id="zoomBox"></div>
     <div id="productDetail">
         <div id="product_name"><?php echo $name; ?></div>
         <hr style="height: 3px; background: #ACAEB0; border: none;" />
