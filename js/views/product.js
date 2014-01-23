@@ -24,7 +24,10 @@ $(function(){
 });
 
 function buy(){
+    var id = $("#product_id").val();
     var name = $("#product_name").text();
+    var price = $("#product_price").find('span').text();
+    var weight = $("#product_weight").val();
     var size = $("#product_size").val();
     var qty = $("#quantity").val();
     var newDiv = $(document.createElement('div'));
@@ -40,5 +43,15 @@ function buy(){
             }
         });
         $(".ui-dialog-titlebar").hide();
+        
+        //Case 0 in cart
+        var cartObj = new Cart();
+        cartObj.item[cartObj.item.length] = new Item(id, name, price, weight, qty);
+        
+        var data = { cart : JSON.stringify(cartObj) };
+        $.post('_session.php', data, function(result){
+            alert(result);
+            $('body').html(result);
+        });
     }
 }

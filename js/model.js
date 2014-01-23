@@ -35,6 +35,13 @@ function Item(id, name, price, weight){
     this.weight = weight;
     this.qty = 1;
 }
+function Item(id, name, price, weight, qty){
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.weight = weight;
+    this.qty = qty;
+}
 
 function Buyyer(){
     this.first = "";
