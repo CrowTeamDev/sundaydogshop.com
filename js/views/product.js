@@ -49,9 +49,6 @@ function buy(){
         cartObj.item[cartObj.item.length] = new Item(id, name, price, weight, qty);
         
         var data = { cart : JSON.stringify(cartObj) };
-        $.post('_session.php', data, function(result){
-            alert(result);
-            $('body').html(result);
-        });
+        $.post('view/_session.php', data);
     }
 }

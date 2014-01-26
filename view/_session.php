@@ -1,3 +1,4 @@
 <?php
+    session_start();
+
     $_SESSION['cart'] = $_REQUEST['cart'];
-    echo $_SESSION['cart'];
