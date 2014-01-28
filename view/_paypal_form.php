@@ -1,4 +1,8 @@
 <?php
+    if (isset($_SESSION['cart'])){
+        unset($_SESSION['cart']);
+    }
+        
     $site_path = '../';
     define ('__SITE_PATH', $site_path);
 

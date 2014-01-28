@@ -5,11 +5,6 @@
     load into #main
     via click #your_cart
 -->
-<?php
-    session_start();
-    $cart = $_SESSION['cart'];
-?>
-<script>alert("<?php echo $cart; ?>");</script>
 <script src="js/views/payment.js" type="text/javascript"></script>
 <div id="payment-navigation">
     <ul>

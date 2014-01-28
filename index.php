@@ -1,5 +1,10 @@
 <?php
  session_start();
+ if (isset($_SESSION['cart'])){
+    $cart = $_SESSION['cart'];
+ }else{
+    $cart = null;
+ }
 
  /*** error reporting on ***/
  error_reporting(E_ALL);
@@ -54,9 +59,6 @@
         
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <script>
-            alert("<?php echo $_SESSION['cart']; ?>");
-        </script>
     </head>
     <body>
         <header id="start_menu">
@@ -101,5 +103,6 @@
             <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
         </footer>
         <input type="hidden" id="local_path" value="<?php echo $contentUrl;?>" />
+        <input type="hidden" id="myCart" value='<?php echo $cart; ?>' />
     </body>
 </html>

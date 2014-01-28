@@ -44,11 +44,10 @@ function buy(){
         });
         $(".ui-dialog-titlebar").hide();
         
-        //Case 0 in cart
-        var cartObj = new Cart();
-        cartObj.item[cartObj.item.length] = new Item(id, name, price, weight, qty);
+        cart_obj.item.push(new Item(id, name, price, weight, qty));
         
-        var data = { cart : JSON.stringify(cartObj) };
+        var data = { cart : JSON.stringify(cart_obj) };
         $.post('view/_session.php', data);
+        cartItem.add();
     }
 }

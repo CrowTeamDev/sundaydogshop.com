@@ -32,8 +32,8 @@ var directory = {
 cartItem = {
     set : function(value){ $('span', '#your_cart').text(value); },
     add : function(){
-        var amount = parseInt($('span', '#your_cart').text())++;
-        this.set(amount);
+        var amount = parseInt($('span', '#your_cart').text());
+        this.set(amount+1);
     }
 };
 
@@ -76,24 +76,23 @@ $(document).ready(function(){
     
     var url_path;
     
-    //Mock cart
-        cart_obj = new Cart();
-        cart_obj.item[0] = new Item('P001', 'Product 01', 500, 5);
-        cart_obj.item[1] = new Item('P002', 'Product 02', 350, 3.5);
-        cart_obj.item[2] = new Item('P003', 'Product 03', 150, 1.5);
-    //
-    
     setup_variable();
     setup_default();
     setup_eventHandle();
     
     function setup_variable(){
         url_path = $('#local_path').val();
+        
+        if ($('#myCart').val().length > 0)
+            cart_obj = JSON.parse($('#myCart').val());
+        else
+            cart_obj = new Cart();
     }
     
     function setup_default(){
         
         changeBackground('init');
+        cartItem.set(cart_obj.item.length);
         $('#start_menu').slideDown(650, function(){
             $(this).find('label').fadeIn(450);
         });
@@ -178,10 +177,8 @@ $(document).ready(function(){
                 window.location.href = id;
                 break;
         }
-        $('#main').fadeOut(300, function(){
-            $(this).load(url_redirect, function(){
-                $(this).fadeIn(500);
-            });
+        $('#main').load(url_redirect, function(){
+            $('#main').fadeIn(500);
         });
     }    
     function shop_handle(id){
