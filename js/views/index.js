@@ -16,6 +16,10 @@ $(document).keypress(function(event){
 
 //public
 
+
+
+    
+
 var directory = {
     default: 'HOME',
     get: function(){ return $('#current_directory').text(); },
@@ -52,7 +56,7 @@ function changeBackground(menu_id){
     $('#background_1').show();
     switch (menu_id){
         case 'init':
-            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+//            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
             break;
         case 'contact':
             value = 'url('+ url_path + '/content/image/background/image_3.jpg)';
@@ -188,3 +192,24 @@ $(document).ready(function(){
         window.location.href = 'shop?fb=' + id;
     }
 });
+
+   
+   $(window).load(function(){
+        $.vegas('slideshow', {
+        delay:3000,
+            backgrounds:[
+              { src:'content/image/background/image_1.jpg', fade:2000 },
+              { src:'content/image/background/image_2.jpg', fade:2000 },
+              { src:'content/image/background/image_3.jpg', fade:2000 },
+              { src:'content/image/background/image_4.jpg', fade:2000 },
+              { src:'content/image/background/image_5.jpg', fade:2000 },
+              { src:'content/image/background/image_6.jpg', fade:2000 },
+              { src:'content/image/background/image_7.jpg', fade:2000 },
+              { src:'content/image/background/image_8.jpg', fade:2000 },
+              { src:'content/image/background/image_9.jpg', fade:2000 },
+              { src:'content/image/background/image_10.jpg', fade:2000 },
+              { src:'content/image/background/image_11.jpg', fade:2000 },
+            ]
+          });
+   });
+   
