@@ -85,7 +85,7 @@ $(document).ready(function(){
             
             row.find('#total span').text(price * qty);
             grandTotal.sum();
-            cart_obj.update(i, parseInt(qty));
+            cart_obj.item[i].qty = parseInt(qty);
         });
         $('.checkOut_item #remove', payment_checkOut).find('label').click(function(){
             $(this).closest('tr')
@@ -97,7 +97,7 @@ $(document).ready(function(){
                     grandTotal.sum();
             });
             var index = $('.created', payment_checkOut).index($(this).closest('tr'));
-            cart_obj.remove(index);
+            cart_obj.item.splice(index, 1);
         });
         $('tr td.menu', payment_pay).click(function(){
             var otherPayment = $('td', payment_pay).index(this) === 0 ? 1 : 0;
@@ -162,12 +162,16 @@ $(document).ready(function(){
             switch(payment_step){
                 case 1:
                     cart_obj.totalCost = grandTotal.value();
+                    updateSession(cart_obj);
                     break;
                 case 2:
                     if(!validateInputs()) return;
                     buyyer_obj = create_buyyer();
                     display_item(payment_summary, cart_obj);
                     display_address(buyyer_obj);
+                    break;
+                case 3:
+                    updateSession(cart_obj);
                     break;
                 case 4:
                     window.location.replace($('#local_path').val() + '/home');
@@ -251,7 +255,6 @@ $(document).ready(function(){
             
             return result;
         }
-        
         function displayError(i){
             var warning;
             
@@ -296,7 +299,6 @@ $(document).ready(function(){
             
             return obj;
         }
-        
         function format_payment_detail(){
             var accountNo = $('#payment_bankwire_detail', payment_pay).find('#accountNo');
             accountNo.text(format_bankAccount(accountNo.text()));
@@ -304,6 +306,11 @@ $(document).ready(function(){
             function format_bankAccount(account){
                 return account.substring(0,3) + '-' + account.substring(3,9) + '-' + account.substring(9);
             }
+        }
+        function updateSession(cart){
+            var data = { cart : JSON.stringify(cart) };
+            $.post('view/_session.php', data);
+            cartItem.set(cart.item.length);
         }
     }
     
@@ -372,8 +379,8 @@ $(document).ready(function(){
         $('.checkOut_item:first', div_step).hide();
         
         if(!isCheckOutPage){
-            cart.totalCost = total_price;
-            cart.addShippingCost(total_weight);
+            cart.shippingCost = total_weight;
+            cart.totalCost = total_price + cart.shippingCost;
             
             $('#shipping_cost', div_step).find('span').text(cart.shippingCost);
             $('#total_cost', div_step).find('span').text(cart.totalCost);

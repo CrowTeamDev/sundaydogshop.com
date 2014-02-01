@@ -9,23 +9,6 @@ function Cart(){
     this.item = new Array();
     this.shippingCost = 0;
     this.totalCost = 0;
-    
-    this.rateShipping = 100;
-    
-    this.update = update_item;
-    this.remove = remove_item;
-    this.addShippingCost = add_shippingCost;
-    
-    function update_item(i, j){
-        this.item[i].qty = j;
-    }
-    function remove_item(i){
-        this.item.splice(i, 1);
-    }
-    function add_shippingCost(value){
-        this.shippingCost = this.rateShipping * value;
-        this.totalCost += this.shippingCost;
-    }
 }
 
 function Item(id, name, price, weight){
