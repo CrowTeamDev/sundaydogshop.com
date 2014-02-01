@@ -1,4 +1,10 @@
 <?php
+ session_start();
+ if (isset($_SESSION['cart'])){
+    $cart = $_SESSION['cart'];
+ }else{
+    $cart = null;
+ }
 
  /*** error reporting on ***/
  error_reporting(E_ALL);
@@ -100,5 +106,6 @@
             <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
         </footer>
         <input type="hidden" id="local_path" value="<?php echo $contentUrl;?>" />
+        <input type="hidden" id="myCart" value='<?php echo $cart; ?>' />
     </body>
 </html>

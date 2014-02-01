@@ -138,3 +138,4 @@
     <label id="payment_back">CONTINUE SHOPPING</label>
     <label id="payment_next">CHECK OUT</label>
 </article>
+<div id="payment_cart"></div>
