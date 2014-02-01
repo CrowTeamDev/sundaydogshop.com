@@ -35,5 +35,12 @@
             $data = $sql->fetchAll();
             return $data;
         }
+        
+        function getShippingOption() {
+            $query = "SELECT configName,configValue FROM Config WHERE configName like 'shipping_%' order by configValue";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+        }
     }
 ?>

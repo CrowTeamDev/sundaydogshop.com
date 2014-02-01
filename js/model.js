@@ -7,8 +7,9 @@
 
 function Cart(){
     this.item = new Array();
-    this.shippingCost = 0;
     this.totalCost = 0;
+    this.toalWeight = 0;
+    this.shippingRate = 1;
 }
 
 function Item(id, name, price, weight){

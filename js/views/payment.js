@@ -170,9 +170,6 @@ $(document).ready(function(){
                     display_item(payment_summary, cart_obj);
                     display_address(buyyer_obj);
                     break;
-                case 3:
-                    updateSession(cart_obj);
-                    break;
                 case 4:
                     window.location.replace($('#local_path').val() + '/home');
                     break;
@@ -188,6 +185,9 @@ $(document).ready(function(){
                 payment_step = target_step;
                 current_step(present_step);
             }
+        });
+        $("#shipping_option input:radio[name=shipping]").click(function() {
+            display_item(payment_summary, cart_obj);
         });
         
         function validateInputs(){
@@ -379,11 +379,12 @@ $(document).ready(function(){
         $('.checkOut_item:first', div_step).hide();
         
         if(!isCheckOutPage){
-            cart.shippingCost = total_weight;
-            cart.totalCost = total_price + cart.shippingCost;
+            cart.shippingRate = parseFloat($("#shipping_option input[name=shipping]:checked").val());
+            cart.toalWeight = total_weight;
+            cart.totalCost = total_price;
             
-            $('#shipping_cost', div_step).find('span').text(cart.shippingCost);
-            $('#total_cost', div_step).find('span').text(cart.totalCost);
+            $('#shipping_cost', div_step).find('span').text(cart.toalWeight * cart.shippingRate);
+            $('#total_cost', div_step).find('span').text(cart.totalCost + (cart.toalWeight * cart.shippingRate));
         }
     }
     

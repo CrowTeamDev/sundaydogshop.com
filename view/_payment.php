@@ -1,3 +1,13 @@
+<?php
+    $site_path = '../';
+    define ('__SITE_PATH', $site_path);
+
+    include $site_path . 'includes/init.php';
+    $registry->config = new config($registry);
+    
+    /*** load up var ***/
+    $shippingOption = $registry->config->getShippingOption();
+?>
 <!DOCTYPE html>
 <!--
     view for payment process
@@ -109,7 +119,18 @@
                 <td id="total"><span></span>THB</td>
             </tr>
             <tr>
-                <td colspan="4">Shipping cost</td>
+                <td id="shipping_option" colspan="4">
+                    <span>Shipping cost</span>
+                    <?php
+                        foreach($shippingOption as $option){
+                            $name = explode("_", $option[0]);
+                            $html = '<input type="radio" name="shipping" value="'. $option[1] .'" checked />';
+                            $html.= $name[1];
+                            
+                            echo $html;
+                        }
+                    ?>
+                </td>
                 <td id="shipping_cost"><span></span>THB</td>
             </tr>
             <tr>
