@@ -605,9 +605,12 @@ label[id*='payment_']{
     height: auto;
 }
 
+div.img-resize{
+    width: 406px;
+}
 div.img-resize img{
-    width:406px;  
-    height:406px;
+    width: 406px;
+    height: 406px;
 }
   
 /*set a border on the images to prevent shifting*/
@@ -616,13 +619,58 @@ div.img-resize img{
  /*Change the colour*/
  .active img{border:2px solid #333 !important;}
  
- #productImage{
+ div#productImage{
      float: left;
      width: 406px;
      margin-bottom: 150px;
  }
  #productDetail{
      float: right;
+     width: 300px;
+     font-size: 12pt;
+     #product_name{
+         font-size: 16pt;
+         height: 25px;
+         width: 100%;
+     }
+     #product_price{
+         margin: 20px 0 15px;
+     }
+    #product_detail{
+        .fontAvenirNext;
+        span{
+            display: block;
+            margin: 20px 0 10px;
+            font-size: 11pt;
+            text-indent: 50px;
+        }
+     }
+ }
+ #product_buy, #product_checkOut{
+     float: right;
+     margin-right: 25px;
+     display: inline-block;
+     background: @color_w1;
+     padding: 5px 30px;
+     border-color: @color_g2;
+     border-style: solid;
+     border-width: 3px;
+     &:hover{
+         cursor: pointer;
+         color: @color_w1;
+         background-color: @color_g2;
+     }
+     &.clicked{
+         color: @color_w1;
+         background-color: @color_g2;
+     }
+ }
+ #product_checkOut{
+     padding: 5px 50px;
+ }
+ .productImage{
+     width: 406px;
+     height: 406px;
  }
  
  .ui-dialog,.ui-dialog,.ui-widget, .ui-widget-content, .ui-corner-all, .ui-draggable, .ui-resizable {
@@ -642,6 +690,12 @@ div.img-resize img{
     text-indent: 50px;
 }
 
+a:-webkit-any-link{ text-decoration: none; }
+
 #product_main{
     padding: 0 80px;
+}
+#zoomBox{
+    margin-left: 450px;
+    position: static;
 }

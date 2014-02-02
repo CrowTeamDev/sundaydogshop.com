@@ -1,4 +1,10 @@
 <?php
+ session_start();
+ if (isset($_SESSION['cart'])){
+    $cart = $_SESSION['cart'];
+ }else{
+    $cart = null;
+ }
 
  /*** error reporting on ***/
  error_reporting(E_ALL);
@@ -44,6 +50,7 @@
         <meta name="viewport" content="width=device-width">
         
         <link rel="stylesheet/less" type="text/css" href="<?php echo $contentUrl;?>/css/layout.less" />
+        <link rel="stylesheet" type="text/css" href="<?php echo $contentUrl;?>/css/jquery.vegas.css" />
         <link rel="stylesheet/less" type="text/css" href="<?php echo $contentUrl;?>/css/simplePagination.less" />
         <script src="<?php echo $contentUrl;?>/js/shared/jquery-2.0.3.min.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/shared/jquery-ui-1.10.3.js" type="text/javascript"></script>
@@ -51,7 +58,13 @@
         <script src="<?php echo $contentUrl;?>/js/views/index.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/model.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/shared/jquery.elevatezoom.js" type="text/javascript"></script>
+                	
+        <script type="text/javascript" src="<?php echo $contentUrl;?>/js/shared/jquery.easing.min.js"></script>
+        <script type="text/javascript" src="<?php echo $contentUrl;?>/js/shared/supersized.3.2.7.min.js"></script>
+        <script type="text/javascript" src="<?php echo $contentUrl;?>/js/shared/supersized.shutter.min.js"></script>
         
+        <link rel="stylesheet" href="<?php echo $contentUrl;?>/css/supersized.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="<?php echo $contentUrl;?>/css/supersized.shutter.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     </head>
@@ -86,11 +99,15 @@
         </header>
         <div id="background_1"></div>
         <div id="background_2"></div>
+                    <!--Arrow Navigation-->
+	<a id="prevslide" class="load-item"></a>
+	<a id="nextslide" class="load-item"></a>
         <div id="main">
             <?php   
                 echo $registry->router->loader();
             ?>
         </div>
+       
         <footer>
             <label>POLICY</label>
             <label>COPYRIGHTS©</label>
@@ -98,5 +115,6 @@
             <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
         </footer>
         <input type="hidden" id="local_path" value="<?php echo $contentUrl;?>" />
+        <input type="hidden" id="myCart" value='<?php echo $cart; ?>' />
     </body>
 </html>

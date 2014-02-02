@@ -2,6 +2,7 @@
     $row = $productList->fetch();
     $name = $row['name'];
     $price = $row['price'];
+    $weight = $row['weight'];
     $detail = $row['detail'];
     $itemNo = $row['item_no'];
     
@@ -45,25 +46,35 @@
             </a>
         </div>
     </div>
+    <div id="zoomBox"></div>
     <div id="productDetail">
-        <input type="hidden" value="<?php echo $name; ?>" id="name" />
-        <div style="height: 25px; width: 100%;"><?php echo $name; ?></div>
-        <div style="background:#808080; height: 5px; width: 100%;"></div>
-        <div style="height: 50px;"><?php echo $price; ?></div>
-        <div>Product details</div>
-        <div><?php echo $detail; ?></div>
-        <div>SIZE<select>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-        </select></div>
-        <div>
-            QUANTITY
-            <input type="number" min="1" max="99" value="1" id="quantity" />
-            <button type="button" id="buy" onclick="buy()">BUY</button>
+        <input type="hidden" id="product_id" value="<?php echo $itemNo; ?>" />
+        <input type="hidden" id="product_weight" value="<?php echo $weight; ?>" />
+        <div id="product_name"><?php echo $name; ?></div>
+        <hr style="height: 3px; background: #ACAEB0; border: none;" />
+        <div id="product_price"><span><?php echo $price; ?></span> BAHT</div>
+        <div id="product_detail">
+            Product details
+            <span><?php echo $detail; ?></span>
         </div>
-        <button type="button">CHECK OUT</button>
+        <hr style="height: 3px; background: #ACAEB0; border: none;" />
+        <div style="margin: 20px 0;">
+            SIZE
+            <select id="product_size" style="float: right; margin-right: 25px;">
+                <option value=""> -- Please Select -- </option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+        </div>
+        <div style="margin: 30px 0; vertical-align: middle;">
+            QUANTITY
+            <input type="number" min="1" max="99" value="1"
+                   id="quantity" style="width: 35px; margin: 0 15px;" />
+            <label id="product_buy">BUY</label>
+        </div>
+        <label id="product_checkOut">CHECK OUT</label>
     </div>
 </div>
 <?php
