@@ -16,6 +16,10 @@ $(document).keypress(function(event){
 
 //public
 
+
+
+    
+
 var directory = {
     default: 'HOME',
     get: function(){ return $('#current_directory').text(); },
@@ -53,7 +57,6 @@ function changeBackground(menu_id){
     switch (menu_id){
         case 'init':
 //            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
-
             break;
         case 'contact':
             value = 'url('+ url_path + '/content/image/background/image_3.jpg)';
@@ -192,7 +195,6 @@ $(document).ready(function(){
 });
 
    
-
      $(window).load(function(){
               $(function(){			
                 var url_path = $('#local_path').val();
@@ -245,4 +247,4 @@ $(document).ready(function(){
      });
     
 //});
-       
+
