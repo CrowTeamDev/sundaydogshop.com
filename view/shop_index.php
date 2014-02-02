@@ -1,6 +1,44 @@
 <script src="js/views/shop.js" type="text/javascript"></script>
+<script src="js/views/jquery.simplePagination.js"></script>
+<script>
+    $(function(){
+        $('.pagination-groupList').pagination({
+            items: 1,   // Total number of items that will be used to calculate the pages.
+            itemsOnPage: 1, // Number of items displayed on each page.
+            pages:$('#viewHigh').val(),   // If specified, items and itemsOnPage will not be used to calculate the number of pages.
+            displayedPages:5, // How many page numbers should be visible while navigating. Minimum allowed: 3 (previous, current & next)
+            edges:2,    // How many page numbers are visible at the beginning/ending of the pagination.
+            currentPage: $('#viewIndex').val(), // Which page will be selected immediately after init.
+            hrefTextPrefix: "shop?gb="+$('#gb').val()+"&viewIndex=", // A string used to build the href attribute, added before the page number.
+            hrefTextSuffix: '', // Another string used to build the href attribute, added after the page number.
+            prevText: "Prev", // Text to be display on the previous button.
+            nextText: "Next", // Text to be display on the next button.
+            cssStyle: "light-theme", // The class of the CSS theme.
+            selectOnClick: true, // Set to false if you don't want to select the page immediately after click.
+        });
+        $('.pagination-productList').pagination({
+            items: 1,   // Total number of items that will be used to calculate the pages.
+            itemsOnPage: 1, // Number of items displayed on each page.
+            pages:$('#viewHigh').val(),   // If specified, items and itemsOnPage will not be used to calculate the number of pages.
+            displayedPages:5, // How many page numbers should be visible while navigating. Minimum allowed: 3 (previous, current & next)
+            edges:2,    // How many page numbers are visible at the beginning/ending of the pagination.
+            currentPage: $('#viewIndex').val(), // Which page will be selected immediately after init.
+            hrefTextPrefix: "shop?gb="+$('#gb').val()+"&f="+$('#f').val()+"&viewIndex=", // A string used to build the href attribute, added before the page number.
+            hrefTextSuffix: '', // Another string used to build the href attribute, added after the page number.
+            prevText: "Prev", // Text to be display on the previous button.
+            nextText: "Next", // Text to be display on the next button.
+            cssStyle: "light-theme", // The class of the CSS theme.
+            selectOnClick: true, // Set to false if you don't want to select the page immediately after click.
+        });
+    });
+</script>
+<input type="hidden" id="viewHigh" value="<?=$viewHigh?>"/>
+<input type="hidden" id="viewIndex" value="<?=$viewIndex?>"/>
 <?php
     if(!empty($groupList)){
+        if($viewHigh > 1)
+            echo "<div class='pagination-groupList'></div>";
+        
         echo "<div id='find_by_view'>";
 ?>
     <table width="100%">
@@ -42,10 +80,15 @@
     </table>
 <?php
     echo "</div>";
+    if($viewHigh > 1)
+            echo "<div class='pagination-groupList'></div>";
     }
 ?>
 <?php
     if(!empty($productList)){
+        if($viewHigh > 1)
+            echo "<div class='pagination-productList'></div>";
+        
         echo "<div id='product_view'>";
 ?>
     <table cellpadding="0" cellspacing="0" width="100%">
@@ -80,7 +123,11 @@
     </table>
 <?php
     echo "</div>";
+        if($viewHigh > 1)
+            echo "<div class='pagination-productList'></div>";
     }
     if(!empty($_GET['gb']))
         echo "<input type='hidden' id='gb' value='".$_GET['gb']."' />";
+    if(!empty($GLOBALS['findBy']))
+        echo "<input type='hidden' id='f' value='".$GLOBALS['findBy']."' />";
 ?>

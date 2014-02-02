@@ -3,6 +3,8 @@
 Class shopController Extends baseController {
 	public function index() 
 	{
+                $viewMax = 12;
+                $viewIndex = 1;
                 $groupBy = '';
                 $findBy = '';
                 if(!empty($_REQUEST["gb"])){
@@ -26,14 +28,22 @@ Class shopController Extends baseController {
                         $findBy = 'any';
                     }
                 }
+                
+                if(!empty($_REQUEST["viewIndex"])){
+                    $viewIndex = $_REQUEST["viewIndex"];
+                }
+                
                 $GLOBALS["findBy"] = $findBy;
-                $result = $this->registry->shop->getProduct($groupBy,$findBy);
+                $result = $this->registry->shop->getProduct($groupBy,$findBy,$viewMax,$viewIndex);
                 if(!empty($findBy)){
-                    $this->registry->template->productList = $result;
+                    $this->registry->template->productList = $result["data"];
                 }
                 else{
-                    $this->registry->template->groupList = $result;
+                    $this->registry->template->groupList = $result["data"];
                 }
+                $this->registry->template->viewHigh = $result["viewHigh"];
+                $this->registry->template->viewIndex = $viewIndex;
+                
 	        $this->registry->template->show('shop_index');
 	}
 }
