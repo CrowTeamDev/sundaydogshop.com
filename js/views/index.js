@@ -16,10 +16,11 @@ $(document).keypress(function(event){
 
 //public
 
-
-
-    
-
+String.prototype.replaceAll = function (find, replace) {
+    var str = this;
+    return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+};
+        
 var directory = {
     default: 'HOME',
     get: function(){ return $('#current_directory').text(); },
@@ -91,8 +92,11 @@ $(document).ready(function(){
     function setup_variable(){
         url_path = $('#local_path').val();
         
-        if ($('#myCart').val().length > 0)
-            cart_obj = JSON.parse($('#myCart').val());
+        if ($('#myCart').val().length > 0){
+            var cart = $('#myCart').val();
+            cart = cart.replaceAll("\\", "");
+            cart_obj = JSON.parse(cart);
+        }
         else
             cart_obj = new Cart();
     }
