@@ -1,6 +1,12 @@
 <script src="js/views/shop.js" type="text/javascript"></script>
+<script src="js/views/jquery.simplePagination.js"></script>
+<input type="hidden" id="viewHigh" value="<?=$viewHigh?>"/>
+<input type="hidden" id="viewIndex" value="<?=$viewIndex?>"/>
 <?php
     if(!empty($groupList)){
+        if($viewHigh > 1)
+            echo "<div class='pagination-groupList'></div>";
+        
         echo "<div id='find_by_view'>";
 ?>
     <table width="100%">
@@ -42,10 +48,15 @@
     </table>
 <?php
     echo "</div>";
+    if($viewHigh > 1)
+            echo "<div class='pagination-groupList'></div>";
     }
 ?>
 <?php
     if(!empty($productList)){
+        if($viewHigh > 1)
+            echo "<div class='pagination-productList'></div>";
+        
         echo "<div id='product_view'>";
 ?>
     <table cellpadding="0" cellspacing="0" width="100%">
@@ -80,7 +91,11 @@
     </table>
 <?php
     echo "</div>";
+        if($viewHigh > 1)
+            echo "<div class='pagination-productList'></div>";
     }
     if(!empty($_GET['gb']))
         echo "<input type='hidden' id='gb' value='".$_GET['gb']."' />";
+    if(!empty($GLOBALS['findBy']))
+        echo "<input type='hidden' id='f' value='".$GLOBALS['findBy']."' />";
 ?>
