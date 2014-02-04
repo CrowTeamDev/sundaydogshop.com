@@ -116,6 +116,7 @@ $(document).ready(function(){
                 $('#navigation_bar').addClass('page_load').fadeIn(2500);
                 $('#top_menu, footer').addClass('page_load').fadeIn(500);
             });
+            $(".load-item").hide();
         });
         $('#navigation_bar #main_menu').find('li').mouseover(function(){
             var selected = $('li.select');
