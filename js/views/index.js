@@ -57,20 +57,31 @@ function changeBackground(menu_id){
     $('#background_1').show();
     switch (menu_id){
         case 'init':
-//            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+            break;
+        case 'shop':
+        case 'product':
+            value = 'url('+ url_path + '/content/image/background/image_8.jpg)';
+            break;
+        case 'about':
+            value = 'url('+ url_path + '/content/image/background/image_9.jpg)';
             break;
         case 'contact':
             value = 'url('+ url_path + '/content/image/background/image_3.jpg)';
-            $('#prevslide').hide();
-            $('#nextslide').hide();
+            break;
+        case 'community':
+            value = 'url('+ url_path + '/content/image/background/image_5.jpg)';
+            break;
+        case 'policy':
+            value = 'url('+ url_path + '/content/image/background/image_7.jpg)';
             break;
         default:
             $('#background_1').hide();
             value = 'url('+ url_path + '/content/image/background/image_0.jpg)';
-            $('#prevslide').hide();
-            $('#nextslide').hide();
             break;
     }
+    $('#prevslide').hide();
+    $('#nextslide').hide();
     $('#background_2').css('background-image', value);
 }
 function shop_handle(menuSelected){
