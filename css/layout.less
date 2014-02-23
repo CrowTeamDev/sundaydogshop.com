@@ -20,6 +20,7 @@
 @color_b1: #000000;
 @color_r1: #FF0000;
 
+@black: #000000;
 @color_x1: #ABAEA6;
 @color_x2: #DDD9CB;
 
@@ -36,14 +37,6 @@
     src: url('../content/font/PrestigeElite/PrestigeElite.otf')
 }
 
-@keyframes animatedRibbon {
-    from { padding-bottom: 0px; }
-    to { padding-bottom: 35px; }
-}
-@-webkit-keyframes animatedRibbon {
-    from { padding-bottom: 0px; }
-    to { padding-bottom: 35px; }
-}
 @keyframes top_menuAnimation {
     from { top: -5px; }
     to { top: 15px; }
@@ -203,22 +196,12 @@ li{
         margin-bottom: 33px;
     }
     ul#main_menu li{ 
-        padding: 28px 18px 35px 14px;
-        margin: 0 14px 0 18px;
+        padding: 28px 2px 2px;
+        margin: 0 30px;
 
-        &:hover{
-            color: @color_w1;
-            background-image: url('../content/image/navigation_select_1.png');
-            background-repeat: no-repeat;
-            background-size: 100% 80px; 
-            animation: animatedRibbon 0.75s;
-            -webkit-animation: animatedRibbon 0.75s;
-        }
         &.select{
-            color: @color_w1;
-            background-image: url('../content/image/navigation_select_1.png');
-            background-repeat: no-repeat;
-            background-size: 100% 80px; 
+            color: @black;
+            border-bottom: 3px solid black;
         }
         &.shopMode{
             padding-bottom: 40px;
@@ -288,7 +271,12 @@ footer{
     filter:alpha(opacity=60); /* For IE8 and earlier */
     label{ 
         cursor: pointer;
-        padding: 0 35px;
+        margin: 0 35px;
+        
+        &.select{
+            color: @black;
+            border-bottom: 3px solid black;
+        }
     }
     img{
         cursor: pointer;
