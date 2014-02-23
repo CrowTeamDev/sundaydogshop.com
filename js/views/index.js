@@ -171,7 +171,7 @@ $(document).ready(function(){
             selected.removeClass('wasOn');
             selected.addClass('findOn');
         });
-        $('header ul li').click(function(){
+        $('header ul li, footer label').click(function(){
             var menu_id = $(this).attr('id');
 
             if(menu_id === 'shop'){

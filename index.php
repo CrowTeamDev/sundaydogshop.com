@@ -84,10 +84,8 @@
             <ul id="main_menu">
                 <li id="home">HOME</li>
                 <li id="shop">SHOP</li>
-                <li id="brand">BRANDS</li>
                 <li id="about">ABOUT US</li>
-                <li id="contact">CONTACT US</li>
-                <li id="gallery">GALLERY</li>
+                <li id="community">OUR COMMUNITY</li>
             </ul>
             <ul id="sub_menu">
                 <li id="c">CATEGORIES</li>
@@ -109,8 +107,9 @@
         </div>
        
         <footer>
-            <label>POLICY</label>
-            <label>COPYRIGHTS©</label>
+            <label id="policy">POLICY</label>
+            <label id="copyright">©SUNDAYDOG2013</label>
+            <label id="contact">CONTACT US</label>
             <img src="<?php echo $contentUrl;?>/content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
             <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
         </footer>

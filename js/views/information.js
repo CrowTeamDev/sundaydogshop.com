@@ -5,5 +5,10 @@
  */
 
 $(function(){
-    set_menuOn($('input#page').val());
+    var page = $('input#page').val();
+    
+    set_menuOn(page);
+    if (page === 'policy'){
+        $('.info_main').addClass('policy_main');
+    }
 });
