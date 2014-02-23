@@ -87,13 +87,13 @@
                 <li id="about">ABOUT US</li>
                 <li id="community">OUR COMMUNITY</li>
             </ul>
-            <ul id="sub_menu">
+<!--            <ul id="sub_menu">
                 <li id="c">CATEGORIES</li>
                 <li id="s">SIZE</li>
                 <li id="cl">COLOR</li>
                 <li id="b">BRANDS</li>
                 <li id="a">ALL</li>
-            </ul>
+            </ul>-->
         </header>
         <div id="background_1"></div>
         <div id="background_2"></div>
