@@ -25,6 +25,9 @@ class shop{
                 else if($filterBy=='a'){
                     $sql = db::getInstance()->query("SELECT * FROM Product");
                 }
+                
+                // Show All Product
+                $sql = db::getInstance()->query("SELECT * FROM Product");
                 if($sql != null){
                     if($sql->rowCount()!=0){
                         $viewSize = $sql->rowCount();
