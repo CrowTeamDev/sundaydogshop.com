@@ -58,7 +58,7 @@ function changeBackground(menu_id){
     $('#background_1').show();
     switch (menu_id){
         case 'init':
-            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+           // value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
             break;
         case 'shop':
         case 'product':
@@ -127,6 +127,15 @@ $(document).ready(function(){
             $(this).fadeOut(300, function(){
                 $('#navigation_bar').addClass('page_load').fadeIn(2500);
                 $('#top_menu, footer').addClass('page_load').fadeIn(500);
+//                var value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+//                $('#background_2').css('background-image', value);
+
+            $(function(){			
+                var url_path = $('#local_path').val();
+                   $.supersized({
+                           stop_loop               :       1,			// Pauses slideshow on last slide
+                   });
+               });
             });
             $(".load-item").hide();
         });
@@ -223,12 +232,12 @@ $(document).ready(function(){
                            stop_loop               :       0,			// Pauses slideshow on last slide
                            random                  :       0,			// Randomize slide order (Ignores start slide)
                            slide_interval          :       5000,                   // Length between transitions
-                           transition              :       6, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
-                           transition_speed        :       1000,                   // Speed of transition
+                           transition              :       1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+                           transition_speed        :       4000,                   // Speed of transition
                            new_window              :       1,			// Image links open in new window/tab
                            pause_hover             :       0,			// Pause slideshow on hover
                            keyboard_nav            :       1,			// Keyboard navigation on/off
-                           performance             :       1,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
+                           performance             :       0,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
                            image_protect           :       1,			// Disables image dragging and right click with Javascript
                            // Size & Position						   
                            min_width               :       0,			// Min width allowed (in pixels)
@@ -241,7 +250,7 @@ $(document).ready(function(){
                            // Components							
                            slide_links             :       'blank',                // Individual links for each slide (Options: false, 'num', 'name', 'blank')
                            thumb_links             :       1,			// Individual thumb links for each slide
-                           thumbnail_navigation    :       0,			// Thumbnail navigation
+                           thumbnail_navigation    :       1,			// Thumbnail navigation
                            slides                  :  	[			// Slideshow Images
                                                                {image : url_path + '/content/image/background/image_1.jpg'},
                                                                {image : url_path + '/content/image/background/image_2.jpg'},
@@ -256,7 +265,7 @@ $(document).ready(function(){
                                                                {image : url_path + '/content/image/background/image_11.jpg'},  
                                                        ],
                            // Theme Options			   
-                           progress_bar            :       2,			// Timer for each slide							
+                           progress_bar            :       1,			// Timer for each slide							
                            mouse_scrub             :       0
 
                    });

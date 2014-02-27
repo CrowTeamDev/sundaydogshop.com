@@ -98,14 +98,19 @@
         <div id="background_1"></div>
         <div id="background_2"></div>
                     <!--Arrow Navigation-->
-	<a id="prevslide" class="load-item"></a>
-	<a id="nextslide" class="load-item"></a>
         <div id="main">
             <?php   
                 echo $registry->router->loader();
             ?>
-        </div>
-       
+        </div> 
+        	<!--Control Bar-->
+	<div id="controls-wrapper" class="load-item">
+		<div id="controls">
+			<!--Navigation-->
+			<ul id="slide-list"></ul>
+			
+		</div>
+	</div>   
         <footer>
             <label id="policy">POLICY</label>
             <label id="copyright">©SUNDAYDOG2013</label>
