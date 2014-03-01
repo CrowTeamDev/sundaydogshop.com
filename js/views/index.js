@@ -141,6 +141,7 @@ $(document).ready(function(){
         });
         $('#navigation_bar #main_menu li, footer label').mouseover(function(){
             var selected = $('li.select');
+            if (selected.attr('id') === undefined) selected = $('footer label.select');
 //            var shoped = $('li.shopMode');
 
             $(this).addClass('select');
@@ -156,6 +157,7 @@ $(document).ready(function(){
         });
         $('#navigation_bar #main_menu li, footer label').mouseout(function(){
             var selected = $('li.selected');
+            if (selected.attr('id') === undefined) selected = $('footer label.selected');
 //            var shoped = $('li.shoped');
 
             $(this).removeClass('select');
