@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <coverage xmlns="http://www.netbeans.org/ns/code-coverage/1" enabled="true"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/Applications/MAMP/htdocs/origin/js/views/shop.js</file>
-            <file>file:/Applications/MAMP/htdocs/origin/view/shop_index.php</file>
-            <file>file:/Applications/MAMP/htdocs/origin/model/shop.class.php</file>
-            <file>file:/Applications/MAMP/htdocs/origin/view/product_index.php</file>
-            <file>file:/Applications/MAMP/htdocs/origin/controller/productController.php</file>
-            <file>file:/Applications/MAMP/htdocs/origin/css/layout.less</file>
-            <file>file:/Applications/MAMP/htdocs/origin/index.php</file>
-            <file>file:/Applications/MAMP/htdocs/origin/view/contact.php</file>
-            <file>file:/Applications/MAMP/htdocs/origin/js/views/index.js</file>
-            <file>file:/Applications/MAMP/htdocs/origin/controller/shopController.php</file>
-=======
-            <file>file:/C:/wamp/www/sundaydogshop/js/shared/jquery.elevatezoom.js</file>
-            <file>file:/C:/wamp/www/sundaydogshop/index.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/view/shop_index.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/view/shop.php</file>
             <file>file:/C:/wamp/www/sundaydogshop/css/layout.less</file>
-            <file>file:/C:/wamp/www/sundaydogshop/js/views/index.js</file>
->>>>>>> 32789ba246048d8e38446568c27ef20287e58aa4
+            <file>file:/C:/wamp/www/sundaydogshop/controller/shopController.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/js/views/shop.js</file>
+            <file>file:/C:/wamp/www/sundaydogshop/view/contact.php</file>
         </group>
     </open-files>
 </project-private>

@@ -24,6 +24,8 @@
 @color_x1: #ABAEA6;
 @color_x2: #DDD9CB;
 
+@img_shop-menu: url('../content/image/shop_menu.png');
+
 @font-face{
     font-family: AvenirNext;
     src: url('../content/font/AvenirNext/AvenirNext-UltraLight.otf')
@@ -95,7 +97,9 @@
     background-color: @color_w1;
     label{ cursor: pointer; }
 }
+html{ height: 100%; }
 body{
+    height: 100%;
     font-family: PrestigeElite_Bold;
     margin: 0;
     //overflow: hidden;
@@ -254,9 +258,11 @@ li{
     z-index:-2;
 }
 #main{
+    height: 70%;
     width: 75%;
-    margin: 200px auto 80px;
+    margin: 15% auto 5%;
     &.paymentMode{ width: 85%; }
+    &.shopMode{ margin-top: 12%; }
 }
 footer{
     display: none;
@@ -269,6 +275,7 @@ footer{
     background-color: @color_g1;
     opacity:0.6;
     filter:alpha(opacity=60); /* For IE8 and earlier */
+    z-index: 100;
     label{ 
         cursor: pointer;
         margin: 0 35px;
@@ -702,4 +709,20 @@ a:-webkit-any-link{ text-decoration: none; }
 #zoomBox{
     margin-left: 450px;
     position: static;
+}
+
+#shop_menu{
+    background: @img_shop-menu;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 90%;
+}
+#shop_hover{
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+    z-index: 50;
+    &.pointer{ cursor: pointer; }
 }

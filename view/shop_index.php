@@ -1,4 +1,4 @@
-<script src="js/views/shop.js" type="text/javascript"></script>
+<script src="js/views/shopIndex.js" type="text/javascript"></script>
 <script src="js/views/jquery.simplePagination.js"></script>
 <script src="js/views/jquery.nicescroll.js"></script>
 <link rel="stylesheet" type="text/css" href="css/shop.css" />

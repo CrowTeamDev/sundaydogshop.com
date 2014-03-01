@@ -141,7 +141,7 @@ $(document).ready(function(){
         });
         $('#navigation_bar #main_menu li, footer label').mouseover(function(){
             var selected = $('li.select');
-            var shoped = $('li.shopMode');
+//            var shoped = $('li.shopMode');
 
             $(this).addClass('select');
             
@@ -156,7 +156,7 @@ $(document).ready(function(){
         });
         $('#navigation_bar #main_menu li, footer label').mouseout(function(){
             var selected = $('li.selected');
-            var shoped = $('li.shoped');
+//            var shoped = $('li.shoped');
 
             $(this).removeClass('select');
             

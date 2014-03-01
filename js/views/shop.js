@@ -1,134 +1,67 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $(function(){
     set_menuOn('shop');
-    //shop_handle($('input#gb').val());
-    
-    $('.product').mouseover(function(){
-       $('.product_detail').hide();
-       $(this).find('.product_detail').show();
-    });
-    $('.product').mouseout(function(){
-       $('.product_detail').hide();
-    });
-    
-    $('.pagination-groupList').pagination({
-        items: 1,   // Total number of items that will be used to calculate the pages.
-        itemsOnPage: 1, // Number of items displayed on each page.
-        pages:$('#viewHigh').val(),   // If specified, items and itemsOnPage will not be used to calculate the number of pages.
-        displayedPages:5, // How many page numbers should be visible while navigating. Minimum allowed: 3 (previous, current & next)
-        edges:2,    // How many page numbers are visible at the beginning/ending of the pagination.
-        currentPage: $('#viewIndex').val(), // Which page will be selected immediately after init.
-        hrefTextPrefix: "shop?viewIndex=", // A string used to build the href attribute, added before the page number.
-        hrefTextSuffix: '', // Another string used to build the href attribute, added after the page number.
-        prevText: "Prev", // Text to be display on the previous button.
-        nextText: "Next", // Text to be display on the next button.
-        cssStyle: "light-theme", // The class of the CSS theme.
-        selectOnClick: true, // Set to false if you don't want to select the page immediately after click.
-    });
-    $('.pagination-productList').pagination({
-        items: 1,
-        itemsOnPage: 1,
-        pages:$('#viewHigh').val(),
-        displayedPages:5,
-        edges:2,
-        currentPage: $('#viewIndex').val(),
-        hrefTextPrefix: "shop?&viewIndex=",
-        hrefTextSuffix: '',
-        prevText: "Prev",
-        nextText: "Next",
-        cssStyle: "light-theme",
-        selectOnClick: true,
-    });
-    
-    // Sidebar
-    
-    var sidebarResize = function(){
-          $('#ob-sidebar-wrapper, #ob-sidebar').height($(window).height()-120-$("footer").outerHeight());
-          $('#ob-sidebar').niceScroll().resize();
-    };
-    $('#ob-sidebar-wrapper, #ob-sidebar').height($(window).height()-120-$("footer").outerHeight());
-    $('#ob-sidebar-wrapper').fadeTo('fast',1);
-    var bar = $('#ob-sidebar').niceScroll();
-    bar.resize();
-    $(window).resize(sidebarResize);
-
-    /*
-     * Show/Hide sidebar
-     */
-
-    var side_hidden = false;
-    $('#sidebar-button').click(function(e){
-            if(!side_hidden) {
-                    $('#ob-sidebar-wrapper').animate({
-                            'left': '-200'
-                    }, 500, 'easeInOutQuint', function(e){
-                            $(this).addClass('collapsed');
-    bar.hide();
-                    });
-
-            $('#main-content').animate({'margin-left': 30},500,'easeInOutQuint',function(e){});
-
-            } else {
-                    $('#ob-sidebar-wrapper').animate({
-                            'left': '0'
-                    }, 500, 'easeInOutQuint', function(e){
-                            $(this).removeClass('collapsed');
-    bar.show();
-                    });
-
-                    $('#main-content').animate({'margin-left': 100},500,'easeInOutQuint',function(e){});
-            }
-            side_hidden = !side_hidden;
-    });
-
-
-    /*
-     * Category filter
-     */
-
-    $('.categories').click(function(e){
-            var self = this;
-            $(this).addClass('active').siblings('.active').removeClass('active');
-            $('.category-loader').show();
-            $productsGrid.animate({opacity: 0}, function(){
-                    var selector = $(self).children('a').attr('data-category');
-                    $productsGrid.isotope({ filter: selector, containerStyle: {position: 'relative'}});
-                    setTimeout(function(){$productsGrid.animate({opacity: 1});$('.category-loader').hide();}, 500);
-            });
-            e.preventDefault();
-    });
-
-    /*
-     * Sort by featured
-     */
-
-    $('#sort-by-featured').click(function(e){
-        if($(this).hasClass('hover')) {
-                $productsGrid.isotope({sortBy: 'original-order', sortAscending: true});
-                $(this).removeClass('hover');
-        } else {
-                $productsGrid.isotope({sortBy: 'featured', sortAscending: false});
-                $(this).addClass('hover');
+    $('#main').addClass('shopMode');
+    $('#shop_menu #shop_hover').mousemove(function(e){
+        var parentOffset = $(this).parent().offset();
+        var width = $(this).width();
+        var height = $(this).height();
+        
+        var relX = (e.pageX - parentOffset.left)*100/width;
+        var relY = (e.pageY - parentOffset.top)*100/height;
+        
+        var value;
+        var url_path = $('#local_path').val();
+        
+        if (relX < 27 || relX > 73){
+            $(this).removeClass('pointer');
+            value = '';
         }
-        e.preventDefault();
-    });
-
-    /*
-     * Filter accordion
-     */
-
-    $('.filters-top').click(function(e){
-        var li = $(this).parents('li');
-        li.toggleClass('collapsed').toggleClass('expanded');
-        if(li.hasClass('collapsed')){
-            li.find('.filters-bottom').slideUp(sidebarResize);
-        } else {
-            li.find('.filters-bottom').slideDown(sidebarResize);
+        else{
+            $(this).addClass('pointer');
+            if (relX < 50 && relY < 27) //eat
+                value = 'url('+ url_path + '/content/image/shop_menu-eat.png)';
+            else if (relX < 50 && relY < 49) //play
+                value = 'url('+ url_path + '/content/image/shop_menu-play.png)';
+            else if (relX < 50 && relY < 68) //sale
+                value = 'url('+ url_path + '/content/image/shop_menu-sale.png)';
+            else if (relX > 50 && relY < 22) //walk
+                value = 'url('+ url_path + '/content/image/shop_menu-walk.png)';
+            else if (relX > 50 && relY < 42) //wear
+                value = 'url('+ url_path + '/content/image/shop_menu-wear.png)';
+            else if (relX > 50 && relY < 68) //all
+                value = 'url('+ url_path + '/content/image/shop_menu-all.png)';
+            else
+                value = 'url('+ url_path + '/content/image/shop_menu-sleep.png)';
         }
+        
+        $(this).css('background-image', value);
+    });
+    $('#shop_menu #shop_hover').click(function(e){
+        var parentOffset = $(this).parent().offset();
+        var width = $(this).width();
+        var height = $(this).height();
+        
+        var relX = (e.pageX - parentOffset.left)*100/width;
+        var relY = (e.pageY - parentOffset.top)*100/height;
+        
+        var url_path = window.location.href + '?gb=';
+        
+        if (relX < 27 || relX > 73) return;
+        if (relX < 50 && relY < 27) //eat
+            url_path += 'e';
+        else if (relX < 50 && relY < 49) //play
+            url_path += 'p';
+        else if (relX < 50 && relY < 68) //sale
+            url_path += 'sa';
+        else if (relX > 50 && relY < 22) //walk
+            url_path += 'wa';
+        else if (relX > 50 && relY < 42) //wear
+            url_path += 'we';
+        else if (relX > 50 && relY < 68) //all
+            url_path += 'a';
+        else
+            url_path += 'sl';
+        
+        window.location.href = url_path;
     });
 });
