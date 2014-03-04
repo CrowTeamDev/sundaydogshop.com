@@ -3,7 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+function loadProductPage(pageNumber){
+    var brand = "";
+    var color = "";
+    var size = "";
+     $('input[type=checkbox]').each(function(){
+         if($(this).attr("class") == 'brand'){
+             var sBrand = (this.checked ? this.id : "");
+              brand += (brand=="" ? sBrand : "," + sBrand);
+         }
+         if($(this).attr("class") == 'color'){
+             var sColor = (this.checked ? this.id : "");
+              color += (color=="" ? sColor : "," + sColor);
+         }
+         if($(this).attr("class") == 'size'){
+             var sSize = (this.checked ? this.id : "");
+              size += (size=="" ? sSize : "," + sSize);
+         }
+     });
+     $.ajax({
+         url: "shop/productPaginateAjax",
+         data: {
+             gb: $("#gb").val(),
+             brand: brand,
+             color:color,
+             size:size,
+             viewIndex:pageNumber
+         },
+         success: function( data ) {
+             data = $(data).filter("#main").attr("id","");
+             jQuery("#products-grid").fadeOut( 1100 , function() {
+                 $("#products-grid").html(data);
+             }).fadeIn( 1000 );
+         }
+     });
+}
 $(function(){
     set_menuOn('shop');
     //shop_handle($('input#gb').val());
@@ -23,26 +57,15 @@ $(function(){
         displayedPages:5, // How many page numbers should be visible while navigating. Minimum allowed: 3 (previous, current & next)
         edges:2,    // How many page numbers are visible at the beginning/ending of the pagination.
         currentPage: $('#viewIndex').val(), // Which page will be selected immediately after init.
-        hrefTextPrefix: "shop?viewIndex=", // A string used to build the href attribute, added before the page number.
+        hrefTextPrefix: "#viewIndex=", // A string used to build the href attribute, added before the page number.
         hrefTextSuffix: '', // Another string used to build the href attribute, added after the page number.
         prevText: "Prev", // Text to be display on the previous button.
         nextText: "Next", // Text to be display on the next button.
         cssStyle: "light-theme", // The class of the CSS theme.
         selectOnClick: true, // Set to false if you don't want to select the page immediately after click.
-    });
-    $('.pagination-productList').pagination({
-        items: 1,
-        itemsOnPage: 1,
-        pages:$('#viewHigh').val(),
-        displayedPages:5,
-        edges:2,
-        currentPage: $('#viewIndex').val(),
-        hrefTextPrefix: "shop?&viewIndex=",
-        hrefTextSuffix: '',
-        prevText: "Prev",
-        nextText: "Next",
-        cssStyle: "light-theme",
-        selectOnClick: true,
+        onPageClick: function(pageNumber, event) {
+            loadProductPage(pageNumber);
+        },
     });
     
     // Sidebar
@@ -115,19 +138,5 @@ $(function(){
                 $(this).addClass('hover');
         }
         e.preventDefault();
-    });
-
-    /*
-     * Filter accordion
-     */
-
-    $('.filters-top').click(function(e){
-        var li = $(this).parents('li');
-        li.toggleClass('collapsed').toggleClass('expanded');
-        if(li.hasClass('collapsed')){
-            li.find('.filters-bottom').slideUp(sidebarResize);
-        } else {
-            li.find('.filters-bottom').slideDown(sidebarResize);
-        }
     });
 });
