@@ -8,25 +8,8 @@ Class shopController Extends baseController {
             $viewIndex = 1;
             $groupBy = '';
             $findBy = '';
-
-            if($_REQUEST['gb']=='c'){
-                $groupBy = 'Catagory';
-                if(!empty($_REQUEST['f'])){
-                    $findBy = $_REQUEST['f'];
-                }
-            }
-            else if($_REQUEST['gb']=='b'){
-                $groupBy = 'Brand';
-            }
-            else if($_REQUEST['gb']=='s'){
-                $groupBy = 'size';
-                if(!empty($_REQUEST['f'])){
-                    $findBy = $_REQUEST['f'];
-                }
-            }
-            else if($_REQUEST['gb']=='a'){
-                $groupBy = 'a';
-                $findBy = 'any';
+            if($_REQUEST['gb']=='e'){
+                $groupBy = "10000";
             }
             
             if(!empty($_REQUEST["viewIndex"])){
@@ -45,8 +28,90 @@ Class shopController Extends baseController {
 
             $this->registry->template->viewHigh = $result["viewHigh"];
             $this->registry->template->viewIndex = $viewIndex;
+            $this->registry->template->groupBy = $_REQUEST['gb'];
 
             $this->registry->template->show('shop_index');
+        }
+        else{
+            $this->registry->template->show('shop');
+        }
+    }
+    
+    public function productAjax() 
+    {
+        if(!empty($_REQUEST["gb"])){
+            $viewMax = 12;
+            $viewIndex = 1;
+            $groupBy = '';
+            $findBy = '';
+            $listFilter = '';
+            if($_REQUEST['gb']=='e'){
+                $groupBy = "10000";
+            }
+            
+            if(!empty($_REQUEST['brand']) || !empty($_REQUEST['color']) || !empty($_REQUEST['size'])){
+                $listFilter = $_REQUEST['brand']."-".$_REQUEST['color']."-".$_REQUEST['size'];
+            }
+            
+            if(!empty($_REQUEST["viewIndex"])){
+                $viewIndex = $_REQUEST["viewIndex"];
+            }
+
+            $GLOBALS["findBy"] = $findBy;
+            
+            $result = $this->registry->shop->getProduct($groupBy, $listFilter, $viewMax, $viewIndex);
+
+            if(!empty($findBy)){
+                $this->registry->template->productList = $result["data"];
+            }
+            else{
+                $this->registry->template->groupList = $result["data"];
+            }
+
+            $this->registry->template->viewHigh = $result["viewHigh"];
+            $this->registry->template->viewIndex = $viewIndex;
+            $this->registry->template->paginate = FALSE;
+            $this->registry->template->show('shop_product');
+        }
+        else{
+            $this->registry->template->show('shop');
+        }
+    }
+    
+    public function productPaginateAjax() 
+    {
+        if(!empty($_REQUEST["gb"])){
+            $viewMax = 12;
+            $viewIndex = 1;
+            $groupBy = '';
+            $findBy = '';
+            $listFilter = '';
+            if($_REQUEST['gb']=='e'){
+                $groupBy = "10000";
+            }
+            
+            if(!empty($_REQUEST['brand']) || !empty($_REQUEST['color']) || !empty($_REQUEST['size'])){
+                $listFilter = $_REQUEST['brand']."-".$_REQUEST['color']."-".$_REQUEST['size'];
+            }
+            
+            if(!empty($_REQUEST["viewIndex"])){
+                $viewIndex = $_REQUEST["viewIndex"];
+            }
+
+            $GLOBALS["findBy"] = $findBy;
+            
+            $result = $this->registry->shop->getProduct($groupBy, $listFilter, $viewMax, $viewIndex);
+
+            if(!empty($findBy)){
+                $this->registry->template->productList = $result["data"];
+            }
+            else{
+                $this->registry->template->groupList = $result["data"];
+            }
+            $this->registry->template->viewHigh = $result["viewHigh"];
+            $this->registry->template->viewIndex = $viewIndex;
+            $this->registry->template->paginate = TRUE;
+            $this->registry->template->show('shop_product');
         }
         else{
             $this->registry->template->show('shop');
