@@ -58,7 +58,10 @@ function changeBackground(menu_id){
     $('#background_1').show();
     switch (menu_id){
         case 'init':
-           // value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+            //value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
+            break;
+         case 'homeinit':
+            value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
             break;
         case 'shop':
         case 'product':
@@ -81,8 +84,6 @@ function changeBackground(menu_id){
             value = 'url('+ url_path + '/content/image/background/image_0.jpg)';
             break;
     }
-    $('#prevslide').hide();
-    $('#nextslide').hide();
     $('#background_2').css('background-image', value);
 }
 //function shop_handle(menuSelected){
@@ -122,22 +123,19 @@ $(document).ready(function(){
         });
     }
     
+   
     function setup_eventHandle(){
         $('#start_menu').click(function(){
             $(this).fadeOut(300, function(){
                 $('#navigation_bar').addClass('page_load').fadeIn(2500);
                 $('#top_menu, footer').addClass('page_load').fadeIn(500);
+                stopBackground();
 //                var value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
 //                $('#background_2').css('background-image', value);
-
-            $(function(){			
-                var url_path = $('#local_path').val();
-                   $.supersized({
-                           stop_loop               :       1,			// Pauses slideshow on last slide
-                   });
-               });
+            
+          
             });
-            $(".load-item").hide();
+            
         });
         $('#navigation_bar #main_menu li, footer label').mouseover(function(){
             var selected = $('li.select');
@@ -185,7 +183,6 @@ $(document).ready(function(){
 //        });
         $('header ul li, footer label').click(function(){
             var menu_id = $(this).attr('id');
-
 //            if(menu_id === 'shop'){
 //                $('li.selected').removeClass('selected');
 //                $(this).addClass('selected shopMode');
@@ -222,8 +219,17 @@ $(document).ready(function(){
     }
 });
 
-   
-     $(window).load(function(){
+    function stopBackground(){
+        $(".load-item").hide();
+          $(function(){			
+                   $.supersized({
+                           stop_loop               :       1,			// Pauses slideshow on last slide
+                   });
+               });
+    }
+    
+    function startBackground(){
+//     $(window).load(function(){
               $(function(){			
                 var url_path = $('#local_path').val();
                    $.supersized({
@@ -272,7 +278,20 @@ $(document).ready(function(){
 
                    });
                });
-     });
-    
+//     });
+ }
+ 
+ $(window).load(function(){
+     var dir = directory.get(); 
+     if(dir==""){
+         startBackground();
+     }
+     else if(dir=="HOME/INIT"){
+         changeBackground("homeinit");
+     }
+     else{
+         stopBackground();
+     }
+ }); 
 //});
 
