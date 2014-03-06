@@ -141,7 +141,7 @@ $(document).ready(function(){
             });
             
         });
-        $('#navigation_bar #main_menu li, footer label').mouseover(function(){
+        $('#navigation_bar #main_menu li, footer label').not('#copyright').mouseover(function(){
             var selected = $('li.select');
             if (selected.attr('id') === undefined) selected = $('footer label.select');
 //            var shoped = $('li.shopMode');
@@ -157,7 +157,7 @@ $(document).ready(function(){
 //                $('#sub_menu', '#navigation_bar').hide();
 //            }
         });
-        $('#navigation_bar #main_menu li, footer label').mouseout(function(){
+        $('#navigation_bar #main_menu li, footer label').not('#copyright').mouseout(function(){
             var selected = $('li.selected');
             if (selected.attr('id') === undefined) selected = $('footer label.selected');
 //            var shoped = $('li.shoped');
@@ -185,7 +185,7 @@ $(document).ready(function(){
 //            selected.removeClass('wasOn');
 //            selected.addClass('findOn');
 //        });
-        $('header ul li, footer label').click(function(){
+        $('header ul li, footer label').not('#copyright').click(function(){
             var menu_id = $(this).attr('id');
 //            if(menu_id === 'shop'){
 //                $('li.selected').removeClass('selected');
