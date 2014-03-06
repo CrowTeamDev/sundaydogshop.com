@@ -44,6 +44,7 @@ cartItem = {
 
 function set_menuOn(menu_id){
     $('#start_menu').hide();
+    $('#intro_bg').remove();
     $('#navigation_bar, #top_menu, footer').show();
  
     changeBackground(menu_id);
