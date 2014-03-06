@@ -51,6 +51,9 @@ function set_menuOn(menu_id){
     directory.reset(menu_id);
     $('header ul li#'+menu_id).addClass('select');
     $('footer label#'+menu_id).addClass('select');
+    setTimeout(function(){
+        $('#main').fadeIn(3500);
+    }, 1500);
 }
 function changeBackground(menu_id){
     var value;
