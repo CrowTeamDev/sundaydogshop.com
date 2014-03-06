@@ -55,6 +55,7 @@
         <script src="<?php echo $contentUrl;?>/js/shared/jquery-2.0.3.min.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/shared/jquery-ui-1.10.3.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/shared/less-1.5.0.min.js" type="text/javascript"></script>
+        <script src="<?php echo $contentUrl;?>/js/views/intro.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/views/index.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/model.js" type="text/javascript"></script>
         <script src="<?php echo $contentUrl;?>/js/shared/jquery.elevatezoom.js" type="text/javascript"></script>
@@ -69,6 +70,12 @@
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     </head>
     <body>
+        <input type="hidden" id="local_path" value="<?php echo $contentUrl;?>" />
+        <div id="intro_bg">
+            <div id="intro_dog"></div>
+            <div id="intro_logo"></div>
+            <div id="intro_logo_bg"></div>
+        </div>
         <header id="start_menu">
             <label>MENU ∨</label>
         </header>
@@ -118,7 +125,6 @@
             <img src="<?php echo $contentUrl;?>/content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
             <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
         </footer>
-        <input type="hidden" id="local_path" value="<?php echo $contentUrl;?>" />
         <input type="hidden" id="myCart" value='<?php echo $cart; ?>' />
     </body>
 </html>
