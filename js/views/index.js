@@ -228,6 +228,7 @@ $(document).ready(function(){
           $(function(){			
                    $.supersized({
                            stop_loop               :       1,			// Pauses slideshow on last slide
+                           slides                  :      [0],
                    });
                });
     }
