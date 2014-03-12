@@ -3,7 +3,7 @@
     $('#intro_bg').fadeOut(2500);
  });
     
- $(document).keypress(function(event){
+ $(document).keypress(function(){
     $('#intro_dog, #intro_logo, #intro_logo_bg').hide();
     $('#intro_bg').fadeOut(2500);
  });
