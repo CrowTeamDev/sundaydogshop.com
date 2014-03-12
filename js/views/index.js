@@ -13,14 +13,13 @@ $(document).keypress(function(event){
  });
  */
 
-
 //public
 
 String.prototype.replaceAll = function (find, replace) {
     var str = this;
     return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
 };
-        
+
 var directory = {
     default: 'HOME',
     get: function(){ return $('#current_directory').text(); },
@@ -33,8 +32,7 @@ var directory = {
         $('#current_directory').text(path);
     }
 };
-
-cartItem = {
+var cartItem = {
     set : function(value){ $('span', '#your_cart').text(value); },
     add : function(){
         var amount = parseInt($('span', '#your_cart').text());
@@ -173,7 +171,6 @@ $(document).ready(function(){
     }
 
 });
-
 $(window).load(function(){
      var dir = directory.get();
      if(dir === "")
@@ -219,7 +216,7 @@ function startBackground(){
             {image : url_path + '/content/image/background/image_8.jpg'},  
             {image : url_path + '/content/image/background/image_9.jpg'},  
             {image : url_path + '/content/image/background/image_10.jpg'},  
-            {image : url_path + '/content/image/background/image_11.jpg'},  
+            {image : url_path + '/content/image/background/image_11.jpg'}
         ],
         progress_bar : 1,           // Timer for each slide							
         mouse_scrub : 0
