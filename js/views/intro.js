@@ -1,4 +1,14 @@
-$(document).ready(function(){
+ $(document).click(function(){
+    $('#intro_dog, #intro_logo, #intro_logo_bg').hide();
+    $('#intro_bg').fadeOut(2500);
+ });
+    
+ $(document).keypress(function(){
+    $('#intro_dog, #intro_logo, #intro_logo_bg').hide();
+    $('#intro_bg').fadeOut(2500);
+ });
+ 
+ $(document).ready(function(){
     var url_path = $('#local_path').val();
     var walking_dog = url_path + '/content/image/intro_1.gif';
     var logo_0 = url_path + '/content/image/intro_3.png';
@@ -53,7 +63,7 @@ $(document).ready(function(){
         $('#intro_logo_bg').fadeIn(3500);
     });
     setTimeout(function(){
-        $('#intro_logo').fadeOut(2000, function(){
+        $('#intro_logo, #intro_logo_bg').fadeOut(2000, function(){
             $('#intro_logo').css('background-image','url('+logo_2+')');
             $('#intro_logo').fadeIn(2000);
         });
