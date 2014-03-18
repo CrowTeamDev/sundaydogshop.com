@@ -98,7 +98,7 @@
         <div id="background_1"></div>
         <div id="background_2"></div>
         <div id="main">
-            <?php   
+            <?php
                 echo $registry->router->loader();
             ?>
         </div> 

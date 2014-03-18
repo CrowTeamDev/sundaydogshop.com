@@ -102,18 +102,15 @@ private function getController() {
 
 	if (empty($route))
 	{
-		$route = 'index';
+		$route = 'home';
 	}
-	else
-	{
-		/*** get the parts of the route ***/
-		$parts = explode('/', $route);
-		$this->controller = $parts[0];
-		if(isset( $parts[1]))
-		{
-			$this->action = $parts[1];
-		}
-	}
+        /*** get the parts of the route ***/
+        $parts = explode('/', $route);
+        $this->controller = $parts[0];
+        if(isset( $parts[1]))
+        {
+                $this->action = $parts[1];
+        }
 
 	if (empty($this->controller))
 	{

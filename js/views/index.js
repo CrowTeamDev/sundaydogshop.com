@@ -60,9 +60,8 @@ function changeBackground(menu_id){
     $('#background_1').show();
     switch (menu_id){
         case 'init':
-            //value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
             break;
-         case 'homeinit':
+        case 'home':
             value = 'url('+ url_path + '/content/image/background/image_2.jpg)';
             break;
         case 'shop':
