@@ -123,6 +123,7 @@ $(document).ready(function(){
             $(this).fadeOut(300, function(){
                 $('#navigation_bar').addClass('page_load').fadeIn(2500);
                 $('#top_menu, footer').addClass('page_load').fadeIn(500);
+                $('#main').fadeIn(3500);
                 $(".load-item").hide();
                 var pauseSlide = setInterval(function(){
                     if (vars.is_paused)
