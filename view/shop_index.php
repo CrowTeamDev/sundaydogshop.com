@@ -16,6 +16,7 @@
         var bar = $('#ob-sidebar').niceScroll();
         bar.resize();
         $(window).resize(sidebarResize);
+        $("#ascrail2000").remove();
         
         /*
         * Filter accordion

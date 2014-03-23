@@ -8,6 +8,21 @@
 ?>
 <script src="js/views/shopIndex.js" type="text/javascript"></script>
 <script src="js/views/jquery.simplePagination.js"></script>
+<script>
+    $(function(){
+        // Sidebar
+        var sidebarResize = function(){
+            $('#ob-sidebar-wrapper, #ob-sidebar').height($(window).height()-200-$("footer").outerHeight());
+            $('#ob-sidebar').niceScroll().resize();
+        };
+        $('#ob-sidebar-wrapper, #ob-sidebar').height($(window).height()-200-$("footer").outerHeight());
+        $('#ob-sidebar-wrapper').fadeTo('fast',1);
+        var bar = $('#ob-sidebar').niceScroll();
+        bar.resize();
+        $(window).resize(sidebarResize);
+        $("#ascrail2000").remove();
+    });
+</script>
 <div id='products-grid'>
     <table width="100%">
         <tr>
