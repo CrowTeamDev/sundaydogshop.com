@@ -23,8 +23,8 @@ String.prototype.replaceAll = function (find, replace) {
 var directory = {
     default: '<a href="home">HOME</a>',
     get: function(){ return $('#current_directory').html(); },
-    add: function(value){
-        value = '<a href="' + value + '">' + value.toUpperCase() + '</a>';
+    add: function(value, path){
+        value = '<a href="' + path + '">' + value.toUpperCase() + '</a>';
         $('#current_directory').html(this.get() + '/' + value);
     },
     reset: function(value){

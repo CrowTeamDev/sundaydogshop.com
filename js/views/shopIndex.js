@@ -40,6 +40,8 @@ function loadProductPage(pageNumber){
 }
 $(function(){
     set_menuOn('shop');
+    alert($('input#gb').val());
+    //set_shopOn($('input#gb').val(), 's');
     //shop_handle($('input#gb').val());
     
     $('.product').mouseover(function(){
@@ -65,7 +67,7 @@ $(function(){
         selectOnClick: true, // Set to false if you don't want to select the page immediately after click.
         onPageClick: function(pageNumber, event) {
             loadProductPage(pageNumber);
-        },
+        }
     });
     
     // Sidebar
