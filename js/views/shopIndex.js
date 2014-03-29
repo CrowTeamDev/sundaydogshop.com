@@ -40,8 +40,7 @@ function loadProductPage(pageNumber){
 }
 $(function(){
     set_menuOn('shop');
-    alert($('input#gb').val());
-    //set_shopOn($('input#gb').val(), 's');
+    set_shopOn($('input#gb').val());
     //shop_handle($('input#gb').val());
     
     $('.product').mouseover(function(){

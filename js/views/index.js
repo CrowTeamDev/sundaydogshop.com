@@ -23,8 +23,7 @@ String.prototype.replaceAll = function (find, replace) {
 var directory = {
     default: '<a href="home">HOME</a>',
     get: function(){ return $('#current_directory').html(); },
-    add: function(value, path){
-        value = '<a href="' + path + '">' + value.toUpperCase() + '</a>';
+    add: function(value){
         $('#current_directory').html(this.get() + '/' + value);
     },
     reset: function(value){
@@ -55,7 +54,28 @@ function set_menuOn(menu_id){
     }, 1500);
 }
 function set_shopOn(shop_id){
-    directory.add(shop_id);
+    var html;
+    switch (shop_id){
+        case 'e':
+            html = '<a href="shop?gb=e">EAT</a>';
+            break;
+        case 'p':
+            html = '<a href="shop?gb=p">PLAY</a>';
+            break;
+        case 'wa':
+            html = '<a href="shop?gb=wa">WALK</a>';
+            break;
+        case 'we':
+            html = '<a href="shop?gb=p">WEAR</a>';
+            break;
+        case 's':
+            html = '<a href="shop?gb=s">SLEEP</a>';
+            break;
+        case 'a':
+            html = '<a href="shop?gb=a">ALL</a>';
+            break;
+    }
+    directory.add(html);
 }
 function changeBackground(menu_id){
     var value;
