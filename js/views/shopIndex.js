@@ -8,17 +8,17 @@ function loadProductPage(pageNumber){
     var color = "";
     var size = "";
      $('input[type=checkbox]').each(function(){
-         if($(this).attr("class") == 'brand'){
+         if($(this).attr("class") === 'brand'){
              var sBrand = (this.checked ? this.id : "");
-              brand += (brand=="" ? sBrand : "," + sBrand);
+              brand += ( brand === "" ? sBrand : "," + sBrand );
          }
-         if($(this).attr("class") == 'color'){
+         if($(this).attr("class") === 'color'){
              var sColor = (this.checked ? this.id : "");
-              color += (color=="" ? sColor : "," + sColor);
+              color += ( color === "" ? sColor : "," + sColor );
          }
-         if($(this).attr("class") == 'size'){
+         if($(this).attr("class") === 'size'){
              var sSize = (this.checked ? this.id : "");
-              size += (size=="" ? sSize : "," + sSize);
+              size += ( size === "" ? sSize : "," + sSize );
          }
      });
      $.ajax({

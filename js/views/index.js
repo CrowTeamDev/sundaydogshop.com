@@ -21,15 +21,16 @@ String.prototype.replaceAll = function (find, replace) {
 };
 
 var directory = {
-    default: 'HOME',
-    get: function(){ return $('#current_directory').text(); },
+    default: '<a href="home">HOME</a>',
+    get: function(){ return $('#current_directory').html(); },
     add: function(value){
-        var path = this.get() + '/' + value;
-        $('#current_directory').text(path);
+        value = '<a href="' + value + '">' + value.toUpperCase() + '</a>';
+        $('#current_directory').html(this.get() + '/' + value);
     },
     reset: function(value){
-        var path = this.default + '/' + value.toUpperCase();
-        $('#current_directory').text(path);
+        value = '<a href="' + value + '">' + value.toUpperCase() + '</a>';
+        if (value !== this.default)
+            $('#current_directory').html(this.default + '/' + value);          
     }
 };
 var cartItem = {
@@ -52,6 +53,9 @@ function set_menuOn(menu_id){
     setTimeout(function(){
         $('#main').fadeIn(3500);
     }, 1500);
+}
+function set_shopOn(shop_id){
+    directory.add(shop_id);
 }
 function changeBackground(menu_id){
     var value;
@@ -178,8 +182,8 @@ $(document).ready(function(){
 
 });
 $(window).load(function(){
-     if(directory.get() === "")
-         startBackground();
+    if(directory.get() === "")
+        startBackground();
      
     function startBackground(){	
         var url_path = $('#local_path').val();
