@@ -89,7 +89,7 @@
                 <td><span></span></td>
             </tr>
             <tr>
-                <td>HOME PHONE*</td>
+                <td>HOME PHONE</td>
                 <td><input type="text" /></td>
                 <td><span></span></td>
             </tr>
@@ -104,22 +104,25 @@
                 <td><span></span></td>
             </tr>
         </table>
-        *REQUIRE FIELD
+        *REQUIRED FIELD
     </div>
     <div id="payment_summary">
         <table>
             <tr>
                 <td colspan="2">PRODUCT</td>
-                <td>QUANTITY</td>
-                <td>PRICE</td>
-                <td>TOTAL</td>
+                <td id="qty_head">QUANTITY</td>
+                <td>PRICE (THB)</td>
+                <td>TOTAL (THB)</td>
             </tr>
             <tr class="checkOut_item">
                 <td id="image"></td>
                 <td id="name"></td>
                 <td id="qty"></td>
-                <td id="price"><span></span>THB</td>
-                <td id="total"><span></span>THB</td>
+                <td id="price"><span></span></td>
+                <td id="total"><span></span></td>
+            </tr>
+            <tr>
+                <td colspan="5"><hr></td>
             </tr>
             <tr>
                 <td id="shipping_option" colspan="4">
@@ -134,11 +137,11 @@
                         }
                     ?>
                 </td>
-                <td id="shipping_cost"><span></span>THB</td>
+                <td id="shipping_cost"><span></span></td>
             </tr>
             <tr>
                 <td colspan="4">Total cost (tax & shipping incl.)</td>
-                <td id="total_cost"><span></span>THB</td>
+                <td id="total_cost"><span></span></td>
             </tr>
         </table>
         <div>

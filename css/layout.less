@@ -307,16 +307,18 @@ footer{
     }
 }
 #payment-navigation{
+    font-size: 0.85em;
     background: 
         url('../content/image/header_payment_1.png') no-repeat top left,
         url('../content/image/header_payment_2.png') no-repeat top right;
     background-size: contain, contain;
-    height: 80.4px;
+    height: 66px;
     position: relative;
     z-index: 2;
+    margin: 0 15px;
     ul{
-        padding: 20px 0 18px;
-        margin: 0 90px;
+        padding: 15px 0 15px;
+        margin: 0 75px;
         background-color: @color_dark;
     }
     li{
@@ -324,7 +326,7 @@ footer{
     }
 }
 #payment_page{
-    font-size: 1em;
+    font-size: 0.85em;
     background-color: @color_w1;
     margin: -24.6px 90px 0;
     padding: 40px 3% 50px;
@@ -377,6 +379,7 @@ label[id*='payment_']{
 }
 #payment_shipping{
     table{
+        color: @color_dark;
         width: 80%;
         margin-bottom: 30px;
         tr{
@@ -399,11 +402,15 @@ label[id*='payment_']{
         width: 100%;
         tr{ height: 55px; }
         td{ padding: 1%; }
+        #qty_head{ text-align: center; }
         #image{ width: 5%; }
         #name{
             .fontAvenirNext;
         }
-        #qty{ width: 15%; }
+        #qty{
+            text-align: center;
+            width: 15%;
+        }
         #price{ width: 25%; }
         #total{ width: 25%; }
         #shipping_option{
@@ -417,11 +424,9 @@ label[id*='payment_']{
         input{
             width: 35px;
             height: 25px;
+            margin-right: 10px;
         }
-        span{
-            .fontAvenirNext;
-            margin-right: 15px;
-        }
+        span{ margin-right: 15px; }
         label{
             .button;
             padding: 5% 10%;
@@ -471,13 +476,13 @@ label[id*='payment_']{
         td{
             margin: 0;
             padding: 1%;
-            border-top: 4px solid @color_g5;
-            border-bottom: 4px solid @color_g5;
+            border-top: 2px solid @color_dark;
+            border-bottom: 2px solid @color_dark;
             &.menu:hover,&.selected{
                 color: @color_w1;
-                background-color: @color_g5;
-                border-left: 2px solid @color_g5;
-                border-right: 2px solid @color_g5;
+                background-color: @color_dark;
+                border-left: 2px solid @color_dark;
+                border-right: 2px solid @color_dark;
             }
             &.menu:hover{ cursor: pointer; }
         }

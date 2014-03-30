@@ -4,8 +4,8 @@
  * Control on _payment.html
  */
 $(document).keypress(function(event){
-    if (event.which === '13'){
-        $('#payment_next', '#main').click();
+    if (event.which === 13){
+        $('#payment_next').click();
     } 
  });
  
@@ -225,9 +225,6 @@ $(document).ready(function(){
                 result = false;
             
             if (!checkAphabet(6))
-                result = false;
-            
-            if (!checkNumber(7))
                 result = false;
             
             if (!checkNumber(8))
