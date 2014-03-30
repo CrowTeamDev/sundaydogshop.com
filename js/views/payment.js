@@ -184,10 +184,10 @@ $(document).ready(function(){
                         modal: true,
                         dialogClass: "no-close success-dialog",
                         open: function(){
-                            setTimeout(newDiv.dialog('close'),5000);
+                            setTimeout(newDiv.dialog('close'), 5000);
                         }
                     });
-                    window.location.replace($('#local_path').val() + '/home');
+                    setTimeout(window.location.replace($('#local_path').val() + '/home'), 7500);
                     break;
             }
             if(payment_step < 4)
