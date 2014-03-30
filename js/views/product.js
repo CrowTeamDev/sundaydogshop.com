@@ -1,5 +1,6 @@
 $(function(){
     set_menuOn('shop');
+    set_shopOn($('input#gb').val(), $("#product_id").val());
     
     $(".productImage").elevateZoom({
         gallery: 'productImage',
