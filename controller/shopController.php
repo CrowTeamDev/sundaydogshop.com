@@ -20,6 +20,9 @@ Class shopController Extends baseController {
             if($_REQUEST['gb']=='we'){
                 $groupBy = "10003";
             }
+            if($_REQUEST['gb']=='sa'){
+                $groupBy = "10004";
+            }
             if($_REQUEST['gb']=='s'){
                 $groupBy = "10004";
             }
