@@ -317,7 +317,7 @@ footer{
     ul{
         padding: 20px 0 18px;
         margin: 0 90px;
-        background-color: @color_g5;
+        background-color: @color_dark;
     }
     li{
         padding: 0 6%;
@@ -328,6 +328,14 @@ footer{
     background-color: @color_w1;
     margin: -24.6px 90px 0;
     padding: 40px 3% 50px;
+    opacity:0.9;
+    filter:alpha(opacity=90); /* For IE8 and earlier */
+    hr{
+        border: none;
+        height: 3px;
+        color: @color_dark;
+        background-color: @color_dark;
+    }
 }
 div[id*='payment_']{
     display:none;
@@ -356,17 +364,15 @@ label[id*='payment_']{
             width: 35px;
             height: 25px;
         }
-        span{ margin-right: 15px; }
+        span{
+            .fontAvenirNext;
+            margin-right: 15px;
+        }
         label{
             .button;
             padding: 5% 10%;
         }
-        tr:last-child{
-            vertical-align: bottom;
-            td:first-child{
-                .fontAvenirNext;
-            }
-        }
+        tr:last-child{ vertical-align: bottom; }
     }
 }
 #payment_shipping{
@@ -412,7 +418,10 @@ label[id*='payment_']{
             width: 35px;
             height: 25px;
         }
-        span{ margin-right: 15px; }
+        span{
+            .fontAvenirNext;
+            margin-right: 15px;
+        }
         label{
             .button;
             padding: 5% 10%;

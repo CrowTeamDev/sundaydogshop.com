@@ -30,21 +30,24 @@
             <tr>
                 <td colspan="2">PRODUCT</td>
                 <td colspan="2">QUANTITY</td>
-                <td>PRICE</td>
-                <td colspan="2">TOTAL</td>
+                <td>PRICE (THB)</td>
+                <td colspan="2">TOTAL (THB)</td>
             </tr>
             <tr class="checkOut_item">
                 <td id="image"></td>
                 <td id="name"></td>
                 <td id="qty"><input type="number" min="1" max="99" value="1" /></td>
                 <td id="update"><label>UPDATE</label></td>
-                <td id="price"><span></span>THB</td>
-                <td id="total"><span></span>THB</td>
+                <td id="price"><span></span></td>
+                <td id="total"><span></span></td>
                 <td id="remove"><label>REMOVE</label></td>
             </tr>
             <tr>
+                <td colspan="7"><hr></td>
+            </tr>
+            <tr>
                 <td colspan="5">Total cost before shipping</td>
-                <td colspan="2"><span></span>THB</td>
+                <td colspan="2"><span></span></td>
             </tr>
         </table>
     </div>

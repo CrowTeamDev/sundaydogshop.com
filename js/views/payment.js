@@ -3,7 +3,12 @@
  * 
  * Control on _payment.html
  */
-
+$(document).keypress(function(event){
+    if (event.which === '13'){
+        $('#payment_next', '#main').click();
+    } 
+ });
+ 
 $(document).ready(function(){
    
     var payment_step;
