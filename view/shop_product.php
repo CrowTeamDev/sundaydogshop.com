@@ -34,7 +34,7 @@
                         echo "</tr><tr>"
                                 . "<td align='right'>"
                                     . "<div class='product'>"
-                                        . "<a href='product?id=".$row['item_no']."'>"
+                                        . "<a href='product?id=".$row['item_no']."&gb=".$groupBy."'>"
                                             . "<img src='content/image/product/".$row['item_no'].".png'/>"
                                             . "<div class='product_detail'>"
                                                 . "+ SEE DETAIL"
@@ -46,7 +46,7 @@
                     else {
                         echo "<td align='right'>"
                                 . "<div class='product'>"
-                                    . "<a href='product?id=".$row['item_no']."'>"
+                                    . "<a href='product?id=".$row['item_no']."&gb=".$groupBy."'>"
                                         . "<img src='content/image/product/".$row['item_no'].".png'/>"
                                         . "<div class='product_detail'>"
                                             . "+ SEE DETAIL"

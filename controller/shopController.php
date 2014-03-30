@@ -63,8 +63,11 @@ Class shopController Extends baseController {
             if($_REQUEST['gb']=='we'){
                 $groupBy = "10003";
             }
-            if($_REQUEST['gb']=='s'){
+            if($_REQUEST['gb']=='sa'){
                 $groupBy = "10004";
+            }
+            if($_REQUEST['gb']=='s'){
+                $groupBy = "10005";
             }
             if($_REQUEST['gb']=='a'){
                 $groupBy = "";
@@ -74,6 +77,7 @@ Class shopController Extends baseController {
                 $listFilter = $_REQUEST['brand']."-".$_REQUEST['color']."-".$_REQUEST['size'];
             }
             
+            $this->registry->template->groupBy = $_REQUEST['gb'];
             $result = $this->registry->shop->getProduct($groupBy, $listFilter);
             $this->registry->template->groupList = $result["data"];
 
@@ -114,6 +118,7 @@ Class shopController Extends baseController {
             else{
                 $this->registry->template->groupList = $result["data"];
             }
+            $this->registry->template->groupBy = $_REQUEST['gb'];
             $this->registry->template->viewHigh = $result["viewHigh"];
             $this->registry->template->viewIndex = $viewIndex;
             $this->registry->template->paginate = TRUE;

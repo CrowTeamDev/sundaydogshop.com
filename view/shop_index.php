@@ -109,6 +109,7 @@
                             <div class="filters-row category <?if($groupBy=='p') echo "active";?>" id="p"><div>PLAY</div></div>
                             <div class="filters-row category <?if($groupBy=='wa') echo "active";?>" id="wa"><div>WALK</div></div>
                             <div class="filters-row category <?if($groupBy=='we') echo "active";?>" id="we"><div>WEAR</div></div>
+                            <div class="filters-row category <?if($groupBy=='sa') echo "active";?>" id="sa"><div>SALE</div></div>
                             <div class="filters-row category <?if($groupBy=='s') echo "active";?>" id="s"><div>SLEEP</div></div>
                             <div class="filters-row category <?if($groupBy=='a') echo "active";?>" id="a"><div>ALL</div></div>
                     </div>
@@ -177,7 +178,7 @@
                             echo "</tr><tr>"
                                     . "<td align='right'>"
                                         . "<div class='product'>"
-                                            . "<a href='product?id=".$row['item_no']."'>"
+                                            . "<a href='product?id=".$row['item_no']."&gb=".$groupBy."'>"
                                                 . "<img src='content/image/product/".$row['item_no'].".png'/>"
                                                 . "<div class='product_detail'>"
                                                     . "+ SEE DETAIL"
@@ -189,7 +190,7 @@
                         else {
                             echo "<td align='right'>"
                                         . "<div class='product'>"
-                                            . "<a href='product?id=".$row['item_no']."'>"
+                                            . "<a href='product?id=".$row['item_no']."&gb=".$groupBy."'>"
                                                 . "<img src='content/image/product/".$row['item_no'].".png'/>"
                                                 . "<div class='product_detail'>"
                                                     . "+ SEE DETAIL"
