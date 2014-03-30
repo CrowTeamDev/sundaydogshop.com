@@ -176,6 +176,17 @@ $(document).ready(function(){
                     display_address(buyyer_obj);
                     break;
                 case 4:
+                    var newDiv = $(document.createElement('div'));
+                    newDiv.html('<p align="center">Order process sent<br>Thank you</p>');
+                    newDiv.dialog({
+                        hide: ('fade', 3000),
+                        show: ('fade', 3000),
+                        modal: true,
+                        dialogClass: "no-close success-dialog",
+                        open: function(){
+                            setTimeout(newDiv.dialog('close'),5000);
+                        }
+                    });
                     window.location.replace($('#local_path').val() + '/home');
                     break;
             }

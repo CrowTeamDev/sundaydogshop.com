@@ -30,8 +30,8 @@ function buy(){
     var weight = $("#product_weight").val();
     var size = $("#product_size").val();
     var qty = $("#quantity").val();
-    var newDiv = $(document.createElement('div'));
     if (size !== ''){
+        var newDiv = $(document.createElement('div'));
         newDiv.html('<p align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
         newDiv.dialog({
             hide: ('fade', 3000),
