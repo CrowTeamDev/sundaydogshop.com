@@ -109,6 +109,7 @@
                             <div class="filters-row category <?if($groupBy=='p') echo "active";?>" id="p"><div>PLAY</div></div>
                             <div class="filters-row category <?if($groupBy=='wa') echo "active";?>" id="wa"><div>WALK</div></div>
                             <div class="filters-row category <?if($groupBy=='we') echo "active";?>" id="we"><div>WEAR</div></div>
+                            <div class="filters-row category <?if($groupBy=='sa') echo "active";?>" id="sa"><div>SALE</div></div>
                             <div class="filters-row category <?if($groupBy=='s') echo "active";?>" id="s"><div>SLEEP</div></div>
                             <div class="filters-row category <?if($groupBy=='a') echo "active";?>" id="a"><div>ALL</div></div>
                     </div>

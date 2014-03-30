@@ -71,6 +71,9 @@ function set_shopOn(shop_id){
         case 's':
             html = '<a href="shop?gb=s">SLEEP</a>';
             break;
+        case 'sa':
+            html = '<a href="shop?gb=sa">SALE</a>';
+            break;
         case 'a':
             html = '<a href="shop?gb=a">ALL</a>';
             break;
