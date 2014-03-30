@@ -21,15 +21,15 @@ String.prototype.replaceAll = function (find, replace) {
 };
 
 var directory = {
-    default: 'HOME',
-    get: function(){ return $('#current_directory').text(); },
+    default: '<a href="home">HOME</a>',
+    get: function(){ return $('#current_directory').html(); },
     add: function(value){
-        var path = this.get() + '/' + value;
-        $('#current_directory').text(path);
+        $('#current_directory').html(this.get() + '/' + value);
     },
     reset: function(value){
-        var path = this.default + '/' + value.toUpperCase();
-        $('#current_directory').text(path);
+        value = '<a href="' + value + '">' + value.toUpperCase() + '</a>';
+        if (value !== this.default)
+            $('#current_directory').html(this.default + '/' + value);          
     }
 };
 var cartItem = {
@@ -52,6 +52,33 @@ function set_menuOn(menu_id){
     setTimeout(function(){
         $('#main').fadeIn(3500);
     }, 1500);
+}
+function set_shopOn(shop_id){
+    var html;
+    switch (shop_id){
+        case 'e':
+            html = '<a href="shop?gb=e">EAT</a>';
+            break;
+        case 'p':
+            html = '<a href="shop?gb=p">PLAY</a>';
+            break;
+        case 'wa':
+            html = '<a href="shop?gb=wa">WALK</a>';
+            break;
+        case 'we':
+            html = '<a href="shop?gb=p">WEAR</a>';
+            break;
+        case 's':
+            html = '<a href="shop?gb=s">SLEEP</a>';
+            break;
+        case 'sa':
+            html = '<a href="shop?gb=sa">SALE</a>';
+            break;
+        case 'a':
+            html = '<a href="shop?gb=a">ALL</a>';
+            break;
+    }
+    directory.add(html);
 }
 function changeBackground(menu_id){
     var value;
@@ -178,8 +205,8 @@ $(document).ready(function(){
 
 });
 $(window).load(function(){
-     if(directory.get() === "")
-         startBackground();
+    if(directory.get() === "")
+        startBackground();
      
     function startBackground(){	
         var url_path = $('#local_path').val();
