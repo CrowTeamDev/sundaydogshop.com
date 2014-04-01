@@ -144,8 +144,8 @@ $(document).ready(function(){
                     night_phone_b : buyyer_obj.mobile,
                     phone : buyyer_obj.phone
                 };
+                clearSession();
                 $.post('view/_paypal_form.php', data, function(result){
-                    clearSession();
                     $('tr', payment_pay).last().find('td').html(result);
                     $('tr', payment_pay).last().find('td form').submit();
                 });
