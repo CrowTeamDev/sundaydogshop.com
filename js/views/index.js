@@ -118,6 +118,12 @@ function changeBackground(menu_id){
     }
     $('#background_2').css('background-image', value);
 }
+function displayPopup(text){
+    $('#popup').html(text);
+    $('#popup').fadeIn(3500, function(){
+        $('#popup').fadeOut(2500);
+    });
+}
 
 //private
 

@@ -115,5 +115,6 @@
             <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
         </footer>
         <input type="hidden" id="myCart" value='<?php echo $cart; ?>' />
+        <div id="popup"></div>
     </body>
 </html>
