@@ -1,4 +1,9 @@
 <?php
     session_start();
-
-    $_SESSION['cart'] = $_REQUEST['cart'];
+    
+    if ($_REQUEST['cart'] != null){
+        $_SESSION['cart'] = $_REQUEST['cart'];
+    }
+    else{
+        session_destroy();
+    }

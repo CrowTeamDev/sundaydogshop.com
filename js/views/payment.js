@@ -176,7 +176,7 @@ $(document).ready(function(){
                     display_address(buyyer_obj);
                     break;
                 case 4:
-                    //clear session here
+                    clearSession();
                     displayPopup('<div align="center"><br>Order process sent<br><br>Thank you</div>', 'home');
                     break;
             }
@@ -314,6 +314,10 @@ $(document).ready(function(){
             var data = { cart : JSON.stringify(cart) };
             $.post('view/_session.php', data);
             cartItem.set(cart.item.length);
+        }
+        function clearSession(){
+            $.post('view/_session.php', null);
+            cartItem.set(0);
         }
     }
     
