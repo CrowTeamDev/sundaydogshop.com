@@ -176,7 +176,9 @@ $(document).ready(function(){
                     display_address(buyyer_obj);
                     break;
                 case 4:
-                    displayPopup('<div align="center">Order process sent<br>Thank you</div>');
+                    displayPopup('<div align="center"><br>Order process sent<br><br>Thank you</div>');
+                    //clear session here
+                    window.location.href = "";
                     break;
             }
             if(payment_step < 4)
