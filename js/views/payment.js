@@ -147,7 +147,7 @@ $(document).ready(function(){
                 $.post('view/_paypal_form.php', data, function(result){
                     $('tr', payment_pay).last().find('td').html(result);
                     $('tr', payment_pay).last().find('td form').submit();
-                    buttonsText.done();
+                    clearSession();
                 });
             }
         });
