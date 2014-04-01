@@ -145,9 +145,9 @@ $(document).ready(function(){
                     phone : buyyer_obj.phone
                 };
                 $.post('view/_paypal_form.php', data, function(result){
+                    clearSession();
                     $('tr', payment_pay).last().find('td').html(result);
                     $('tr', payment_pay).last().find('td form').submit();
-                    clearSession();
                 });
             }
         });
