@@ -194,6 +194,9 @@ $(document).ready(function(){
             selected.removeClass('selected');
             selected.addClass('select');
         });
+        $('#navigation_bar img').click(function(){
+            window.location.href = 'home';
+        });
         $('header ul li, footer label').not('#copyright').click(function(){
             var id = $(this).attr('id');
             
