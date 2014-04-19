@@ -32,7 +32,7 @@ function buy(){
     var qty = $("#quantity").val();
     if (size !== ''){
         var newDiv = $(document.createElement('div'));
-        newDiv.html('<p align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
+        newDiv.html('<p id="popup_buy" align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
         newDiv.dialog({
             hide: ('fade', 3000),
             show: ('fade', 3000),
