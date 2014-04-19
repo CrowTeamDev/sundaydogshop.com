@@ -61,11 +61,11 @@
 }
 @keyframes footerAnimation {
     from { height: 0; }
-    to { height: 4%; }
+    to { height: 3%; }
 }
 @-webkit-keyframes footerAnimation {
     from { height: 0; }
-    to { height: 4%; }
+    to { height: 3%; }
 }
 @keyframes contactDivAnimation {
     from { max-height: 0; }
@@ -203,7 +203,7 @@ li{
     #logo_1{
         position: absolute;
         top: 0;
-        left: 50px;
+        left: 53px;
     }
     ul{ 
         z-index: 2;
@@ -597,7 +597,7 @@ label[id*='payment_']{
         bottom: 2%;
         display: none;
         position: absolute;
-        color: @color_g4;
+        color: @color_dark;
         font-size: 1em;
     }
 }
@@ -652,7 +652,7 @@ div.img-resize img{
             display: block;
             margin: 20px 0 10px;
             font-size: 1em;
-            text-indent: 50px;
+            //text-indent: 50px;
         }
      }
  }
@@ -660,23 +660,25 @@ div.img-resize img{
      float: right;
      margin-right: 25px;
      display: inline-block;
-     background: @color_w1;
+     background-image: url('../content/image/button_buy.png');
+     background-repeat: no-repeat;
+     background-size: 100% 100%;
      padding: 5px 30px;
-     border-color: @color_g2;
-     border-style: solid;
-     border-width: 3px;
      &:hover{
-         cursor: pointer;
-         color: @color_w1;
-         background-color: @color_g2;
+        cursor: pointer;
+        color: @color_w1;
+        background-image: url('../content/image/button_buy-a.png');
      }
      &.clicked{
-         color: @color_w1;
-         background-color: @color_g2;
+        color: @color_w1;
+        background-image: url('../content/image/button_buy-a.png');
      }
  }
  #product_checkOut{
      padding: 5px 50px;
+     background-image: url('../content/image/button_check-out.png');
+     &:hover{ background-image: url('../content/image/button_check-out-a.png'); }
+     &.clicked{ background-image: url('../content/image/button_check-out-a.png'); }
  }
  .productImage{
      width: 406px;
