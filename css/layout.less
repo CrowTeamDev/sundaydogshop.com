@@ -93,14 +93,14 @@ a:visited{ color: @black; }
 }
 .contactDiv{
     color: @color_w1;
-    background-color: @color_g4;
+    background-color: @color_dark;
     opacity:0.9;
     filter:alpha(opacity=90); /* For IE8 and earlier */
     width: 45%;
 }
 .hoverContact{
-    color: @color_g4;
-    background-color: @color_w1;
+    color: @color_dark;
+    background-color: @color_light;
     label{ cursor: pointer; }
 }
 html{ height: 100%; }
@@ -483,14 +483,13 @@ label[id*='payment_']{
 }
 #contact_main{
     .contactDiv;
-    font-size: 1em;
+    .fontAvenirNext;
     height: 200px;
-    padding: 5px 0;
+    padding: 10px 0;
     pre{
         display: block;
         margin-left: 40px;
     }
-    pre:first-child{ font-size: 1em; }
 }
 #contact_mail, #contact_FAQ{
     .contactDiv;
@@ -694,14 +693,15 @@ div.img-resize img{
 
 .info_main{
     .fontAvenirNext;
+    font-size: 0.75em;
     width: 35%;
     min-height: 250px;
     color: @color_w1;
-    background-color: @color_g4;
+    background-color: @color_dark;
     opacity:0.9;
     filter:alpha(opacity=90); /* For IE8 and earlier */
     padding: 35px;
-    text-indent: 50px;
+    //text-indent: 50px;
 }
 .policy_main{
     width: 100%;
