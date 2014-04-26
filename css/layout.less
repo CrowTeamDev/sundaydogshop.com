@@ -83,7 +83,7 @@ a:visited{ color: @black; }
     font-family: PrestigeElite;
     font-size: 1em;
     color: @color_w1;
-    background-image: url('../content/image/button_1.png');
+    background-image: url('../content/image/button_payment-1.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -329,6 +329,8 @@ div[id*='payment_']{
 label[id*='payment_']{
     .button;
     padding: 6px 2%;
+    background-image: url('../content/image/button_payment-3.png');
+    &.firstPage{ background-image: url('../content/image/button_payment-2.png'); }
 }
 #payment_next{ float: right; }
 #payment_checkOut{

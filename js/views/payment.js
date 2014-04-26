@@ -68,6 +68,12 @@ $(document).ready(function(){
             },
             done : function(){
                 $('#payment_next', '#payment_page').show();
+            },
+            firstPage : function(status){
+                if(status === true)
+                    $('#payment_back').addClass('firstPage');
+                else
+                    $('#payment_back').removeClass('firstPage');
             }
         };
     }
@@ -340,9 +346,11 @@ $(document).ready(function(){
         });
         
         function show_page(step){
+            buttonsText.firstPage(false);
             $('div[id*=payment_]', '#main').eq(step-1).fadeIn(500);
             switch(step){
                 case 1:
+                    buttonsText.firstPage(true);
                     buttonsText.set('CONTINUE SHOPPING', 'CHECK OUT');
                     break;
                 case 2:
