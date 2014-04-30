@@ -21,9 +21,11 @@ $(function(){
         }, 50);
     });
     $("#product_buy", "#productDetail").bind("click", buy);
+    $("#product_checkOut", "#productDetail").bind("click", buy);
 });
 
 function buy(){
+    var checkOut = $(this).attr('id') === "product_checkOut";
     var id = $("#product_id").val();
     var name = $("#product_name").text();
     var price = $("#product_price").find('span').text();
@@ -39,7 +41,13 @@ function buy(){
             modal: true,
             dialogClass: "no-close success-dialog",
             open: function(event, ui){
-                setTimeout(newDiv.dialog('close'),5000);
+                setTimeout(function(){
+                    newDiv.dialog('close');
+                    if (checkOut){
+                        var url = $("a", "#current_directory").eq(2).attr('href');
+                        window.location.href = url;
+                    }
+                },5000);
             }
         });
         $(".ui-dialog-titlebar").hide();

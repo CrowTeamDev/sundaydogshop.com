@@ -160,7 +160,7 @@ $(document).ready(function(){
         $('#payment_back', '#main').click(function(){
             switch(payment_step){
                 case 1:
-                    $('#navigation_bar ul li:eq('+id+')').click();
+                    window.location.href = 'shop';
                     break;
                 case 4:
                     break;
