@@ -11,7 +11,6 @@ $(function(){
     if (window.location.pathname !== '/')
         set_menuOn(page);
     $('#main').addClass('homeMode');
-    $('.arrow').show();
     
     $('.arrow').click(function(){
         var side = $(this).attr('id');
