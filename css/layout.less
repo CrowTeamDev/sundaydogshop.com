@@ -8,19 +8,12 @@
     Author     : Peace S.
 */
 
-@color_c1: #DED9CC;
-@color_c2: #AEAA95;
-@color_c3: #BfB7B2;
 @color_g1: #EBEDF0;
-@color_g2: #ACAEB0;
-@color_g3: #696C6E;
 @color_g4: #3E4042;
 @color_g5: #B9BBBD;
-@color_w1: #FFFFFF;
-@color_b1: #000000;
+@color_white: #FFFFFF;
 @color_r1: #FF0000;
-
-@black: #000000;
+@color_black: #000000;
 @color_dark: #ABAEA6;
 @color_light: #DDD9CB;
 
@@ -76,13 +69,13 @@
     to { max-height: 500px; }
 }
 
-a:visited{ color: @black; }
+a:visited{ color: @color_black; }
 
 .button{
     cursor: pointer;
     font-family: PrestigeElite;
     font-size: 1em;
-    color: @color_w1;
+    color: @color_white;
     background-image: url('../content/image/button_payment-1.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -92,7 +85,7 @@ a:visited{ color: @black; }
     font-size: 1em;
 }
 .contactDiv{
-    color: @color_w1;
+    color: @color_white;
     background-color: @color_dark;
     opacity:0.9;
     filter:alpha(opacity=90); /* For IE8 and earlier */
@@ -103,7 +96,10 @@ a:visited{ color: @black; }
     background-color: @color_light;
     label{ cursor: pointer; }
 }
-html{ height: 100%; }
+html{
+    height: 100%;
+    overflow-y: scroll;
+}
 body{
     height: 100%;
     font-family: PrestigeElite_Bold;
@@ -150,7 +146,7 @@ li{
         background-position: center top;
         background-repeat: no-repeat;
         background-size: contain;
-        color: @color_w1;
+        color: @color_white;
         padding: 0.5% 3%;
         margin: 0;
         opacity:0.7;
@@ -167,7 +163,7 @@ li{
     z-index: 15;
     #current_directory{ margin-right: 30px; }
     #your_cart{
-        color: @color_w1;
+        color: @color_white;
         background-image: url('../content/image/icon_1.png'), url('../content/image/button_your-cart.png');
         background-repeat: no-repeat, no-repeat;
         background-size: 13px 13px, 100% 100%;
@@ -257,6 +253,7 @@ li{
     display: none;
     &.paymentMode{ width: 85%; }
     &.shopMode{ padding: 12% 0 0; }
+    &.homeMode{ padding-top: 10%; }
 }
 footer{
     display: none;
@@ -310,7 +307,7 @@ footer{
 }
 #payment_page{
     font-size: 0.85em;
-    background-color: @color_w1;
+    background-color: @color_white;
     margin: -24.6px 90px 0;
     padding: 40px 3% 50px;
     opacity:0.9;
@@ -437,7 +434,7 @@ label[id*='payment_']{
             padding: 5px 0;
             padding-left: 10%;
             width: 90.5%;
-            color: @color_w1;
+            color: @color_white;
             background-color: @color_g5;
         }
         span{
@@ -464,7 +461,7 @@ label[id*='payment_']{
             border-top: 2px solid @color_dark;
             border-bottom: 2px solid @color_dark;
             &.menu:hover,&.selected{
-                color: @color_w1;
+                color: @color_white;
                 background-color: @color_dark;
                 border-left: 2px solid @color_dark;
                 border-right: 2px solid @color_dark;
@@ -557,7 +554,7 @@ label[id*='payment_']{
             span{
                 cursor: pointer;
                 display: block;
-                background-color: @color_w1;
+                background-color: @color_white;
                 color: @color_g4;
                 width: 65%;
                 padding: 5px 0;
@@ -589,7 +586,7 @@ label[id*='payment_']{
     border-top-style: solid;
     border-bottom-style: solid;
     border-color: @color_g5;
-    background-color: @color_w1;
+    background-color: @color_white;
 }
 .product{
     position: relative;
@@ -667,11 +664,11 @@ div.img-resize img{
      padding: 5px 30px;
      &:hover{
         cursor: pointer;
-        color: @color_w1;
+        color: @color_white;
         background-image: url('../content/image/button_buy-a.png');
      }
      &.clicked{
-        color: @color_w1;
+        color: @color_white;
         background-image: url('../content/image/button_buy-a.png');
      }
  }
@@ -698,7 +695,7 @@ div.img-resize img{
     font-size: 0.75em;
     width: 35%;
     min-height: 250px;
-    color: @color_w1;
+    color: @color_white;
     background-color: @color_dark;
     opacity:0.9;
     filter:alpha(opacity=90); /* For IE8 and earlier */
@@ -741,10 +738,55 @@ a:-webkit-any-link{ text-decoration: none; }
     width: 20%;
     height: 20%;
     padding: 2.5%;
-    color: @color_w1;
+    color: @color_white;
     background: @color_dark;
     opacity:0.7;
     filter:alpha(opacity=70); /* For IE8 and earlier */
     display: none;
 }
 #popup_buy{ font-family: PrestigeElite_Bold; }
+.home_main{
+    background-color: @color_white;
+    box-shadow: 5px 5px 5px @color_g5;
+    height: 500px;
+    padding-top: 3%;
+    div{ display: none; }
+    #home_info{
+        position: absolute;
+        width: 75%;
+        display: block;
+        font-family: AvenirNext;
+        font-size: 1.3em;
+        font-weight: bold;
+        color: @color_dark;
+        padding-top: 12%;
+        p{
+            text-align: center;
+            margin-bottom: 13px;
+        }
+    }
+    .home_gallery{
+        position: absolute;
+        width: 65%;
+        height: 70%;
+        margin: 0 5%;
+        background-position: center center;
+        background-size: cover;
+        &#home_product1{ background-image: url('../content/image/home/home_1.jpg'); }
+        &#home_product2{ background-image: url('../content/image/home/home_2.jpg'); }
+        &#home_product3{ background-image: url('../content/image/home/home_3.jpg'); }
+        &#home_product4{ background-image: url('../content/image/home/home_4.jpg'); }
+        &#home_product5{ background-image: url('../content/image/home/home_5.jpg'); }
+        &#home_product6{ background-image: url('../content/image/home/home_6.jpg'); }
+    }
+}
+.arrow{
+    cursor: pointer;
+    display: none;
+    position: fixed;
+    top: 45%;
+    width: 5%;
+    height: 20%;
+}
+#arrow_right{ right: 2%; }
+#arrow_left{ left: 2%; }

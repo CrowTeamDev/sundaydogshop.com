@@ -101,7 +101,13 @@
             <?php
                 echo $registry->router->loader();
             ?>
-        </div> 
+        </div>
+        <svg class="arrow" id="arrow_left" viewBox="0 0 20 70">
+            <polyline points="20,0 0,35 20,70" style="fill:none;stroke:white;stroke-width:1;" />
+        </svg>
+        <svg class="arrow" id="arrow_right" viewBox="0 0 20 70">
+            <polyline points="0,0 20,35 0,70" style="fill:none;stroke:white;stroke-width:1;" />
+        </svg>
 	<div id="controls-wrapper" class="load-item">
             <div id="controls">
                 <ul id="slide-list"></ul>
