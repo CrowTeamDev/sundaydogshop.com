@@ -50,6 +50,7 @@ function set_menuOn(menu_id){
     $('header ul li#'+menu_id).addClass('select');
     $('footer label#'+menu_id).addClass('select');
     setTimeout(function(){
+        $(".load-item").hide();
         $('#main').fadeIn(3500);
         if (menu_id === 'home')
             $('.arrow').fadeIn(3500);
