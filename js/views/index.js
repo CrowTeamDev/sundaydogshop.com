@@ -51,6 +51,8 @@ function set_menuOn(menu_id){
     $('footer label#'+menu_id).addClass('select');
     setTimeout(function(){
         $('#main').fadeIn(3500);
+        if (menu_id === 'home')
+            $('.arrow').fadeIn(3500);
     }, 1500);
 }
 function set_shopOn(shop_id, product_name, product_id){
@@ -165,6 +167,7 @@ $(document).ready(function(){
                 $('#navigation_bar').addClass('page_load').fadeIn(2500);
                 $('#top_menu, footer').addClass('page_load').fadeIn(500);
                 $('#main').fadeIn(5000);
+                $('.arrow').fadeIn(5000);
                 $(".load-item").hide();
                 var pauseSlide = setInterval(function(){
                     if (vars.is_paused)
