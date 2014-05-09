@@ -7,23 +7,35 @@
 $(function(){
     var page = $('input#page').val();
     var current_step = 0;
+    var changingSlide;
+    
+    resumeSlide(changingSlide);
     
     if (window.location.pathname !== '/')
         set_menuOn(page);
     $('#main').addClass('homeMode');
     
     $('.arrow').click(function(){
-        var side = $(this).attr('id');
-        var next_step = side === "arrow_right" ? current_step+1 : current_step-1;
-        if (next_step === -1) next_step = $('.home_gallery', '.home_main').length;
-        if (next_step > $('.home_gallery', '.home_main').length) next_step = 0;
+        clearInterval(changingSlide);
+        var next_step = $(this).attr('id') === "arrow_right" ? current_step+1 : current_step-1;
+        gotoSlide(next_step);
+        resumeSlide(changingSlide);
+    });
+    
+    function gotoSlide(slide){
+        if (!$('.home_main').is(':visible')) return;
+        if (slide === -1) slide = $('.home_gallery', '.home_main').length;
+        if (slide > $('.home_gallery', '.home_main').length) slide = 0;
         
         var hideDiv = $('div', '.home_main').eq(current_step);
-        var showDiv = $('div', '.home_main').eq(next_step);
+        var showDiv = $('div', '.home_main').eq(slide);
         
         hideDiv.fadeOut(4000);
         showDiv.fadeIn(3500);
         
-        current_step = next_step;
-    });
+        current_step = slide;
+    }
+    function resumeSlide(changing){
+        changing = setInterval(function(){gotoSlide(current_step+1);}, 30000);
+    }
 });
