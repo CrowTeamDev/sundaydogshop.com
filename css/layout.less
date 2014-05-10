@@ -748,18 +748,20 @@ a:-webkit-any-link{ text-decoration: none; }
 .home_main{
     background-color: @color_white;
     box-shadow: 5px 5px 5px @color_g5;
-    height: 500px;
+    width: 80%;
+    height: 100%;
+    margin: 0 10%;
     padding-top: 3%;
     div{ display: none; }
     #home_info{
         position: absolute;
-        width: 75%;
+        width: 60%;
         display: block;
         font-family: AvenirNext;
         font-size: 1.3em;
         font-weight: bold;
         color: @color_dark;
-        padding-top: 12%;
+        padding-top: 10%;
         p{
             text-align: center;
             margin-bottom: 13px;
@@ -767,17 +769,36 @@ a:-webkit-any-link{ text-decoration: none; }
     }
     .home_gallery{
         position: absolute;
-        width: 65%;
-        height: 70%;
-        margin: 0 5%;
+        width: 60%;
+        height: 60%;
+        margin: 0 0.5%;
         background-position: center center;
-        background-size: cover;
+        background-repeat: no-repeat;
+        background-size: contain;
         &#home_product1{ background-image: url('../content/image/home/home_1.jpg'); }
         &#home_product2{ background-image: url('../content/image/home/home_2.jpg'); }
         &#home_product3{ background-image: url('../content/image/home/home_3.jpg'); }
         &#home_product4{ background-image: url('../content/image/home/home_4.jpg'); }
         &#home_product5{ background-image: url('../content/image/home/home_5.jpg'); }
         &#home_product6{ background-image: url('../content/image/home/home_6.jpg'); }
+    }
+    #home_ribbon{
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 10%;
+        left: 40%;
+        top: 80%;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        &.home_ribbon0{ background-image: url('../content/image/home/ribbon_0.png'); }
+        &.home_ribbon1{ background-image: url('../content/image/home/ribbon_1.png'); }
+        &.home_ribbon2{ background-image: url('../content/image/home/ribbon_2.png'); }
+        &.home_ribbon3{ background-image: url('../content/image/home/ribbon_3.png'); }
+        &.home_ribbon4{ background-image: url('../content/image/home/ribbon_4.png'); }
+        &.home_ribbon5{ background-image: url('../content/image/home/ribbon_5.png'); }
+        &.home_ribbon6{ background-image: url('../content/image/home/ribbon_6.png'); }
     }
 }
 .arrow{

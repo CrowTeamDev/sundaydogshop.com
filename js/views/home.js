@@ -9,17 +9,18 @@ $(function(){
     var current_step = 0;
     var changingSlide;
     
-    resumeSlide(changingSlide);
+    resumeSlide();
     
     if (window.location.pathname !== '/')
         set_menuOn(page);
     $('#main').addClass('homeMode');
+    $('#home_ribbon').addClass('home_ribbon0');
     
     $('.arrow').click(function(){
         clearInterval(changingSlide);
         var next_step = $(this).attr('id') === "arrow_right" ? current_step+1 : current_step-1;
         gotoSlide(next_step);
-        resumeSlide(changingSlide);
+        resumeSlide();
     });
     
     function gotoSlide(slide){
@@ -33,9 +34,15 @@ $(function(){
         hideDiv.fadeOut(4000);
         showDiv.fadeIn(3500);
         
+        $('#home_ribbon').fadeOut(2000, function(){
+            $('#home_ribbon').removeClass();
+            $('#home_ribbon').addClass('home_ribbon' + slide);
+            $('#home_ribbon').fadeIn(1500);
+        });
+        
         current_step = slide;
     }
-    function resumeSlide(changing){
-        changing = setInterval(function(){gotoSlide(current_step+1);}, 30000);
+    function resumeSlide(){
+        changingSlide = setInterval(function(){gotoSlide(current_step+1);}, 30000);
     }
 });
