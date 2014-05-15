@@ -77,7 +77,7 @@
             <div id="intro_logo_bg"></div>
         </div>
         <header id="start_menu">
-            <label>MENU ∨</label>
+            <label>MENU</label>
         </header>
         <header id="top_menu">
             <ul>
