@@ -68,6 +68,20 @@
                 <option value="XL">XL</option>
             </select>
         </div>
+        <?php
+            // Check color list
+            /*foreach ($filterList as $key => $vals){
+            <div style="margin: 20px 0;">
+                COLOR
+                <select id="product_color" style="float: right; margin-right: 25px;">
+                    <option value=""> -- Please Select -- </option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                </select>
+            </div>*/
+        ?>
         <div style="margin: 30px 0; vertical-align: middle;">
             QUANTITY
             <input type="number" min="1" max="99" value="1"

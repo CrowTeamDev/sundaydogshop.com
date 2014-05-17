@@ -20,6 +20,7 @@ $(function(){
         clearInterval(changingSlide);
         var next_step = $(this).attr('id') === "arrow_right" ? current_step+1 : current_step-1;
         gotoSlide(next_step);
+        changeBgTransparent();
         resumeSlide();
     });
     
@@ -42,7 +43,20 @@ $(function(){
         
         current_step = slide;
     }
+    function changeBgTransparent(){
+        if (current_step === 0){
+            $('.home_main').addClass('white');
+            $('.home_main').removeClass('transparent');
+        }
+        else if (!$('.home_main').hasClass('transparent')){
+            $('.home_main').addClass('transparent');
+            $('.home_main').removeClass('white');
+        }
+    }
     function resumeSlide(){
-        changingSlide = setInterval(function(){gotoSlide(current_step+1);}, 30000);
+        changingSlide = setInterval(function(){
+            gotoSlide(current_step+1);
+            changeBgTransparent();
+        }, 30000);
     }
 });

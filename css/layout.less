@@ -253,7 +253,7 @@ li{
     display: none;
     &.paymentMode{ width: 85%; }
     &.shopMode{ padding: 12% 0 0; }
-    &.homeMode{ padding-top: 10%; }
+    &.homeMode{ padding-top: 9%; }
 }
 footer{
     display: none;
@@ -264,8 +264,8 @@ footer{
     padding-top: 0.3%;
     width: 100%;
     background-color: @color_g1;
-    opacity:0.6;
-    filter:alpha(opacity=60); /* For IE8 and earlier */
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
     z-index: 100;
     label{ 
         cursor: pointer;
@@ -745,22 +745,23 @@ a:-webkit-any-link{ text-decoration: none; }
 }
 #popup_buy{ font-family: PrestigeElite_Bold; }
 .home_main{
-    background-color: @color_white;
     box-shadow: 5px 5px 5px @color_g5;
-    width: 80%;
+    width: 70%;
     height: 100%;
-    margin: 0 10%;
+    margin: 0 15%;
     padding-top: 3%;
+    &.white{ background-color: @color_white; }
+    &.transparent{ background-image: url('../content/image/background/white40.png'); }
     div{ display: none; }
     #home_info{
         position: absolute;
-        width: 60%;
+        width: 52.5%;
         display: block;
         font-family: AvenirNext;
         font-size: 1.3em;
         font-weight: bold;
         color: @color_dark;
-        padding-top: 10%;
+        padding-top: 7%;
         p{
             text-align: center;
             margin-bottom: 13px;
@@ -768,9 +769,9 @@ a:-webkit-any-link{ text-decoration: none; }
     }
     .home_gallery{
         position: absolute;
-        width: 60%;
-        height: 60%;
-        margin: 0 0.5%;
+        width: 52.5%;
+        height: 65%;
+        margin: 0;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -784,14 +785,17 @@ a:-webkit-any-link{ text-decoration: none; }
     #home_ribbon{
         display: block;
         position: absolute;
-        width: 20%;
-        height: 10%;
+        width: 15%;
+        height: 15%;
         left: 40%;
-        top: 80%;
-        background-position: top center;
+        bottom: 8%;
+        background-position: bottom center;
         background-repeat: no-repeat;
         background-size: contain;
-        &.home_ribbon0{ background-image: url('../content/image/home/ribbon_0.png'); }
+        &.home_ribbon0{
+            background-image: url('../content/image/home/ribbon_0.png');
+            background-position: top center;
+        }
         &.home_ribbon1{ background-image: url('../content/image/home/ribbon_1.png'); }
         &.home_ribbon2{ background-image: url('../content/image/home/ribbon_2.png'); }
         &.home_ribbon3{ background-image: url('../content/image/home/ribbon_3.png'); }
