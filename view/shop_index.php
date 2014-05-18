@@ -2,7 +2,7 @@
 <script src="js/views/jquery.simplePagination.js"></script>
 <script src="js/views/jquery.nicescroll.js"></script>
 <link rel="stylesheet" type="text/css" href="css/shop.css" />
-<input type="hidden" id="gb" value="<?=$groupBy?>"/>
+<input type="hidden" id="gb" value="<?php echo $groupBy ?>"/>
 <script>
     $(function(){
         // Sidebar
@@ -105,19 +105,19 @@
             <li class="filters expanded">
                 <div class="filters-top"><a>CATEGORY</a></div>
                     <div class="filters-bottom">
-                            <div class="filters-row category <?if($groupBy=='e') echo "active";?>" id="e"><div>EAT</div></div>
-                            <div class="filters-row category <?if($groupBy=='p') echo "active";?>" id="p"><div>PLAY</div></div>
-                            <div class="filters-row category <?if($groupBy=='wa') echo "active";?>" id="wa"><div>WALK</div></div>
-                            <div class="filters-row category <?if($groupBy=='we') echo "active";?>" id="we"><div>WEAR</div></div>
-                            <div class="filters-row category <?if($groupBy=='sa') echo "active";?>" id="sa"><div>SALE</div></div>
-                            <div class="filters-row category <?if($groupBy=='s') echo "active";?>" id="s"><div>SLEEP</div></div>
-                            <div class="filters-row category <?if($groupBy=='a') echo "active";?>" id="a"><div>ALL</div></div>
+                            <div class="filters-row category <?php if($groupBy=='a') echo "active";?>" id="a"><div>ALL</div></div>
+                            <div class="filters-row category <?php if($groupBy=='e') echo "active";?>" id="e"><div>EAT</div></div>
+                            <div class="filters-row category <?php if($groupBy=='wa') echo "active";?>" id="wa"><div>WALK</div></div>
+                            <div class="filters-row category <?php if($groupBy=='p') echo "active";?>" id="p"><div>PLAY</div></div>
+                            <div class="filters-row category <?php if($groupBy=='we') echo "active";?>" id="we"><div>WEAR</div></div>
+                            <div class="filters-row category <?php if($groupBy=='s') echo "active";?>" id="s"><div>SLEEP</div></div>
+                            <div class="filters-row category <?php if($groupBy=='sa') echo "active";?>" id="sa"><div>SALE</div></div>
                     </div>
             </li>
             <li class="filters expanded">
                 <div class="filters-top"><a>BRAND</a></div>
                     <div class="filters-bottom">
-                        <?
+                        <?php
                             foreach ($filterList as $key => $vals){
                                 if($key=='brand'){
                                     foreach ($vals as $key => $val){
@@ -131,7 +131,7 @@
             <li class="filters expanded">
                 <div class="filters-top"><a>COLOR</a></div>
                     <div class="filters-bottom">
-                        <?
+                        <?php
                             foreach ($filterList as $key => $vals){
                                 if($key=='color'){
                                     foreach ($vals as $key => $val){
@@ -145,7 +145,7 @@
             <li class="filters expanded">
                 <div class="filters-top"><a>SIZE</a></div>
                     <div class="filters-bottom">
-                        <?
+                        <?php
                             foreach ($filterList as $key => $vals){
                                 if($key=='size'){
                                     foreach ($vals as $key => $val){
