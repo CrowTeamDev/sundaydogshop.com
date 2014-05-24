@@ -86,17 +86,25 @@
                 ?>
             </select>
         </div>
-        <div style="margin: 20px 0;">
-            COLOR
-            <select id="product_color" style="float: right; margin-right: 25px;">
-                <option value=""> -- Please Select -- </option>
-                <?php
-                    foreach ($colorList as $key){
-                        echo "<option value='".$key['color']."'>".$key['color']."</option>";
-                    }
-                ?>
-            </select>
-        </div>
+        <?php
+            $colorExisted = false;
+        
+            $html = "";
+            $html .= "<div style='margin: 20px 0;'>";
+            $html .= "COLOR";
+            $html .= "<select id='product_color' style='float: right; margin-right: 25px;'>";
+            $html .= "<option value=''> -- Please Select -- </option>";
+            foreach ($colorList as $key){
+                $colorExisted = true;
+                $html .= "<option value='".$key['color']."'>".$key['color']."</option>";
+            }
+            $html .= "</select>";
+            $html .= "</div>";
+
+            if ($colorExisted){
+                echo $html;
+            }
+        ?>
         <div style="margin: 30px 0; vertical-align: middle;">
             QUANTITY
             <input type="number" min="1" max="99" value="1"
