@@ -8,6 +8,7 @@ Class productController Extends baseController {
             $this->registry->template->product_heading = 'This is the product Index';
             $this->registry->template->productList = $this->registry->product->getProduct($id);
             $this->registry->template->colorList = $this->registry->product->getColor($id);
+            $this->registry->template->sizeList = $this->registry->product->getSize($id);
 	    $this->registry->template->show('product_index');
     }
 }

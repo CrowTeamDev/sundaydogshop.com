@@ -62,26 +62,41 @@
             SIZE
             <select id="product_size" style="float: right; margin-right: 25px;">
                 <option value=""> -- Please Select -- </option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
+                <?php
+                    foreach ($sizeList as $key){
+                        switch ($key['size']) {
+                            case "SMALL":
+                                $val = "S";
+                                break;
+                            case "MEDIUM":
+                                $val = "M";
+                                break;
+                            case "LARGE":
+                                $val = "L";
+                                break;
+                            case "XLARGE":
+                                $val = "XL";
+                                break;
+                            default:
+                                $val = $key;
+                                break;
+                        }
+                        echo "<option value='".$val."'>".$val."</option>";
+                    }
+                ?>
             </select>
         </div>
-        <?php
-            // Check color list
-            /*foreach ($filterList as $key => $vals){
-            <div style="margin: 20px 0;">
-                COLOR
-                <select id="product_color" style="float: right; margin-right: 25px;">
-                    <option value=""> -- Please Select -- </option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                </select>
-            </div>*/
-        ?>
+        <div style="margin: 20px 0;">
+            COLOR
+            <select id="product_color" style="float: right; margin-right: 25px;">
+                <option value=""> -- Please Select -- </option>
+                <?php
+                    foreach ($colorList as $key){
+                        echo "<option value='".$key['color']."'>".$key['color']."</option>";
+                    }
+                ?>
+            </select>
+        </div>
         <div style="margin: 30px 0; vertical-align: middle;">
             QUANTITY
             <input type="number" min="1" max="99" value="1"

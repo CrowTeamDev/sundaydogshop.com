@@ -10,8 +10,15 @@
         
         public function getColor($id) {
             if(!empty($id)){
-                $product->colorList = db::getInstance()->query('SELECT * FROM Product_Color where item_no='.$id."");
+                $product->colorList = db::getInstance()->query('SELECT color FROM Product_Color where item_no='.$id."");
                 return $product->colorList;
+            }
+        }
+        
+        public function getSize($id) {
+            if(!empty($id)){
+                $product->sizeList = db::getInstance()->query('SELECT size FROM Product_Size where item_no='.$id."");
+                return $product->sizeList;
             }
         }
 }
