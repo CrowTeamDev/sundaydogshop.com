@@ -7,14 +7,14 @@
     $itemNo = $row['item_no'];
     
     $id_1 = $row['item_no']."_1";
-    $img_1 = "content/image/product/".$itemNo."_1.png";
-    $zoom_1 = "content/image/product/".$itemNo."_1Large.png";
+    $img_1 = "content/image/product/".$itemNo."_1.jpg";
+    $zoom_1 = "content/image/product/".$itemNo."_1Large.jpg";
     $id_2 = $row['item_no']."_2";
-    $img_2 = "content/image/product/".$itemNo."_2.png";
-    $zoom_2 = "content/image/product/".$itemNo."_2Large.png";
+    $img_2 = "content/image/product/".$itemNo."_2.jpg";
+    $zoom_2 = "content/image/product/".$itemNo."_2Large.jpg";
     $id_3 = $row['item_no']."_3";
-    $img_3 = "content/image/product/".$itemNo."_3.png";
-    $zoom_3 = "content/image/product/".$itemNo."_3Large.png";
+    $img_3 = "content/image/product/".$itemNo."_3.jpg";
+    $zoom_3 = "content/image/product/".$itemNo."_3Large.jpg";
 ?>
 <script src="js/views/product.js" type="text/javascript"></script>
 <div id="product_main">
@@ -81,7 +81,7 @@
                                 $val = $key;
                                 break;
                         }
-                        echo "<option value='".$val."'>".$val."</option>";
+                        echo "<option value='".$key['price']."'>".$val."</option>";
                     }
                 ?>
             </select>

@@ -22,6 +22,9 @@ $(function(){
     });
     $("#product_buy", "#productDetail").bind("click", buy);
     $("#product_checkOut", "#productDetail").bind("click", buy);
+    
+    if ($('#product_price span').text() === "0")
+        sizeInvolve();
 });
 
 function buy(){
@@ -58,4 +61,13 @@ function buy(){
         $.post('view/_session.php', data);
         cartItem.add();
     }
+}
+
+function sizeInvolve(){
+    $('#product_price span').text('?');
+    $('#product_size').change(function(){
+        $('#product_price span').text(
+            $('#product_size').val() === '' ? '?' : $('#product_size').val()
+        );
+    });
 }

@@ -114,48 +114,75 @@
                             <div class="filters-row category <?php if($groupBy=='sa') echo "active";?>" id="sa"><div>SALE</div></div>
                     </div>
             </li>
-            <li class="filters expanded">
-                <div class="filters-top"><a>BRAND</a></div>
-                    <div class="filters-bottom">
-                        <?php
-                            foreach ($filterList as $key => $vals){
-                                if($key=='brand'){
-                                    foreach ($vals as $key => $val){
-                                        echo "<div class=\"filters-row filter\" id=\"brand_".$val['brand_no']."\"><div>".$val['brand']."</div></div>";
-                                    }
-                                }
-                            }
-                        ?>
-                    </div>
-            </li>
-            <li class="filters expanded">
-                <div class="filters-top"><a>COLOR</a></div>
-                    <div class="filters-bottom">
-                        <?php
-                            foreach ($filterList as $key => $vals){
-                                if($key=='color'){
-                                    foreach ($vals as $key => $val){
-                                        echo "<div class=\"filters-row filter\" id=\"color_".$val['color']."\"><div>".$val['color']."</div></div>";
-                                    }
-                                }
-                            }
-                        ?>
-                    </div>
-            </li>
-            <li class="filters expanded">
-                <div class="filters-top"><a>SIZE</a></div>
-                    <div class="filters-bottom">
-                        <?php
-                            foreach ($filterList as $key => $vals){
-                                if($key=='size'){
-                                    foreach ($vals as $key => $val){
-                                        echo "<div class=\"filters-row filter\" id=\"size_".$val['size']."\"><div>".$val['size']."</div></div>";
-                                    }
-                                }
-                            }
-                        ?>
-                    </div>
-            </li>
+            <?php
+                $checkExisted = false;
+                
+                $html = "";
+                $html .= "<li class='filters expanded'>";
+                $html .= "<div class='filters-top'><a>BRAND</a></div>";
+                $html .= "<div class='filters-bottom'>";
+                        
+                foreach ($filterList as $key => $vals){
+                    if($key=='brand'){
+                        foreach ($vals as $key => $val){
+                            $checkExisted = true;
+                            $html .= "<div class=\"filters-row filter\" id=\"brand_".$val['brand_no']."\"><div>".$val['brand']."</div></div>";
+                        }
+                    }
+                }
+                $html .= "</div>";
+                $html .= "</li>";
+                
+                if ($checkExisted){
+                    echo $html;
+                }
+            ?>
+            <?php
+                $checkExisted = false;
+                
+                $html = "";
+                $html .= "<li class='filters expanded'>";
+                $html .= "<div class='filters-top'><a>COLOR</a></div>";
+                $html .= "<div class='filters-bottom'>";
+                
+                foreach ($filterList as $key => $vals){
+                    if($key=='color'){
+                        foreach ($vals as $key => $val){
+                            $checkExisted = true;
+                            $html .= "<div class=\"filters-row filter\" id=\"color_".$val['color']."\"><div>".$val['color']."</div></div>";
+                        }
+                    }
+                }
+                $html .= "</div>";
+                $html .= "</li>";
+                
+                if ($checkExisted){
+                    echo $html;
+                }
+            ?>
+            <?php
+                $checkExisted = false;
+            
+                $html = "";
+                $html .= "<li class='filters expanded'>";
+                $html .= "<div class='filters-top'><a>SIZE</a></div>";
+                $html .= "<div class='filters-bottom'>";
+
+                foreach ($filterList as $key => $vals){
+                    if($key=='size'){
+                        foreach ($vals as $key => $val){
+                            $checkExisted = true;
+                            $html .= "<div class=\"filters-row filter\" id=\"size_".$val['size']."\"><div>".$val['size']."</div></div>";
+                        }
+                    }
+                }
+                $html .= "</div>";
+                $html .= "</li>";
+                
+                if ($checkExisted){
+                    echo $html;
+                }
+            ?>
         </ul>
         <!-- End of Filters --> 
     </div>
@@ -179,7 +206,7 @@
                                     . "<td align='right'>"
                                         . "<div class='product'>"
                                             . "<a href='product?id=".$row['item_no']."&gb=".$groupBy."'>"
-                                                . "<img src='content/image/product/".$row['item_no'].".png'/>"
+                                                . "<img src='content/image/product/".$row['item_no'].".jpg'/>"
                                                 . "<div class='product_detail'>"
                                                     . "+ SEE DETAIL"
                                                 . "</div>"
@@ -191,7 +218,7 @@
                             echo "<td align='right'>"
                                         . "<div class='product'>"
                                             . "<a href='product?id=".$row['item_no']."&gb=".$groupBy."'>"
-                                                . "<img src='content/image/product/".$row['item_no'].".png'/>"
+                                                . "<img src='content/image/product/".$row['item_no'].".jpg'/>"
                                                 . "<div class='product_detail'>"
                                                     . "+ SEE DETAIL"
                                                 . "</div>"
