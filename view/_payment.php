@@ -34,7 +34,7 @@
                 <td colspan="2">TOTAL (THB)</td>
             </tr>
             <tr class="checkOut_item">
-                <td id="image"></td>
+                <td id="image"><img width="100%" /></td>
                 <td id="name"></td>
                 <td id="qty"><input type="number" min="1" max="99" value="1" /></td>
                 <td id="update"><label>UPDATE</label></td>
@@ -115,7 +115,7 @@
                 <td>TOTAL (THB)</td>
             </tr>
             <tr class="checkOut_item">
-                <td id="image"></td>
+                <td id="image"><img width="100%" /></td>
                 <td id="name"></td>
                 <td id="qty"></td>
                 <td id="price"><span></span></td>

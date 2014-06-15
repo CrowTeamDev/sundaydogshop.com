@@ -55,6 +55,7 @@ function buy(){
         });
         $(".ui-dialog-titlebar").hide();
         
+        name += ' (' + $("#product_size>option:selected").html() + ')';
         cart_obj.item.push(new Item(id, name, price, weight, qty));
         
         var data = { cart : JSON.stringify(cart_obj) };

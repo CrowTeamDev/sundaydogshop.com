@@ -115,72 +115,74 @@
                     </div>
             </li>
             <?php
-                $checkExisted = false;
+                $checkExisted1 = false;
                 
-                $html = "";
-                $html .= "<li class='filters expanded'>";
-                $html .= "<div class='filters-top'><a>BRAND</a></div>";
-                $html .= "<div class='filters-bottom'>";
+                $html1 = "";
+                $html1 .= "<li class='filters expanded'>";
+                $html1 .= "<div class='filters-top'><a>BRAND</a></div>";
+                $html1 .= "<div class='filters-bottom'>";
                         
                 foreach ($filterList as $key => $vals){
                     if($key=='brand'){
                         foreach ($vals as $key => $val){
-                            $checkExisted = true;
-                            $html .= "<div class=\"filters-row filter\" id=\"brand_".$val['brand_no']."\"><div>".$val['brand']."</div></div>";
+                            $checkExisted1 = true;
+                            $html1 .= "<div class=\"filters-row filter\" id=\"brand_".$val['brand_no']."\"><div>".$val['brand']."</div></div>";
                         }
                     }
                 }
-                $html .= "</div>";
-                $html .= "</li>";
+                $html1 .= "</div>";
+                $html1 .= "</li>";
                 
-                if ($checkExisted){
-                    echo $html;
+                if ($checkExisted1){
+                    echo $html1;
                 }
             ?>
             <?php
-                $checkExisted = false;
+                $checkExisted2 = false;
                 
-                $html = "";
-                $html .= "<li class='filters expanded'>";
-                $html .= "<div class='filters-top'><a>COLOR</a></div>";
-                $html .= "<div class='filters-bottom'>";
+                $html2 = "";
+                $html2 .= "<li class='filters expanded'>";
+                $html2 .= "<div class='filters-top'><a>COLOR</a></div>";
+                $html2 .= "<div class='filters-bottom'>";
                 
                 foreach ($filterList as $key => $vals){
                     if($key=='color'){
                         foreach ($vals as $key => $val){
-                            $checkExisted = true;
-                            $html .= "<div class=\"filters-row filter\" id=\"color_".$val['color']."\"><div>".$val['color']."</div></div>";
+                            if ($val['color'] != null){
+                                $checkExisted2 = true;
+                                $html2 .= "<div class=\"filters-row filter\" id=\"color_".$val['color']."\"><div>".$val['color']."</div></div>";
+                            }
                         }
                     }
                 }
-                $html .= "</div>";
-                $html .= "</li>";
+                $html2 .= "</div>";
+                $html2 .= "</li>";
                 
-                if ($checkExisted){
-                    echo $html;
+                if ($checkExisted2){
+                    echo $html2;
                 }
             ?>
             <?php
-                $checkExisted = false;
+                $checkExisted3 = false;
             
-                $html = "";
-                $html .= "<li class='filters expanded'>";
-                $html .= "<div class='filters-top'><a>SIZE</a></div>";
-                $html .= "<div class='filters-bottom'>";
+                $html3 = "";
+                $html3 .= "<li class='filters expanded'>";
+                $html3 .= "<div class='filters-top'><a>SIZE</a></div>";
+                $html3 .= "<div class='filters-bottom'>";
 
                 foreach ($filterList as $key => $vals){
                     if($key=='size'){
                         foreach ($vals as $key => $val){
-                            $checkExisted = true;
-                            $html .= "<div class=\"filters-row filter\" id=\"size_".$val['size']."\"><div>".$val['size']."</div></div>";
+                            $checkExisted3 = true;
+                            $html3 .= "<div class=\"filters-row filter\" id=\"size_".$val['size']."\"><div>".$val['size']."</div></div>";
                         }
                     }
                 }
-                $html .= "</div>";
-                $html .= "</li>";
+                $html3 .= "</div>";
+                $html3 .= "</li>";
                 
-                if ($checkExisted){
-                    echo $html;
+                if ($checkExisted3){
+                    echo $html3;
                 }
             ?>
         </ul>

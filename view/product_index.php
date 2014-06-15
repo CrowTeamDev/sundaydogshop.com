@@ -26,24 +26,31 @@
                  data-zoom-image="<?php echo $zoom_1; ?>" >
         </div>
         <div id="<?php echo $itemNo; ?>" class="thumbnail">
-            <a href="1"
-               data-image="<?php echo $img_1; ?>"
-               data-zoom-image="<?php echo $zoom_1; ?>" >
-                <img id="<?php echo $id_1; ?>"
-                     src="<?php echo $img_1; ?>" />
-            </a>
-            <a href="2"
-               data-image="<?php echo $img_2; ?>"
-               data-zoom-image="<?php echo $zoom_2; ?>" >
-                <img id="<?php echo $id_2; ?>"
-                     src="<?php echo $img_2; ?>" />
-            </a>
-            <a href="3"
-               data-image="<?php echo $img_3; ?>"
-               data-zoom-image="<?php echo $zoom_3; ?>" >
-                <img id="<?php echo $id_3; ?>"
-                     src="<?php echo $img_3; ?>" />
-            </a>
+            <?php
+                $html1 = '<a href="1" data-image="'.$img_1.'" data-zoom-image="'.$zoom_1.'" >';
+                $html1 .= '<img id="'.$id_1.'" src="'.$img_1.'" />';
+                $html1 .= '</a>';
+                
+                if (file_exists($img_1)){
+                    echo $html1;
+                }
+                
+                $html2 = '<a href="2" data-image="'.$img_2.'" data-zoom-image="'.$zoom_2.'" >';
+                $html2 .= '<img id="'.$id_2.'" src="'.$img_2.'" />';
+                $html2 .= '</a>';
+                
+                if (file_exists($img_2)){
+                    echo $html2;
+                }
+            
+                $html3 = '<a href="3" data-image="'.$img_3.'" data-zoom-image="'.$zoom_3.'" >';
+                $html3 .= '<img id="'.$id_3.'" src="'.$img_3.'" />';
+                $html3 .= '</a>';
+                
+                if (file_exists($img_3)){
+                    echo $html3;
+                }
+            ?>
         </div>
     </div>
     <div id="zoomBox"></div>

@@ -379,6 +379,7 @@ $(document).ready(function(){
             var target_row = $('.created:last', div_step);
 
             var item = cart.item[i];
+            target_row.find('#image img').attr('src', "content/image/product/" + item.id + "_1.jpg");
             target_row.find('#name').text(item.name);
             target_row.find('#price span').text(item.price);
             target_row.find('#total span').text(item.price * item.qty);
@@ -394,17 +395,56 @@ $(document).ready(function(){
         $('.checkOut_item:first', div_step).hide();
         
         if(!isCheckOutPage){
-            cart.shippingRate = parseFloat($("#shipping_option input[name=shipping]:checked").val());
+            cart.shippingCost = parseFloat($("#shipping_option input[name=shipping]:checked").val());
             cart.toalWeight = total_weight;
             cart.totalCost = total_price;
             
-            $('#shipping_cost', div_step).find('span').text(cart.toalWeight * cart.shippingRate);
-            $('#total_cost', div_step).find('span').text(cart.totalCost + (cart.toalWeight * cart.shippingRate));
+            cart.shippingCost = get_shippingCost(cart) + 50;
+            $('#shipping_cost', div_step).find('span').text(cart.shippingCost);
+            $('#total_cost', div_step).find('span').text(cart.totalCost + cart.shippingCost);
         }
     }
     
     function display_address(buyyer){
         var address = buyyer.getAddress();
         $('div', payment_summary.parent()).find('span').text(address);
+    }
+    
+    function get_shippingCost(cart){
+        var result = 0;
+        switch(cart.shippingCost){
+            case 1:
+                if (cart.toalWeight < 0.02)
+                    result = 32;
+                else if (cart.toalWeight < 0.1)
+                    result = 37;
+                else if (cart.toalWeight < 0.25)
+                    result = 42;
+                else if (cart.toalWeight < 0.5)
+                    result = 52;
+                else if (cart.toalWeight < 1)
+                    result = 67;
+                else if (cart.toalWeight < 1.5)
+                    result = 82;
+                else if (cart.toalWeight < 2)
+                    result = 97;
+                else if (cart.toalWeight < 2.5)
+                    result = 122;
+                else if (cart.toalWeight < 3)
+                    result = 137;
+                else if (cart.toalWeight < 5)
+                    result = 157 + (Math.floor(((cart.toalWeight - 3) / 0.5)) * 20);
+                else if (cart.toalWeight < 8)
+                    result = 242 + (Math.floor(((cart.toalWeight - 5) / 0.5)) * 25);
+                else if (cart.toalWeight < 10)
+                    result = 397 + (Math.floor(((cart.toalWeight - 8) / 0.5)) * 30);
+                else
+                    result = 502 + (Math.floor(cart.toalWeight - 10) * 15);
+                break;
+            default:
+                result = 0;
+                break;
+        }
+        return result;
     }
 });
