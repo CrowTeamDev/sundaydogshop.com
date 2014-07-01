@@ -70,5 +70,8 @@ function sizeInvolve(){
         $('#product_price span').text(
             $('#product_size').val() === '' ? '?' : $('#product_size').val()
         );
+        $('#product_weight').val(
+            $('#product_size').val() === '' ? '0' : $('#product_size option:selected').attr('weight')
+        );
     });
 }

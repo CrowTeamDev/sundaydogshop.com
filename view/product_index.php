@@ -88,7 +88,7 @@
                                 $val = $key;
                                 break;
                         }
-                        echo "<option value='".$key['price']."'>".$val."</option>";
+                        echo "<option value='".$key['price']."' weight='".$key['weight']."'>".$val."</option>";
                     }
                 ?>
             </select>
