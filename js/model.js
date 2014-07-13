@@ -11,22 +11,13 @@ function Cart(){
     this.toalWeight = 0;
     this.shippingCost = 1;
 }
-
-function Item(id, name, price, weight){
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    this.weight = weight;
-    this.qty = 1;
-}
-function Item(id, name, price, weight, qty){
+function Item(id, name, price, size, color, weight, qty){
     this.id = id;
     this.name = name;
     this.price = price;
     this.weight = weight;
     this.qty = qty;
 }
-
 function Buyyer(){
     this.first = "";
     this.last = "";

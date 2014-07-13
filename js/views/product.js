@@ -1,5 +1,6 @@
 $(function(){
     set_menuOn('shop');
+    $('#main').addClass('productMode');
     set_shopOn($('input#gb').val(), $("#product_name").text(), $("#product_id").val());
     
     $(".productImage").elevateZoom({
@@ -23,6 +24,9 @@ $(function(){
     $("#product_buy", "#productDetail").bind("click", buy);
     $("#product_checkOut", "#productDetail").bind("click", buy);
     
+    if ($("#product_size option").size() === 1)
+        changeToOneSize();
+    
     if ($('#product_price span').text() === "0")
         sizeInvolve();
 });
@@ -34,8 +38,10 @@ function buy(){
     var price = $("#product_price").find('span').text();
     var weight = $("#product_weight").val();
     var size = $("#product_size").val();
+    var color = $("#product_color").val();
     var qty = $("#quantity").val();
-    if (size !== ''){
+    
+    if (size !== '' && color !== ''){
         var newDiv = $(document.createElement('div'));
         newDiv.html('<p id="popup_buy" align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
         newDiv.dialog({
@@ -55,13 +61,23 @@ function buy(){
         });
         $(".ui-dialog-titlebar").hide();
         
-        name += ' (' + $("#product_size>option:selected").html() + ')';
-        cart_obj.item.push(new Item(id, name, price, weight, qty));
+        name += ' (';
+        name += $("#product_size>option:selected").html();
+        if (color !== undefined)
+            name += ', ' + color;
+        name += ')';
+        cart_obj.item.push(new Item(id, name, price, size, color, weight, qty));
         
         var data = { cart : JSON.stringify(cart_obj) };
         $.post('view/_session.php', data);
         cartItem.add();
     }
+}
+
+function changeToOneSize(){
+    $("#product_size option").val("-");
+    $("#product_size option").text("ONE SIZE");
+    $("#product_size").attr("disabled", "disabled");
 }
 
 function sizeInvolve(){

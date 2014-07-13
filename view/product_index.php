@@ -71,24 +71,7 @@
                 <option value=""> -- Please Select -- </option>
                 <?php
                     foreach ($sizeList as $key){
-                        switch ($key['size']) {
-                            case "SMALL":
-                                $val = "S";
-                                break;
-                            case "MEDIUM":
-                                $val = "M";
-                                break;
-                            case "LARGE":
-                                $val = "L";
-                                break;
-                            case "XLARGE":
-                                $val = "XL";
-                                break;
-                            default:
-                                $val = $key;
-                                break;
-                        }
-                        echo "<option value='".$key['price']."' weight='".$key['weight']."'>".$val."</option>";
+                        echo "<option value='".$key['price']."' weight='".$key['weight']."'>".$key['size']."</option>";
                     }
                 ?>
             </select>
