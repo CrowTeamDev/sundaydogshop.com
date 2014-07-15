@@ -1,10 +1,10 @@
 <?php
     $contact_phone  = '+';
-    $contact_phone  = '+' . substr($contactDetail[1][0], 0, 2) . ' ';
-    $contact_phone .= '(' . substr($contactDetail[1][0], 2, 1) . ')';
-    $contact_phone .= substr($contactDetail[1][0], 3, 2) . ' ';
-    $contact_phone .= substr($contactDetail[1][0], 5, 3) . ' ';
-    $contact_phone .= substr($contactDetail[1][0], 8, 4);
+    $contact_phone  = '+' . substr($contactDetail[2][0], 0, 2) . ' ';
+    $contact_phone .= '(' . substr($contactDetail[2][0], 2, 1) . ')';
+    $contact_phone .= substr($contactDetail[2][0], 3, 2) . ' ';
+    $contact_phone .= substr($contactDetail[2][0], 5, 3) . ' ';
+    $contact_phone .= substr($contactDetail[2][0], 8, 4);
 ?>
 
 <?php
@@ -32,12 +32,19 @@
     </div>
 </div>
 <div id="contact_main">
-    <pre>QUESTION ABOUT ORDERS
-OR GENERAL ENQUIRIES</pre>
-    <pre>PLEASE CONTACT
-<?php echo strtoupper($contactDetail[0][0]); ?></pre>
-    <pre>TELEPHONE
-<?php echo $contact_phone; ?></pre>
+    <div>
+    If you can't find an answer to your question or would like to make a comment or suggestion, please send us an email at
+    <?php echo $contactDetail[0][0]; ?><br>
+    If you have a question regarding the product purchased, please send us an email at
+    <?php echo $contactDetail[1][0]; ?><br>
+    Sunday Dog is in Monday through Friday, 10:00 am to 6:00 pm GMT.<br>
+    <br>
+    Contact Info<br>
+    29/3 Langsuan Rd. Lumpini Patumwan, 10330, Bangkok, Thailand<br>
+    <br>
+    Tel: <?php echo $contact_phone; ?><br>
+    Hours: Mon–Fri
+    </div>
 </div>
 <div id="contact_mail" class="unselect">
     <label>SEND US MESSAGE</label>

@@ -11,13 +11,11 @@
     $registry->transaction = new transaction($registry);
 
     /*** load up var ***/
-    $payment_detail = $registry->config->getPaymentDetail();
-    
-    $accountName = $payment_detail[0][0];
-    $accountNo = $payment_detail[1][0];
-    $bank = $payment_detail[2][0];
-    $branch = $payment_detail[3][0];
-    $email = $payment_detail[4][0];
+    $accountName = $registry->config->getPaymentAccountName();
+    $accountNo = $registry->config->getPaymentAccountNo();
+    $bank = $registry->config->getPaymentAccountBank();
+    $branch = $registry->config->getPaymentAccountBranch();
+    $email = $registry->config->getPaymentMail();
     
     do{
         $refNo = generateRandomString();
@@ -58,10 +56,18 @@
             "You have chosen to pay by bank wire."
             . "<br>Please send us a bank wire with : "
             . "<br>• An amount of <span id='total_pay'>" . number_format($totalCost) . "</span> THB"
-            . "<br>• To the account owner of <span>" . $accountName . "</span>"
-            . "<br>• With these details account number <span id='accountNo'>" . $accountNo . "</span> saving account."
-            . "<br>• To <span>" . $bank . "</span>, branch <span>" . $branch . "</span>"
-            . "<br>• Do not forget to insert your order reference <span>" . $refNo . "</span> in the subject of your bank wire."
+            . "<br>• To one of these accounts:"
+            . "<br>";
+    
+    for ($i = 0; $i < count($accountNo); $i++) {
+            $summary .= "<br>  the account owner of <span>" . $accountName[$i][0] . "</span>"
+            . "<br>  with these details account number <span id='accountNo'>" . $accountNo[$i][0] . "</span> saving account."
+            . "<br>  to <span>" . $bank[$i][0] . "</span>, branch <span>" . $branch[$i][0] . "</span>"
+            . "<br>";
+    }
+    
+    $summary .=
+            "<br>• Do not forget to insert your order reference <span>" . $refNo . "</span> in the subject of your bank wire."
             . "<br>An e-mail has been sent to you with this information."
             . "<br>"
             . "<br>• Your order will be sent as soon as we receive your settlement"

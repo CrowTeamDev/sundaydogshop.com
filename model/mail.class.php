@@ -65,9 +65,17 @@ class mail{
             
             $message_detail .= "<br>"
                     . "Please send us a bank wire, total amount of <b>" . number_format($totalCost) . "</b> THB"
-                    . "<br>To account number <b>" . formatAccount($accountNo) . " "
-                    . $accountName . "</b> saving account of " . $bank . " (" . $branch . ")"
-                    . "<br>Do not forget to insert your order reference " . $this->refNo . " in the subject of your bank wire."
+                    . "<br>To one of these accounts:"
+                    . "<br>";
+            
+            for ($i = 0; $i < count($accountNo); $i++) {
+                $message_detail .= "<br>"
+                        . "Account number <b>" . formatAccount($accountNo[$i][0]) . " "
+                        . $accountName[$i][0] . "</b> saving account of " . $bank[$i][0] . " (" . $branch[$i][0] . ")<br>";
+            }
+            
+            $message_detail .= "<br>"
+                    . "Do not forget to insert your order reference " . $this->refNo . " in the subject of your bank wire."
                     . "<br>"
                     . "<br>Your order will be sent on this information:"
                     . "<br><i>" . $name . " " . $this->formatNumber($mobile) . ", " . $this->formatNumber($phone) . "<br>" . $address . "</i>"

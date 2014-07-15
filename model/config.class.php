@@ -8,8 +8,43 @@
             return $data[0][0];
 	}
         
-        function getPaymentDetail() {
-            $query = "SELECT configValue FROM Config WHERE configName like 'payment_%' order by configName";
+        function getPolicy() {
+            $query = "SELECT configName, configValue FROM Config WHERE configName like 'policy%'";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+	}
+        
+        function getPaymentMail() {
+            $query = "SELECT configValue FROM Config WHERE configName = 'payment_email'";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+        }
+        
+        function getPaymentAccountNo() {
+            $query = "SELECT configValue FROM Config WHERE configName like 'payment_accountNo%' order by configName";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+        }
+        
+        function getPaymentAccountName() {
+            $query = "SELECT configValue FROM Config WHERE configName like 'payment_accountName%' order by configName";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+        }
+        
+        function getPaymentAccountBank() {
+            $query = "SELECT configValue FROM Config WHERE configName like 'payment_bank%' order by configName";
+            $sql = db::getInstance()->query($query);
+            $data = $sql->fetchAll();
+            return $data;
+        }
+        
+        function getPaymentAccountBranch() {
+            $query = "SELECT configValue FROM Config WHERE configName like 'payment_branch' order by configName";
             $sql = db::getInstance()->query($query);
             $data = $sql->fetchAll();
             return $data;
@@ -43,4 +78,3 @@
             return $data;
         }
     }
-?>
