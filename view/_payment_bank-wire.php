@@ -15,7 +15,7 @@
     $accountNo = $registry->config->getPaymentAccountNo();
     $bank = $registry->config->getPaymentAccountBank();
     $branch = $registry->config->getPaymentAccountBranch();
-    $email = $registry->config->getPaymentMail();
+    $email = $registry->config->getConfigValue('payment_email');
     
     do{
         $refNo = generateRandomString();

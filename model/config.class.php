@@ -15,13 +15,6 @@
             return $data;
 	}
         
-        function getPaymentMail() {
-            $query = "SELECT configValue FROM Config WHERE configName = 'payment_email'";
-            $sql = db::getInstance()->query($query);
-            $data = $sql->fetchAll();
-            return $data[0][0];
-        }
-        
         function getPaymentAccountNo() {
             $query = "SELECT configValue FROM Config WHERE configName like 'payment_accountNo%' order by configName";
             $sql = db::getInstance()->query($query);
