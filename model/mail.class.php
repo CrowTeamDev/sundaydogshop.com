@@ -70,8 +70,8 @@ class mail{
             
             for ($i = 0; $i < count($accountNo); $i++) {
                 $message_detail .= "<br>"
-                        . "Account number <b>" . formatAccount($accountNo[$i][0]) . " "
-                        . $accountName[$i][0] . "</b> saving account of " . $bank[$i][0] . " (" . $branch[$i][0] . ")<br>";
+                        . "Account number <b>" . formatAccount($accountNo[$i][0]) . " - " . $accountName[$i][0] . "</b>"
+                        . "<br>Saving account of " . $bank[$i][0] . " (" . $branch[$i][0] . ")<br>";
             }
             
             $message_detail .= "<br>"

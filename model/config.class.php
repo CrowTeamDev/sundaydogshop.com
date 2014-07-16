@@ -19,7 +19,7 @@
             $query = "SELECT configValue FROM Config WHERE configName = 'payment_email'";
             $sql = db::getInstance()->query($query);
             $data = $sql->fetchAll();
-            return $data;
+            return $data[0][0];
         }
         
         function getPaymentAccountNo() {
