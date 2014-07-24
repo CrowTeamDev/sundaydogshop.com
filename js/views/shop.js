@@ -60,7 +60,7 @@ $(function(){
         else if (relX > 50 && relY < 68) //all
             url_path += 'a';
         else
-            url_path += 'sl';
+            url_path += 's';
         
         window.location.href = url_path;
     });

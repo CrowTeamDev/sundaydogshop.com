@@ -115,7 +115,7 @@
 	</div>   
         <footer>
             <label id="policy">POLICY</label>
-            <label id="copyright">©SUNDAYDOG2013</label>
+            <label id="copyright">©SUNDAYDOG2014</label>
             <label id="contact">CONTACT US</label>
             <img src="<?php echo $contentUrl;?>/content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
             <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />

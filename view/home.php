@@ -4,7 +4,7 @@
         <p>SUNDAY DOG IS A BOUTIQUE ONLINE PET SHOP WHICH</p>
         <p>OFFERS A UNIQUE SELECTION OF QUALITY DOG GOODS</p>
         <p>FROM VARIOUS BRANDS ACROSS THE WORLD</p>
-        <p>FOR DOGS AND DOGS LOVERS</p>
+        <p>FOR DOGS AND DOG LOVERS</p>
         <p>WHO PREFER FINER THINGS IN THEIR LIVES</p>
     </div>
     <div class="home_gallery" id="home_product1"></div>
