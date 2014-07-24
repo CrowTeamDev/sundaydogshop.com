@@ -514,11 +514,7 @@ label[id*='payment_']{
         display: block;
         div{
             .fontAvenirNext;
-            margin: 0 20px 10px;
-            span{
-                display: block;
-                margin: 15px 0;
-            }
+            margin: 10px 20px;
         }
         &:first-child{ margin-top: 10px; }
         &.unselect:hover{ .hoverContact; }
@@ -641,6 +637,7 @@ div.img-resize img{
      float: right;
      width: 300px;
      font-size: 1em;
+     margin-bottom: 100px;
      #product_name{
          font-size: 1em;
          min-height: 25px;
@@ -653,7 +650,7 @@ div.img-resize img{
         .fontAvenirNext;
         span{
             display: block;
-            margin: 20px 0 10px;
+            margin: 10px 0 20px;
             font-size: 1em;
             //text-indent: 50px;
             li{
@@ -714,8 +711,19 @@ div.img-resize img{
         margin: 5px 0 25px;
     }
     table#policy_shipping{
-        th{ text-align: left; }
+        margin: 0 auto;
+        th{
+            text-align: left;
+            padding-bottom: 10px;
+        }
+        tr td:first-child{ padding-right: 50px; }
+        tr td:last-child{ text-align:center; }
+        tr:last-child td{
+            text-align: left;
+            padding-top: 10px;
+        }
     }
+    h3{ font-family: PrestigeElite; }
 }
 .policy_main{
     width: 100%;
@@ -830,3 +838,9 @@ a:-webkit-any-link{ text-decoration: none; }
 }
 #arrow_right{ right: 2%; }
 #arrow_left{ left: 2%; }
+#arrow_down{
+    position: fixed;
+    bottom: 5%;
+    height: 30px;
+    left: 20px;
+}

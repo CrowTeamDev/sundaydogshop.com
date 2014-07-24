@@ -41,6 +41,10 @@ function buy(){
     var color = $("#product_color").val();
     var qty = $("#quantity").val();
     
+    if (checkOut){
+        $('header ul li#your_cart').click();
+    }
+        
     if (size !== '' && color !== ''){
         var newDiv = $(document.createElement('div'));
         newDiv.html('<p id="popup_buy" align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
@@ -52,10 +56,6 @@ function buy(){
             open: function(event, ui){
                 setTimeout(function(){
                     newDiv.dialog('close');
-                    if (checkOut){
-                        var url = $("a", "#current_directory").eq(2).attr('href');
-                        window.location.href = url;
-                    }
                 },5000);
             }
         });

@@ -19,10 +19,8 @@
             $html = "";
             for( $i=0; $i<count($FAQquestion); $i++){
                 $html .= "<div class='question unselect'>";
-                $html .= "<label>QUESTION ". ($i+1) ."</label>";
+                $html .= "<label>".strtoupper($FAQquestion[$i][0])."</label>";
                 $html .= "<div>";
-                $html .= "<span>".$FAQquestion[$i][0]."</span>";
-                $html .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
                 $html .= $FAQanswer[$i][0];
                 $html .= "</div>";
                 $html .= "</div>";

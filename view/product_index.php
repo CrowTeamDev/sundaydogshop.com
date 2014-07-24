@@ -4,6 +4,8 @@
     $price = $row['price'];
     $weight = $row['weight'];
     $detail = $row['detail'];
+    $material = $row['material'];
+    $care = $row['care_instruction'];
     $itemNo = $row['item_no'];
     
     $id_1 = $row['item_no']."_1";
@@ -57,12 +59,30 @@
     <div id="productDetail">
         <input type="hidden" id="product_id" value="<?php echo $itemNo; ?>" />
         <input type="hidden" id="product_weight" value="<?php echo $weight; ?>" />
-        <div id="product_name"><?php echo $name; ?></div>
+        <div id="product_name"><?php echo strtoupper($name); ?></div>
         <hr style="height: 3px; background: #ACAEB0; border: none;" />
         <div id="product_price"><span><?php echo $price; ?></span> BAHT</div>
         <div id="product_detail">
-            Product details
+            PRODUCT DETAILS
             <span><?php echo $detail; ?></span>
+            DIMENSION
+            <span>
+                <?php
+                    foreach ($dimensionList as $key){
+                        if ($key['size'] !== '-'){
+                            echo "Size ".strtoupper($key['size']).": <br>";
+                        }
+                        echo $key['dimension'];
+                        if ($key !== end($dimensionList)){
+                            echo "<br>";
+                        }
+                    }
+                ?>
+            </span>
+            MATERIAL
+            <span><?php echo $material; ?></span>
+            CARE INSTRUCTION
+            <span><?php echo $care; ?></span>
         </div>
         <hr style="height: 3px; background: #ACAEB0; border: none;" />
         <div style="margin: 20px 0;">

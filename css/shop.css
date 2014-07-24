@@ -102,7 +102,7 @@ and open the template in the editor.
     font-weight: bold;
 }
 .filters-row {
-    padding: 7px 40px;
+    padding: 7px 25px;
 }
 .filters-row.active{
     color: #ABAEA6;

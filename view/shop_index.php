@@ -126,7 +126,7 @@
                     if($key=='brand'){
                         foreach ($vals as $key => $val){
                             $checkExisted1 = true;
-                            $html1 .= "<div class=\"filters-row filter\" id=\"brand_".$val['brand_no']."\"><div>".$val['brand']."</div></div>";
+                            $html1 .= "<div class=\"filters-row filter\" id=\"brand_".$val['brand_no']."\"><div>".strtoupper($val['brand'])."</div></div>";
                         }
                     }
                 }
@@ -150,7 +150,7 @@
                         foreach ($vals as $key => $val){
                             if ($val['color'] != null){
                                 $checkExisted2 = true;
-                                $html2 .= "<div class=\"filters-row filter\" id=\"color_".$val['color']."\"><div>".$val['color']."</div></div>";
+                                $html2 .= "<div class=\"filters-row filter\" id=\"color_".$val['color']."\"><div>".strtoupper($val['color'])."</div></div>";
                             }
                         }
                     }
@@ -174,7 +174,7 @@
                     if($key=='size'){
                         foreach ($vals as $key => $val){
                             $checkExisted3 = true;
-                            $html3 .= "<div class=\"filters-row filter\" id=\"size_".$val['size']."\"><div>".$val['size']."</div></div>";
+                            $html3 .= "<div class=\"filters-row filter\" id=\"size_".$val['size']."\"><div>".strtoupper($val['size'])."</div></div>";
                         }
                     }
                 }
@@ -186,7 +186,10 @@
                 }
             ?>
         </ul>
-        <!-- End of Filters --> 
+        <!-- End of Filters -->
+        <svg id="arrow_down" viewBox="0 0 100 30">
+            <polyline points="0,0 50,30 100,0" style="fill:none;stroke:white;stroke-width:3;" />
+        </svg>
     </div>
 </div>
 <!-- End of Sidebar -->

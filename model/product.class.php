@@ -21,4 +21,10 @@
                 return $product->sizeList;
             }
         }
+        
+        public function getDimension($id) {
+            if(!empty($id)){
+                return db::getInstance()->query('SELECT size, dimension FROM Product_Size where item_no='.$id.' ORDER BY size ASC');
+            }
+        }
 }
