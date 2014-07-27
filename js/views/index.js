@@ -56,7 +56,7 @@ function set_menuOn(menu_id){
             $('.arrow').fadeIn(3500);
     }, 1500);
 }
-function set_shopOn(shop_id, product_name, product_id){
+function set_shopOn(shop_id){
     var html;
     switch (shop_id){
         case 'e':
@@ -82,10 +82,6 @@ function set_shopOn(shop_id, product_name, product_id){
             break;
     }
     directory.add(html);
-    if (product_id !== undefined && product_name !== undefined){
-        html = '<a href="product?id=' + product_id + '&gb=' + shop_id + '">' + product_name + '</a>';
-        directory.add(html);
-    }
 }
 function changeBackground(menu_id){
     var value;

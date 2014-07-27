@@ -83,6 +83,7 @@ a:visited{ color: @color_black; }
 .fontAvenirNext{
     font-family: AvenirNext;
     font-size: 1em;
+    text-transform:uppercase;
 }
 .contactDiv{
     color: @color_white;
@@ -163,15 +164,17 @@ li{
     z-index: 15;
     #current_directory{ margin-right: 30px; }
     #your_cart{
-        color: @color_white;
-        background-image: url('../content/image/icon_1.png'), url('../content/image/button_your-cart.png');
-        background-repeat: no-repeat, no-repeat;
-        background-size: 13px 13px, 100% 100%;
-        background-position: 9px 8px, 0px 0px;
+        font-family: PrestigeElite;
+        font-weight: bold;
+        color: #EEEEEE;
+        background-image: url('../content/image/yourcart.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: 0px 0px;
         //background-size: 15px 15px, 100% 100%;
         //background-position: 7px 5px, 0px 0px;
-        padding: 5px 10px;
-        padding-left: 30px;
+        padding: 5px 15px;
+        padding-left: 130px;
     }
     &.page_load{
         animation: top_menuAnimation 0.75s;
@@ -203,7 +206,7 @@ li{
     }
     ul{ 
         z-index: 2;
-        padding-top: 38px; 
+        padding-top: 36px; 
         margin-left: 4%;
     }
     ul#main_menu{

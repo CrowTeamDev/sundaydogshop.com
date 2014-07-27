@@ -82,7 +82,7 @@
         <header id="top_menu">
             <ul>
                 <li id="current_directory"></li>
-                <li id="your_cart">YOUR CART (<span>0</span>)</li>
+                <li id="your_cart">(<span>0</span>)</li>
             </ul>
         </header>
         <header id="navigation_bar">

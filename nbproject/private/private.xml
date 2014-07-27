@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/sundaydogshop/js/views/home.js</file>
-            <file>file:/C:/wamp/www/sundaydogshop/js/views/index.js</file>
+            <file>file:/C:/wamp/www/sundaydogshop/controller/productController.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/view/shop_index.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/js/views/product.js</file>
+            <file>file:/C:/wamp/www/sundaydogshop/model/product.class.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/css/layout.less</file>
+            <file>file:/C:/wamp/www/sundaydogshop/css/shop.css</file>
+            <file>file:/C:/wamp/www/sundaydogshop/controller/policyController.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/view/product_index.php</file>
+            <file>file:/C:/wamp/www/sundaydogshop/view/contact.php</file>
         </group>
     </open-files>
 </project-private>

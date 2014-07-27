@@ -66,15 +66,15 @@
             PRODUCT DETAILS
             <span><?php echo $detail; ?></span>
             DIMENSION
-            <span>
+            <span id="dimention_detail">
                 <?php
                     foreach ($dimensionList as $key){
                         if ($key['size'] !== '-'){
-                            echo "Size ".strtoupper($key['size']).": <br>";
+                            echo "<div id='".strtoupper($key['size'])."'>Size ".strtoupper($key['size']).": <br>";
                         }
                         echo $key['dimension'];
                         if ($key !== end($dimensionList)){
-                            echo "<br>";
+                            echo "<br></div>";
                         }
                     }
                 ?>

@@ -1,7 +1,7 @@
 $(function(){
     set_menuOn('shop');
     $('#main').addClass('productMode');
-    set_shopOn($('input#gb').val(), $("#product_name").text(), $("#product_id").val());
+    set_shopOn($('input#gb').val());
     
     $(".productImage").elevateZoom({
         gallery: 'productImage',
@@ -26,6 +26,10 @@ $(function(){
     
     if ($("#product_size option").size() === 1)
         changeToOneSize();
+    else{
+        sortSize($("#dimention_detail"));
+        sortSize($("#product_size"));
+    }
     
     if ($('#product_price span').text() === "0")
         sizeInvolve();
@@ -78,6 +82,35 @@ function changeToOneSize(){
     $("#product_size option").val("-");
     $("#product_size option").text("ONE SIZE");
     $("#product_size").attr("disabled", "disabled");
+}
+
+function sortSize(object){
+    var options = object.children();
+    options.sort(function (a, b) {
+        var sizes = {
+            "-- Please Select --":-1,
+            "DL":0,
+            "DM":1,
+            "DS":2,
+            "F":3,
+            "XXL":4,
+            "XL":5,
+            "L":6,
+            "M":7,
+            "S":8,
+            "XS":9,
+            "XXS":10
+        };
+
+        var size_a = a.text === undefined ? sizes[a.id] : sizes[a.text];
+        var size_b = b.text === undefined ? sizes[b.id] : sizes[b.text];
+        
+        if (size_a === size_b) {
+            return 0;
+        }
+        return (size_a > size_b) ? 1 : -1;
+    });
+    object.append(options);
 }
 
 function sizeInvolve(){

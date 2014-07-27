@@ -168,13 +168,13 @@
                 $html3 = "";
                 $html3 .= "<li class='filters expanded'>";
                 $html3 .= "<div class='filters-top'><a>SIZE</a></div>";
-                $html3 .= "<div class='filters-bottom'>";
+                $html3 .= "<div class='filters-bottom' id='filter_size'>";
 
                 foreach ($filterList as $key => $vals){
                     if($key=='size'){
                         foreach ($vals as $key => $val){
                             $checkExisted3 = true;
-                            $html3 .= "<div class=\"filters-row filter\" id=\"size_".$val['size']."\"><div>".strtoupper($val['size'])."</div></div>";
+                            $html3 .= "<div class=\"filters-row filter\" id=\"size_".$val['size']."\">".strtoupper($val['size'])."</div>";
                         }
                     }
                 }

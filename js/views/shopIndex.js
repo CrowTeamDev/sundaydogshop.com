@@ -43,6 +43,8 @@ $(function(){
     set_shopOn($('input#gb').val());
     //shop_handle($('input#gb').val());
     
+    sortSize();
+    
     $('.product').mouseover(function(){
        $('.product_detail').hide();
        $(this).find('.product_detail').show();
@@ -141,3 +143,32 @@ $(function(){
         e.preventDefault();
     });
 });
+
+function sortSize(){
+    var options = $("#filter_size div");
+    options.sort(function (a, b) {
+        var sizes = {
+            "size_DL":0,
+            "size_DM":1,
+            "size_DS":2,
+            "size_F":3,
+            "size_XXL":4,
+            "size_XL":5,
+            "size_L":6,
+            "size_M":7,
+            "size_S":8,
+            "size_XS":9,
+            "size_XXS":10
+        };
+        
+        var size_a = sizes[a.id];
+        var size_b = sizes[b.id];
+        
+        if (size_a === size_b) {
+            return 0;
+        }
+        return (size_a > size_b) ? 1 : -1;
+    });
+    
+    $("#filter_size").append(options);
+}
