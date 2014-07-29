@@ -37,10 +37,10 @@
                 <td id="image"><img width="100%" /></td>
                 <td id="name"></td>
                 <td id="qty"><input type="number" min="1" max="99" value="1" /></td>
-                <td id="update"><label>UPDATE</label></td>
+                <td id="update"><label></label></td>
                 <td id="price"><span></span></td>
                 <td id="total"><span></span></td>
-                <td id="remove"><label>REMOVE</label></td>
+                <td id="remove"><label></label></td>
             </tr>
             <tr>
                 <td colspan="7"><hr></td>
@@ -152,23 +152,29 @@
     <div id="payment_pay">
         <table>
             <tr>
-                <td class="menu">PAY BY BANK WIRE (ORDER PROCESS WILL BE LONGER)</td>
+                <td class="menu">
+                    PAY BY BANK WIRE (ORDER PROCESS WILL BE LONGER)
+                    <label id="wire"></label>
+                </td>
             </tr>
             <tr>
-                <td class="menu">PAY WITH YOUR CREDIT CARD OR YOUR PAYPAL ACCOUNT</td>
+                <td class="menu">
+                    PAY WITH YOUR CREDIT CARD OR YOUR PAYPAL ACCOUNT
+                    <label id="paypal"></label>
+                    <label id="visa"></label>
+                    <label id="master"></label>
+                </td>
             </tr>
             <tr>
                 <td></td>
             </tr>
         </table>
     </div>
-    <table>
+    <table id="payment_footer">
         <tr>
-            <td></td>
-            <td></td>
+            <td><label id="payment_back" class="Page1"></label></td>
+            <td><label id="payment_next" class="Page1"></label></td>
         </tr>
     </table>
-    <label id="payment_back" class="firstPage">CONTINUE SHOPPING</label>
-    <label id="payment_next">CHECK OUT</label>
 </article>
 <div id="payment_cart"></div>

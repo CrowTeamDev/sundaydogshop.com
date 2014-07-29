@@ -52,12 +52,6 @@ $(document).ready(function(){
             }
         };
         buttonsText = {
-            set : function(back, next){
-                $('#payment_back', '#payment_page').text(back).show();
-                $('#payment_next', '#payment_page').text(next).show();
-                if(back === '')
-                    this.hide();
-            },
             hide : function(){
                 $('#payment_back', '#payment_page').hide();
                 $('#payment_next', '#payment_page').hide();
@@ -69,11 +63,15 @@ $(document).ready(function(){
             done : function(){
                 $('#payment_next', '#payment_page').show();
             },
-            firstPage : function(status){
-                if(status === true)
-                    $('#payment_back').addClass('firstPage');
-                else
-                    $('#payment_back').removeClass('firstPage');
+            set : function(number){
+                var className = "Page"+number;
+                
+                $('#payment_back').removeClass();
+                $('#payment_back').addClass(className);
+                
+                $('#payment_next').removeClass();
+                $('#payment_next').addClass(className);
+                buttonsText.show();
             }
         };
     }
@@ -346,23 +344,12 @@ $(document).ready(function(){
         });
         
         function show_page(step){
-            buttonsText.firstPage(false);
             $('div[id*=payment_]', '#main').eq(step-1).fadeIn(500);
-            switch(step){
-                case 1:
-                    buttonsText.firstPage(true);
-                    buttonsText.set('CONTINUE SHOPPING', 'CHECK OUT');
-                    break;
-                case 2:
-                    buttonsText.set('BACK', 'NEXT');
-                    break;
-                case 3:
-                    buttonsText.set('BACK', 'CONFIRM');
-                    break;
-                case 4:
-                    buttonsText.set('', 'FINISH');
-                    break;
-            }
+            
+            if (step === 4)
+                buttonsText.hide();
+            else
+                buttonsText.set(step);
         }
     }
     

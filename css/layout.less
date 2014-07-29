@@ -327,13 +327,31 @@ div[id*='payment_']{
     display:none;
     margin-bottom: 40px;
 }
-label[id*='payment_']{
-    .button;
-    padding: 6px 2%;
-    background-image: url('../content/image/button_payment-3.png');
-    &.firstPage{ background-image: url('../content/image/button_payment-2.png'); }
+#payment_footer{ width: 100%; }
+#payment_back{
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../content/image/back.png');
+    padding: 6px 37px;
+    &.Page1{
+        background-image: url('../content/image/continueshopping.png');
+        padding: 6px 99px;
+    }
 }
-#payment_next{ float: right; }
+#payment_next{
+    cursor: pointer;
+    float: right;
+    margin-right: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../content/image/next.png');
+    padding: 14px 37px;
+    &.Page1{
+        background-image: url('../content/image/checkout2.png');
+        padding: 14px 58px;
+    }
+}
 #payment_checkOut{
     table{
         width: 100%;
@@ -344,10 +362,16 @@ label[id*='payment_']{
             .fontAvenirNext;
         }
         #qty{ width: 5%; }
-        #update{ width: 15%; }
+        #update{
+            width: 15%;
+            label{ background-image: url('../content/image/update.png'); }
+        }
         #price{ width: 15%; }
         #total{ width: 15%; }
-        #remove{ width: 15%; }
+        #remove{
+            width: 15%;
+            label{ background-image: url('../content/image/remove.png'); }
+        }
         input{
             width: 35px;
             height: 25px;
@@ -357,8 +381,10 @@ label[id*='payment_']{
             margin-right: 15px;
         }
         label{
-            .button;
-            padding: 5% 10%;
+            cursor: pointer;
+            padding: 6px 45px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
         }
         tr:last-child{
             vertical-align: bottom;
@@ -458,6 +484,7 @@ label[id*='payment_']{
         width: 100%;
         border-collapse: collapse;
         border-spacing: 0;
+        color: @color_dark;
         tr{
             height: 45px;
             margin: 0;
@@ -468,7 +495,7 @@ label[id*='payment_']{
             border-top: 2px solid @color_dark;
             border-bottom: 2px solid @color_dark;
             &.menu:hover,&.selected{
-                color: @color_white;
+                color: @color_light;
                 background-color: @color_dark;
                 border-left: 2px solid @color_dark;
                 border-right: 2px solid @color_dark;
@@ -482,6 +509,20 @@ label[id*='payment_']{
             td{ border: 2px solid @color_g5; }
         }
     }
+    label{
+        cursor: pointer;
+        padding: 9px 27px;
+        margin-left: 10px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    #paypal{
+        padding: 9px 14px;
+        background-image: url('../content/image/paypal.png');
+    }
+    #visa{ background-image: url('../content/image/visa.png'); }
+    #master{ background-image: url('../content/image/mastercard.png'); }
+    #wire{ background-image: url('../content/image/wiretransfer.png'); }
 
     article{
         span{ font-weight: bold; }
