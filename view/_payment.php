@@ -162,6 +162,12 @@
             </tr>
         </table>
     </div>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
     <label id="payment_back" class="firstPage">CONTINUE SHOPPING</label>
     <label id="payment_next">CHECK OUT</label>
 </article>

@@ -157,7 +157,7 @@ li{
 #top_menu{
     position: fixed;
     right: 15px;
-    top: 15px;
+    top: 12px;
     text-align: right;
     height: 5px;
     font-size: 14px;
@@ -182,9 +182,9 @@ li{
     }
 }
 #navigation_bar{
-    background: url('../content/image/navigation_bar_1.png') 0 20px repeat-x;
+    background: url('../content/image/navigation_bar_1.png') 0 25px repeat-x;
     background-size: 17px 50px;
-    height: 90px;
+    height: 100px;
     width: 100%;
     text-align: left;
     font-size: 1em;
@@ -192,7 +192,7 @@ li{
     padding-left: 50px;
     color: @color_dark;
     position: fixed;
-    top: 25px;
+    top: 15px;
     z-index: 10;
     img{
         height: 100%;
@@ -206,7 +206,7 @@ li{
     }
     ul{ 
         z-index: 2;
-        padding-top: 36px; 
+        padding-top: 41px; 
         margin-left: 4%;
     }
     ul#main_menu{
@@ -303,6 +303,7 @@ footer{
         padding: 15px 0 15px;
         margin: 0 75px;
         background-color: @color_dark;
+        color: @color_light;
     }
     li{
         padding: 0 6%;
@@ -359,7 +360,10 @@ label[id*='payment_']{
             .button;
             padding: 5% 10%;
         }
-        tr:last-child{ vertical-align: bottom; }
+        tr:last-child{
+            vertical-align: bottom;
+            text-transform: uppercase;
+        }
     }
 }
 #payment_shipping{
@@ -486,13 +490,13 @@ label[id*='payment_']{
 #contact_main{
     .contactDiv;
     .fontAvenirNext;
-    padding: 10px 0;
-    div{ margin: 0 40px; }
+    font-size: 0.75em;
+    padding: 35px;
 }
 #contact_mail, #contact_FAQ{
     .contactDiv;
     float: left;
-    font-size: 1em;
+    font-size: 0.75em;
     padding: 10px 0;
     label{
         display: block;
@@ -667,25 +671,25 @@ div.img-resize img{
      float: right;
      margin-right: 25px;
      display: inline-block;
-     background-image: url('../content/image/button_buy.png');
+     background-image: url('../content/image/buy.png');
      background-repeat: no-repeat;
      background-size: 100% 100%;
-     padding: 5px 30px;
+     padding: 13px 31px;
      &:hover{
         cursor: pointer;
         color: @color_white;
-        background-image: url('../content/image/button_buy-a.png');
+        background-image: url('../content/image/buy.png');
      }
      &.clicked{
         color: @color_white;
-        background-image: url('../content/image/button_buy-a.png');
+        background-image: url('../content/image/buy.png');
      }
  }
  #product_checkOut{
-     padding: 5px 50px;
-     background-image: url('../content/image/button_check-out.png');
-     &:hover{ background-image: url('../content/image/button_check-out-a.png'); }
-     &.clicked{ background-image: url('../content/image/button_check-out-a.png'); }
+     padding: 13px 50px;
+     background-image: url('../content/image/checkout.png');
+     &:hover{ background-image: url('../content/image/checkout2.png'); }
+     &.clicked{ background-image: url('../content/image/checkout2.png'); }
  }
  .productImage{
      width: 406px;

@@ -119,9 +119,9 @@
             QUANTITY
             <input type="number" min="1" max="99" value="1"
                    id="quantity" style="width: 35px; margin: 0 15px;" />
-            <label id="product_buy">BUY</label>
+            <label id="product_buy"></label>
         </div>
-        <label id="product_checkOut">CHECK OUT</label>
+        <label id="product_checkOut"></label>
     </div>
 </div>
 <?php

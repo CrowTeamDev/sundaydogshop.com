@@ -331,13 +331,13 @@ $(document).ready(function(){
         $("#payment-navigation li").css("cursor", "default");
         $("#payment-navigation").find("li").each(function(){
             if ($("li", $(this).parent()).index(this) < (payment_step-1)){
-                $(this).css("color", "");
+                $(this).css("text-decoration", "");
                 $(this).css("cursor", "pointer");
             }
             else if ($("li", $(this).parent()).index(this) === (payment_step-1))
-                $(this).css("color", "#FFFFFF");
+                $(this).css("text-decoration", "underline");
             else{
-                $(this).css("color", "");
+                $(this).css("text-decoration", "");
                 $(this).css("cursor", "default");
             }
         });

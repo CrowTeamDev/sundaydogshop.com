@@ -48,33 +48,34 @@ function buy(){
     if (checkOut){
         $('header ul li#your_cart').click();
     }
-        
-    if (size !== '' && color !== ''){
-        var newDiv = $(document.createElement('div'));
-        newDiv.html('<p id="popup_buy" align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
-        newDiv.dialog({
-            hide: ('fade', 3000),
-            show: ('fade', 3000),
-            modal: true,
-            dialogClass: "no-close success-dialog",
-            open: function(event, ui){
-                setTimeout(function(){
-                    newDiv.dialog('close');
-                },5000);
-            }
-        });
-        $(".ui-dialog-titlebar").hide();
-        
-        name += ' (';
-        name += $("#product_size>option:selected").html();
-        if (color !== undefined)
-            name += ', ' + color;
-        name += ')';
-        cart_obj.item.push(new Item(id, name, price, size, color, weight, qty));
-        
-        var data = { cart : JSON.stringify(cart_obj) };
-        $.post('view/_session.php', data);
-        cartItem.add();
+    else{    
+        if (size !== '' && color !== ''){
+            var newDiv = $(document.createElement('div'));
+            newDiv.html('<p id="popup_buy" align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
+            newDiv.dialog({
+                hide: ('fade', 3000),
+                show: ('fade', 3000),
+                modal: true,
+                dialogClass: "no-close success-dialog",
+                open: function(event, ui){
+                    setTimeout(function(){
+                        newDiv.dialog('close');
+                    },5000);
+                }
+            });
+            $(".ui-dialog-titlebar").hide();
+
+            name += ' (';
+            name += $("#product_size>option:selected").html();
+            if (color !== undefined)
+                name += ', ' + color;
+            name += ')';
+            cart_obj.item.push(new Item(id, name, price, size, color, weight, qty));
+
+            var data = { cart : JSON.stringify(cart_obj) };
+            $.post('view/_session.php', data);
+            cartItem.add();
+        }
     }
 }
 
