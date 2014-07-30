@@ -14,6 +14,7 @@
 @color_white: #FFFFFF;
 @color_r1: #FF0000;
 @color_black: #000000;
+@color_glay: #757575;
 @color_dark: #ABAEA6;
 @color_light: #DDD9CB;
 
@@ -157,7 +158,7 @@ li{
 #top_menu{
     position: fixed;
     right: 15px;
-    top: 12px;
+    top: 17px;
     text-align: right;
     height: 5px;
     font-size: 14px;
@@ -182,9 +183,9 @@ li{
     }
 }
 #navigation_bar{
-    background: url('../content/image/navigation_bar_1.png') 0 25px repeat-x;
+    background: url('../content/image/navigation_bar_1.png') 0 35px repeat-x;
     background-size: 17px 50px;
-    height: 100px;
+    height: 120px;
     width: 100%;
     text-align: left;
     font-size: 1em;
@@ -206,7 +207,7 @@ li{
     }
     ul{ 
         z-index: 2;
-        padding-top: 41px; 
+        padding-top: 51px; 
         margin-left: 4%;
     }
     ul#main_menu{
@@ -682,6 +683,7 @@ div.img-resize img{
      }
  }
  #productDetail{
+     color: @color_glay;
      float: right;
      width: 300px;
      font-size: 1em;
@@ -694,9 +696,10 @@ div.img-resize img{
      #product_price{
          margin: 20px 0 15px;
      }
-    #product_detail{
+     #product_detail{
         .fontAvenirNext;
         span{
+            color: @color_black;
             display: block;
             margin: 10px 0 20px;
             font-size: 1em;
@@ -719,11 +722,11 @@ div.img-resize img{
      &:hover{
         cursor: pointer;
         color: @color_white;
-        background-image: url('../content/image/buy.png');
+        background-image: url('../content/image/buy2.png');
      }
      &.clicked{
         color: @color_white;
-        background-image: url('../content/image/buy.png');
+        background-image: url('../content/image/buy2.png');
      }
  }
  #product_checkOut{
@@ -853,6 +856,7 @@ a:-webkit-any-link{ text-decoration: none; }
         &#home_product4{ background-image: url('../content/image/home/home_4.jpg'); }
         &#home_product5{ background-image: url('../content/image/home/home_5.jpg'); }
         &#home_product6{ background-image: url('../content/image/home/home_6.jpg'); }
+        &#home_product7{ background-image: url('../content/image/home/home_7.jpg'); }
     }
     #home_ribbon{
         display: block;
@@ -874,6 +878,7 @@ a:-webkit-any-link{ text-decoration: none; }
         &.home_ribbon4{ background-image: url('../content/image/home/ribbon_4.png'); }
         &.home_ribbon5{ background-image: url('../content/image/home/ribbon_5.png'); }
         &.home_ribbon6{ background-image: url('../content/image/home/ribbon_6.png'); }
+        &.home_ribbon7{ background-image: url('../content/image/home/ribbon_7.png'); }
     }
 }
 .arrow{

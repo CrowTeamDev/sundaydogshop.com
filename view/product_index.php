@@ -88,10 +88,9 @@
         <div style="margin: 20px 0;">
             SIZE
             <select id="product_size" style="float: right; margin-right: 25px;">
-                <option value=""> -- Please Select -- </option>
                 <?php
                     foreach ($sizeList as $key){
-                        echo "<option value='".$key['price']."' weight='".$key['weight']."'>".$key['size']."</option>";
+                        echo "<option value='".$key['price']."' weight='".$key['weight']."' selected>".$key['size']."</option>";
                     }
                 ?>
             </select>

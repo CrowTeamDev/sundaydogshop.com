@@ -13,6 +13,7 @@
     <div class="home_gallery" id="home_product4"></div>
     <div class="home_gallery" id="home_product5"></div>
     <div class="home_gallery" id="home_product6"></div>
+    <div class="home_gallery" id="home_product7"></div>
     <div id="home_ribbon"></div>
 </div>
 <?php echo "<input type='hidden' id='page' value='".$page."' />";

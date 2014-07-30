@@ -24,7 +24,7 @@ $(function(){
     $("#product_buy", "#productDetail").bind("click", buy);
     $("#product_checkOut", "#productDetail").bind("click", buy);
     
-    if ($("#product_size option").size() === 1)
+    if ($("#product_size option").size() === 0)
         changeToOneSize();
     else{
         sortSize($("#dimention_detail"));
@@ -80,6 +80,7 @@ function buy(){
 }
 
 function changeToOneSize(){
+    $("#product_size").append($("<option></option>"));
     $("#product_size option").val("-");
     $("#product_size option").text("ONE SIZE");
     $("#product_size").attr("disabled", "disabled");
@@ -115,13 +116,9 @@ function sortSize(object){
 }
 
 function sizeInvolve(){
-    $('#product_price span').text('?');
+    $('#product_price span').text($('#product_size').val());
     $('#product_size').change(function(){
-        $('#product_price span').text(
-            $('#product_size').val() === '' ? '?' : $('#product_size').val()
-        );
-        $('#product_weight').val(
-            $('#product_size').val() === '' ? '0' : $('#product_size option:selected').attr('weight')
-        );
+        $('#product_price span').text($('#product_size').val());
+        $('#product_weight').val($('#product_size option:selected').attr('weight'));
     });
 }
