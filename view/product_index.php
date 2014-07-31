@@ -68,14 +68,23 @@
             DIMENSION
             <span id="dimention_detail">
                 <?php
+                    $htmlD = "";
+                    $countD = 0;
                     foreach ($dimensionList as $key){
                         if ($key['size'] !== '-'){
-                            echo "<div id='".strtoupper($key['size'])."'>Size ".strtoupper($key['size']).": <br>";
+                            $htmlD .= "<div id='".strtoupper($key['size'])."'>Size ".strtoupper($key['size']).": <br>";
                         }
-                        echo $key['dimension'];
+                        $htmlD .= $key['dimension'];
                         if ($key !== end($dimensionList)){
-                            echo "<br></div>";
+                            $htmlD .= "<br></div>";
                         }
+                        $countD++;
+                    }
+                    if ($countD < 5){
+                        echo $htmlD;
+                    }
+                    else{
+                        echo "Please find details on the last image";
                     }
                 ?>
             </span>
