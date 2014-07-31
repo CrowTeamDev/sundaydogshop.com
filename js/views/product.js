@@ -24,7 +24,7 @@ $(function(){
     $("#product_buy", "#productDetail").bind("click", buy);
     $("#product_checkOut", "#productDetail").bind("click", buy);
     
-    if ($("#product_size option").size() === 0)
+    if ($("#product_size option").size() === 1)
         changeToOneSize();
     else{
         sortSize($("#dimention_detail"));

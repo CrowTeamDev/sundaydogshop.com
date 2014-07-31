@@ -75,7 +75,7 @@
                             $htmlD .= "<div id='".strtoupper($key['size'])."'>Size ".strtoupper($key['size']).": <br>";
                         }
                         $htmlD .= $key['dimension'];
-                        if ($key !== end($dimensionList)){
+                        if ($key['size'] !== '-' && $key !== end($dimensionList)){
                             $htmlD .= "<br></div>";
                         }
                         $countD++;
