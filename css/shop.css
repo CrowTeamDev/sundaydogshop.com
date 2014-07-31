@@ -31,11 +31,9 @@ and open the template in the editor.
     text-align: center;
     width: 250px;
     overflow: hidden;
-    
 }
-#ob-sidebar ul li{
-    display: block;
-}
+#ob-sidebar ul{ padding-left: 0px; }
+#ob-sidebar ul li{ display: block; }
 
 /*#sidebar-button {
     background: url("../content/order-builder/bg_sidebar-buttons.png") no-repeat scroll -24px 0 transparent;
