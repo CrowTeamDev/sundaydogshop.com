@@ -111,7 +111,7 @@ function changeBackground(menu_id){
             value = 'url('+ url_path + '/content/image/background/image_7.jpg)';
             break;
         case 'payment':
-            value = 'url('+ url_path + '/content/image/background/image_12.jpg)';
+            value = 'url('+ url_path + '/content/image/background/image_13.jpg)';
             break;
         default:
             $('#background_1').hide();

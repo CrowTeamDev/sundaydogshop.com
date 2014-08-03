@@ -17,12 +17,13 @@
 @color_glay: #757575;
 @color_dark: #ABAEA6;
 @color_light: #DDD9CB;
+@color_90: #404041;
 
 @img_shop-menu: url('../content/image/shop_menu.png');
 
 @font-face{
     font-family: AvenirNext;
-    src: url('../content/font/AvenirNext/AvenirNext-UltraLight.otf')
+    src: url('../content/font/AvenirNext/AvenirNext_Regular.ttf')
 }
 @font-face{
     font-family: AvenirNext_Bold;
@@ -84,7 +85,6 @@ a:visited{ color: @color_black; }
 .fontAvenirNext{
     font-family: AvenirNext;
     font-size: 1em;
-    text-transform:uppercase;
 }
 .contactDiv{
     color: @color_white;
@@ -159,11 +159,14 @@ li{
     height: 5px;
     font-size: 14px;
     z-index: 15;
-    #current_directory{ margin-right: 30px; }
+    #current_directory{
+        color: @color_90;
+        margin-right: 30px;
+    }
     #your_cart{
         font-family: PrestigeElite;
         font-weight: bold;
-        color: #EEEEEE;
+        color: #DDDDDD;
         background-image: url('../content/image/yourcart.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -172,6 +175,10 @@ li{
         //background-position: 7px 5px, 0px 0px;
         padding: 5px 15px;
         padding-left: 130px;
+        &:hover{
+            color: #D4D6D0;
+            background-image: url('../content/image/yourcart2.png');
+        }
     }
     &.page_load{
         animation: top_menuAnimation 0.75s;
@@ -326,27 +333,31 @@ div[id*='payment_']{
 }
 #payment_footer{ width: 100%; }
 #payment_back{
+    padding: 6px 37px;
     cursor: pointer;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url('../content/image/back.png');
-    padding: 6px 37px;
+    &:hover{ background-image: url('../content/image/back2.png'); }
     &.Page1{
-        background-image: url('../content/image/continueshopping.png');
         padding: 6px 99px;
+        background-image: url('../content/image/continueshopping.png');
+        &:hover{ background-image: url('../content/image/continueshopping2.png'); }
     }
 }
 #payment_next{
+    padding: 14px 37px;
     cursor: pointer;
     float: right;
     margin-right: 50px;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url('../content/image/next.png');
-    padding: 14px 37px;
+    &:hover{ background-image: url('../content/image/next2.png'); }
     &.Page1{
-        background-image: url('../content/image/checkout2.png');
         padding: 14px 58px;
+        background-image: url('../content/image/checkout2.png');
+        &:hover{ background-image: url('../content/image/checkout3.png'); }
     }
 }
 #payment_checkOut{
@@ -361,13 +372,19 @@ div[id*='payment_']{
         #qty{ width: 5%; }
         #update{
             width: 15%;
-            label{ background-image: url('../content/image/update.png'); }
+            label{
+                background-image: url('../content/image/update.png');
+                &:hover{ background-image: url('../content/image/update2.png'); }
+            }
         }
         #price{ width: 15%; }
         #total{ width: 15%; }
         #remove{
             width: 15%;
-            label{ background-image: url('../content/image/remove.png'); }
+            label{
+                background-image: url('../content/image/remove.png');
+                &:hover{ background-image: url('../content/image/remove2.png'); }
+            }
         }
         input{
             width: 35px;
@@ -390,8 +407,8 @@ div[id*='payment_']{
     }
 }
 #payment_shipping{
+    color: @color_dark;
     table{
-        color: @color_dark;
         width: 80%;
         margin-bottom: 30px;
         tr{
@@ -410,6 +427,7 @@ div[id*='payment_']{
     }
 }
 #payment_summary{
+    color: @color_dark;
     table{
         width: 100%;
         tr{ height: 55px; }
@@ -428,6 +446,7 @@ div[id*='payment_']{
         #shipping_option{
             span{ margin-right: 40px; }
             input{
+                display: none;
                 width: auto;
                 height: auto;
                 margin-left: 10px;
@@ -496,6 +515,7 @@ div[id*='payment_']{
                 background-color: @color_dark;
                 border-left: 2px solid @color_dark;
                 border-right: 2px solid @color_dark;
+                #wire{ background-image: url('../content/image/wiretransfer2.png'); }
             }
             &.menu:hover{ cursor: pointer; }
         }
@@ -679,23 +699,25 @@ div.img-resize img{
      }
  }
  #productDetail{
-     color: @color_glay;
+     color: @color_90;
      float: right;
      width: 300px;
      font-size: 1em;
      margin-bottom: 100px;
      #product_name{
-         font-size: 1em;
+         font-size: 1.25em;
          min-height: 25px;
          width: 100%;
      }
      #product_price{
+         font-size: 1.25em;
          margin: 20px 0 15px;
      }
      #product_detail{
         .fontAvenirNext;
+        font-size: 0.75em;
+        color: @color_black;
         span{
-            color: @color_black;
             display: block;
             margin: 10px 0 20px;
             font-size: 1em;
@@ -708,8 +730,7 @@ div.img-resize img{
      }
  }
  #product_buy, #product_checkOut{
-     float: right;
-     margin-right: 25px;
+     margin-right: 50px;
      display: inline-block;
      background-image: url('../content/image/buy.png');
      background-repeat: no-repeat;
@@ -717,7 +738,6 @@ div.img-resize img{
      padding: 13px 31px;
      &:hover{
         cursor: pointer;
-        color: @color_white;
         background-image: url('../content/image/buy2.png');
      }
      &.clicked{
@@ -816,6 +836,7 @@ a:-webkit-any-link{ text-decoration: none; }
 }
 #popup_buy{ font-family: PrestigeElite_Bold; }
 .home_main{
+    position: relative;
     box-shadow: 5px 5px 5px @color_g5;
     width: 70%;
     height: 100%;
@@ -826,7 +847,8 @@ a:-webkit-any-link{ text-decoration: none; }
     div{ display: none; }
     #home_info{
         position: absolute;
-        width: 52.5%;
+        width: 80%;
+        margin: 5% 10%;
         display: block;
         font-family: AvenirNext;
         font-size: 1.15em;
@@ -840,9 +862,9 @@ a:-webkit-any-link{ text-decoration: none; }
     }
     .home_gallery{
         position: absolute;
-        width: 52.5%;
-        height: 65%;
-        margin: 0;
+        width: 90%;
+        height: 85%;
+        margin: 0 5%;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -857,10 +879,10 @@ a:-webkit-any-link{ text-decoration: none; }
     #home_ribbon{
         display: block;
         position: absolute;
-        width: 20%;
-        height: 15%;
-        left: 40%;
-        bottom: 10%;
+        width: 40%;
+        height: 30%;
+        left: 30%;
+        bottom: 0%;
         background-position: bottom center;
         background-repeat: no-repeat;
         background-size: contain;

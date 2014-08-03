@@ -77,6 +77,10 @@ $(document).ready(function(){
     }
     
     function setup_default(){
+        //Bug zoom
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
+        
         changeBackground('payment');
         current_step(payment_step);
         display_item(payment_checkOut, cart_obj);
@@ -229,17 +233,14 @@ $(document).ready(function(){
             if (!checkAphabet(5))
                 result = false;
             
-            if (!checkAphabet(6))
+            if (!checkNumber(7))
                 result = false;
             
-            if (!checkNumber(8))
-                result = false;
-            
-            var mail = row(9).val();
+            var mail = row(8).val();
             var atpos=mail.indexOf("@");
             var dotpos=mail.lastIndexOf(".");
             if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length){
-                displayError(9);
+                displayError(8);
                 result = false;
             }
             
@@ -270,18 +271,17 @@ $(document).ready(function(){
                 case 1:
                 case 4:
                 case 5:
-                case 6:
                     warning = "Please input only alphabet";
                     break;
                 case 2:
                     warning = "Please input address detail";
                     break;
                 case 3:
+                case 6:
                 case 7:
-                case 8:
                     warning = "Please input only number";
                     break;
-                case 9:
+                case 8:
                     warning = "Please input email address correctly";
                     break;
             }

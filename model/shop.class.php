@@ -141,10 +141,12 @@ class shop{
                     $sizeList = $sizeList->fetchAll();
                     $count = 0;
                     foreach($sizeList as $size) {
-                        $filterMap = array();
-                        $filterMap['size'] = $size['size'];
-                        $filterSizeList[$count] = $filterMap;
-                        $count++;
+                        if ($size['size'] != '-'){
+                            $filterMap = array();
+                            $filterMap['size'] = $size['size'];
+                            $filterSizeList[$count] = $filterMap;
+                            $count++;
+                        }
                     }
                     $filterList['size'] = $filterSizeList;
                 }

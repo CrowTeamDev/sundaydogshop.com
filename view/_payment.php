@@ -79,11 +79,6 @@
                 <td><span></span></td>
             </tr>
             <tr>
-                <td>STATE*</td>
-                <td><input type="text" /></td>
-                <td><span></span></td>
-            </tr>
-            <tr>
                 <td>COUNTRY*</td>
                 <td><input type="text" /></td>
                 <td><span></span></td>
@@ -131,7 +126,7 @@
                         foreach($shippingOption as $option){
                             $name = explode("_", $option[0]);
                             $html = '<input type="radio" name="shipping" value="'. $option[1] .'" checked />';
-                            $html.= $name[1];
+                            //$html.= $name[1];
                             
                             echo $html;
                         }

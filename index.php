@@ -86,8 +86,7 @@
             </ul>
         </header>
         <header id="navigation_bar">
-            <img src="<?php echo $contentUrl;?>/content/image/logo_2.png" id="logo_2" title="SundayDog Shop" alt="SundayDog Shop" />
-            <img src="<?php echo $contentUrl;?>/content/image/logo_1.png" id="logo_1" title="SundayDog Shop" alt="SundayDog Shop" />
+            <img src="<?php echo $contentUrl;?>/content/image/logo_0.png" id="logo_0" title="SundayDog Shop" alt="SundayDog Shop" />
             <ul id="main_menu">
                 <li id="home">HOME</li>
                 <li id="shop">SHOP</li>
