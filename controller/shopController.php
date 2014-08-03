@@ -57,19 +57,19 @@ Class shopController Extends baseController {
             if($_REQUEST['gb']=='e'){
                 $groupBy = "10000";
             }
-            if($_REQUEST['gb']=='p'){
+            if($_REQUEST['gb']=='wa'){
                 $groupBy = "10001";
             }
-            if($_REQUEST['gb']=='wa'){
+            if($_REQUEST['gb']=='p'){
                 $groupBy = "10002";
             }
             if($_REQUEST['gb']=='we'){
                 $groupBy = "10003";
             }
-            if($_REQUEST['gb']=='sa'){
+            if($_REQUEST['gb']=='s'){
                 $groupBy = "10004";
             }
-            if($_REQUEST['gb']=='s'){
+            if($_REQUEST['gb']=='sa'){
                 $groupBy = "10005";
             }
             if($_REQUEST['gb']=='a'){
