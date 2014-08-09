@@ -18,7 +18,7 @@ class shop{
                         if(!empty($brandList[$x+1]))
                             $conditionListOr = $conditionListOr." OR ";
                     }
-                    $conditionList = $conditionListOr;
+                    $conditionList = "(".$conditionListOr.")";
                 }
                 if(!empty($color)){
                     $colorList = split(',', $color);
@@ -30,12 +30,13 @@ class shop{
                             $conditionListOr = $conditionListOr." OR ";
                     }
                     if(!empty($conditionList)){
-                        $conditionList = "(".$conditionList.") AND (".$conditionListOr.")";
+                        $conditionList = $conditionList." AND (".$conditionListOr.")";
                     } else {
-                        $conditionList = $conditionListOr;
+                        $conditionList = "(".$conditionListOr.")";
                     }
                 }
                 if(!empty($size)){
+                    echo $size;
                     $sizeList = split(',', $size);
                     $conditionListOr = null;
                     for($x=0;$x<count($sizeList);$x++){
@@ -45,9 +46,9 @@ class shop{
                             $conditionListOr = $conditionListOr." OR ";
                     }
                     if(!empty($conditionList)){
-                        $conditionList = "(".$conditionList.") AND (".$conditionListOr.")";
+                        $conditionList = $conditionList." AND (".$conditionListOr.")";
                     } else {
-                        $conditionList = $conditionListOr;
+                        $conditionList = "(".$conditionListOr.")";
                     }
                 }
                 if(!empty($groupBy)){
