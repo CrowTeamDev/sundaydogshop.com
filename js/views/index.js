@@ -159,6 +159,13 @@ $(document).ready(function(){
         $('#start_menu').slideDown(650, function(){
             $(this).find('label').fadeIn(450);
         });
+        handleMacOs();
+        
+        function handleMacOs(){
+            if (navigator.appVersion.indexOf("Mac") !== -1){
+                $('#your_cart').css({'padding-top':'7px', 'padding-bottom':'7px'});
+            }
+        }
     }
     
     function setup_eventHandle(){

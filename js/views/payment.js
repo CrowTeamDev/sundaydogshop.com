@@ -85,6 +85,13 @@ $(document).ready(function(){
         current_step(payment_step);
         display_item(payment_checkOut, cart_obj);
         grandTotal.sum();
+        handleMacOs();
+        
+        function handleMacOs(){
+            if (navigator.appVersion.indexOf("Mac") !== -1){
+                $('#payment_footer #payment_back').css({'padding-top':'8px', 'padding-bottom':'8px'});
+            }
+        }
     }
     
     function setup_eventHandle(){
@@ -174,6 +181,7 @@ $(document).ready(function(){
         $('#payment_next', '#main').click(function(){
             switch(payment_step){
                 case 1:
+                    if (cart_obj.item.length === 0) return;
                     cart_obj.totalCost = grandTotal.value();
                     updateSession(cart_obj);
                     break;
