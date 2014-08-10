@@ -32,13 +32,13 @@ $(function(){
         var hideDiv = $('div', '.home_main').eq(current_step);
         var showDiv = $('div', '.home_main').eq(slide);
         
-        hideDiv.fadeOut(4000);
-        showDiv.fadeIn(3500);
+        hideDiv.fadeOut(2000);
+        showDiv.fadeIn(1700);
         
-        $('#home_ribbon').fadeOut(2000, function(){
+        $('#home_ribbon').fadeOut(1000, function(){
             $('#home_ribbon').removeClass();
             $('#home_ribbon').addClass('home_ribbon' + slide);
-            $('#home_ribbon').fadeIn(1500);
+            $('#home_ribbon').fadeIn(700);
         });
         
         current_step = slide;
@@ -57,6 +57,6 @@ $(function(){
         changingSlide = setInterval(function(){
             gotoSlide(current_step+1);
             changeBgTransparent();
-        }, 30000);
+        }, 7000);
     }
 });

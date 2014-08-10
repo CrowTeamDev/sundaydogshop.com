@@ -31,17 +31,18 @@
 </div>
 <div id="contact_main">
     <div>
-    If you can't find an answer to your question or would like to make a comment or suggestion, please send us an email at
-    <?php echo $contactDetail[0][0]; ?><br>
-    If you have a question regarding the product purchased, please send us an email at
-    <?php echo $contactDetail[1][0]; ?><br>
-    Sunday Dog is in Monday through Friday, 10:00 am to 6:00 pm GMT.<br>
-    <br>
-    Contact Info<br>
-    29/3 Langsuan Rd. Lumpini Patumwan, 10330, Bangkok, Thailand<br>
-    <br>
-    Tel: <?php echo $contact_phone; ?><br>
-    Hours: Mon–Fri
+        If you can't find an answer to your question or would like to make a<br>
+        comment or suggestion, please send us an email at <span><?php echo $contactDetail[0][0]; ?></span><br>
+        <br>
+        If you have a question regarding the product purchased, please<br>
+        send us an email at <span><?php echo $contactDetail[1][0]; ?></span><br>
+        <br>
+        CONTACT INFO<br>
+        <span>
+            29/3 Langsuan Rd. Lumpini Patumwan, 10330, Bangkok, Thailand<br>
+            <?php echo $contact_phone; ?><br>
+            Monday - Friday 10:00 am to 6:00 pm GMT<br>
+        </span>
     </div>
 </div>
 <div id="contact_mail" class="unselect">
@@ -66,7 +67,7 @@
                     <td rowspan="2"><textarea name="message"></textarea></td>
                 </tr>
                 <tr>
-                    <td class="label"><span>SEND</span></td>
+                    <td class="label"><span></span></td>
                 </tr>
             </table>
         </form>

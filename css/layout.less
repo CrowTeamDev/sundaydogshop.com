@@ -18,6 +18,7 @@
 @color_dark: #ABAEA6;
 @color_light: #DDD9CB;
 @color_90: #404041;
+@color_80: #58585B;
 
 @img_shop-menu: url('../content/image/shop_menu.png');
 
@@ -262,7 +263,12 @@ li{
     padding: 15% 0 5%;
     margin: 0 auto;
     display: none;
-    &.paymentMode{ width: 85%; }
+    line-height: 1.25em;
+    &.paymentMode{
+        width: 85%;
+        height: auto;
+        padding-top: 12%;
+    }
     &.shopMode{ padding: 12% 0 0; }
     &.productMode{ margin-bottom: 175px; }
     &.homeMode{ padding-top: 9%; }
@@ -521,6 +527,9 @@ div[id*='payment_']{
                 border-left: 2px solid @color_dark;
                 border-right: 2px solid @color_dark;
                 #wire{ background-image: url('../content/image/wiretransfer2.png'); }
+                #paypal{ background-image: url('../content/image/paypal2.png'); }
+                #visa{ background-image: url('../content/image/visa2.png'); }
+                #master{ background-image: url('../content/image/mastercard2.png'); }
             }
             &.menu:hover{ cursor: pointer; }
         }
@@ -555,6 +564,7 @@ div[id*='payment_']{
     .fontAvenirNext;
     font-size: 0.75em;
     padding: 35px;
+    span{ color: @color_light; }
 }
 #contact_mail, #contact_FAQ{
     .contactDiv;
@@ -616,12 +626,14 @@ div[id*='payment_']{
             span{
                 cursor: pointer;
                 display: block;
-                background-color: @color_white;
-                color: @color_g4;
+                background-image: url('../content/image/send.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
                 width: 65%;
-                padding: 5px 0;
-                text-align: center;
+                padding: 12px 2px;
                 margin-bottom: 5px;
+                &:hover{ background-image: url('../content/image/send2.png'); }
             }
         }
     }
@@ -721,7 +733,7 @@ div.img-resize img{
      #product_detail{
         .fontAvenirNext;
         font-size: 0.75em;
-        color: @color_black;
+        color: @color_80;
         span{
             display: block;
             margin: 10px 0 20px;

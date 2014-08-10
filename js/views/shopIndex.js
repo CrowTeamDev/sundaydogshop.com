@@ -44,6 +44,7 @@ $(function(){
     //shop_handle($('input#gb').val());
     
     sortSize();
+    $('div#size_ONE').text('ONE SIZE');
     
     $('.product').mouseover(function(){
        $('.product_detail').hide();
@@ -158,7 +159,8 @@ function sortSize(){
             "size_M":7,
             "size_S":8,
             "size_XS":9,
-            "size_XXS":10
+            "size_XXS":10,
+            "size_ONE":11
         };
         
         var size_a = sizes[a.id];

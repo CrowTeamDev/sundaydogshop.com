@@ -116,8 +116,12 @@
             <label id="policy">POLICY</label>
             <label id="copyright">©SUNDAYDOG2014</label>
             <label id="contact">CONTACT US</label>
-            <img src="<?php echo $contentUrl;?>/content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
-            <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
+            <a href="https://www.facebook.com/sundaydogshop" target="_blank">
+               <img src="<?php echo $contentUrl;?>/content/image/icon_2.png" title="SundayDog's Facebook" alt="facebook" />
+            </a>
+            <a href="http://instagram.com/sundaydogshop?modal=true" target="_blank">
+                <img src="<?php echo $contentUrl;?>/content/image/icon_3.png" title="SundayDog's Instagram" alt="instagram" />
+            </a>
         </footer>
         <input type="hidden" id="myCart" value='<?php echo $cart; ?>' />
         <div id="popup"></div>

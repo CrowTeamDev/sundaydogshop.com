@@ -93,7 +93,7 @@
             CARE INSTRUCTION
             <span><?php echo $care; ?></span>
         </div>
-        <hr style="height: 3px; background: #ACAEB0; border: none;" />
+        <hr style="height: 3px; background: #404041; border: none;" />
         <div style="margin: 20px 0;">
             SIZE
             <select id="product_size" style="float: right; margin-right: 100px;">

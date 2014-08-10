@@ -69,7 +69,7 @@ function set_shopOn(shop_id){
             html = '<a href="shop?gb=wa">WALK</a>';
             break;
         case 'we':
-            html = '<a href="shop?gb=p">WEAR</a>';
+            html = '<a href="shop?gb=we">WEAR</a>';
             break;
         case 's':
             html = '<a href="shop?gb=s">SLEEP</a>';
@@ -236,9 +236,9 @@ $(window).load(function(){
             start_slide : 1,            // Start slide (0 is random)
             stop_loop : 0,              // Pauses slideshow on last slide
             random : 0,                 // Randomize slide order (Ignores start slide)
-            slide_interval : 5000,      // Length between transitions
+            slide_interval : 1500,      // Length between transitions
             transition : 1,             // 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
-            transition_speed : 4000,    // Speed of transition
+            transition_speed : 3500,    // Speed of transition
             new_window : 1,             // Image links open in new window/tab
             pause_hover : 0,            // Pause slideshow on hover
             keyboard_nav : 0,           // Keyboard navigation on/off

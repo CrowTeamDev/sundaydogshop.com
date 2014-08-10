@@ -298,11 +298,10 @@ $(document).ready(function(){
             obj.address = row(2).val();
             obj.zip = row(3).val();
             obj.city = row(4).val();
-            obj.state = row(5).val();
-            obj.country = row(6).val();
-            obj.phone = row(7).val();
-            obj.mobile = row(8).val();
-            obj.mail = row(9).val();
+            obj.country = row(5).val();
+            obj.phone = row(6).val();
+            obj.mobile = row(7).val();
+            obj.mail = row(8).val();
             
             return obj;
         }
@@ -342,6 +341,7 @@ $(document).ready(function(){
         $('div[id*=payment_]', '#main').eq(previous_step-1).fadeOut(300, function(){
             show_page(payment_step);
         });
+        window.scrollTo(0, 0);
         
         function show_page(step){
             $('div[id*=payment_]', '#main').eq(step-1).fadeIn(500);
@@ -386,7 +386,11 @@ $(document).ready(function(){
             cart.toalWeight = total_weight;
             cart.totalCost = total_price;
             
-            cart.shippingCost = get_shippingCost(cart) + 50;
+            if (cart.totalCost < 3500)
+                cart.shippingCost = get_shippingCost(cart) + 50;
+            else
+                cart.shippingCost = 0;
+            
             $('#shipping_cost', div_step).find('span').text(cart.shippingCost);
             $('#total_cost', div_step).find('span').text(cart.totalCost + cart.shippingCost);
         }

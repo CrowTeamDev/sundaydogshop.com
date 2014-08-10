@@ -80,10 +80,12 @@ function buy(){
 }
 
 function changeToOneSize(){
-    $("#product_size").append($("<option></option>"));
-    $("#product_size option").val("-");
-    $("#product_size option").text("ONE SIZE");
     $("#product_size").attr("disabled", "disabled");
+    if ($("#product_size option").text() === 'ONE'){
+        $("#product_size").append($("<option></option>"));
+        $("#product_size option").val("-");
+        $("#product_size option").text("ONE SIZE");
+    }
 }
 
 function sortSize(object){
