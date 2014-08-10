@@ -206,6 +206,7 @@ $(document).ready(function(){
             var url_redirect;
             switch(id){
                 case 'your_cart':
+                    if (cart_obj.item.length === 0) return;
                     url_redirect = url_path + '/view/_payment.php';
                     $('#main').addClass('paymentMode');
                     break;
