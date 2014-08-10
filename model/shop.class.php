@@ -36,7 +36,6 @@ class shop{
                     }
                 }
                 if(!empty($size)){
-                    echo $size;
                     $sizeList = split(',', $size);
                     $conditionListOr = null;
                     for($x=0;$x<count($sizeList);$x++){
