@@ -29,7 +29,8 @@
         <table>
             <tr>
                 <td colspan="2">PRODUCT</td>
-                <td colspan="2">QUANTITY</td>
+                <td>QUANTITY</td>
+                <td></td>
                 <td>PRICE (THB)</td>
                 <td colspan="2">TOTAL (THB)</td>
             </tr>
