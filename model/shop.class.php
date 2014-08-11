@@ -51,9 +51,9 @@ class shop{
                     }
                 }
                 if(!empty($groupBy)){
-                    $sql = db::getInstance()->query("SELECT * FROM Product WHERE catagories = $groupBy");
+                    $sql = db::getInstance()->query("SELECT * FROM Product WHERE catagories = $groupBy GROUP BY item_no");
                 } else {
-                    $sql = db::getInstance()->query("SELECT * FROM Product");
+                    $sql = db::getInstance()->query("SELECT * FROM Product GROUP BY item_no");
                 }
                 if(!empty($conditionList) && !empty($groupBy)){
                     $sql = db::getInstance()->query("SELECT p.*, pc.color as color, ps.size as size FROM Product p "
