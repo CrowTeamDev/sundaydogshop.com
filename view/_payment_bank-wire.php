@@ -61,10 +61,10 @@
             . "<br><br><ul>";
     
     for ($i = 0; $i < count($accountNo); $i++) {
-            $summary .= "<br>  the account owner of <span>" . $accountName[$i][0] . "</span>"
+            $summary .= "<li>the account owner of <span>" . $accountName[$i][0] . "</span>"
             . "<br>  with these details account number <span id='accountNo'>" . formatAccount($accountNo[$i][0]) . "</span> saving account."
             . "<br>  to <span>" . $bank[$i][0] . "</span>, " . $branch[$i][0] . " branch"
-            . "<br>";
+            . "</li>";
     }
     
     $summary .=

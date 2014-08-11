@@ -37,7 +37,7 @@
         }
         
         function getPaymentAccountBranch() {
-            $query = "SELECT configValue FROM Config WHERE configName like 'payment_branch' order by configName";
+            $query = "SELECT configValue FROM Config WHERE configName like 'payment_branch%' order by configName";
             $sql = db::getInstance()->query($query);
             $data = $sql->fetchAll();
             return $data;
