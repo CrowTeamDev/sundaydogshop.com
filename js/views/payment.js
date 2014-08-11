@@ -140,7 +140,6 @@ $(document).ready(function(){
                 $.post('view/_payment_bank-wire.php', data, function(result){
                     $('tr', payment_pay).last().fadeIn(500);
                     $('tr', payment_pay).last().find('td').html(result);
-                    format_payment_detail();
                     buttonsText.done();
                 });
             }
@@ -314,14 +313,6 @@ $(document).ready(function(){
             obj.mail = row(8).val();
             
             return obj;
-        }
-        function format_payment_detail(){
-            var accountNo = $('#payment_bankwire_detail', payment_pay).find('#accountNo');
-            accountNo.text(format_bankAccount(accountNo.text()));
-            
-            function format_bankAccount(account){
-                return account.substring(0,3) + '-' + account.substring(3,9) + '-' + account.substring(9);
-            }
         }
         function updateSession(cart){
             var data = { cart : JSON.stringify(cart) };

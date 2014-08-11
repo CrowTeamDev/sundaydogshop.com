@@ -112,7 +112,7 @@ class mail{
     }
     
     function formatAccount($account){
-        return substr($account, 0, 3)."-".substr($account, 3, 6)."-".substr($account, -1, 1);
+        return substr($account, 0, 3)."-".substr($account, 3, 1)."-".substr($account, 4, 5)."-".substr($account, -1, 1);
     }
     function formatNumber($number){
         return substr($number, 0, 3)."-".substr($number, 3, 3)."-".substr($number, 6, strlen($number) - 6);
