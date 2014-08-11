@@ -90,6 +90,8 @@ $(document).ready(function(){
         function handleMacOs(){
             if (navigator.appVersion.indexOf("Mac") !== -1){
                 $('#payment_footer #payment_back').css({'padding-top':'8px', 'padding-bottom':'8px'});
+                $('#payment_checkOut table #update label').css({'padding-top':'8px', 'padding-bottom':'8px'});
+                $('#payment_checkOut table #remove label').css({'padding-top':'8px', 'padding-bottom':'8px'});
             }
         }
     }

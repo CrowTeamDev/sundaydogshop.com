@@ -556,7 +556,7 @@ div[id*='payment_']{
     #wire{ background-image: url('../content/image/wiretransfer.png'); }
 
     article{
-        span{ font-weight: bold; }
+        span{ color: #6D6E70; }
     }
 }
 #contact_main{
@@ -565,6 +565,7 @@ div[id*='payment_']{
     font-size: 0.75em;
     span{ color: @color_light; }
     div{ padding: 20px; }
+    a#head{ font-family: PrestigeElite; }
 }
 #contact_mail, #contact_FAQ{
     .contactDiv;
@@ -739,6 +740,7 @@ div.img-resize img{
             margin: 10px 0 20px;
             font-size: 1em;
             //text-indent: 50px;
+            ul{ padding-left: 25px; }
             li{
                 cursor: default;
                 display: list-item;
@@ -931,4 +933,11 @@ a:-webkit-any-link{ text-decoration: none; }
     bottom: 5%;
     height: 30px;
     left: 20px;
+}
+#payment_bankwire_detail a{
+    text-transform: uppercase;
+    &#header{
+        font-family: PrestigeElite;
+        color: @color_light;
+    }
 }

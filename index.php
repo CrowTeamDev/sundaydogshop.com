@@ -45,10 +45,10 @@
 -->
 <html>
     <head>
-        <title>SundayDog Shop</title>
+        <title>Sunday Dog</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        
+        <link rel="shortcut icon" href="<?php echo $contentUrl;?>/content/image/SD.ico">
         <link rel="stylesheet/less" type="text/css" href="<?php echo $contentUrl;?>/css/layout.less" />
         <link rel="stylesheet/less" type="text/css" href="<?php echo $contentUrl;?>/css/simplePagination.less" />
         <link rel="stylesheet" type="text/css" href="<?php echo $contentUrl;?>/css/jquery.vegas.css" />

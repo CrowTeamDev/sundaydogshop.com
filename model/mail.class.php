@@ -33,7 +33,7 @@ class mail{
         $message_detail = 
             "Dear " . $name . ","
             . "<br>"
-            . "<br>This mail was sent by SundayDog Shop"
+            . "<br>This mail was sent by Sunday Dog"
             . "<br>As the summary of purchase on " . date('j M') . " via <b> " . $method . "</b> payment method"
             . "<br>";
    
@@ -43,7 +43,7 @@ class mail{
             $price = intval($item['price']);
             $total = $price * $qty;
             $message_detail .= "<tr>"
-                    . "<td style='width:50%;'>• " . $item['name'] . "</td>"
+                    . "<td style='width:50%;'>- " . $item['name'] . "</td>"
                     . "<td style='width:30%;'>" . number_format($price) . " THB"
                     . "&nbsp;&nbsp;&nbsp;"
                     . "x" . $qty . "</td>"
@@ -51,7 +51,7 @@ class mail{
                     . "</tr>";
         }
         $message_detail .= "<tr>"
-                . "<td colspan=\"2\">• Shipping Cost </td>"
+                . "<td colspan=\"2\">- Shipping Cost </td>"
                 . "<td><b>" . $shippingCost . "</b> THB</td>"
                 . "</tr>"
                 . "</table>";
@@ -64,7 +64,7 @@ class mail{
             $email = $seller['email'];
             
             $message_detail .= "<br>"
-                    . "Please send us a bank wire, total amount of <b>" . number_format($totalCost) . "</b> THB"
+                    . "Please send us a bank wire, total amount of <b>" . number_format($totalCost + $shippingCost) . "</b> THB"
                     . "<br>To one of these accounts:"
                     . "<br>";
             
@@ -86,13 +86,13 @@ class mail{
         else{
             $paypalAccount = $seller['accountPaypal'];
             $message_detail .= "<br>"
-                    . "Please complete payment on PayPal™, total amount of <b>" . number_format($totalCost) . "</b> THB"
-                    . "<br>To PayPal™ account <b>" . $paypalAccount . "</b>, on item reference <b>" . $this->refNo . "</b>."
+                    . "Please complete payment on PayPal, total amount of <b>" . number_format($totalCost + $shippingCost) . "</b> THB"
+                    . "<br>To PayPal account <b>" . $paypalAccount . "</b>, on item reference <b>" . $this->refNo . "</b>."
                     . "<br>"
                     . "<br>Your order will be sent on this information:"
                     . "<br><i>" . $name . " " . $this->formatNumber($mobile) . ", " . $this->formatNumber($phone) . "<br>" . $address . "</i>"
                     . "<br>"
-                    . "<br>After PayPal™ confirm the payment, you will recieve another confirm mail from us";
+                    . "<br>After PayPal confirm the payment, you will recieve another confirm mail from us";
         }
         
         return $message_detail;

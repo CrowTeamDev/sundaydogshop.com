@@ -17,6 +17,7 @@
     $email = $registry->config->getConfigValue('payment_email');
     $paypal_account = $registry->config->getConfigValue('paypal_account');
     $totalCost = intval($_REQUEST['totalCost']);
+    $shippingCost = intval($_REQUEST['shippingCost']);
     $buyyer_mail = $_REQUEST['email'];
     $buyyer = $_REQUEST['first_name'] . " " . $_REQUEST['last_name'];
     
@@ -24,7 +25,7 @@
         'refNo' => $refNo,
         'cart' => array(
             'items' => $_REQUEST['items'],
-            'shippingCost' => number_format(intval($_REQUEST['shippingCost'])),
+            'shippingCost' => number_format($shippingCost),
             'totalCost' => $totalCost
         ),
         'buyyer' => array(
@@ -42,7 +43,7 @@
     $mail_pros = new mail($model, 1);
     $mail_pros->sendMail($email, $buyyer_mail);
     
-    $registry->transaction->save($refNo, $totalCost, $buyyer_mail, 1);
+    $registry->transaction->save($refNo, $totalCost + $shippingCost, $buyyer_mail, 1);
     
     function generateRandomString($length = 8) {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -64,7 +65,7 @@
     <input type="hidden" name="business" value="<?php echo $paypal_account; ?>" />
     <input type="hidden" name="invoice" value="<?php echo $refNo; ?>" />
     <input type="hidden" name="item_number" value="<?php echo $refNo; ?>" />
-    <input type="hidden" name="amount" value="<?php echo $totalCost; ?>" />
+    <input type="hidden" name="amount" value="<?php echo ($totalCost + $shippingCost); ?>" />
     <input type="hidden" name="email" value="<?php echo $buyyer_mail; ?>" />
     <input type="hidden" name="first_name" value="<?php echo $_REQUEST['first_name']; ?>" />
     <input type="hidden" name="last_name" value="<?php echo $_REQUEST['last_name']; ?>" />

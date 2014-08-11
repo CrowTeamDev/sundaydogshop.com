@@ -37,7 +37,7 @@
         If you have a question regarding the product purchased, please<br>
         send us an email at <span><?php echo $contactDetail[1][0]; ?></span><br>
         <br>
-        CONTACT INFO<br>
+        <a id="head">CONTACT INFO</a><br>
         <span>
             29/3 Langsuan Rd. Lumpini Patumwan, 10330, Bangkok, Thailand<br>
             <?php echo $contact_phone; ?><br>
