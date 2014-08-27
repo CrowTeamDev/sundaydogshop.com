@@ -60,9 +60,6 @@ $(document).ready(function(){
                 $('#payment_back', '#payment_page').show();
                 $('#payment_next', '#payment_page').show();
             },
-            done : function(){
-                $('#payment_next', '#payment_page').show();
-            },
             set : function(number){
                 var className = "Page"+number;
                 
@@ -131,7 +128,7 @@ $(document).ready(function(){
                     totalCost : cart_obj.totalCost,
                     shippingCost : cart_obj.shippingCost,
                     items : cart_obj.item,
-                    buyyer : buyyer_obj.first+' '+buyyer_obj.last,
+                    buyer : buyyer_obj.first+' '+buyyer_obj.last,
                     email : buyyer_obj.mail,
                     phone : buyyer_obj.phone,
                     mobile : buyyer_obj.mobile,
@@ -140,7 +137,7 @@ $(document).ready(function(){
                 $.post('view/_payment_bank-wire.php', data, function(result){
                     $('tr', payment_pay).last().fadeIn(500);
                     $('tr', payment_pay).last().find('td').html(result);
-                    buttonsText.done();
+                    buttonsText.set(4);
                 });
             }
             else{
@@ -173,6 +170,10 @@ $(document).ready(function(){
                     window.location.href = 'shop';
                     break;
                 case 4:
+                    $('tr', payment_pay).eq(1).show();
+                    $('tr td.selected', payment_pay).addClass('menu').removeClass('selected');
+                    $('tr', payment_pay).last().hide();
+                    current_step(payment_step);
                     break;
                 default:
                     current_step(payment_step--);
@@ -193,8 +194,21 @@ $(document).ready(function(){
                     display_address(buyyer_obj);
                     break;
                 case 4:
-                    clearSession();
                     displayPopup('<div align="center"><br>Order process sent<br><br>Thank you</div>', 'home');
+                    
+                    var data = {
+                        refNo : $('#refNo').val(),
+                        totalCost : cart_obj.totalCost,
+                        shippingCost : cart_obj.shippingCost,
+                        items : cart_obj.item,
+                        buyer : buyyer_obj.first+' '+buyyer_obj.last,
+                        email : buyyer_obj.mail,
+                        phone : buyyer_obj.phone,
+                        mobile : buyyer_obj.mobile,
+                        address : buyyer_obj.getAddress()
+                    };
+                    $.post('view/_payment_bank-wire_confirm.php', data);
+                    clearSession();
                     break;
             }
             if(payment_step < 4)
@@ -346,7 +360,7 @@ $(document).ready(function(){
         
         function show_page(step){
             $('div[id*=payment_]', '#main').eq(step-1).fadeIn(500);
-            
+
             if (step === 4)
                 buttonsText.hide();
             else

@@ -7,26 +7,26 @@
  */
 class mail{
     var $refNo, $method;
-    var $cart, $buyyer, $seller;
+    var $cart, $buyer, $seller;
     
     function __construct($model, $method = 0){
         $this->refNo = $model['refNo'];
         $this->cart = $model['cart'];
-        $this->buyyer = $model['buyyer'];
+        $this->buyer = $model['buyer'];
         $this->seller = $model['seller'];
         $this->method = $method;
     }
     
-    private function createMsg($cart, $buyyer, $seller){
+    private function createMsg($cart, $buyer, $seller){
         
         $items = $cart['items'];
         $shippingCost = $cart['shippingCost'];
         $totalCost = $cart['totalCost'];
         
-        $name = $buyyer['name'];
-        $mobile = $buyyer['mobile'];
-        $phone = $buyyer['phone'];
-        $address = $buyyer['address'];
+        $name = $buyer['name'];
+        $mobile = $buyer['mobile'];
+        $phone = $buyer['phone'];
+        $address = $buyer['address'];
         
         $method = $this->method == 0 ? "bank-wire" : "paypal" ;
         
@@ -52,7 +52,7 @@ class mail{
         }
         $message_detail .= "<tr>"
                 . "<td colspan=\"2\">- Shipping Cost </td>"
-                . "<td><b>" . $shippingCost . "</b> THB</td>"
+                . "<td><b>" . number_format($shippingCost) . "</b> THB</td>"
                 . "</tr>"
                 . "</table>";
 
@@ -98,10 +98,10 @@ class mail{
         return $message_detail;
     }
    
-    function sendMail($mail_seller, $mail_buyyer){
-        $mail_to        = $mail_buyyer;
+    function sendMail($mail_seller, $mail_buyer){
+        $mail_to        = $mail_buyer;
         $mail_subject   = 'Order on SundayDog Shop: ' . $this->refNo;
-        $mail_message   = $this->createMsg($this->cart, $this->buyyer, $this->seller);
+        $mail_message   = $this->createMsg($this->cart, $this->buyer, $this->seller);
 
         $mail_header    = 'MIME-Version: 1.0' . "\r\n";
         $mail_header   .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
