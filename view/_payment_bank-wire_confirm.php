@@ -49,4 +49,3 @@
     $mail_pros->sendMail($email, $buyer_mail);
     
     $registry->transaction->save($refNo, $totalCost + $shippingCost, $buyer_mail);
-?>
