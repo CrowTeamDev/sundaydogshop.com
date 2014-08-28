@@ -1,5 +1,4 @@
 <?php
-    
     $site_path = '../';
     define ('__SITE_PATH', $site_path);
 

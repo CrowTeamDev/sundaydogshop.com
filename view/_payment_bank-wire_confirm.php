@@ -1,4 +1,5 @@
 <?php
+
     if (isset($_SESSION['cart'])){
         unset($_SESSION['cart']);
     }
@@ -11,18 +12,19 @@
     $registry->config = new config($registry);
     $registry->transaction = new transaction($registry);
 
-    /*** load up var ***/
     $refNo = $_REQUEST['refNo'];
-    $shippingCost = intval($_REQUEST['shippingCost']);
     $totalCost = intval($_REQUEST['totalCost']);
+    $shippingCost = intval($_REQUEST['shippingCost']);
+    $buyer_mail = $_REQUEST['email'];
+
+    $registry->transaction->save($refNo, $totalCost + $shippingCost, $buyer_mail);
+    
     $accountNo = $registry->config->getPaymentAccountNo();
     $accountName = $registry->config->getPaymentAccountName();
     $bank = $registry->config->getPaymentAccountBank();
     $branch = $registry->config->getPaymentAccountBranch();
     $email = $registry->config->getConfigValue('payment_email');
 
-    $buyer_mail = $_REQUEST['email'];
-    
     $model = array(
         'refNo' => $refNo,
         'cart' => array(
@@ -44,8 +46,7 @@
             'email' => $email
         )
     );
+    
 
     $mail_pros = new mail($model);
     $mail_pros->sendMail($email, $buyer_mail);
-    
-    $registry->transaction->save($refNo, $totalCost + $shippingCost, $buyer_mail);
