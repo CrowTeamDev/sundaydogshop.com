@@ -121,7 +121,8 @@ body{
             url('../content/image/background/image_7.jpg')
             url('../content/image/background/image_8.jpg')
             url('../content/image/background/image_9.jpg')
-            url('../content/image/background/image_12.jpg');
+            url('../content/image/background/image_12.jpg')
+            url('../content/image/home/home_0.jpg');
         display: none;
     }
 }
@@ -872,23 +873,8 @@ a:-webkit-any-link{ text-decoration: none; }
     padding-top: 3%;
     &.white{ background-color: @color_white; }
     &.transparent{ background-image: url('../content/image/background/white40.png'); }
-    div{ display: none; }
-    #home_info{
-        position: absolute;
-        width: 80%;
-        margin: 5% 10%;
-        display: block;
-        font-family: AvenirNext_Light;
-        font-size: 1.15em;
-        font-weight: bold;
-        color: @color_dark;
-        padding-top: 7%;
-        p{
-            text-align: center;
-            margin-bottom: 13px;
-        }
-    }
-    .home_gallery{
+    div{
+        display: none;
         position: absolute;
         width: 90%;
         height: 85%;
@@ -896,6 +882,12 @@ a:-webkit-any-link{ text-decoration: none; }
         background-position: center center;
         background-repeat: no-repeat;
         background-size: contain;
+    }
+    #home_info{
+        display: block;
+        background-image: url('../content/image/home/home_0.jpg');
+    }
+    .home_gallery{
         &#home_product1{ background-image: url('../content/image/home/home_1.jpg'); }
         &#home_product2{ background-image: url('../content/image/home/home_2.jpg'); }
         &#home_product3{ background-image: url('../content/image/home/home_3.jpg'); }
@@ -914,10 +906,6 @@ a:-webkit-any-link{ text-decoration: none; }
         background-position: bottom center;
         background-repeat: no-repeat;
         background-size: contain;
-        &.home_ribbon0{
-            background-image: url('../content/image/home/ribbon_0.png');
-            background-position: top center;
-        }
         &.home_ribbon1{ background-image: url('../content/image/home/ribbon_1.png'); }
         &.home_ribbon2{ background-image: url('../content/image/home/ribbon_2.png'); }
         &.home_ribbon3{ background-image: url('../content/image/home/ribbon_3.png'); }
