@@ -47,6 +47,5 @@
         )
     );
     
-
     $mail_pros = new mail($model);
     $mail_pros->sendMail($email, $buyer_mail);

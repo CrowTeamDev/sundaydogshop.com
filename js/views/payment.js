@@ -253,7 +253,7 @@ $(document).ready(function(){
             if (!checkAphabet(4))
                 result = false;
             
-            if (!checkAphabet(5))
+            if (!(checkAphabet(5) && checkThailand(5)))
                 result = false;
             
             if (!checkNumber(7))
@@ -267,6 +267,14 @@ $(document).ready(function(){
                 result = false;
             }
             
+            function checkThailand(i){
+                var regexLetter = /thailand/;
+                if (!regexLetter.test(row(i).val().toLowerCase())){
+                    displayError(i, "For international customers, please contact us at info@sundaydogshop.com. Thank you!");
+                    return false;
+                }
+                return true;
+            }
             function checkAphabet(i){
                 var regexLetter = /[a-zA-z]/;
                 if (!regexLetter.test(row(i).val())){
@@ -286,28 +294,31 @@ $(document).ready(function(){
             
             return result;
         }
-        function displayError(i){
+        function displayError(i, word){
             var warning;
             
-            switch(i){
-                case 0:
-                case 1:
-                case 4:
-                case 5:
-                    warning = "Please input only alphabet";
-                    break;
-                case 2:
-                    warning = "Please input address detail";
-                    break;
-                case 3:
-                case 6:
-                case 7:
-                    warning = "Please input only number";
-                    break;
-                case 8:
-                    warning = "Please input email address correctly";
-                    break;
-            }
+            if (typeof word === 'string')
+                warning = word;
+            else
+                switch(i){
+                    case 0:
+                    case 1:
+                    case 4:
+                    case 5:
+                        warning = "Please input only alphabet";
+                        break;
+                    case 2:
+                        warning = "Please input address detail";
+                        break;
+                    case 3:
+                    case 6:
+                    case 7:
+                        warning = "Please input only number";
+                        break;
+                    case 8:
+                        warning = "Please input email address correctly";
+                        break;
+                }
             
             $('tr:eq('+i+') td:eq(2)', payment_shipping).find('span').text(warning);
         }
