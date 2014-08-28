@@ -24,7 +24,7 @@
     $bank = $registry->config->getPaymentAccountBank();
     $branch = $registry->config->getPaymentAccountBranch();
     $email = $registry->config->getConfigValue('payment_email');
-
+    
     $model = array(
         'refNo' => $refNo,
         'cart' => array(
@@ -49,3 +49,7 @@
     
     $mail_pros = new mail($model);
     $mail_pros->sendMail($email, $buyer_mail);
+    
+    function formatAccount($account){
+        return substr($account, 0, 3)."-".substr($account, 3, 1)."-".substr($account, 4, 5)."-".substr($account, -1, 1);
+    }
