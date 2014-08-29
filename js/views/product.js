@@ -86,6 +86,7 @@ function changeToOneSize(){
         $("#product_size option").val("-");
         $("#product_size option").text("ONE SIZE");
     }
+    colorOut();
 }
 
 function sortSize(object){
@@ -119,8 +120,24 @@ function sortSize(object){
 
 function sizeInvolve(){
     $('#product_price span').text($('#product_size').val());
+    
+    var colorList = $('#product_color').html();
+    colorOut();
+    
     $('#product_size').change(function(){
         $('#product_price span').text($('#product_size').val());
         $('#product_weight').val($('#product_size option:selected').attr('weight'));
+        
+        $('#product_color').html(colorList);
+        colorOut();
     });
+}
+
+function colorOut(){
+    var colorOut = $('#product_size option:selected').attr('colorOut').split(",");
+    for(i=0;i<colorOut.length;i++){
+        var color = colorOut[i];
+        if (color !== "")
+            $('#product_color option[value="'+color+'"]').remove();
+    }
 }

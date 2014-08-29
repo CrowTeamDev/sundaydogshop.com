@@ -99,7 +99,9 @@
             <select id="product_size" style="float: right; margin-right: 100px;">
                 <?php
                     foreach ($sizeList as $key){
-                        echo "<option value='".$key['price']."' weight='".$key['weight']."' selected>".$key['size']."</option>";
+                        if ($key['out_of_stock'] != 1){
+                            echo "<option value='".$key['price']."' weight='".$key['weight']."' colorOut='".$key['color_out']."' selected>".$key['size']."</option>";
+                        }
                     }
                 ?>
             </select>

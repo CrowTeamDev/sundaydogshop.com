@@ -17,7 +17,7 @@
         
         public function getSize($id) {
             if(!empty($id)){
-                $sizeList = db::getInstance()->query('SELECT size, price, weight FROM Product_Size where item_no='.$id.' ORDER BY weight DESC, size ASC');
+                $sizeList = db::getInstance()->query('SELECT size, price, weight, out_of_stock, color_out FROM Product_Size where item_no='.$id.' ORDER BY weight DESC, size ASC');
                 return $sizeList;
             }
         }

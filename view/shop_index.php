@@ -206,6 +206,7 @@
                 $count = 0;
                 if(!empty($groupList)){
                     foreach($groupList as $row) {
+                        if($row['out_of_stock'] != 0){ continue; }
                         if($count%3==0 && $count != 0){
                             echo "</tr><tr>"
                                     . "<td align='right'>"
