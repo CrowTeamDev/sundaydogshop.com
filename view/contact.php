@@ -41,7 +41,7 @@
         <span>
             29/3 Langsuan Rd., Lumpini Patumwan, 10330, Bangkok, Thailand<br>
             <?php echo $contact_phone; ?><br>
-            Line ID: <?php echo $contactDetail[2][0]; ?>
+            Line ID: <?php echo $contactDetail[2][0]; ?><br>
             Monday - Friday 10:00 am to 6:00 pm GMT<br>
         </span>
     </div>
