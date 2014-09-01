@@ -31,8 +31,13 @@ $(function(){
         sortSize($("#product_size"));
     }
     
-    if ($('#product_price span').text() === "0")
+    if ($('#product_price span').text() === "0"){
         sizeInvolve();
+    }
+    
+    if ($('#product_size option').size() === 0){
+        outOfStock();
+    }
 });
 
 function buy(){
@@ -134,10 +139,16 @@ function sizeInvolve(){
 }
 
 function colorOut(){
+    if ($('#product_size option').size() === 0) return;
     var colorOut = $('#product_size option:selected').attr('colorOut').split(",");
     for(i=0;i<colorOut.length;i++){
         var color = colorOut[i];
         if (color !== "")
             $('#product_color option[value="'+color+'"]').remove();
     }
+}
+
+function outOfStock(){
+    $('#product_stock').text("OUT OF STOCK");
+    $('.inStock').remove();
 }

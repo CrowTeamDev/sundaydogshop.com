@@ -94,7 +94,7 @@
             <span><?php echo $care; ?></span>
         </div>
         <hr style="height: 3px; background: #404041; border: none;" />
-        <div style="margin: 20px 0;">
+        <div id="product_stock" style="margin: 20px 0;">
             SIZE
             <select id="product_size" style="float: right; margin-right: 100px;">
                 <?php
@@ -110,7 +110,7 @@
             $colorExisted = false;
         
             $html = "";
-            $html .= "<div style='margin: 20px 0;'>";
+            $html .= "<div class='inStock' style='margin: 20px 0;'>";
             $html .= "COLOR";
             $html .= "<select id='product_color' style='float: right; margin-right: 100px;'>";
             $html .= "<option value=''> -- Please Select -- </option>";
@@ -125,13 +125,13 @@
                 echo $html;
             }
         ?>
-        <div style="margin: 20px 0 35px; vertical-align: middle;">
+        <div class="inStock" style="margin: 20px 0 35px; vertical-align: middle;">
             QUANTITY
             <input type="number" min="1" max="99" value="1"
                    id="quantity" style="width: 35px; float:right; margin-right:100px;" />
         </div>
-        <label id="product_buy"></label>
-        <label id="product_checkOut"></label>
+        <label class="inStock" id="product_buy"></label>
+        <label class="inStock" id="product_checkOut"></label>
     </div>
 </div>
 <?php
