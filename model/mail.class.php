@@ -100,12 +100,12 @@ class mail{
    
     function sendMail($mail_seller, $mail_buyer){
         $mail_to        = $mail_buyer;
-        $mail_subject   = 'Order on SundayDog Shop: ' . $this->refNo;
+        $mail_subject   = 'Order on Sunday Dog: ' . $this->refNo;
         $mail_message   = $this->createMsg($this->cart, $this->buyer, $this->seller);
 
         $mail_header    = 'MIME-Version: 1.0' . "\r\n";
         $mail_header   .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $mail_header   .= 'From: SundayDog Shop <' . $mail_seller . '>' . "\r\n";
+        $mail_header   .= 'From: Sunday Dog <' . $mail_seller . '>' . "\r\n";
         $mail_header   .= 'Bcc: ' . $mail_seller;
 
         return mail($mail_to, $mail_subject, $mail_message, $mail_header);
