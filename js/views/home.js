@@ -22,7 +22,7 @@ $(function(){
         resumeSlide();
     });
     
-    setTimeout(resumeSlide(), 7000);
+    setTimeout(function(){resumeSlide();}, 8000);
     
     function gotoSlide(slide){
         if (!$('.home_main').is(':visible')) return;
@@ -54,6 +54,7 @@ $(function(){
         }
     }
     function resumeSlide(){
+        clearInterval(changingSlide);
         changingSlide = setInterval(function(){
             gotoSlide(current_step+1);
             changeBgTransparent();
