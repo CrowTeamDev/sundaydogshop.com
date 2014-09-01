@@ -124,7 +124,10 @@ function sortSize(object){
 }
 
 function sizeInvolve(){
-    $('#product_price span').text($('#product_size').val());
+    if ($('#product_size').val() !== null)
+        $('#product_price span').text($('#product_size').val());
+    else
+        $('#product_price').text("");
     
     var colorList = $('#product_color').html();
     colorOut();
