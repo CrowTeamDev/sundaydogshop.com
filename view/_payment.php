@@ -155,7 +155,7 @@
             </tr>
             <tr>
                 <td class="menu">
-                    PAY WITH YOUR CREDIT CARD OR YOUR PAYPAL ACCOUNT
+                    PAY BY CREDIT CARD VIA PAYPAL
                     <label id="paypal"></label>
                     <label id="visa"></label>
                     <label id="master"></label>

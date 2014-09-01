@@ -1,10 +1,10 @@
 <?php
     $contact_phone  = '+';
-    $contact_phone  = '+' . substr($contactDetail[2][0], 0, 2) . ' ';
-    $contact_phone .= '(' . substr($contactDetail[2][0], 2, 1) . ')';
-    $contact_phone .= substr($contactDetail[2][0], 3, 2) . ' ';
-    $contact_phone .= substr($contactDetail[2][0], 5, 3) . ' ';
-    $contact_phone .= substr($contactDetail[2][0], 8, 4);
+    $contact_phone  = '+' . substr($contactDetail[3][0], 0, 2) . ' ';
+    $contact_phone .= '(' . substr($contactDetail[3][0], 2, 1) . ')';
+    $contact_phone .= substr($contactDetail[3][0], 3, 2) . ' ';
+    $contact_phone .= substr($contactDetail[3][0], 5, 3) . ' ';
+    $contact_phone .= substr($contactDetail[3][0], 8, 4);
 ?>
 
 <?php
@@ -39,8 +39,9 @@
         <br>
         <a id="head">CONTACT INFO</a><br>
         <span>
-            29/3 Langsuan Rd. Lumpini Patumwan, 10330, Bangkok, Thailand<br>
+            29/3 Langsuan Rd., Lumpini Patumwan, 10330, Bangkok, Thailand<br>
             <?php echo $contact_phone; ?><br>
+            Line ID: <?php echo $contactDetail[2][0]; ?>
             Monday - Friday 10:00 am to 6:00 pm GMT<br>
         </span>
     </div>
