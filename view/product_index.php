@@ -98,27 +98,59 @@
             SIZE
             <select id="product_size" style="float: right; margin-right: 100px;">
                 <?php
-                    foreach ($sizeList as $key){
-                        if ($key['out_of_stock'] != 1){
-                            echo "<option value='".$key['price']."' weight='".$key['weight']."' colorOut='".$key['color_out']."' selected>".$key['size']."</option>";
+                    foreach ($detailList as $key){
+                        $out_of_stock = true;
+                        $stock = "";
+                        if (is_numeric($key['stock'])){
+                            $out_of_stock = false;
+                            $stock = $key['stock'];
+                        }else{
+                            $colors_stock = explode(",", $key['stock']);
+                            foreach ($colors_stock as $color) {
+                                $color_stock = explode(":", $color);
+                                if ($color_stock[1] != "0"){
+                                    $out_of_stock = false;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        if (!$out_of_stock){
+                            echo "<option value='".$key['price']."' weight='".$key['weight']."' stock='".$stock."' selected>".$key['size']."</option>";
                         }
                     }
                 ?>
             </select>
         </div>
         <?php
-            $colorExisted = false;
-        
             $html = "";
             $html .= "<div class='inStock' style='margin: 20px 0;'>";
             $html .= "COLOR";
-            $html .= "<select id='product_color' style='float: right; margin-right: 100px;'>";
-            $html .= "<option value=''> -- Please Select -- </option>";
-            foreach ($colorList as $key){
-                $colorExisted = true;
-                $html .= "<option value='".$key['color']."'>".$key['color']."</option>";
+            
+            $colorExisted = false;
+            foreach ($stockList as $key){
+                $sizeExisted = false;
+                $html2 = "<select class='product_color' size='".$key['size']."' style='float: right; margin-right: 100px;'>";
+                $html2 .= "<option value=''> -- Please Select -- </option>";
+                if (is_numeric($key['stock'])){
+                    break;
+                }
+                else{
+                    $colors_stock = explode(",", $key['stock']);
+                    foreach ($colors_stock as $color) {
+                        $color_stock = explode(":", $color);
+                        if ($color_stock[1] != "0"){
+                            $sizeExisted = true;
+                            $colorExisted = true;
+                            $html2 .= "<option value='".$color_stock[0]."' stock='".$color_stock[1]."'>".$color_stock[0]."</option>";
+                        }
+                    }
+                }
+                $html2 .= "</select>";
+                if ($sizeExisted){
+                    $html .= $html2;
+                }
             }
-            $html .= "</select>";
             $html .= "</div>";
 
             if ($colorExisted){

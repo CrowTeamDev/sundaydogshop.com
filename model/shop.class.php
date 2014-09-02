@@ -58,13 +58,13 @@ class shop{
                 if(!empty($conditionList) && !empty($groupBy)){
                     $sql = db::getInstance()->query("SELECT p.*, pc.color as color, ps.size as size FROM Product p "
                             . "LEFT JOIN Product_Color pc ON p.item_no = pc.item_no "
-                            . "LEFT JOIN Product_Size ps ON p.item_no = ps.item_no "
+                            . "LEFT JOIN Product_Detail ps ON p.item_no = ps.item_no "
                             . "WHERE p.catagories = $groupBy AND $conditionList "
                             . "GROUP BY p.item_no");
                 } else if(!empty($conditionList) && empty($groupBy)){
                     $sql = db::getInstance()->query("SELECT p.*, pc.color as color, ps.size as size FROM Product p "
                             . "LEFT JOIN Product_Color pc ON p.item_no = pc.item_no "
-                            . "LEFT JOIN Product_Size ps ON p.item_no = ps.item_no "
+                            . "LEFT JOIN Product_Detail ps ON p.item_no = ps.item_no "
                             . "WHERE $conditionList "
                             . "GROUP BY p.item_no");
                 }
@@ -134,7 +134,7 @@ class shop{
                     $filterList['color'] = $filterColorList;
                 }
             }
-            $sizeList = db::getInstance()->query("SELECT * FROM Product p LEFT JOIN Product_Size ps ON p.item_no = ps.item_no $whereCondition GROUP BY ps.size");
+            $sizeList = db::getInstance()->query("SELECT * FROM Product p LEFT JOIN Product_Detail ps ON p.item_no = ps.item_no $whereCondition GROUP BY ps.size");
             if($sizeList != null){
                 if($sizeList->rowCount()!=0){
                     $filterSizeList = array();

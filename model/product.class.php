@@ -17,14 +17,21 @@
         
         public function getSize($id) {
             if(!empty($id)){
-                $sizeList = db::getInstance()->query('SELECT size, price, weight, out_of_stock, color_out FROM Product_Size where item_no='.$id.' ORDER BY weight DESC, size ASC');
-                return $sizeList;
+                $detailList = db::getInstance()->query('SELECT size, price, weight, stock FROM Product_Detail where item_no='.$id.' and stock<>"0" ORDER BY weight DESC, size ASC');
+                return $detailList;
+            }
+        }
+        
+        public function getStock($id) {
+            if(!empty($id)){
+                $sql = db::getInstance()->query('SELECT size, stock FROM Product_Detail where item_no='.$id.' and stock<>"0" ORDER BY size ASC');
+                return $sql->fetchAll();
             }
         }
         
         public function getDimension($id) {
             if(!empty($id)){
-                return db::getInstance()->query('SELECT size, dimension FROM Product_Size where item_no='.$id.' ORDER BY size ASC');
+                return db::getInstance()->query('SELECT size, dimension FROM Product_Detail where item_no='.$id.' ORDER BY size ASC');
             }
         }
 }

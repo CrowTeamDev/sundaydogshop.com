@@ -397,8 +397,10 @@ $(document).ready(function(){
             target_row.find('#price span').text(item.price);
             target_row.find('#total span').text(item.price * item.qty);
             
-            if (isCheckOutPage)
+            if (isCheckOutPage){
                 target_row.find('#qty input').val(item.qty);
+                target_row.find('#qty input').attr('max',item.stock);
+            }
             else{
                 target_row.find('#qty').text(item.qty);
                 total_weight += (item.weight * item.qty);
