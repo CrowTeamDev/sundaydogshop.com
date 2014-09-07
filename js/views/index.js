@@ -44,11 +44,13 @@ function set_menuOn(menu_id){
     $('#start_menu').hide();
     $('#intro_bg').remove();
     $('#navigation_bar, #top_menu, footer').show();
- 
     changeBackground(menu_id);
-    directory.reset(menu_id);
-    $('header ul li#'+menu_id).addClass('select');
-    $('footer label#'+menu_id).addClass('select');
+ 
+    if (menu_id !== 'error' && menu_id !== 'stock'){
+        directory.reset(menu_id);
+        $('header ul li#'+menu_id).addClass('select');
+        $('footer label#'+menu_id).addClass('select');
+    }
     setTimeout(function(){
         $(".load-item").hide();
         $('#main').fadeIn(3500);

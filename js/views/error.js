@@ -5,5 +5,5 @@
  */
 
 $(function(){
-    set_menuOn('init');
+    set_menuOn('error');
 });

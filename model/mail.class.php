@@ -10,15 +10,41 @@ class mail{
     var $cart, $buyer, $seller;
     
     function __construct($model, $method = 0){
+        if ($method == 2){ return; }
         $this->refNo = $model['refNo'];
         $this->cart = $model['cart'];
         $this->buyer = $model['buyer'];
         $this->seller = $model['seller'];
         $this->method = $method;
     }
+   
+    public function sendValidationLink($contentUrl, $token, $email){
+        $mail_to        = $email;
+        $mail_subject   = 'Sunday Dog Stock URL';
+        $mail_message   = $this->createValidationBody($contentUrl, $token);
+
+        $mail_header    = 'MIME-Version: 1.0' . "\r\n";
+        $mail_header   .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $mail_header   .= 'From: Sunday Dog <no-reply@sundaydogshop.com>' . "\r\n";
+
+        return mail($mail_to, $mail_subject, $mail_message, $mail_header);
+    }
+    
+    private function createValidationBody($contentUrl, $token){
+        $message_detail = 
+            "Dear owner,"
+            . "<br>"
+            . "<br>This mail was sent by Sunday Dog"
+            . "<br>As there was someone attempting to access Stock page"
+            . "<br>This is the Stock URL: "
+            . $contentUrl . "/stock&token=" . $token
+            . "<br><br>This link is accessible for only 30 minutes"
+            . "<br>";
+        
+        return $message_detail;
+    }
     
     private function createMsg($cart, $buyer, $seller){
-        
         $items = $cart['items'];
         $shippingCost = $cart['shippingCost'];
         $totalCost = $cart['totalCost'];

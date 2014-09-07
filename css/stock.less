@@ -1,0 +1,99 @@
+@color_g1: #EBEDF0;
+@color_g4: #3E4042;
+@color_g5: #B9BBBD;
+@color_white: #FFFFFF;
+@color_r1: #FF0000;
+@color_black: #000000;
+@color_glay: #757575;
+@color_dark: #ABAEA6;
+@color_light: #DDD9CB;
+@color_90: #404041;
+@color_80: #58585B;
+
+@font-face{
+    font-family: AvenirNext;
+    src: url('../content/font/AvenirNext/AvenirNext_Regular.otf')
+}
+@font-face{
+    font-family: AvenirNext_Light;
+    src: url('../content/font/AvenirNext/AvenirNext-UltraLight.otf')
+}
+@font-face{
+    font-family: AvenirNext_Bold;
+    src: url('../content/font/AvenirNext/AvenirNext-Bold.otf')
+}
+@font-face{
+    font-family: PrestigeElite_Bold;
+    src: url('../content/font/PrestigeElite/PrestigeElite-Bold.otf')
+}
+@font-face{
+    font-family: PrestigeElite;
+    src: url('../content/font/PrestigeElite/PrestigeElite.otf')
+}
+
+#main{
+    padding-top: 13%;
+}
+
+.stock_main{
+    width: 40%;
+    margin-bottom: 75px;
+    margin-left: 30px;
+    table{ border-collapse: collapse; }
+    tr{
+        border: solid @color_dark 1px;
+        td:first-child{
+            color: @color_glay;
+            font-size: 75%;
+            padding-right: 10px;
+            padding-left: 5px;
+        }
+        td:last-child{
+            padding-left: 10px;
+            padding-right: 5px;
+        }
+    }
+    input.stock{
+        width: 30px;
+        padding-left: 5px;
+        color: @color_glay;
+        &.changed{
+            color: @color_black;
+            font-weight: bold;
+        }
+    }
+}
+.stock_category{
+    position: fixed;
+    top: 0%;
+    left: 4%;
+    margin-top: 12%;
+    font-size: 150%;
+    color: @color_dark;
+    ul{ margin-top: 20px; }
+    li{
+        display: list-item;
+        margin-bottom: 10px;
+        &.selected{
+            color: @color_glay;
+            text-decoration: underline;
+        }
+    }
+}
+.stock_detail{
+    display: none;
+    text-transform: uppercase;
+    position: fixed;
+    top: 30%;
+    left: 55%;
+    span{ cursor: pointer; }
+}
+.stock_save{
+    display: none;
+    text-transform: uppercase;
+    position: fixed;
+    top: 35%;
+    left: 55%;
+    cursor: pointer;
+    font-size: 200%;
+}
