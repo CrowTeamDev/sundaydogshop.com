@@ -39,11 +39,32 @@ $(function(){
     $('.stock_save').click(function(){
         var items = [];
         $('input.changed').each(function(){
-            var item = {
-                number : $(this).attr('item'),
-                size : $(this).attr('size'),
-                stock : $(this).val()
-            };
+            var changedItemNo = $(this).attr('item');
+            var changedItemSize = $(this).attr('size');
+            if ($(this).attr('color') === undefined){
+                var item = {
+                    number : changedItemNo,
+                    size : changedItemSize,
+                    stock : $(this).val()
+                };
+            }
+            else{
+                var changedItemStock = '';
+                $('input.'+changedItemNo+changedItemSize).each(function(){
+                    if (changedItemStock !== '')
+                        changedItemStock += ",";
+                    changedItemStock += $(this).attr('color') + ":" + $(this).val();
+                });
+                var item = {
+                    number : changedItemNo,
+                    size : changedItemSize,
+                    stock : changedItemStock
+                };
+            }
+            if (items.length > 0 &&
+                items[items.length - 1]["number"] === changedItemNo &&
+                items[items.length - 1]["size"] === changedItemSize)
+                return true;
             items.push(item);
         });
         var data = {
@@ -58,6 +79,7 @@ $(function(){
 
 function setupAdmin(){
     $('header#start_menu, header#top_menu, #background_1, svg.arrow, div#controls-wrapper, footer, #myCart, #popup, #supersized-loader, #supersized').remove();
+    $('#main').css('padding-top','13%');
     document.title = "SD Admin";
     
     //tmp for Stock page only one created

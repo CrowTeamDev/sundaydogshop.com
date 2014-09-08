@@ -26,7 +26,19 @@
                             . 'item="'.$product['item_no'].'" size="'.$product['size'].'" '
                             . 'base="'.$product['stock'].'" value="'.$product['stock'].'">';
                 }else{
-                    
+                    $colors_stock = explode(",", $product['stock']);
+                    foreach ($colors_stock as $color) {
+                        $stock = explode(":", $color);
+                        
+                        $html .= '</td>';
+                        $html .= '</tr>';
+                        $html .= '<tr><td></td>';
+                        $html .= '<td style="padding-left: 10px;">- '.$stock[0].'</td>';
+                        $html .= '<td>';
+                        $html .= '<input class="stock '.$product['item_no'].$product['size'].'" type="number" min="0" max="99" '
+                                . 'item="'.$product['item_no'].'" size="'.$product['size'].'" color="'.$stock[0].'" '
+                                . 'base="'.$stock[1].'" value="'.$stock[1].'">';
+                    }
                 }
                 $html .= '</td>';
                 $html .= '</tr>';

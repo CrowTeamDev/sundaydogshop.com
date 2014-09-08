@@ -40,7 +40,9 @@ $(function(){
     }
     
     if ($('.product_color').size() > 0){
-        $(".product_color[size='" + $('#product_size option:selected').text() + "']").addClass('show');
+        if ($('.product_color').size() === 1)
+            $('.product_color').addClass('show');
+        $(".product_color[sizes='" + $('#product_size option:selected').text() + "']").addClass('show');
         $(".product_color").change(function(){
             $('#productDetail #quantity').attr('max',$('.product_color.show option:selected').attr('stock'));
             $('#productDetail #quantity').val(1);
@@ -147,7 +149,7 @@ function sizeInvolve(){
         
         if ($('#product_size option:selected').attr('stock') === ""){
             $(".product_color.show").removeClass('show');
-            $(".product_color[size='" + $('#product_size option:selected').text() + "']").addClass('show');
+            $(".product_color[sizes='" + $('#product_size option:selected').text() + "']").addClass('show');
             $(".product_color.show").val($(".product_color.show option:first").val());
             $('#productDetail #quantity').val(1);
         }else{

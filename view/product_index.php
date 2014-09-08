@@ -130,7 +130,7 @@
             $colorExisted = false;
             foreach ($stockList as $key){
                 $sizeExisted = false;
-                $html2 = "<select class='product_color' size='".$key['size']."' style='float: right; margin-right: 100px;'>";
+                $html2 = "<select class='product_color' sizes='".$key['size']."' style='float: right; margin-right: 100px;'>";
                 $html2 .= "<option value=''> -- Please Select -- </option>";
                 if (is_numeric($key['stock'])){
                     break;
