@@ -73,14 +73,14 @@ function buy(){
             var newDiv = $(document.createElement('div'));
             newDiv.html('<p id="popup_buy" align="center">you just added<br> '+ qty +' "'+ name +'"<br> to your cart </p>');
             newDiv.dialog({
-                hide: ('fade', 3000),
-                show: ('fade', 3000),
+                hide: ('fade', 750),
+                show: ('fade', 750),
                 modal: true,
                 dialogClass: "no-close success-dialog",
                 open: function(event, ui){
                     setTimeout(function(){
                         newDiv.dialog('close');
-                    },5000);
+                    },750);
                 }
             });
             $(".ui-dialog-titlebar").hide();

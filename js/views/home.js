@@ -9,8 +9,6 @@ $(function(){
     var current_step = 0;
     var changingSlide;
     
-    if (window.location.pathname !== '/')
-        set_menuOn(page);
     $('#main').addClass('homeMode');
     $('#home_ribbon').addClass('home_ribbon0');
     
@@ -22,7 +20,13 @@ $(function(){
         resumeSlide();
     });
     
-    setTimeout(function(){resumeSlide();}, 8000);
+    if (window.location.pathname !== '/'){
+        set_menuOn(page);
+        setTimeout(function(){resumeSlide();}, 5000);
+    }else
+        $('#start_menu').click(function(){
+            setTimeout(function(){resumeSlide();}, 5000);
+        });
     
     function gotoSlide(slide){
         if (!$('.home_main').is(':visible')) return;
