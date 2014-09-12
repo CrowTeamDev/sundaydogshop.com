@@ -9,7 +9,7 @@
         $validate_time = $registry->stock->checkToken($_POST["token"]);
         if(
             isset($_POST["product"]) &&
-            time() - strtotime($validate_time) < 3600
+            time() - strtotime($validate_time) < 7200
         ) {
             foreach ($_POST["product"] as $item) {
                 $registry->stock->update($item["number"], $item["size"], $item["stock"]);
