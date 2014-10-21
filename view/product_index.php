@@ -60,7 +60,7 @@
         <input type="hidden" id="product_id" value="<?php echo $itemNo; ?>" />
         <input type="hidden" id="product_weight" value="<?php echo $weight; ?>" />
         <div id="product_name"><?php echo strtoupper($name); ?></div>
-        <hr style="height: 3px; background: #404041; border: none;" />
+        <hr style="height: 3px; background: #404041; border: none;margin-top:5px;" />
         <div id="product_price"><span><?php echo $price; ?></span> BAHT</div>
         <div id="product_detail">
             PRODUCT DETAILS
