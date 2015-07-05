@@ -3,22 +3,19 @@
 
 	public function getProduct($id) {
             if(!empty($id)){
-                $product->productList = db::getInstance()->query('SELECT * FROM Product where item_no='.$id."");
-                return $product->productList;
+                return db::getInstance()->query('SELECT * FROM Product where item_no='.$id."");
             }
 	}
         
         public function getColor($id) {
             if(!empty($id)){
-                $product->colorList = db::getInstance()->query('SELECT color FROM Product_Color where item_no='.$id."");
-                return $product->colorList;
+                return db::getInstance()->query('SELECT color FROM Product_Color where item_no='.$id."");
             }
         }
         
         public function getSize($id) {
             if(!empty($id)){
-                $detailList = db::getInstance()->query('SELECT size, price, weight, stock FROM Product_Detail where item_no='.$id.' and stock<>"0" ORDER BY weight DESC, size ASC');
-                return $detailList;
+                return db::getInstance()->query('SELECT size, price, weight, stock FROM Product_Detail where item_no='.$id.' and stock<>"0" ORDER BY weight DESC, size ASC');
             }
         }
         
