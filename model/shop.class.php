@@ -7,10 +7,10 @@ class shop{
                 $viewSize = 0;
                 $conditionList = null;
                 if(!empty($listFilter)){
-                    list($brand, $color, $size) = split('-', $listFilter);
+                    list($brand, $color, $size) = explode('-', $listFilter);
                 }
                 if(!empty($brand)){
-                    $brandList = split(',', $brand);
+                    $brandList = explode(',', $brand);
                     $conditionListOr = null;
                     for($x=0;$x<count($brandList);$x++){
                         if(!empty($brandList[$x]))
@@ -21,7 +21,7 @@ class shop{
                     $conditionList = "(".$conditionListOr.")";
                 }
                 if(!empty($color)){
-                    $colorList = split(',', $color);
+                    $colorList = explode(',', $color);
                     $conditionListOr = null;
                     for($x=0;$x<count($colorList);$x++){
                         if(!empty($colorList[$x]))
@@ -36,7 +36,7 @@ class shop{
                     }
                 }
                 if(!empty($size)){
-                    $sizeList = split(',', $size);
+                    $sizeList = explode(',', $size);
                     $conditionListOr = null;
                     for($x=0;$x<count($sizeList);$x++){
                         if(!empty($sizeList[$x]))
